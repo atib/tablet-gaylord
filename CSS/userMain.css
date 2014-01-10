@@ -1,0 +1,341 @@
+@charset "UTF-8";
+/* Simple fluid media
+   Note: Fluid media requires that you remove the media's height and width attributes from the HTML
+   http://www.alistapart.com/articles/fluid-images/ 
+*/
+img, object, embed, video {
+	max-width: 100%;
+}
+/* IE 6 does not support max-width so default to width 100% */
+.ie6 img {
+	width:100%;
+}
+
+/*
+	Dreamweaver Fluid Grid Properties
+	----------------------------------
+	dw-num-cols-mobile:		6;
+	dw-num-cols-tablet:		12;
+	dw-num-cols-desktop:	14;
+	dw-gutter-percentage:	25;
+	
+	Inspiration from "Responsive Web Design" by Ethan Marcotte 
+	http://www.alistapart.com/articles/responsive-web-design
+	
+	and Golden Grid System by Joni Korpi
+	http://goldengridsystem.com/
+*/
+
+/* Mobile Layout: 480px and below. */
+
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 87.9666%;
+	padding-left: 1.5166%;
+	padding-right: 1.5166%;
+}
+#Header {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	font-size: 36px;
+	background-color: #000;
+	text-align: center;
+	color: #F00;
+}
+#heading {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#mainbody {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+
+.btngo1 {
+	background-color: #090;
+	text-align: center;
+	height: 50px;
+	width: 50%;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFF;
+		-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+.btnstp1 {
+	background-color: #900;
+	text-align: center;
+	height: 50px;
+	width: 50%;
+	font-size: 16px;
+	font-weight: bold;
+	color: #FFF;
+		-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+#Navigation {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	height: auto;
+	margin-top: 10px;
+}
+#navList {
+	display: inline-block;
+	height: auto;
+	list-style-type: none;
+	width: 100%;
+	float:left;
+}
+a#nav1:link, a#nav1:active, a.nav1#visited {
+	display: inline-block;
+	float: left;
+	height: 85px;
+	color: #FFF;
+	padding-top: 15px;
+	width: 25%;
+	margin-left:6.25%;
+	margin-bottom:25px;
+	background-color: #0099FF;
+	border-bottom: 1px solid #FFF;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+a#nav2:link, a#nav2:active, a.nav2#visited {
+	display: inline-block;
+	float: left;
+	height: 85px;
+	color: #FFF;
+	padding-top: 15px;
+	width: 25%;
+	margin-left:37.5%;
+	margin-bottom:25px;
+	background-color: #F00;
+	border-bottom: 1px solid #FFF;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+form .dropdown1 {
+	font-size: 16px;
+	font-weight: bold;
+	height: 50px;
+	width: 100%;
+	margin-right: auto;
+	margin-bottom: 20px;
+	margin-left: auto;
+	padding-left: 10px;
+}
+
+#footer {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#pagetitle {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#orderno {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#listheading {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#listcontent {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#orderfilter {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+@media only screen and (min-width: 481px) {
+.gridContainer {
+	width: 91.45%;
+	padding-left: 0.775%;
+	padding-right: 0.775%;
+}
+#Header {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#heading {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#mainbody {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#footer {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#pagetitle {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#orderno {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#listheading {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#listcontent {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#orderfilter {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+}
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+
+@media only screen and (min-width: 769px) {
+.gridContainer {
+	width: 88.7142%;
+	max-width: 1232px;
+	padding-left: 0.6428%;
+	padding-right: 0.6428%;
+	margin: auto;
+}
+#LayoutDiv1 {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#Header {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#heading {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#mainbody {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#footer {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#pagetitle {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#orderno {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#listheading {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#listcontent {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+#orderfilter {
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+}
+}
