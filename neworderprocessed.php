@@ -3,9 +3,8 @@ session_start();
 
 ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
 
-$domainurl= "http://lunarwebstudio.com/Demos/GaylordTablet";
+$domainurl= "http://lunarwebstudio.com/Demos/GaylordTablet/tablet/";
 
-/*
 if(!isset($_SESSION['username'])){
 	
 	$error_msg="Unauthorised Access";
@@ -13,20 +12,7 @@ if(!isset($_SESSION['username'])){
 	exit();
 }
 
-	$access=md5(10);
-	
-if ($_GET['par']== $access) {
-	
-	$username = $_SESSION['username'];
-	
-	
-} else{
 
-	$error_msg="Access code missing, please follow the guidelines set";
-    header("Location: maincontroller.php?err=$error_msg");
-	exit();
-}
-*/
 include_once ("db_connect.php");
 
 	if (isset($_POST['create'])){
@@ -58,8 +44,8 @@ include_once ("db_connect.php");
 	$displayresult='"
 	
 	<form action="neworderprocessed.php?par='.$par.'" method="post" target="_self">
- 
-  <select class="dropdown1" name="guestno" > 
+     <div class="fields">
+  <select class="field1" name="guestno" > 
     <option value="">select guest no</option>
 	<option value="1">1 guest</option>
     <option value="2">2 guest</option>
@@ -83,7 +69,7 @@ include_once ("db_connect.php");
     <option value="20">20 guest</option>
   </select><br>
   
-  <select class="dropdown1" name="tableno"> 
+  <select class="field1" name="tableno"> 
     <option value="">select table no</option>
     <option value="1">table 1</option>
     <option value="2">table 2</option>
@@ -98,13 +84,12 @@ include_once ("db_connect.php");
   </select><br>
   
   <input name="orderid" type="hidden" value="'. $orderid.'">
-  <p>Create the order</p>
-  <input class="btngo1" align="middle" name="create" type="submit" value="Create">
-
-  <p>Cancel the order and return to the menu</p>
+  </div>
+  <div class="buttons">
+  <input class="button" align="middle" name="create" type="submit" value="Create">
   
-  <input class="btnstp1" name="cancel" type="submit" value="Cancel">
-
+  <input class="button" name="cancel" type="submit" value="Cancel">
+	</div>
   
   </form>"';	
 		
@@ -151,8 +136,8 @@ include_once ("db_connect.php");
 	else if(isset($_POST['cancel'])){
 		
 	$displayresult='';	
-		
-		
+	header("Location: index.php");	
+	exit();	
 	}
 
 
@@ -168,27 +153,24 @@ include_once ("db_connect.php");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gaylord</title>
-<link href="CSS/boilerplate.css" rel="stylesheet" type="text/css">
 <link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-<script src="Script/respond.min.js"></script>
 </head>
 <body>
 <div class="gridContainer clearfix">
 
-  <div id="Header">Gaylord Logo </div>
-  <div id="heading">Welcome <?php echo $username;?></div>
-  <div id="pagetitle">New Order Request</div>
+   <div id="Header"><?php include_once("header.php");?></div>  
+  <div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
+    
+  <div class="title">New Order Request</div>
 
-  <div id="mainbody">
   
   <?php echo $error_msg; ?>
   <?php echo $success_msg; ?>
-   <?php echo $displayresult; ?>
+  <?php echo $displayresult; ?>
   
 	
-  </div>
-  <div id="footer">A Pummello Designed & Developed Product</div>
+  <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>
 </html>

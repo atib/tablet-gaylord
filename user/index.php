@@ -1,13 +1,16 @@
 <?PHP
 session_start();
 
-if(!isset($_SESSION['username']))
+if(!isset($_SESSION['email']))
 {
-		
+	
 	$par = md5(1);
 
-    header("Location: login.php?n=$username&par=$par");
+    header("Location: login.php");
     exit();
+}else{
+	$email = $_SESSION['email'];
+	$fname = $_SESSION['fname'];	
 }
 
 if ($_GET['par'] = md5(2)){
@@ -30,31 +33,30 @@ if ($_GET['par'] = md5(2)){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gaylord</title>
-<link href="../CSS/boilerplate.css" rel="stylesheet" type="text/css">
-<link href="../CSS/userMain.css" rel="stylesheet" type="text/css">
+<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-<script src="../Script/respond.min.js"></script>
 </head>
 <body>
 <div class="gridContainer clearfix">
 
-  <div id="Header">Gaylord Logo </div>
-  <div id="heading">Gaylord Navigation Menu</div>
-  <div id="mainbody">
+  <div id="Header"><?php include_once("header1.php");?></div>
+  
+  <div id="heading"><h2>User Controller</h2></div>
+    <div class="titles"><h3>User Homepage</h3></div>
+	<?php echo $error_msg;?> <?php echo $user_msg; ?>  
   
 	<div id="Navigation">
 		<ul id="navList">
-		<a id="nav1" href="neworder.php?par=<?php echo $par;?>"><li>View Menu</li></a>
-        <a id="nav1" href="vieworder.php?par=<?php echo $par;?>"><li>View Table Order</li></a>
-        <a id="nav1" href="orderhistory.php?par=<?php echo $par?>"><li>Order Hisotry</li></a>
-        <a id="nav1" href="reviews.php?par=<?php echo $par;?>"><li>Reviews</li></a>
-        <a id="nav1" href="share.php?par=<?php echo $par;?>"><li>share</li></a>	
+		<a id="nav1" href="neworder.php?cat=1"><li>View Menu</li></a>
+        <a id="nav1" href="neworder.php?cat=14"><li>View Table Order</li></a>
+        <a id="nav1" href="orderhistory.php"><li>Order Hisotry</li></a>
+        <a id="nav1" href="reviews.php"><li>Reviews</li></a>
+        <a id="nav1" href="share.php"><li>share</li></a>	
         <a id="nav2" href="logout.php"><li>Close</li></a>	
 	  </ul>
   </div>
   		
-  </div>
-  <div id="footer">A Pummello Designed & Developed Product</div>
+  <div id="footer"><?php include_once("footer1.php");?></div>
 </div>
 </body>
 </html>

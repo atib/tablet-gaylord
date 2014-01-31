@@ -1,0 +1,2 @@
+<div class="f01">The Gaylord Tandoori Indian Restaurant <br>
+141 Manchester Road, Isle of Dogs, London E14 3DN. <br>Telephone : 020 7538 9826 and 020 7538 0393 Email : info@gaylordrestaurant.co.uk</div>

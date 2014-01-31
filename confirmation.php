@@ -60,30 +60,25 @@ include_once ("db_connect.php");
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gaylord</title>
-<link href="CSS/boilerplate.css" rel="stylesheet" type="text/css">
 <link href="CSS/Main.css" rel="stylesheet" type="text/css">
-
-<script src="Script/respond.min.js"></script>
 </head>
 <body>
 <div class="gridContainer clearfix">
 
-  <div id="Header">Gaylord Logo </div>
-  <div id="heading">Welcome <?php echo $username;?></div>
-  <div id="pagetitle">New Order Request</div>
-
-  <div id="mainbody">
-  
-  <?php echo $error_msg; ?>
-  <?php echo $success_msg; ?>
-   <?php echo $displayresult; ?>
+ 	<div id="Header"><?php include_once("header.php");?></div>  
+  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
+    
+    <div class="title">New Order Request</div>
+      
+    <?php echo $error_msg; ?>
+    <?php echo $success_msg; ?>
+	<?php echo $displayresult; ?>
   
 	<p>Your request has been processed. Click on main menu button to return to main menu</p>
     
     <p><a href="maincontroller.php">Main Menu</a></p>
   		
-  </div>
-  <div id="footer">A Pummello Designed & Developed Product</div>
+  <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>
 </html>

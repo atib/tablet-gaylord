@@ -35,8 +35,6 @@ if ($_GET['par']== $access) {
 }
 
 
-
-
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
@@ -49,77 +47,74 @@ if ($_GET['par']== $access) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gaylord</title>
-<link href="CSS/boilerplate.css" rel="stylesheet" type="text/css">
 <link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-<script src="Script/respond.min.js"></script>
 </head>
 <body>
 <div class="gridContainer clearfix">
 
-  <div id="Header">Gaylord Logo </div>
-  <div id="heading">Welcome <?php echo $username;?></div>
-  <div id="pagetitle">New Order</div>
-
-  <div id="mainbody">
-
-   <div id="orderno">Order Number #<span class="redbold"><?php echo $order_id;?>345</span></div>
+  	<div id="Header"><?php include_once("header.php");?></div>  
+  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
   
-<form action="neworderprocessed.php?par=<?php echo $par;?>" method="post" target="_self">
+  	<div class="title">New Order</div>
+
+   	<div id="orderno">Order Number #<span class="redbold"><?php echo $order_id;?>345</span></div>
+  
+	<form action="neworderprocessed.php?par=<?php echo $par;?>" method="post" target="_self">
+ 	<!--CONTENT-->
+    <div class="fields">
+      <select class="field1" name="guestno" > 
+        <option value="">select guest no</option>
+        <option value="1">1 guest</option>
+        <option value="2">2 guest</option>
+        <option value="3">3 guest</option>
+        <option value="4">4 guest</option>
+        <option value="5">5 guest</option>
+        <option value="6">6 guest</option>
+        <option value="7">7 guest</option>
+        <option value="8">8 guest</option>
+        <option value="9">9 guest</option>
+        <option value="10">10 guest</option>
+        <option value="11">11 guest</option>
+        <option value="12">12 guest</option>
+        <option value="13">13 guest</option>
+        <option value="14">14 guest</option>
+        <option value="15">15 guest</option>
+        <option value="16">16 guest</option>
+        <option value="17">17 guest</option>
+        <option value="18">18 guest</option>
+        <option value="19">19 guest</option>
+        <option value="20">20 guest</option>
+      </select><br>
+      
+      <select class="field1" name="tableno"> 
+        <option value="">select table no</option>
+        <option value="1">table 1</option>
+        <option value="2">table 2</option>
+        <option value="3">table 3</option>
+        <option value="4">table 4</option>
+        <option value="5">table 5</option>
+        <option value="6">table 6</option>
+        <option value="7">table 7</option>
+        <option value="8">table 8</option>
+        <option value="9">table 9</option>
+        <option value="10">table 10</option>
+      </select><br>
+      
+      <input name="orderid" type="hidden" value="<?php echo $order_id;?>">
+    <!--END CONTENT-->
+    
+    <!--FOOTER-->
+    <div class="buttons">
+ 		<input class="button" align="middle" name="create" type="submit" value="Create">
  
-  <select class="dropdown1" name="guestno" > 
-    <option value="">select guest no</option>
-	<option value="1">1 guest</option>
-    <option value="2">2 guest</option>
-    <option value="3">3 guest</option>
-    <option value="4">4 guest</option>
-    <option value="5">5 guest</option>
-    <option value="6">6 guest</option>
-  	<option value="7">7 guest</option>
-    <option value="8">8 guest</option>
-    <option value="9">9 guest</option>
-    <option value="10">10 guest</option>
-   	<option value="11">11 guest</option>
-    <option value="12">12 guest</option>
-    <option value="13">13 guest</option>
-    <option value="14">14 guest</option>
-    <option value="15">15 guest</option>
-    <option value="16">16 guest</option>
-  	<option value="17">17 guest</option>
-    <option value="18">18 guest</option>
-    <option value="19">19 guest</option>
-    <option value="20">20 guest</option>
-  </select><br>
-  
-  <select class="dropdown1" name="tableno"> 
-    <option value="">select table no</option>
-    <option value="1">table 1</option>
-    <option value="2">table 2</option>
-    <option value="3">table 3</option>
-    <option value="4">table 4</option>
-    <option value="5">table 5</option>
-    <option value="6">table 6</option>
-  	<option value="7">table 7</option>
-    <option value="8">table 8</option>
-    <option value="9">table 9</option>
-    <option value="10">table 10</option>
-  </select><br>
-  
-  <input name="orderid" type="hidden" value="<?php echo $order_id;?>">
-  <p>Create the order</p>
-  <input class="btngo1" align="middle" name="create" type="submit" value="Create">
+		<input class="button" name="cancel" type="submit" value="Cancel">
+ 	</div>
+    <!--END FOOTER-->
 
-  <p>Cancel the order and return to the menu</p>
-  
-  <input class="btnstp1" name="cancel" type="submit" value="Cancel">
-
-  
-  </form>
+	</form>
 	
-
-  		
-  </div>
-  <div id="footer">A Pummello Designed & Developed Product</div>
+  <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>
 </html>

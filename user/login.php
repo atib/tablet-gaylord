@@ -1,14 +1,15 @@
 <?PHP
 session_start();
 
-if(isset($_SESSION['username']))
+if(isset($_SESSION['email']))
 {
 	
-	$username = $_SESSION['username'];
-	
+	$email = $_SESSION['email'];
+	$fname = $_SESSION['fname'];
+
 	$par = md5(1);
 
-    header("Location: login.php?n=$username&par=$par");
+    header("Location: index.php?n=$fname&par=$par");
     exit();
 }
 
@@ -33,28 +34,57 @@ if ($_GET['par'] = md5(2)){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gaylord</title>
-<link href="../CSS/boilerplate.css" rel="stylesheet" type="text/css">
-<link href="../CSS/userMain.css" rel="stylesheet" type="text/css">
+<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-<script src="../Script/respond.min.js"></script>
 </head>
 <body>
 <div class="gridContainer clearfix">
 
-  <div id="Header">Gaylord Logo </div>
-  <div id="heading">Gaylord Interactive Ordering Menu</div>
-  <div id="mainbody">
+   <div id="Header"><?php include_once("header1.php");?></div>
   
-	<?php echo $error_msg; $user_msg; ?>  
+  <div id="heading"><h2>User Controller</h2></div>
     
-   <form action="loginprocess.php" method="post">
-   <input name="email" class="field" type="text" placeholder="email"><br>
-   <input name="password" class="field" type="password" placeholder="password"><br>
-   <input class="btngo" name="login" type="submit" value="Login">
-   </form>
-  		
-  </div>
-  <div id="footer">A Pummello Designed & Developed Product</div>
+	<?php echo $error_msg; $user_msg; ?>  
+        
+    <div id="login">
+
+	<!--LOGIN FORM-->
+	<form name="login-form" class="login-form" action="loginprocess.php" method="post">
+
+	<!--HEADER-->
+    <div class="titles">
+    <!--TITLE--><h3>Login Form</h3>
+    <!--END TITLE-->
+    <!--DESCRIPTION--><span>Log in to access your personal ordering area, you will be able to view what you have previously ordered with us and what you have said about each dish you have tried.</span>
+    <span>If you have not got a logging account, use our simple register form for instant access. You do not have to be registered to use this system, use the skip button to login as a guest.</span><!--END DESCRIPTION-->
+    </div>
+    <!--END HEADER-->
+	
+	<!--CONTENT-->
+    <div class="fields">
+	<!--USERNAME--><input name="email" class="field1" type="text" placeholder="email" required><!--END USERNAME-->
+    <!--PASSWORD--><input name="password" class="field1" type="password" placeholder="password" required><!--END PASSWORD-->
+    </div>
+    <!--END CONTENT-->
+    
+    <!--FOOTER-->
+    <div class="buttons">
+    <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button2" /><!--END LOGIN BUTTON-->
+    </div>
+    <!--END FOOTER-->
+
+	</form>
+	<!--END LOGIN FORM-->
+	<form name="login-form" class="login-form" action="loginprocess.php" method="post">
+    <div class="buttons">
+    <input name="bypass" class="field1" type="hidden" required>
+    <!--Skip BUTTON--><input type="submit" name="skip" value="Skip" class="button2" /><!--END Skip BUTTON-->
+	</div>
+    </form>
+	</div>
+	<!--END WRAPPER-->
+             
+  <div id="footer"><?php include_once("footer1.php");?></div>
 </div>
 </body>
 </html>

@@ -21,40 +21,38 @@ $username = $_SESSION['username'];
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Gaylord</title>
-    <link href="CSS/boilerplate.css" rel="stylesheet" type="text/css">
-    <link href="CSS/Main.css" rel="stylesheet" type="text/css">
+<?php include_once("head.php");?>
 
-    <script src="Script/respond.min.js"></script>
-  </head>
-  <body>
-
+<body>
   <div class="gridContainer clearfix">
-    <div id="top_thin"> </div>
-    <div id="Header">Gaylord Logo </div>
-    <div id="heading">Welcome <?php echo $username;?></div>
-    <div id="pagetitle">Select An Option</div>
-    <div id="mainbody">
-    
-    <div id="Navigation">
-  		<ul id="navList">
-  		<a id="nav1" href="neworder.php?par=<?php print $par;?>"><li>Create Order</li></a>
-          <a id="nav1" href="vieworder.php"><li>View Order</li></a>
-          <a id="nav1" href="customer.php"><li>Customer</li></a>
-          <a id="nav1" href="orderhistory.php"><li>Order Hisotry</li></a>
-          <a id="nav1" href="reviews.php"><li>Reviews</li></a>
-          <a id="nav1" href="reports.php"><li>Reports</li></a>	
-          <a id="nav2" href="logout.php"><li>Logout</li></a>	
-  	  </ul>
-    </div>
-  	
 
-    		
+    <div id="Header"><?php include_once("header.php");?>     
+      <div id="heading">
+        <h3>Welcome <?php echo $username;?></h3>
+      </div>
+    </div>  
+    
+    <div id="main_content">
+
+      <div class="title">
+        <h2>Select An Option</h2>
+      </div>
+      
+      <div id="Navigation">
+    		<ul id="navList">
+    		<a id="nav1" href="neworder.php?par=<?php print $par;?>"><li>Create Order</li></a>
+            <a id="nav1" href="vieworder.php"><li>View Order</li></a>
+            <a id="nav1" href="customer.php"><li>Customer</li></a>
+            <a id="nav1" href="tablet/orderhistory.php"><li>Order History</li></a>
+            <a id="nav1" href="tablet/reviews.php"><li>Reviews</li></a>
+            <a id="nav1" href="tablet/reports.php"><li>Reports</li></a>	
+    	  </ul>
+      </div>
+    </div>
+    
+    <div id="footer">
+      <?php include_once("footer.php");?>
+    </div>
   </div>
-    <div id="footer">A Pummello Designed &amp; Developed Product</div>
-  </div>
-  </body>
+</body>
 </html>

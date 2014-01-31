@@ -27,7 +27,7 @@ if(!isset($_SESSION['username'])){
 	include_once ("db_connect.php");
 		
 		$update_orderid = "UPDATE order_tbl SET o_process='$process', o_payment='$payment', o_paymentType='$paymenttype' 
-							WHERE o_id='$orderid' AND o_active=1";
+							WHERE o_id='$orderid' AND o_active='1'";
 		
 		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
 		
@@ -53,7 +53,7 @@ if(!isset($_SESSION['username'])){
 	
 	include_once ("db_connect.php");
 		
-		$deactivate_orderid = "UPDATE order_tbl SET  o_active=0 WHERE o_id='$orderid'";
+		$deactivate_orderid = "UPDATE order_tbl SET  o_active='0' WHERE o_id='$orderid'";
 		
 		$deactivate_order_db = mysqli_query($db_connection, $deactivate_orderid) or die (mysqli_error($db_connection));
 		
@@ -80,7 +80,7 @@ if(!isset($_SESSION['username'])){
 
 include_once ("db_connect.php");
 		
-		$activate_orderid = "UPDATE order_tbl SET  o_active=1 WHERE o_id='$orderid'";
+		$activate_orderid = "UPDATE order_tbl SET  o_active='1' WHERE o_id='$orderid'";
 		
 		$activate_order_db = mysqli_query($db_connection, $activate_orderid) or die (mysqli_error($db_connection));
 		
@@ -100,39 +100,53 @@ include_once ("db_connect.php");
 	
 } 
 
-if($_POST['filtercondition'] == 1){
+if($_POST['filtercondition'] == 7){
 		
-	$filterconditon_qry	='WHERE o_active = 1';
-	$filterconditon = "Active Order (Default)";
+	$filtercondition_qry	="";
+	$filtercondition = "ALL (Selected)";
 	
 	}else if($_POST['filtercondition'] == 2){
 		
-	$filterconditon_qry	="WHERE o_active = 0";
-	$filterconditon = "Not Active";
+	$filtercondition_qry	="WHERE o_active = '0'";
+	$filtercondition = "Not Active (Selected)";
 
 	}else if($_POST['filtercondition'] == 3){
 	
-	$filterconditon_qry	='WHERE o_payment = "Not Paid"';
-	$filterconditon = "Not Paid";
+	$filtercondition_qry ='WHERE o_payment = "Not Paid"';
+	$filtercondition = "Not Paid (Selected)";
+	
+	}else if($_POST['filtercondition'] == 4){
+	
+	$filtercondition_qry ='WHERE o_payment = "Paid"';
+	$filtercondition = "Paid (Selected)";
+	
+	}else if($_POST['filtercondition'] == 5){
+	
+	$filtercondition_qry ='WHERE o_process = "Complete"';
+	$filtercondition = "Complete (Selected)";
+	
+	}else if($_POST['filtercondition'] == 6){
+	
+	$filtercondition_qry ='WHERE o_process = "Payment"';
+	$filtercondition = "Payment (Selected)";
 
 	}else{
 	
-	$filterconditon_qry	="";
-	$filterconditon = "ALL";
-
+	$filtercondition_qry ="WHERE o_active = '1'";
+	$filtercondition = "Active Order (Selected)";
 	}
 
 		
 		include_once ("db_connect.php");
 
-		$display_order = 'SELECT * FROM order_tbl '.$filterconditon_qry.'';
+		$display_order = 'SELECT * FROM order_tbl '.$filtercondition_qry.'';
 	
 		$display_order_db = mysqli_query($db_connection, $display_order) or die (mysqli_error($db_connection));
 		
 		$display_check = mysqli_num_rows($display_order_db);
-			
-			echo $display_check;			
-	
+		
+		$filtercondition .=" " .$display_check ." orders found";
+				
 			if ($display_check > 0){ //gather information from database
 		
 				while($order = mysqli_fetch_array($display_order_db)){
@@ -148,26 +162,29 @@ if($_POST['filtercondition'] == 1){
 
 			if($o_active == 1){
 				
-				$activation_btn ='<input name="deactivate" type="submit" value="Deactivate">';
+				$activation_btn ='<input name="deactivate" class="button3" type="submit" value="Deactivate">';
 				
 			}else if($o_active == 0){
 				
-				$activation_btn ='<input name="activate" type="submit" value="Activate">';
+				$activation_btn ='<input name="activate" class="button3" type="submit" value="Activate">';
 
 			}
 
 
 
 			$orderDisplay .='
-			  <div class="orderholder">
+     <div class="orderholder">
     <form action="vieworder.php" method="post" name="orderform" target="_self">
         <div class="ol_title"><a href="#">View '.$o_activation.'</a></div>
-        <div class="ol_content">Order ID: '. $orderid.'</div>
-        <div class="ol_content">Date/Time'. $datetime.'</div>
-       <div class="ol_content">Total'. $total.'</div>
+        <div class="ol_content">Order ID</div>
+        <div class="ol_content">Date / Time</div>
+        <div class="ol_content">Total</div>
+        <div class="ol_content">'. $orderid.'</div>
+        <div class="ol_content">'. $datetime.'</div>
+        <div class="ol_content">'. $total.'</div>
         
-        <div class="ol_contentfrm">            
-        <select class="dropdown1" name="process"> 
+  	 <div class="fields">
+        <select class="field3" name="process"> 
                 <option value="'.$process.'">'.$process.'</option>
                 <option value="Arrived">Arrived</option>
                 <option value="Order Take">Order Taken</option>
@@ -177,31 +194,27 @@ if($_POST['filtercondition'] == 1){
                 <option value="Payment">Payment</option>
                 <option value="Complete">Complete</option>
             </select> 
-        </div>
-            
-        <div class="ol_contentfrm">            
-        <select class="dropdown1" name="payment"> 
+                   
+        <select class="field3" name="payment"> 
                 <option value="'.$payment.'">'.$payment.'</option>
                 <option value="Not Paid">Not Paid</option>
                 <option value="Paid">Paid</option>
         </select> 
-        </div>
-        
-        <div class="ol_contentfrm">
-            <select class="dropdown1" name="paymenttype"> 
+       
+            <select class="field3" name="paymenttype"> 
                 <option value="'.$paymenttype.'">'.$paymenttype.'</option>
                 <option value="Cash">Cash</option>
                 <option value="Card">Card</option>
                 <option value="Both">Both</option>
-            </select>        
+            </select>   
+         
+         <input name="orderid"  type="hidden" value="'. $orderid.'">
+     
         </div>        
-		  
-        <div class="ol_content">   
-      		<input name="orderid" type="hidden" value="'. $orderid.'">
+		<div class="buttons">
             '. $activation_btn.'
+			<input name="update" class="button3" type="submit" value="Update">
         </div>
-        <div class="ol_content"></div>
-        <div class="ol_content"><input name="update" type="submit" value="Update"></div>
     
     </form>
     </div>
@@ -222,40 +235,49 @@ if($_POST['filtercondition'] == 1){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gaylord</title>
-<link href="CSS/boilerplate.css" rel="stylesheet" type="text/css">
 <link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-<script src="Script/respond.min.js"></script>
 </head>
 <body>
 <div class="gridContainer clearfix">
 
-  <div id="Header">Gaylord Logo </div>
-  <div id="heading">Master Controller</div>
-  <div id="mainbody">
+  <div id="Header"><?php include_once("header.php");?></div>  
+  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
+    
+    <div class="title"><h3>View Order</h3></div>
   
-    <div id="orderlist">
     <div id="orderfilter">Order Filter: <form action="vieworder.php" method="post" target="_self">
-  			<select class="dropdown1" name="filtercondition"> 
+  			<div class="fields">
+            <select class="field2" name="filtercondition"> 
                 <option value="<?php echo $filtercondition;?>" selected><?php echo $filtercondition;?></option>
                 <option value="1">Active Order (Default)</option>
                 <option value="2">Not Active</option>
                 <option value="3">Not Paid</option>
-                <option value="">All</option>
+                <option value="4">Paid</option>
+                <option value="5">Complete</option>
+                <option value="6">Payment</option>
+                <option value="7">All</option>
 
             </select>  
-            
-            <input name="filter" type="submit" value="Apply Filter">   
+            </div>
+            <div class="buttons">
+            <input class="button" name="filter" type="submit" value="Apply Filter">   
+			</div>          
             </form>
             
             <?php echo $error_msg; $success_msg; ?>
   </div>
+  
 <?php echo $orderDisplay;?>
     
-    </div>
     
-  </div>
-  <div id="footer">A Pummello Designed & Developed Product</div>
+
+    
+    
+    
+    
+    
+  <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>
 </html>

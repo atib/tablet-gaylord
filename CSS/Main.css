@@ -1,3 +1,27 @@
+@font-face {
+  font-family: 'genius';
+  src: url('fonts/genius_font/29BA0D_0_0.eot');
+  src: url('fonts/genius_font/29BA0D_0_0?#iefix') format('embedded-opentype'),
+       url('fonts/genius_font/29BA0D_0_0.woff') format('woff'),
+       url('fonts/genius_font/29BA0D_0_0.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'znikomit';
+  src: url('fonts/znikomit_font/Znikomit.ttf.eot');
+  src: url('fonts/znikomit_font/Znikomit.ttf.eot?#iefix') format('embedded-opentype'),
+       url('fonts/znikomit_font/Znikomit.ttf.woff') format('woff'),
+       url('fonts/znikomit_font/gr_001_02-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ostrich_sans';
+  src: url('fonts/ostrich_font/ostrich-bold-webfont.eot');
+  src: url('fonts/ostrich_font/ostrich-bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/ostrich_font/ostrich-bold-webfont.woff') format('woff'),
+       url('fonts/ostrich_font/ostrich-bold-webfont.ttf') format('truetype');
+}
+
 @charset "UTF-8";
 /* Simple fluid media
    Note: Fluid media requires that you remove the media's height and width attributes from the HTML
@@ -11,21 +35,6 @@ img, object, embed, video {
 	width:100%;
 }
 
-/*
-	Dreamweaver Fluid Grid Properties
-	----------------------------------
-	dw-num-cols-mobile:		6;
-	dw-num-cols-tablet:		12;
-	dw-num-cols-desktop:	14;
-	dw-gutter-percentage:	25;
-	
-	Inspiration from "Responsive Web Design" by Ethan Marcotte 
-	http://www.alistapart.com/articles/responsive-web-design
-	
-	and Golden Grid System by Joni Korpi
-	http://goldengridsystem.com/
-*/
-
 /* Mobile Layout: 480px and below. */
 
 .gridContainer {
@@ -34,125 +43,255 @@ img, object, embed, video {
 	width: 87.9666%;
 	padding-left: 1.5166%;
 	padding-right: 1.5166%;
+	height: auto;
 }
 #Header {
-	clear: both;
+	clear: left;
 	float: left;
-	margin-left: 0;
 	width: 100%;
-	display: block;
-	font-size: 36px;
-	background-color: #000;
-	text-align: center;
-	color: #F00;
-}
-#heading {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#mainbody {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-	text-align: center;
-}
-.redbold {
-	font-size: 24px;
-	font-weight: bold;
-	color: #F00;
-}
-#orderlist .orderholder {
-	clear: both;
-	height: 240px;
-	width: 100%;
-	margin-right: auto;
-	margin-bottom: 10px;
-	margin-left: auto;
-	background-color: #39F;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-#orderlist .orderholder .ol_title {
-	font-size: 12px;
-	font-weight: bold;
-	color: #000;
-	display: inline-block;
-	clear: none;
-	float: left;
-	height: 30px;
-	width: 100%;
-	margin-bottom: 10px;
-	background-color: #666;
-	vertical-align: middle;
-	padding-top: 20px;
-}
-#orderlist .orderholder .ol_content {
-	font-size: 12px;
-	font-weight: bold;
-	color: #000;
-	display: inline-block;
-	clear: none;
-	float: left;
-	height: 30px;
-	width: 31.888888%;
-	margin-bottom: 10px;
-	background-color: #666;
-	vertical-align: middle;
-	padding-top: 20px;
-	border-top-width: 1%;
-	border-right-width: 1%;
-	border-bottom-width: 1%;
-	border-left-width: 1%;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-}
-#orderlist .orderholder .ol_contentfrm {
-	font-size: 12px;
-	font-weight: bold;
-	color: #000;
-	display: inline-block;
-	clear: none;
-	float: left;
-	height: 50px;
-	width: 33.3333333333%;
-	margin-bottom: 10px;
-}
+	height: 100px;
 }
 
-.gridContainer.clearfix #mainbody #orderno {
-	font-size: 24px;
-	font-weight: bold;
-	color: #000;
+#header_top { 
+	padding: 1%;
+	/*height: 20px;*/
+	width: 100%;
+	background-color: #606473;
+	clear: both;
+
 }
-.btngo1 {
-	background-color: #090;
-	text-align: center;
-	height: 50px;
-	width: 50%;
+
+#header_top h1 {
+	font-family: 'genius';
+	font-size: 75%;
+	color: #efefef; 
+
+}
+#heading h2 { 
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 85%;
+	margin-top: 0.8%;
+	padding-left: 1.2%;
+	color: #666;
+}
+
+#heading h3 {
+	font-family: 'genius';
+	font-size: 2em;
+	margin-top: 5%;
+	color: #999;
+	margin-left: 1.2%;
+}
+
+.title {
+	font-family: 'genius';
+	font-size: 250%;
+	margin-bottom: 5%;
+	color: #888;
+	margin-left: 1.2%;
+}
+
+.titles {
 	font-size: 16px;
 	font-weight: bold;
-	color: #FFF;
-		-moz-border-radius: 10px;
-	border-radius: 10px;
+	width: 100%;
+	margin-bottom: 10px;
+	margin-top: 2%;
 }
-.btnstp1 {
-	background-color: #900;
+
+#logo img {
+	width: 60%;
+}
+
+/*.head01 {
+	float: left;
+	height: 100px;
+	width: 60%;
+	display: inline-block;
+}*/
+.head02 {
+	/*display: inline;*/
+	font-size: 75%;
+	float: right;
+	border-radius: 20px; 
+	background-color: #bf134e;
+	padding: 1%;
+
+	margin-top: 1.5%;
+	/*width: 40%;*/
+	/*text-align: right;*/
+	/*height: 10px;*/
+	/*padding-top: 80px;*/
+}
+
+.head02 h6 { 
+	color: #efefef;
+	font-family: 'genius';
+	margin: 0;
 	text-align: center;
-	height: 50px;
-	width: 50%;
-	font-size: 16px;
-	font-weight: bold;
-	color: #FFF;
-		-moz-border-radius: 10px;
-	border-radius: 10px;
+	margin-top: 0.5%;
+
 }
+
+.f01 {
+	display: inline-block;
+	float: left;
+	height: 50px;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.f01 h6 {
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 80%;
+	padding-top: 5%;
+	padding-left: 1%;
+	color: #666;
+}
+
+#footer_color { 
+	background-color: #606473;
+	clear: both;
+	padding: 1%;
+	margin-top: 5%;
+}
+
+#footer_color h6 {
+	font-family: 'genius';
+	font-size: 75%;
+	color: #efefef; 
+	padding: 0;
+}
+
+.pm_font { 
+	font-family: 'ostrich_sans';
+	font-size: 130%;
+	font-weight: lighter;
+}
+
+#login {
+	text-align: center;
+	clear: left;
+	float: left;
+	height: auto;
+	width: 80%;
+	padding-left: 10%;
+}
+.buttons .button {
+	width: 76%;
+	margin-top: 5%;
+	font-family: 'genius';
+	font-size: 200%;
+	background: #94C01E;
+	border: 1px solid #94C01E;
+	color: #efefef;
+	padding: 2% 3% 1%;
+	border-radius: 8px;
+	outline: none;
+}
+
+.buttons .button:hover, .buttons .button:focus {
+  background:#94C01E;
+
+  /* CSS3 Styling */
+  background:-moz-linear-gradient(top, #94C01E, #789035);
+  background:-webkit-gradient(linear, left top, left bottom, from(#94C01E), to(#789035));
+  -moz-box-shadow:0px 0px 1px #94C01E;
+  -webkit-box-shadow:0px 0px 1px #94C01E;
+  box-shadow:0px 0px 1px #94C01E;
+}	
+
+.buttons .button:active
+{		
+    outline: none;
+
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
+}
+
+.buttons .button:-moz-focus-inner
+{
+    border: none;
+}
+
+
+.buttons .button2 {
+	height: 50px;
+	width: 35%;
+	margin-top: 10px;
+	margin-left:10%;
+	float:left;
+}
+.buttons .button3 {
+	height: 50px;
+	width: 35%;
+	margin-top: 10px;
+	margin-left:10%;
+	float:left;
+}
+.buttons .button4 {
+	height: 50px;
+	width: 28%;
+	margin-top: 10px;
+	margin-left:4%;
+	float:left;
+}
+.fields .field1 {
+	width: 70%;
+	font-family: 'genius';
+	font-size: 200%;
+	padding: 2% 3%;
+	outline: none;
+	margin-top: 3%;
+	background-color: #6F7780;
+	color: #efefef; 
+  border: 2px solid #6F7780;
+
+  /* Round Borders */
+  border-radius: 8px;
+  -moz-border-radius: 8px; /*Round Borders for Mozilla */
+  -webkit-border-radius: 8px; /*Round Borders for Chrome and Safari */
+
+  text-align: center;
+}
+
+
+.fields .field2 {
+	height: 50px;
+	width: 68%;
+	padding-top: 10px;
+	padding-left: 2%;
+	margin-top: 10px;
+	float:left;
+}
+.fields .field3 {
+	height: 50px;
+	width: 33%;
+	padding-top: 10px;
+	margin-top: 10px;
+	float: left;
+}
+.fields .field4 {
+	height: 50px;
+	width: 49%;
+	padding-top: 10px;
+	margin-top: 10px;
+	float: left;
+}
+
+#main_content { 
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	height: auto;
+	margin-top: 10%;
+}
+
 #Navigation {
 	clear: both;
 	float: left;
@@ -160,7 +299,6 @@ img, object, embed, video {
 	width: 100%;
 	display: block;
 	height: auto;
-	margin-top: 10px;
 }
 #navList {
 	display: inline-block;
@@ -168,8 +306,82 @@ img, object, embed, video {
 	list-style-type: none;
 	width: 100%;
 	float:left;
+	padding:0;
 }
-a#nav1:link, a#nav1:active, a.nav1#visited {
+
+a#nav1 {
+	float: left;
+	font-family: 'genius';
+	color: #efefef;
+	padding: 4.5% 1%;
+	width: 25%;
+	margin-left: 6.25%;
+	margin-bottom: 25px;
+	background-color: #B3B2B2;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	text-decoration: none;
+	text-align: center;
+}
+
+a#nav1:hover { 
+
+	background-color: #868686;
+
+}
+
+#top_action_bar { 
+	border-bottom: 1px solid #ccc;
+	position: relative;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	clear: both;
+	float: left;
+	margin-left: 0;
+	width: 100%;
+	display: block;
+	height: auto;
+	padding: 1% 0% 2%;
+
+}
+
+.gaylord_name {
+	float: left;
+	width: 50%;
+
+}
+
+.logout_button {
+	float: right;
+	width: 50%;
+	margin-right: -38%;
+
+}
+
+.logout_button a { 
+	text-decoration: none;
+	border-radius: 20px; 
+	background: #bf134e;
+	padding: 2% 3%;
+	color: #efefef;
+	font-family: 'genius';
+	font-size: .8em;
+}
+
+.gaylord_name h3 {
+	font-family: 'znikomit';
+	font-size: 1.2em;
+	color: #bf134e;
+	letter-spacing: -1px;
+
+}
+
+.gaylord_name h3 span {
+	font-size: 0.7em;
+	vertical-align: super;
+}
+
+/*a#nav1:link, a#nav1:active, a.nav1#visited {
 	display: inline-block;
 	float: left;
 	height: 85px;
@@ -183,8 +395,47 @@ a#nav1:link, a#nav1:active, a.nav1#visited {
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	text-align: center;
+}*/
+.orderholder {
+	clear: both;
+	float: left;
+	height: 200px;
+	width: 100%;
+	margin-top: 15px;
+	background-color: #9CF;
 }
-
+.orderholder form .ol_title {
+	float: left;
+	height: 25px;
+	width: 100%;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+#customerFrm {
+	float: left;
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+	background-color: #9CF;
+}
+.fields .label1 {
+	float: left;
+	width: 50%;
+	height: 20px;
+	margin-top: 10px;
+	font-weight: bold;
+	text-align: center;
+}
+.orderholder form .ol_content {
+	float: left;
+	height: 25px;
+	width: 33.3333%;
+	display: inline-block;
+	clear: right;
+	font-weight: bold;
+	text-align: center;
+}
 a#nav2:link, a#nav2:active, a.nav2#visited {
 	display: inline-block;
 	float: left;
@@ -200,98 +451,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	border-radius: 10px;
 	text-align: center;
 }
-form .dropdown1 {
-	font-size: 16px;
-	font-weight: bold;
-	height: 50px;
-	width: 100%;
-	margin-right: auto;
-	margin-bottom: 20px;
-	margin-left: auto;
-	padding-left: 10px;
-}
 
-form .dropdown2 {
-	font-size: 16px;
-	font-weight: bold;
-	height: 50px;
-	width: 50%;
-	margin-right: auto;
-	margin-bottom: 20px;
-	margin-left: auto;
-	padding-left: 10px;
-}
-#footer {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#pagetitle {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#orderno {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#listheading {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#listcontent {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#orderfilter {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#searchfilter {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#navHolder {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#navHolder .optBtn {
-	clear: none;
-	float: left;
-	height: 50px;
-	width: 33.3333333%;
-	display: inline-block;
-}
-
-#searchfilter .searchOpt {
-	clear: none;
-	float: left;
-	height: 50px;
-	width: 33.3333333%;
-	display: inline-block;
-}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
@@ -302,100 +462,7 @@ form .dropdown2 {
 	padding-left: 0.775%;
 	padding-right: 0.775%;
 }
-#Header {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#heading {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#mainbody {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#footer {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#pagetitle {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#orderno {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#listheading {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#listcontent {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#orderfilter {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
 
-#orderlist .orderholder .ol_content {
-	font-size: 12px;
-	font-weight: bold;
-	color: #000;
-	display: inline-block;
-	clear: none;
-	float: left;
-	height: 30px;
-	width: 32.444444444%;
-	margin-bottom: 10px;
-	background-color: #666;
-	vertical-align: middle;
-	padding-top: 20px;
-	border-top-width: 1%;
-	border-right-width: 1%;
-	border-bottom-width: 1%;
-	border-left-width: 1%;
-	border-top-style: solid;
-	border-right-style: solid;
-	border-bottom-style: solid;
-	border-left-style: solid;
-}
-
-#navHolder {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
 }
 
 /* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
@@ -408,81 +475,5 @@ form .dropdown2 {
 	padding-right: 0.6428%;
 	margin: auto;
 }
-#LayoutDiv1 {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#Header {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#heading {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#mainbody {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#footer {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#pagetitle {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#orderno {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#listheading {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#listcontent {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#orderfilter {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
-#navHolder {
-	clear: both;
-	float: left;
-	margin-left: 0;
-	width: 100%;
-	display: block;
-}
+
 }
