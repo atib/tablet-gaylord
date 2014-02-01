@@ -56,9 +56,8 @@ mysqli_free_result($get_activation_list_db);
 
 if (isset($_POST['activate'])){
 
-echo $activation;
 
-	if($activation == ""){
+	if($activation === ""){
 	
 	$error_msg = "Please select a valid activation reference. ";
 	
@@ -105,7 +104,7 @@ echo $activation;
 
 if (isset($_POST['deactivate'])){
 
-	if($activation == ""){
+	if($activation === ""){
 	
 	$error_msg = "Please select a valid activation reference to deactivate";
 	
