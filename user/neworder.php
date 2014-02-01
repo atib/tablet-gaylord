@@ -1,6 +1,9 @@
 <?PHP
 session_start();
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $error_msg = ""; 
 $success_msg = "";	
 $menuHeading = "";
@@ -11,15 +14,13 @@ $grandtotal="";
 
 if(!isset($_SESSION['email']))
 {
-	
-	$email = $_SESSION['email'];
-	$fname = $_SESSION['fname'];
+	$error_msg = "user not found";
 
-	$par = md5(1);
-
-    header("Location: index.php?n=$fname&par=$par");
+    header("Location: index.php?err=$error_msg");
     exit();
 }
+
+$name = $_SESSION['name'];
 
 if (isset($_GET['cat'])){
 	$cat=$_GET['cat'];
@@ -103,7 +104,7 @@ if (isset($_GET['cat'])){
 	include_once("db_connect.php");
 	
 	$sql_product_list = "SELECT * FROM cart_tbl INNER JOIN product_tbl ON product_tbl.p_id = cart_tbl.p_id
-												INNER JOIN user_tbl ON user_tbl.u_id = cart_tbl.u_id
+												INNER JOIN client_tbl ON client_tbl.c_id = cart_tbl.c_id
 						WHERE cart_tbl.crt_sess='$crt_sess' ORDER BY product_tbl.pc_id ASC";
 				
 	$get_product_db = mysqli_query($db_connection, $sql_product_list) or die (mysqli_error($db_connection));
@@ -143,23 +144,37 @@ if (isset($_GET['cat'])){
 	}
 	else{
 		
+	$crt_sess = $_SESSION['crt_sess'];
+	$activation = $_SESSION['activation'];
+	$activateorderid = $_SESSION['activateorderid'];
+	$c_id = $_SESSION['c_id'];
+		
 		$grandtotal= '<div id="usertotal">'.$row['u_name'].' Your Bill Total Is: &pound; '.number_format($total, 2).'</div>';
 		$complete_btn = '<div class="Order_complete">
 						<span>Once you are happy with your order, click the complete button to process your order. A waiter will come and confirm your order.</span>
 
   						<div class="buttons">
-						<input type="submit" name="complete" value="My Order is Complete" class="button" />
+						<form action="confirmation.php" method="post" target="_self" enctype="multipart/form-data">
+						
+						<input type="submit" name="complete" value="Next Step" class="button" />
+						<input name="complete" type="hidden" value="imcomplete">
+						<input name="crt_sess" type="hidden" value="'.$crt_sess.'">
+						<input name="activation" type="hidden" value="'.$activation.'">
+						<input name="activateorderid" type="hidden" value="'.$activateorderid.'">
+						<input name="c_id" type="hidden" value="'.$c_id.'">
+
 						</div>
+						</form>
 					</div>';
 	}
 	
 	// table basket
 
-	echo $activation = $_SESSION['activation'];
-	echo $activateorderid = $_SESSION['activateorderid'];
+	 $activation = $_SESSION['activation'];
+	 $activateorderid = $_SESSION['activateorderid'];
 	
 	$sql_table_product_list = "SELECT * FROM cart_tbl INNER JOIN product_tbl ON product_tbl.p_id = cart_tbl.p_id
-													INNER JOIN user_tbl ON user_tbl.u_id = cart_tbl.u_id
+													INNER JOIN client_tbl ON client_tbl.c_id = cart_tbl.c_id
 					WHERE cart_tbl.o_activation='$activation' AND cart_tbl.o_id = '$activateorderid' ORDER BY cart_tbl.crt_sess ASC";
 				
 	$get_table_product_db = mysqli_query($db_connection, $sql_table_product_list) or die (mysqli_error($db_connection));
@@ -177,7 +192,7 @@ if (isset($_GET['cat'])){
 				<div id="quant">'.$t_row['crt_qt'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($t_row['crt_price'], 2). '</div>
 				
 				<div id="cost">
-				'.$t_row['u_name'].'
+				'.$t_row['c_fname'].'
 				</div>
 				
 				<hr>
@@ -309,7 +324,7 @@ if (isset($_GET['add'])){
 	$crt_sess = $_SESSION['crt_sess'];
 	$activation = $_SESSION['activation'];
 	$activateorderid = $_SESSION['activateorderid'];
-	$u_id = $_SESSION['u_id'];
+	$c_id = $_SESSION['c_id'];
 	
 	$sql_product_check = "SELECT p_id FROM cart_tbl WHERE p_id = '$p_id' AND crt_sess = '$crt_sess'";
 
@@ -319,8 +334,8 @@ if (isset($_GET['add'])){
 	$product_check = mysqli_num_rows($get_product_check_db); 
 	//check to see if the product already within the cart
 	if ($product_check == 0){ 
-	$product_insert = "INSERT INTO cart_tbl (p_id, pc_id, o_id, u_id, o_activation, crt_name, crt_qt, crt_price, crt_sum, crt_sess, crt_date)
-					VALUES ('$p_id','$pc_id','$activateorderid','$u_id','$activation','$crt_name', '1','$price','$price', '$crt_sess', NOW())";
+	$product_insert = "INSERT INTO cart_tbl (p_id, pc_id, o_id, c_id, o_activation, crt_name, crt_qt, crt_price, crt_sum, crt_sess, crt_date)
+					VALUES ('$p_id','$pc_id','$activateorderid','$c_id','$activation','$crt_name', '1','$price','$price', '$crt_sess', NOW())";
 									
 	$get_product_insert_db = mysqli_query($db_connection, $product_insert) or die (mysqli_error($db_connection));
 							
@@ -474,7 +489,7 @@ if (isset($_GET['delete'])){
 <div class="gridContainer clearfix">
 
   <div id="Header"><?php include_once("header1.php");?></div>  
-  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
+  	<div id="heading"><h2>Welcome <?php echo $name;?></h2></div>
     
     <div class="title"><h3>View Menu</h3></div>
   <div id="takeawaymenuOption">

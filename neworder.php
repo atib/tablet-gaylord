@@ -17,8 +17,8 @@ if ($_GET['par']== $access) {
 	include_once ("db_connect.php");
 
 	// /*
-	$create_NO = 'INSERT INTO order_tbl (c_id, o_type, o_date, o_time, o_payment, o_process)
-									VALUES (1, "Dine In", CURDATE(),NOW(), "Not Paid", "Arrived")';
+	$create_NO = 'INSERT INTO order_tbl (o_type, o_date, o_time, o_payment, o_process)
+									VALUES ("Dine In", CURDATE(),NOW(), "Not Paid", "Arrived")';
 	
 	mysqli_query($db_connection, $create_NO) or die (mysqli_error($db_connection));
 	

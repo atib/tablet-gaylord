@@ -155,8 +155,9 @@ if(isset($_POST['bypass'])){
 				$_SESSION['c_id'] = $c_id;
 				$email = $user["c_email"];
 				$_SESSION['email'] = $email;
-				$fname = $user["c_lname"];
-				$_SESSION['fname'] = $fname;
+				$fname = $user["c_fname"];
+				$lname = $user["c_lname"];
+				$_SESSION['name'] = $fname .$lname;
 			
 			}
 		
