@@ -155,8 +155,8 @@ if (isset($_GET['cat'])){
 	
 	// table basket
 
-	$activation = $_SESSION['activation'];
-	$activateorderid = $_SESSION['activateorderid'];
+	echo $activation = $_SESSION['activation'];
+	echo $activateorderid = $_SESSION['activateorderid'];
 	
 	$sql_table_product_list = "SELECT * FROM cart_tbl INNER JOIN product_tbl ON product_tbl.p_id = cart_tbl.p_id
 													INNER JOIN user_tbl ON user_tbl.u_id = cart_tbl.u_id
