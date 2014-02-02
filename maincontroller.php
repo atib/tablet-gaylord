@@ -35,7 +35,7 @@ $username = $_SESSION['username'];
     <div id="main_content">
 
       <div class="title">
-        <h2>Select An Option</h2>
+        <h2>Select an option</h2>
       </div>
       
       <div id="Navigation">

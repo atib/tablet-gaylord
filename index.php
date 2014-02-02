@@ -26,17 +26,16 @@ if ($_GET['par'] = md5(2)){
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
+
+
 <?php include_once("head.php");?>
 
 <body>
 
 <div class="gridContainer clearfix">
 
-  <div id="Header"><?php include_once("header.php");?>
-    <div id="heading">
-      <h2>Master Controller</h2>
-    </div>
-  
+  <div id="Header">
+    <?php include_once("header.php");?>
   </div>
   
     
