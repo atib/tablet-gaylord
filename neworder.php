@@ -52,7 +52,7 @@ if ($_GET['par']== $access) {
 
     <div id="Header"><?php include_once("header.php");?>     
       <div id="heading">
-        <h3>Welcome <?php echo $username;?> <a href="index.php"> <img src="Images/home.png"> </a> </h3>
+        <h3>Welcome <?php echo $username;?> <a href="maincontroller.php"> <img src="Images/home.png"> </a> </h3>
       </div>
     </div>  
 

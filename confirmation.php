@@ -23,15 +23,21 @@ if ($_GET['par']== $access) {
 	$o_id = strip_tags($o_id);
 	$o_activation  = strip_tags($o_activation );	
 
-	$success_msg = "We all good, follow the instruction to activate alias tablet.";
+	$success_msg = '
+		<div class="success_activation">
+		 	<h3> Success! </h3>
+		 	<h4> Please follow the instructions to get the tablet activated.</h4>
+		</div>';
 		
-	$displayresult='Please use the below activation code to link individual tablet to this order id<br>
+	$displayresult='
+		<div class="activation_message">
+			<h3> Please use the below activation code to link individual tablet to this order id</h3>
 		
-		'.$o_activation.' <br>
+			<h2>'.$o_activation.'</h2>
 
-		<a href="maincontroller.php">Back to main menu</a>		
+			<a href="maincontroller.php">Back to main menu</a>		
 		
-		';
+		</div>';
 	
 	
 	
@@ -74,14 +80,18 @@ include_once ("db_connect.php");
       </div>
       
    	  <?php echo $error_msg; ?>
+   	  <br/>
    	  <?php echo $success_msg; ?>
+   	  <br/>
+   	  <br/>
 			<?php echo $displayresult; ?>
   
-	<p>Your request has been processed. Click on main menu button to return to main menu</p>
+			<?php 
+				// Need to put in condition that shows whether or not the request has been processed
+			?>
+			<p>Your request has been processed</p>
+
     
-    <p><a href="maincontroller.php">Main Menu</a></p>
-
-
 
     </div>
 
