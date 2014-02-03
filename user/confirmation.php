@@ -36,15 +36,17 @@ $sql_copy_order = "INSERT orderdetail_tbl(o_id, c_id, p_id, pc_id, od_quantity, 
 
 $sql_copy_order_db = mysqli_query($db_connection, $sql_copy_order) or die (mysqli_error($db_connection));
 
-$insert_product = "INSERT orderdetail_tbl(od_prodname)
-					 SELECT p_name FROM product_tbl
-					WHERE orderdetail_tbl.crt_sess ='$crt_sess' AND orderdetail_tbl.o_id = '$activateorderid'";
+$insert_product = "UPDATE orderdetail_tbl
+INNER JOIN product_tbl ON orderdetail_tbl.p_id = product_tbl.p_id
+SET  orderdetail_tbl.od_prodname = product_tbl.p_name
+WHERE orderdetail_tbl.p_id = product_tbl.p_id;";
 
 $insert_product_db = mysqli_query($db_connection, $insert_product) or die (mysqli_error($db_connection));
 
-$insert_client = "INSERT orderdetail_tbl(od_clientname)
-					 SELECT c_fname FROM product_tbl
-					WHERE orderdetail_tbl.crt_sess ='$crt_sess' AND orderdetail_tbl.o_id = '$activateorderid'";
+$insert_client = "UPDATE orderdetail_tbl
+INNER JOIN client_tbl ON orderdetail_tbl.c_id = client_tbl.c_id
+SET  orderdetail_tbl.od_clientname = client_tbl.c_name
+WHERE orderdetail_tbl.c_id = client_tbl.c_id;";
 
 $insert_client_db = mysqli_query($db_connection, $insert_client) or die (mysqli_error($db_connection));
 	
