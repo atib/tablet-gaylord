@@ -149,20 +149,24 @@ include_once ("db_connect.php");
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-</head>
+<?php include_once("head.php");?>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+
 <body>
 <div class="gridContainer clearfix">
 
-   <div id="Header"><?php include_once("header.php");?></div>  
-  <div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
-    
-  <div class="title">New Order Request</div>
+    <div id="Header"><?php include_once("header.php");?>     
+      <div id="heading">
+        <h3>Welcome <?php echo $username;?> <a href="index.php"> <img src="Images/home.png"> </a> </h3>
+      </div>
+    </div>  
+
+    <div id="main_content">
+
+      <div class="title">
+        <h2>New Order Request</h2>
+      </div>
 
   
   <?php echo $error_msg; ?>

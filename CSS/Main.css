@@ -36,6 +36,19 @@ img, object, embed, video {
 }
 
 /* Mobile Layout: 480px and below. */
+* {
+	text-shadow: none;
+}
+
+.ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
+	color: #efefef
+
+}
+
+.ui-page-theme-a a{
+	font-weight: normal;
+}
+
 
 .gridContainer {
 	margin-left: auto;
@@ -84,9 +97,16 @@ img, object, embed, video {
 	float: right;
 }
 
+
+
+#heading img {
+	width: 30px;
+
+}
+
 .title {
 	font-family: 'genius';
-	font-size: 250%;
+	font-size: 2.6em;
 	margin-bottom: 5%;
 	color: #888;
 	margin-left: 1.2%;
@@ -104,6 +124,19 @@ img, object, embed, video {
 	width: 60%;
 }
 
+#orderno {
+	float: right;
+	width: 100%;
+	position: relative;
+}
+
+#orderno p {
+	font-family: 'genius';
+	float: right;
+	margin-bottom: 5%;
+	font-size: 1.3em;
+	color: #666;
+}
 /*.head01 {
 	float: left;
 	height: 100px;
@@ -311,8 +344,6 @@ img, object, embed, video {
 
 a#nav1 {
 	float: left;
-	font-family: 'genius';
-	color: #efefef;
 	padding: 4.5% 1%;
 	width: 42%;
 	margin-left: 2.25%;
@@ -322,7 +353,6 @@ a#nav1 {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	text-decoration: none;
-	text-align: center;
 }
 
 a#nav1:hover { 
@@ -333,7 +363,12 @@ a#nav1:hover {
 
 a#nav1 li {
 	font-size: 1.3em;
+	font-family: 'genius';
+	color: #efefef;
+	text-align: center;
+
 }
+
 
 #top_action_bar { 
 	border-bottom: 1px solid #ccc;
@@ -368,10 +403,16 @@ a#nav1 li {
 	text-decoration: none;
 	border-radius: 20px; 
 	background: #bf134e;
-	padding: 14% 16%;
+	padding: 10% 16%;
 	color: #efefef;
-	font-family: 'genius', sans-serif;
+	font-family: sans-serif;
 	font-size: .9em;
+	font-weight: lighter;
+}
+
+.logout_button a:hover {
+	color: #bf134e;
+	background:#efefef;
 }
 
 .gaylord_name h3 {

@@ -56,27 +56,37 @@ include_once ("db_connect.php");
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="gridContainer clearfix">
+<?php include_once("head.php");?>
 
- 	<div id="Header"><?php include_once("header.php");?></div>  
-  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
+<body>
+  <div class="gridContainer clearfix">
+
+    <div id="Header"><?php include_once("header.php");?>     
+      <div id="heading">
+        <h3>Welcome <?php echo $username;?> <a href="index.php"> <img src="Images/home.png"> </a> </h3>
+      </div>
+    </div>  
     
-    <div class="title">New Order Request</div>
+    <div id="main_content">
+
+      <div class="title">
+        <h2>New Order Request</h2>
+      </div>
       
-    <?php echo $error_msg; ?>
-    <?php echo $success_msg; ?>
-	<?php echo $displayresult; ?>
+   	  <?php echo $error_msg; ?>
+   	  <?php echo $success_msg; ?>
+			<?php echo $displayresult; ?>
   
 	<p>Your request has been processed. Click on main menu button to return to main menu</p>
     
     <p><a href="maincontroller.php">Main Menu</a></p>
+
+
+
+    </div>
+
+          
+    
   		
   <div id="footer"><?php include_once("footer.php");?></div>
 </div>

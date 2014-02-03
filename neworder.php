@@ -29,90 +29,97 @@ if ($_GET['par']== $access) {
 
 } else{
 
-	$error_msg="Access code missing, please follow the guidelines set";
+	$error_msg="Access code missing, please follow the set guidelines";
     header("Location: maincontroller.php?err=$error_msg");
 	exit();
 }
 
 
 ?>
-<!doctype html>
+<!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
 <!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-</head>
+<?php include_once("head.php");?>
+<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+
 <body>
 <div class="gridContainer clearfix">
 
-  	<div id="Header"><?php include_once("header.php");?></div>  
-  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
-  
-  	<div class="title">New Order</div>
+    <div id="Header"><?php include_once("header.php");?>     
+      <div id="heading">
+        <h3>Welcome <?php echo $username;?> <a href="index.php"> <img src="Images/home.png"> </a> </h3>
+      </div>
+    </div>  
 
-   	<div id="orderno">Order Number #<span class="redbold"><?php echo $order_id;?>345</span></div>
-  
-	<form action="neworderprocessed.php?par=<?php echo $par;?>" method="post" target="_self">
- 	<!--CONTENT-->
-    <div class="fields">
-      <select class="field1" name="guestno" > 
-        <option value="">select guest no</option>
-        <option value="1">1 guest</option>
-        <option value="2">2 guest</option>
-        <option value="3">3 guest</option>
-        <option value="4">4 guest</option>
-        <option value="5">5 guest</option>
-        <option value="6">6 guest</option>
-        <option value="7">7 guest</option>
-        <option value="8">8 guest</option>
-        <option value="9">9 guest</option>
-        <option value="10">10 guest</option>
-        <option value="11">11 guest</option>
-        <option value="12">12 guest</option>
-        <option value="13">13 guest</option>
-        <option value="14">14 guest</option>
-        <option value="15">15 guest</option>
-        <option value="16">16 guest</option>
-        <option value="17">17 guest</option>
-        <option value="18">18 guest</option>
-        <option value="19">19 guest</option>
-        <option value="20">20 guest</option>
-      </select><br>
+    <div id="main_content">
+
+      <div class="title">
+        <h2>New Order</h2>
+      </div>
       
-      <select class="field1" name="tableno"> 
-        <option value="">select table no</option>
-        <option value="1">table 1</option>
-        <option value="2">table 2</option>
-        <option value="3">table 3</option>
-        <option value="4">table 4</option>
-        <option value="5">table 5</option>
-        <option value="6">table 6</option>
-        <option value="7">table 7</option>
-        <option value="8">table 8</option>
-        <option value="9">table 9</option>
-        <option value="10">table 10</option>
-      </select><br>
+      <div id="orderno"> 
+        <p> Order Number #<span class="redbold"><?php echo $order_id;?>345</span> </p>
+      </div>
       
-      <input name="orderid" type="hidden" value="<?php echo $order_id;?>">
-    <!--END CONTENT-->
+      <form action="neworderprocessed.php?par=<?php echo $par;?>" method="post" target="_self">
+      
+        <div class="">
+          
+          <select class="" name="guestno" > 
+            <option value="">Select number of guests</option>
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+            <option value="5">5 Guests</option>
+            <option value="6">6 Guests</option>
+            <option value="7">7 Guests</option>
+            <option value="8">8 Guests</option>
+            <option value="9">9 Guests</option>
+            <option value="10">10 Guests</option>
+            <option value="11">11 Guests</option>
+            <option value="12">12 Guests</option>
+            <option value="13">13 Guests</option>
+            <option value="14">14 Guests</option>
+            <option value="15">15 Guests</option>
+            <option value="16">16 Guests</option>
+            <option value="17">17 Guests</option>
+            <option value="18">18 Guests</option>
+            <option value="19">19 Guests</option>
+            <option value="20">20 Guests</option>
+          </select><br>
+          
+          <select class="" name="tableno"> 
+            <option value="">Select table number</option>
+            <option value="1">Table 1</option>
+            <option value="2">Table 2</option>
+            <option value="3">Table 3</option>
+            <option value="4">Table 4</option>
+            <option value="5">Table 5</option>
+            <option value="6">Table 6</option>
+            <option value="7">Table 7</option>
+            <option value="8">Table 8</option>
+            <option value="9">Table 9</option>
+            <option value="10">Table 10</option>
+          </select><br>
+          
+          <input name="orderid" type="hidden" value="<?php echo $order_id;?>">
+          
+          <div class="">
+            <input class="" align="middle" name="create" type="submit" value="Create">
+            <input class="" name="cancel" type="submit" value="Cancel">
+          </div>
+      
+      </form>
     
-    <!--FOOTER-->
-    <div class="buttons">
- 		<input class="button" align="middle" name="create" type="submit" value="Create">
- 
-		<input class="button" name="cancel" type="submit" value="Cancel">
- 	</div>
-    <!--END FOOTER-->
+    </div>
 
-	</form>
+
 	
   <div id="footer"><?php include_once("footer.php");?></div>
 </div>

@@ -231,19 +231,36 @@ if($_POST['filtercondition'] == 7){
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
+<?php include_once("head.php");?>
 
-</head>
 <body>
 <div class="gridContainer clearfix">
 
-  <div id="Header"><?php include_once("header.php");?></div>  
-  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
+  <div id="Header"><?php include_once("header.php");?>     
+      <div id="heading">
+        <h3>Welcome <?php echo $username;?></h3>
+      </div>
+    </div>  
     
+    <div id="main_content">
+
+      <div class="title">
+        <h2>Select an option</h2>
+      </div>
+      
+      <div id="Navigation">
+    		<ul id="navList">
+    		<a id="nav1" href="neworder.php?par=<?php print $par;?>"><li>Create Order</li></a>
+            <a id="nav1" href="vieworder.php"><li>View Order</li></a>
+            <a id="nav1" href="customer.php"><li>Customer</li></a>
+            <a id="nav1" href="tablet/orderhistory.php"><li>Order History</li></a>
+            <a id="nav1" href="tablet/reviews.php"><li>Reviews</li></a>
+            <a id="nav1" href="tablet/reports.php"><li>Reports</li></a>	
+    	  </ul>
+      </div>
+    </div>
+
+
     <div class="title"><h3>View Order</h3></div>
   
     <div id="orderfilter">Order Filter: <form action="vieworder.php" method="post" target="_self">
