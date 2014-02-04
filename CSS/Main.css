@@ -179,7 +179,7 @@ img, object, embed, video {
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 80%;
-	padding-top: 62.8%;
+	padding-top: 20.8%;
 	padding-left: 1%;
 	color: #666;
 }
@@ -462,10 +462,11 @@ a#nav1 li {
 }
 
 .gaylord_name h3 {
-	font-family: 'znikomit', serif;
+	font-family: serif;
 	font-size: 1.5em;
 	color: #bf134e;
 	letter-spacing: -1px;
+	font-weight: lighter;
 
 }
 

@@ -5,6 +5,7 @@ ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compar
 	
 $error_msg = ""; 
 $success_msg = "";	
+$username = $_SESSION['username'];
 	
 if(!isset($_SESSION['username'])){
 	
@@ -238,30 +239,23 @@ if($_POST['filtercondition'] == 7){
 
   <div id="Header"><?php include_once("header.php");?>     
       <div id="heading">
-        <h3>Welcome <?php echo $username;?></h3>
+        <h3>Welcome <?php echo $username;?> <a href="maincontroller.php"> <img src="Images/home.png"> </a> </h3>
+
       </div>
     </div>  
     
     <div id="main_content">
-
+ 
       <div class="title">
-        <h2>Select an option</h2>
+        <h2>View Order</h2>
       </div>
       
-      <div id="Navigation">
-    		<ul id="navList">
-    		<a id="nav1" href="neworder.php?par=<?php print $par;?>"><li>Create Order</li></a>
-            <a id="nav1" href="vieworder.php"><li>View Order</li></a>
-            <a id="nav1" href="customer.php"><li>Customer</li></a>
-            <a id="nav1" href="tablet/orderhistory.php"><li>Order History</li></a>
-            <a id="nav1" href="tablet/reviews.php"><li>Reviews</li></a>
-            <a id="nav1" href="tablet/reports.php"><li>Reports</li></a>	
-    	  </ul>
-      </div>
+
+
+
+     <!-- End Main Content -->
     </div>
 
-
-    <div class="title"><h3>View Order</h3></div>
   
     <div id="orderfilter">Order Filter: <form action="vieworder.php" method="post" target="_self">
   			<div class="fields">

@@ -89,6 +89,7 @@ include_once ("db_connect.php");
 			<?php 
 				// Need to put in condition that shows whether or not the request has been processed
 			?>
+			<div class="">
 			<p>Your request has been processed</p>
 
     
