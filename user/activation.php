@@ -94,7 +94,7 @@ if (isset($_POST['activate'])){
 		$error_msg ="";	
 		
 		
-	$msg2user = 'Tablet is now activated. <a href="login.php">Go to user login page</a> ';
+	$msg2user = 'Tablet is now activated. <a href="welcome.php">Go to welcome page</a> ';
 		} else{
 		$error_msg ="Tablet already activated";
 			
