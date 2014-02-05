@@ -260,13 +260,7 @@ if($_POST['filtercondition'] == 1){
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
-
-</head>
+<?php include_once('head.php'); ?>
 <body>
 <div class="gridContainer clearfix">
 

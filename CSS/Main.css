@@ -94,7 +94,7 @@ img, object, embed, video {
 	margin-top: 1%;
 	color: #999;
 	margin-left: 1.2%;
-	float: right;
+	float: left;
 }
 
 
@@ -110,6 +110,7 @@ img, object, embed, video {
 	margin-bottom: 5%;
 	color: #888;
 	margin-left: 1.2%;
+	margin-top: -5%
 }
 
 .titles {
@@ -132,8 +133,8 @@ img, object, embed, video {
 
 #orderno p {
 	font-family: 'genius';
-	float: right;
-	margin-bottom: 5%;
+	/*float: right;*/
+	margin-bottom: 10%;
 	font-size: 1.3em;
 	color: #666;
 }
@@ -238,16 +239,52 @@ img, object, embed, video {
 
 .buttons .button:active
 {		
-    outline: none;
+  outline: none;
 
-    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;		
 }
 
 .buttons .button:-moz-focus-inner
 {
     border: none;
+}
+
+.continue_button .ui-btn, .continue_button input {
+	background: #94C01E;
+	color: #efe;
+	font-family: 'genius';
+	box-shadow: none;
+	text-shadow: none;
+}
+
+
+.continue_button .ui-btn:hover { 
+	background: #94C01E;
+	box-shadow: none;
+	text-shadow: none;
+	-moz-box-shadow:0px 0px 1px #94C01E;
+  -webkit-box-shadow:0px 0px 1px #94C01E;
+  box-shadow:0px 0px 1px #94C01E;
+}
+
+.cancel_button .ui-btn, .cancel_button input { 
+	background: #C5194C; 
+	color: #efe; 
+	font-family: 'genius'; 
+	box-shadow: none; 
+	text-shadow: none;
+}
+
+.cancel_button .ui-btn, .cancel_button input {
+	box-shadow: none;
+	text-shadow: none;
+	background: #C5194C; 	
+}
+
+.cancel_button .ui-btn:hover {
+	background: ;
 }
 
 .success_activation h3 {
@@ -462,7 +499,7 @@ a#nav1 li {
 }
 
 .gaylord_name h3 {
-	font-family: serif;
+	font-family: 'znikomit', serif;
 	font-size: 1.5em;
 	color: #bf134e;
 	letter-spacing: -1px;

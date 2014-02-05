@@ -45,7 +45,8 @@ if ($_GET['par']== $access) {
 <!--<![endif]-->
 
 <?php include_once("head.php");?>
-<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+<script type="text/javascript" src="Script/jquery.mobile-1.4.0.min.js"></script>
+
 
 <body>
 <div class="gridContainer clearfix">
@@ -110,8 +111,10 @@ if ($_GET['par']== $access) {
           
           <input name="orderid" type="hidden" value="<?php echo $order_id;?>">
           
-          <div class="">
+          <div class="continue_button">
             <input class="" align="middle" name="create" type="submit" value="Create">
+          </div>
+          <div class="cancel_button">  
             <input class="" name="cancel" type="submit" value="Cancel">
           </div>
       

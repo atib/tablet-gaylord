@@ -5,6 +5,8 @@ ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compar
 
 $domainurl= "http://lunarwebstudio.com/Demos/GaylordTablet/tablet/";
 
+$username = $_SESSION['username'];
+
 if(!isset($_SESSION['username'])){
 	
 	$error_msg="Unauthorised Access";
@@ -44,8 +46,8 @@ include_once ("db_connect.php");
 	$displayresult='"
 	
 	<form action="neworderprocessed.php?par='.$par.'" method="post" target="_self">
-     <div class="fields">
-  <select class="field1" name="guestno" > 
+     <div class="">
+  <select class="" name="guestno" > 
     <option value="">select guest no</option>
 	<option value="1">1 guest</option>
     <option value="2">2 guest</option>
@@ -69,7 +71,7 @@ include_once ("db_connect.php");
     <option value="20">20 guest</option>
   </select><br>
   
-  <select class="field1" name="tableno"> 
+  <select class="" name="tableno"> 
     <option value="">select table no</option>
     <option value="1">table 1</option>
     <option value="2">table 2</option>
@@ -85,11 +87,12 @@ include_once ("db_connect.php");
   
   <input name="orderid" type="hidden" value="'. $orderid.'">
   </div>
-  <div class="buttons">
-  <input class="button" align="middle" name="create" type="submit" value="Create">
-  
-  <input class="button" name="cancel" type="submit" value="Cancel">
-	</div>
+  <div class="continue_button">
+            <input class="" align="middle" name="create" type="submit" value="Create">
+          </div>
+          <div class="cancel_button">  
+            <input class="" name="cancel" type="submit" value="Cancel">
+          </div>
   
   </form>"';	
 		
@@ -151,7 +154,9 @@ include_once ("db_connect.php");
 <!--<![endif]-->
 
 <?php include_once("head.php");?>
-<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+
+<script type="text/javascript" src="Script/jquery.mobile-1.4.0.min.js"></script>
+
 
 <body>
 <div class="gridContainer clearfix">
