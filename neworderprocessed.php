@@ -43,8 +43,7 @@ include_once ("db_connect.php");
 
 	$par=md5(10);
 	
-	$displayresult='"
-	
+	$displayresult='
 	<form action="neworderprocessed.php?par='.$par.'" method="post" target="_self">
      <div class="">
   <select class="" name="guestno" > 
@@ -87,14 +86,13 @@ include_once ("db_connect.php");
   
   <input name="orderid" type="hidden" value="'. $orderid.'">
   </div>
-  <div class="continue_button">
+          <div class="continue_button">
             <input class="" align="middle" name="create" type="submit" value="Create">
           </div>
           <div class="cancel_button">  
             <input class="" name="cancel" type="submit" value="Cancel">
-          </div>
-  
-  </form>"';	
+          </div>  
+  </form>';	
 		
 	}else{ //required information exisit
 		
@@ -139,13 +137,13 @@ include_once ("db_connect.php");
 	else if(isset($_POST['cancel'])){
 		
 	$displayresult='';	
-	header("Location: index.php");	
+	header("Location: maincontroller.php");	
 	exit();	
 	}
 
 
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
 <!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->

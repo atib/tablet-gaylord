@@ -7,11 +7,19 @@
 }
 
 @font-face {
-  font-family: 'znikomit';
-  src: url('fonts/znikomit_font/Znikomit.ttf.eot');
-  src: url('fonts/znikomit_font/Znikomit.ttf.eot?#iefix') format('embedded-opentype'),
-       url('fonts/znikomit_font/Znikomit.ttf.woff') format('woff'),
-       url('fonts/znikomit_font/gr_001_02-webfont.ttf') format('truetype');
+  font-family: 'gandhi_bold';
+  src: url('fonts/gandhi_bold/GandhiSerif-Bold-webfont.eot');
+  src: url('fonts/gandhi_bold/GandhiSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/gandhi_bold/GandhiSerif-Bold-webfont.woff') format('woff'),
+       url('fonts/gandhi_bold/GandhiSerif-Bold-webfont.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'gandhi_regular';
+  src: url('fonts/gandhi_regular/GandhiSerif-Regular-webfont.eot');
+  src: url('fonts/gandhi_regular/GandhiSerif-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/gandhi_regular/GandhiSerif-Regular-webfont.woff') format('woff'),
+       url('fonts/gandhi_regular/GandhiSerif-Regular-webfont.ttf') format('truetype');
 }
 
 @font-face {
@@ -40,15 +48,27 @@ img, object, embed, video {
 	text-shadow: none;
 }
 
+.filter_selected {
+	width: 100%;
+}
+
 .ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
 	color: #efefef
 
+}
+
+.ui-mobile .ui-page-active { 
+	overflow-x: none;
 }
 
 .ui-page-theme-a a{
 	font-weight: normal;
 }
 
+.ui-select {
+margin-top: 0em;
+margin-bottom: 0em;
+}
 
 .gridContainer {
 	margin-left: auto;
@@ -66,7 +86,7 @@ img, object, embed, video {
 }
 
 #header_top { 
-	padding: 2%;
+	padding: 2% 0%;
 	/*height: 20px;*/
 	width: 100%;
 	background-color: #606473;
@@ -77,6 +97,7 @@ img, object, embed, video {
 	font-family: 'genius';
 	font-size: 90%;
 	color: #efefef; 
+	margin-left: 2%;
 
 }
 #heading h2 { 
@@ -251,12 +272,27 @@ img, object, embed, video {
     border: none;
 }
 
-.continue_button .ui-btn, .continue_button input {
+.continue_button .filter_continue {
+	width: 100%;
+	margin-top: 1%;
+	font-family: 'genius';
+	font-size: 1.2em;
+	background: #94C01E;
+	border: 1px solid #94C01E;
+	color: #efefef;
+	padding: 1%;
+	border-radius: 4px;
+	outline: none;
+}
+
+
+.continue_button .ui-btn {
 	background: #94C01E;
 	color: #efe;
 	font-family: 'genius';
 	box-shadow: none;
 	text-shadow: none;
+	margin-top: 5%;
 }
 
 
@@ -269,7 +305,7 @@ img, object, embed, video {
   box-shadow:0px 0px 1px #94C01E;
 }
 
-.cancel_button .ui-btn, .cancel_button input { 
+.cancel_button .ui-btn { 
 	background: #C5194C; 
 	color: #efe; 
 	font-family: 'genius'; 
@@ -277,14 +313,11 @@ img, object, embed, video {
 	text-shadow: none;
 }
 
-.cancel_button .ui-btn, .cancel_button input {
-	box-shadow: none;
-	text-shadow: none;
-	background: #C5194C; 	
-}
 
 .cancel_button .ui-btn:hover {
-	background: ;
+	background: #C5194C;
+	text-shadow: none;
+	box-shadow: none;
 }
 
 .success_activation h3 {
@@ -342,12 +375,31 @@ img, object, embed, video {
 	float:left;
 }
 .buttons .button3 {
-	height: 50px;
 	width: 35%;
-	margin-top: 10px;
-	margin-left:10%;
-	float:left;
+	margin-top: 5%;
+	margin-left: 10%;
+	float: left;
+	background: #94C01E;
+	border: 1px solid #94C01E;
+	font-family: 'genius';
+	color: #efefef;
+	padding: 2% 0%;
+	cursor: pointer;
 }
+
+.buttons .update { 
+	width: 35%;
+	margin-top: 5%;
+	margin-left: 10%;
+	float: left;
+	background: #B3B2B2;
+	border: 1px solid #B3B2B2;
+	font-family: 'genius';
+	color: #efefef;
+	padding: 2% 0%;
+	cursor: pointer;
+}
+
 .buttons .button4 {
 	height: 50px;
 	width: 28%;
@@ -355,6 +407,33 @@ img, object, embed, video {
 	margin-left:4%;
 	float:left;
 }
+
+.search_box {
+	height: 50px;
+	width: 100%;
+	margin-left: 2%;
+	padding-top: 10px;
+	padding-left: 2%;
+	margin-top: 10px;
+	float:left;
+	border: 1px solid #555;
+}
+
+#orderfilter { 
+	margin-left: 2%;
+}
+
+#orderfilter p {
+	font-family: sans-serif; 
+	font-size: 1em; 
+	font-weight: lighter;
+	/*margin-left: 2%;*/
+	margin-top: 10%;
+	margin-bottom: 2%;
+	color: #666;
+
+}
+
 .fields .field1 {
 	width: 70%;
 	font-family: 'genius';
@@ -471,6 +550,7 @@ a#nav1 li {
 .gaylord_name {
 	float: left;
 	width: 70%;
+	margin-left: 2%;
 
 }
 
@@ -478,18 +558,16 @@ a#nav1 li {
 	float: right;
 	width: 13%;
 	margin-top: 1%;
-	/*margin-right: -38%;*/
-
 }
 
 .logout_button a { 
 	text-decoration: none;
-	border-radius: 20px; 
+	border-radius: 6px;
 	background: #bf134e;
-	padding: 10% 16%;
+	padding: 12% 14%;
 	color: #efefef;
 	font-family: sans-serif;
-	font-size: .9em;
+	font-size: .8em;
 	font-weight: lighter;
 }
 
@@ -499,12 +577,10 @@ a#nav1 li {
 }
 
 .gaylord_name h3 {
-	font-family: 'znikomit', serif;
+	font-family: 'gandhi_regular';
 	font-size: 1.5em;
 	color: #bf134e;
 	letter-spacing: -1px;
-	font-weight: lighter;
-
 }
 
 .gaylord_name h3 span {
@@ -527,22 +603,42 @@ a#nav1 li {
 	border-radius: 10px;
 	text-align: center;
 }*/
+
 .orderholder {
 	clear: both;
 	float: left;
-	height: 200px;
-	width: 100%;
-	margin-top: 15px;
-	background-color: #9CF;
+	margin-left: 2%;
+	padding: 1%;
+	width: 96%;
+	margin-top: 5%;
+	margin-bottom: 2%;
+	border-bottom: 5px solid #4273AB;
+	background-color: #eeeeee;
+	padding-bottom: 5%;
+	padding-top: 5%;
+	border-radius: 8px 8px 0px 0px;
 }
 .orderholder form .ol_title {
-	float: left;
-	height: 25px;
 	width: 100%;
-	font-size: 18px;
-	font-weight: bold;
-	text-align: center;
+	margin-bottom: 5%;
 }
+
+.orderholder form .ol_title a {
+	font-family: 'genius', sans-serif;
+	font-size: 1.3em;
+	text-decoration: none;
+	color: #4273AB;
+	text-transform: lowercase;
+	margin-left: 5%;
+}
+
+.filter_selection_actions {
+	padding-left: 5%;
+} 
+.payment {
+	margin-left: 15%;
+}
+
 #customerFrm {
 	float: left;
 	height: auto;
@@ -563,10 +659,21 @@ a#nav1 li {
 	height: 25px;
 	width: 33.3333%;
 	display: inline-block;
-	clear: right;
-	font-weight: bold;
+	font-weight: lighter;	
+	font-family: sans-serif;
 	text-align: center;
+	
 }
+
+.order_id_ol_content, .order_date_ol_content, .order_total_ol_content {
+	font-weight: bold;
+}
+
+#ol_content_container {
+	padding-bottom: 18%;
+	padding-top: 2%;
+}
+
 a#nav2:link, a#nav2:active, a.nav2#visited {
 	display: inline-block;
 	float: left;

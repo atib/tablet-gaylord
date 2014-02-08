@@ -6,6 +6,8 @@ ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compar
 $error_msg = ""; 
 $success_msg = "";	
 $username = $_SESSION['username'];
+//To be used for load more function, in the future
+$item_per_page = 5;
 	
 if(!isset($_SESSION['username'])){
 	
@@ -147,7 +149,12 @@ if($_POST['filtercondition'] == 7){
 		$display_check = mysqli_num_rows($display_order_db);
 		
 		$filtercondition .=" " .$display_check ." orders found";
-				
+			
+		//break total records into pages
+		$get_total_rows = mysqli_fetch_array($display_order_db);
+		$total_pages = ceil($get_total_rows[0]/$item_per_page);
+
+
 			if ($display_check > 0){ //gather information from database
 		
 				while($order = mysqli_fetch_array($display_order_db)){
@@ -177,15 +184,16 @@ if($_POST['filtercondition'] == 7){
      <div class="orderholder">
     <form action="vieworder.php" method="post" name="orderform" target="_self">
         <div class="ol_title"><a href="#">View '.$o_activation.'</a></div>
-        <div class="ol_content">Order ID</div>
-        <div class="ol_content">Date / Time</div>
-        <div class="ol_content">Total</div>
-        <div class="ol_content">'. $orderid.'</div>
-        <div class="ol_content">'. $datetime.'</div>
-        <div class="ol_content">'. $total.'</div>
-        
-  	 <div class="fields">
-        <select class="field3" name="process"> 
+        <div id="ol_content_container">
+	        <div class="ol_content">Order ID</div>
+	        <div class="ol_content">Date / Time</div>
+	        <div class="ol_content">Total</div>
+	        <div class="ol_content order_id_ol_content">'. $orderid.'</div>
+	        <div class="ol_content order_date_ol_content">'. $datetime.'</div>
+	        <div class="ol_content order_total_ol_content">'. $total.'</div>
+        </div>
+  	 <div class="filter_selection_actions">
+        <select class="process" name="process"> 
                 <option value="'.$process.'">'.$process.'</option>
                 <option value="Arrived">Arrived</option>
                 <option value="Order Take">Order Taken</option>
@@ -196,13 +204,13 @@ if($_POST['filtercondition'] == 7){
                 <option value="Complete">Complete</option>
             </select> 
                    
-        <select class="field3" name="payment"> 
+        <select class="payment" name="payment"> 
                 <option value="'.$payment.'">'.$payment.'</option>
                 <option value="Not Paid">Not Paid</option>
                 <option value="Paid">Paid</option>
         </select> 
        
-            <select class="field3" name="paymenttype"> 
+            <select class="paymenttype" name="paymenttype"> 
                 <option value="'.$paymenttype.'">'.$paymenttype.'</option>
                 <option value="Cash">Cash</option>
                 <option value="Card">Card</option>
@@ -214,7 +222,7 @@ if($_POST['filtercondition'] == 7){
         </div>        
 		<div class="buttons">
             '. $activation_btn.'
-			<input name="update" class="button3" type="submit" value="Update">
+			<input name="update" class="update" type="submit" value="Update">
         </div>
     
     </form>
@@ -233,6 +241,7 @@ if($_POST['filtercondition'] == 7){
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php");?>
+<!-- <script type="text/javascript" src="Script/jquery.mobile-1.4.0.min.js"></script> -->
 
 <body>
 <div class="gridContainer clearfix">
@@ -250,16 +259,11 @@ if($_POST['filtercondition'] == 7){
         <h2>View Order</h2>
       </div>
       
-
-
-
-     <!-- End Main Content -->
-    </div>
-
-  
-    <div id="orderfilter">Order Filter: <form action="vieworder.php" method="post" target="_self">
-  			<div class="fields">
-            <select class="field2" name="filtercondition"> 
+      <div id="orderfilter">
+    	<p> Order Filter: </p>
+    	<form action="vieworder.php" method="post" target="_self">
+  			<div class="">
+            <select class="filter_selected" name="filtercondition"> 
                 <option value="<?php echo $filtercondition;?>" selected><?php echo $filtercondition;?></option>
                 <option value="1">Active Order (Default)</option>
                 <option value="2">Not Active</option>
@@ -271,15 +275,23 @@ if($_POST['filtercondition'] == 7){
 
             </select>  
             </div>
-            <div class="buttons">
-            <input class="button" name="filter" type="submit" value="Apply Filter">   
-			</div>          
+	        	  <div class="continue_button">
+            	  <input class="filter_continue" name="filter" type="submit" value="Apply Filter">   
+            	</div>
             </form>
             
             <?php echo $error_msg; $success_msg; ?>
   </div>
-  
+
+
+     <!-- End Main Content -->
 <?php echo $orderDisplay;?>
+
+    </div>
+
+  
+
+  
     
     
 

@@ -253,7 +253,7 @@ if($_POST['filtercondition'] == 1){
 			}
 }
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
 <!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
@@ -265,14 +265,12 @@ if($_POST['filtercondition'] == 1){
 <div class="gridContainer clearfix">
 
 <div id="Header"><?php include_once("header.php");?></div>
-  
-  <div id="heading"><h2>Master Controller</h2></div>
-  
+    
     <div id="searchfilter">
     
         <form action="customer.php" method="post" target="_self">
         
-        <div class="fields"><input name="keyword" class="field1" type="search" placeholder="Search: ID, Name, Address or Email">
+        <div class="fields"><input name="keyword" class="search_box" type="search" placeholder="Search: ID, Name, Address or Email">
     	
             <div class="fields">
             <select class="field2" name="filtercondition"> 
