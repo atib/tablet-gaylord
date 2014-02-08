@@ -48,8 +48,36 @@ img, object, embed, video {
 	text-shadow: none;
 }
 
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+	background: #fff;
+}
+
+.styled-select { 
+	border: 1px solid #B3B2B2;
+	background: url(../Images/down.png) no-repeat right #B3B2B2;
+	z-index: 10;
+	overflow: hidden;
+	border-radius: 8px;
+
+	padding-right: 2%;
+	/*width: 50%;*/
+}
+
 .filter_selected {
-	width: 100%;
+	width: 96%;
+	padding: 1%;
+	background: transparent;
+	border: none;
+	color: #fff;
+	align-items: flex-start;
+	box-sizing: inherit;
+	font-family: sans-serif;
+	font-weight: lighter;
+	box-shadow: none;
+	-webkit-appearance: none;
+	padding-left: 2%;
+	outline: none;
+	cursor: pointer;
 }
 
 .ui-page-theme-a a:visited, html .ui-bar-a a:visited, html .ui-body-a a:visited, html body .ui-group-theme-a a:visited {
@@ -273,14 +301,15 @@ margin-bottom: 0em;
 }
 
 .continue_button .filter_continue {
+	cursor: pointer;
 	width: 100%;
-	margin-top: 1%;
+	margin-top: 5%;
 	font-family: 'genius';
 	font-size: 1.2em;
 	background: #94C01E;
 	border: 1px solid #94C01E;
 	color: #efefef;
-	padding: 1%;
+	padding: 3%;
 	border-radius: 4px;
 	outline: none;
 }

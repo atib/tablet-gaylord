@@ -262,7 +262,7 @@ if($_POST['filtercondition'] == 7){
       <div id="orderfilter">
     	<p> Order Filter: </p>
     	<form action="vieworder.php" method="post" target="_self">
-  			<div class="">
+  			<div class="styled-select">
             <select class="filter_selected" name="filtercondition"> 
                 <option value="<?php echo $filtercondition;?>" selected><?php echo $filtercondition;?></option>
                 <option value="1">Active Order (Default)</option>

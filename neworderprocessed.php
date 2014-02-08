@@ -172,12 +172,14 @@ include_once ("db_connect.php");
       </div>
 
   
-  <?php echo $error_msg; ?>
-  <?php echo $success_msg; ?>
-  <?php echo $displayresult; ?>
-  
-	
-  <div id="footer"><?php include_once("footer.php");?></div>
-</div>
+		  <?php echo $error_msg; ?>
+		  <br/>
+		  <?php echo $success_msg; ?>
+		  <br/>
+		  <?php echo $displayresult; ?>
+
+  	</div>
+  	<div id="footer"><?php include_once("footer.php");?></div>
+
 </body>
 </html>
