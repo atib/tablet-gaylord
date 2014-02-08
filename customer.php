@@ -6,6 +6,7 @@ ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compar
 $error_msg = ""; 
 $success_msg = "";	
 $keyword ="";
+$username = $_SESSION['username'];
 
 if ($_GET['par'] = md5(2)){
 
@@ -264,39 +265,56 @@ if($_POST['filtercondition'] == 1){
 <body>
 <div class="gridContainer clearfix">
 
-<div id="Header"><?php include_once("header.php");?></div>
+  <div id="Header"><?php include_once("header.php");?>     
+    <div id="heading">
+      <h3>Welcome <?php echo $username;?> <a href="maincontroller.php"> <img src="Images/home.png"> </a> </h3>
+   	</div>
+  </div>  
     
-    <div id="searchfilter">
+    <div id="main_content">
+ 
+      <div class="title">
+        <h2>Customer details</h2>
+      </div>
+      
+		<div id="searchfilter">
+		    
+		        <form action="customer.php" method="post" target="_self">
+		        
+		        <div class="fields"><input name="keyword" class="search_box" type="search" placeholder="Search: ID, Name, Address or Email">
+		    	
+		            <div class="fields">
+		            <select class="field2" name="filtercondition"> 
+		                <option value="<?php echo $filtercondition;?>" selected><?php echo $filtercondition;?></option>
+		                <option value="7">Show ALL (Default)</option>
+		                <option value="1">ID</option>
+		                <option value="2">First Name</option>
+		                <option value="3">Last Name</option>
+		                <option value="4">Email</option>
+		                <option value="5">Mobile</option>
+		                <option value="6">Postcode</option>
+		                <option value="7">Search All</option>
+
+		            </select>  
+		            </div>
+		            <div class="buttons">
+		            <input class="button" name="filter" type="submit" value="Apply Filter">   
+					</div>          
+		        
+		            </form>
+		            
+		            <?php echo $error_msg; ?> <?php echo $success_msg; ?>
+		  </div>
+		        
+		<?php echo $customerDisplay;?>
+
+
+    </div>
+
+
+
     
-        <form action="customer.php" method="post" target="_self">
-        
-        <div class="fields"><input name="keyword" class="search_box" type="search" placeholder="Search: ID, Name, Address or Email">
-    	
-            <div class="fields">
-            <select class="field2" name="filtercondition"> 
-                <option value="<?php echo $filtercondition;?>" selected><?php echo $filtercondition;?></option>
-                <option value="7">Show ALL (Default)</option>
-                <option value="1">ID</option>
-                <option value="2">First Name</option>
-                <option value="3">Last Name</option>
-                <option value="4">Email</option>
-                <option value="5">Mobile</option>
-                <option value="6">Postcode</option>
-                <option value="7">Search All</option>
-
-            </select>  
-            </div>
-            <div class="buttons">
-            <input class="button" name="filter" type="submit" value="Apply Filter">   
-			</div>          
-        
-            </form>
-            
-            <?php echo $error_msg; ?> <?php echo $success_msg; ?>
-  </div>
-        
-<?php echo $customerDisplay;?>
-
+    
   <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>

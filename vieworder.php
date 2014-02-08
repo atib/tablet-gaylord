@@ -247,11 +247,10 @@ if($_POST['filtercondition'] == 7){
 <div class="gridContainer clearfix">
 
   <div id="Header"><?php include_once("header.php");?>     
-      <div id="heading">
-        <h3>Welcome <?php echo $username;?> <a href="maincontroller.php"> <img src="Images/home.png"> </a> </h3>
-
-      </div>
-    </div>  
+    <div id="heading">
+      <h3>Welcome <?php echo $username;?> <a href="maincontroller.php"> <img src="Images/home.png"> </a> </h3>
+   	</div>
+  </div>  
     
     <div id="main_content">
  
