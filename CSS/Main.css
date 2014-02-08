@@ -441,12 +441,9 @@ margin-bottom: 0em;
 .search_box {
 	height: 50px;
 	width: 100%;
-	margin-left: 2%;
-	padding-top: 10px;
-	padding-left: 2%;
-	margin-top: 10px;
+	margin-bottom: 5%;
 	float:left;
-	border: 1px solid #555;
+	/*border: 1px solid #555;*/
 }
 
 #orderfilter { 
@@ -500,11 +497,11 @@ margin-bottom: 0em;
 	float: left;
 }
 .fields .field4 {
-	height: 50px;
-	width: 49%;
-	padding-top: 10px;
-	margin-top: 10px;
-	float: left;
+	/*height: 50px;*/
+	width: 60%;
+	/*padding-top: 10px;*/
+	/*margin-top: 10px;*/
+	/*float: left;*/
 }
 
 #main_content { 
@@ -673,17 +670,55 @@ a#nav1 li {
 	float: left;
 	height: auto;
 	width: 100%;
-	margin-top: 10px;
-	background-color: #9CF;
+	margin-top: 5%;
+	background-color: #efefef;
+	padding-bottom: 5%;
+	border-bottom: 4px solid #C5194C;
+	/*border-bottom: 4px solid #E49837;*/
+	border-radius: 8px 8px 0px 0px;
 }
+
+#customerFrm .customer_frm_input{
+	background-color: #fff;
+	border: 1px solid #fff;
+	width: 65%;
+	outline: none;
+	font-family: sans-serif;
+	font-weight: bold;
+	color: #666;
+	font-size: 0.9em;
+}
+
 .fields .label1 {
 	float: left;
 	width: 50%;
 	height: 20px;
-	margin-top: 10px;
-	font-weight: bold;
-	text-align: center;
+	font-weight: lighter;
+	font-family: sans-serif;
+	/*text-align: center;*/
 }
+
+.customer_form_fields {
+	margin-bottom: 5%;
+	margin-top: 5%;
+	margin-left: 3%;
+}
+
+.label_form_cst {
+	float: left;
+	width: 30%;
+	margin-top: 8px;
+	font-weight: lighter;
+	font-family: sans-serif;
+}
+
+.customer_label_id {
+	font-family: sans-serif;
+	font-size: 1em;
+	font-weight: lighter;
+
+}
+
 .orderholder form .ol_content {
 	float: left;
 	height: 25px;

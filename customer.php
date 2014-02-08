@@ -216,32 +216,37 @@ if($_POST['filtercondition'] == 1){
     <div id="customerFrm">
     	
         <form action="customer.php" method="post" target="_self">
-        <div class="fields">
-    		<label class="label1">ID</label>			
-            <label class="label1">First Name</label>
-            <input name="cid" class="field4" type="text" value="'.$c_id.'">
-            <input name="fname" class="field4" type="text" value="'.$c_fname.'">
+        <div class="fields customer_form_fields">
+    		<label class="label_form_cst">Customer ID</label>
+            <input name="cid" class="customer_frm_input" type="text" value="'.$c_id.'">
 
-   		   	<label class="label1">Last name</label>
-   		  	<label class="label1">Address 1</label>
-            <input name="lname" class="field4" type="text" value="'.$c_lname.'">
-            <input name="address01" class="field4" type="text" value="'.$c_address1.'">
+            <label class="label_form_cst">First Name</label>
+            <input name="fname" class="customer_frm_input" type="text" value="'.$c_fname.'">
 
-   		   	<label class="label1">Town</label>
-   		   	<label class="label1">Postcode</label>
-            <input name="town" class="field4" type="text" value="'.$c_town.'">
-            <input name="postcode" class="field4" type="text" value="'.$c_postcode.'">
+   		   	<label class="label_form_cst">Last name</label>
+            <input name="lname" class="customer_frm_input" type="text" value="'.$c_lname.'">
 
-   		   	<label class="label1">Mobile</label>
-   		    <label class="label1">Email</label>
-            <input name="mobile" class="field4" type="tel" value="'.$c_mobile.'">
-            <input name="email" class="field4" type="email" value="'.$c_email.'">
+
+   		  	<label class="label_form_cst">Address</label>
+            <input name="address01" class="customer_frm_input" type="text" value="'.$c_address1.'">
+
+   		   	<label class="label_form_cst">Town</label>
+            <input name="town" class="customer_frm_input" type="text" value="'.$c_town.'">
+
+   		   	<label class="label_form_cst">Postcode</label>
+            <input name="postcode" class="customer_frm_input" type="text" value="'.$c_postcode.'">
+
+   		   	<label class="label_form_cst">Mobile</label>
+            <input name="mobile" class="customer_frm_input" type="tel" value="'.$c_mobile.'">
+
+   		    <label class="label_form_cst">Email</label>
+            <input name="email" class="customer_frm_input" type="email" value="'.$c_email.'">
    		</div>
         
         <div class="buttons">
-            <input type="submit" name="delete" value="Delete" class="button4" />
-			<input type="submit" name="edit" value="Edit" class="button4" />
-   			<input type="submit" name="add" value="Add" class="button4" />
+   			<input type="submit" name="add" value="Add" class="button4_add" />        
+			<input type="submit" name="edit" value="Edit" class="button4_edit" />
+            <input type="submit" name="delete" value="Delete" class="button4_delete" />
    			
 
    		</div>
@@ -274,17 +279,18 @@ if($_POST['filtercondition'] == 1){
     <div id="main_content">
  
       <div class="title">
-        <h2>Customer details</h2>
+        <h2>Customer Details</h2>
       </div>
       
 		<div id="searchfilter">
 		    
 		        <form action="customer.php" method="post" target="_self">
 		        
-		        <div class="fields"><input name="keyword" class="search_box" type="search" placeholder="Search: ID, Name, Address or Email">
+		        <div class="fields">
+		        	<input name="keyword" class="search_box" type="search" placeholder="Search: ID, Name, Address or Email">
 		    	
-		            <div class="fields">
-		            <select class="field2" name="filtercondition"> 
+		            <div class="styled-select">
+		            <select class="filter_selected" name="filtercondition"> 
 		                <option value="<?php echo $filtercondition;?>" selected><?php echo $filtercondition;?></option>
 		                <option value="7">Show ALL (Default)</option>
 		                <option value="1">ID</option>
@@ -297,8 +303,8 @@ if($_POST['filtercondition'] == 1){
 
 		            </select>  
 		            </div>
-		            <div class="buttons">
-		            <input class="button" name="filter" type="submit" value="Apply Filter">   
+		            <div class="continue_button">
+		            <input class="filter_continue" name="filter" type="submit" value="Apply Filter">   
 					</div>          
 		        
 		            </form>
