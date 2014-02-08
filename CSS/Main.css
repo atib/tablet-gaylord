@@ -368,8 +368,7 @@ margin-bottom: 0em;
 	color: #666; 
 	font-family: sans-serif;
 	font-weight: lighter;
-	margin-top: 2%; 
-	margin-bottom: 3%;
+
 }
 
 .activation_message h3 { 
@@ -415,6 +414,35 @@ margin-bottom: 0em;
 	color: #efefef;
 	padding: 2% 0%;
 	cursor: pointer;
+}
+
+.button4_add, .button4_edit, .button4_delete {
+	width: 28%;
+	margin-top: 3%;
+	margin-left: 2%;
+	float: left;
+	background: #94C01E;
+	border: 1px solid #94C01E;
+	font-family: 'genius';
+	color: #efefef;
+	padding: 2% 0%;
+	cursor: pointer;
+}
+
+.button4_add {
+	margin-left: 6%;
+}
+
+.button4_edit { 
+
+	background:#B3B2B2;
+	border: 1px solid #B3B2B2;
+}
+
+.button4_delete { 
+
+	background:#C5194C;
+	border: 1px solid #C5194C;
 }
 
 .buttons .update { 
@@ -673,9 +701,32 @@ a#nav1 li {
 	margin-top: 5%;
 	background-color: #efefef;
 	padding-bottom: 5%;
-	border-bottom: 4px solid #C5194C;
+	border-bottom: 4px solid #6F7780;
 	/*border-bottom: 4px solid #E49837;*/
 	border-radius: 8px 8px 0px 0px;
+}
+
+#greyline {
+	width: 100%;
+	height: 1px;
+	background-color: #ccc;
+	margin-top: 5%;
+	margin-bottom: 5%;
+}
+
+.request_processed {
+	float: left;
+	height: auto;
+	width: 100%;
+}
+
+.request_processed p {
+	text-align: center;
+	font-family: sans-serif;
+	font-weight: lighter;
+	margin-top: 5%;
+	color: #bf134e;
+
 }
 
 #customerFrm .customer_frm_input{

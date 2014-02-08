@@ -27,7 +27,8 @@ if ($_GET['par']== $access) {
 		<div class="success_activation">
 		 	<h3> Success! </h3>
 		 	<h4> Please follow the instructions to get the tablet activated.</h4>
-		</div>';
+		</div>
+		<div id="greyline"> </div>'; 
 		
 	$displayresult='
 		<div class="activation_message">
@@ -80,18 +81,12 @@ include_once ("db_connect.php");
       </div>
       
    	  <?php echo $error_msg; ?>
-   	  <br/>
    	  <?php echo $success_msg; ?>
-   	  <br/>
-   	  <br/>
-			<?php echo $displayresult; ?>
+	  <?php echo $displayresult; ?>
   
-			<?php 
-				// Need to put in condition that shows whether or not the request has been processed
-			?>
-			<div class="">
-			<p>Your request has been processed</p>
-
+			<div class="request_processed">
+				<p>Your request has been processed</p>
+			</div>
     
 
     </div>
