@@ -50,7 +50,7 @@ WHERE orderdetail_tbl.c_id = client_tbl.c_id;";
 
 $insert_client_db = mysqli_query($db_connection, $insert_client) or die (mysqli_error($db_connection));
 	
-	$success_msg = "Your order has been Process. Please wait while the rest of the table has confirmed their order.";
+	$success_msg = "Your order has been Processed. Please wait while the rest of the table has confirmed their order.";
 	
     header("Location: confirmation.php?succ=$success_msg");
 

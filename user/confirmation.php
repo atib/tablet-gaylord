@@ -36,6 +36,7 @@ if (isset($_GET['err'])){
   	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
     
     <div class="title">Confirmation</div>
+            <?php echo $error_msg; ?> <?php echo $success_msg; ?>
 
   		
   <div id="footer"><?php include_once("footer1.php");?></div>
