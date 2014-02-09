@@ -1,9 +1,9 @@
 <?PHP
 session_start();
-
+/*
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+*/
 $error_msg = ""; 
 $success_msg = "";	
 $menuHeading = "";
@@ -154,7 +154,7 @@ if (isset($_GET['cat'])){
 						<span>Once you are happy with your order, click the complete button to process your order. A waiter will come and confirm your order.</span>
 
   						<div class="buttons">
-						<form action="confirmation.php" method="post" target="_self" enctype="multipart/form-data">
+						<form action="orderProcess.php" method="post" target="_self" enctype="multipart/form-data">
 						
 						<input type="submit" name="complete" value="Next Step" class="button" />
 						<input name="complete" type="hidden" value="imcomplete">
@@ -514,7 +514,7 @@ if (isset($_GET['delete'])){
         <a href="#" id="pull">You are currently viewing: <?php echo $menuTitle;?></a>  
     </nav>    
     </div>
-            <?php echo $error_msg; echo $success_msg; ?>
+            <?php echo $error_msg; ?> <?php echo $success_msg; ?>
             
 <?php echo $menuHeading;?>
 <?php echo $orderMenu;?>
