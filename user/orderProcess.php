@@ -17,7 +17,7 @@ if(isset($_POST['complete'])=='imcomplete'){
 	$activateorderid = $_POST['activateorderid'];
 	$c_id = $_POST['c_id'];
 
-$cart_update = "UPDATE cart_tbl SET tab_process = 'Complete' WHERE o_id= '$activateorderid' AND o_activation = '$activation'";
+$cart_update = "UPDATE cart_tbl SET tab_process = 'Complete' WHERE o_id= '$activateorderid' AND o_activation = '$activation' AND crt_sess = '$crt_sess'";
 	
 $get_order_update_db = mysqli_query($db_connection, $cart_update) or die (mysqli_error($db_connection));
 
@@ -43,10 +43,12 @@ WHERE orderdetail_tbl.p_id = product_tbl.p_id;";
 
 $insert_product_db = mysqli_query($db_connection, $insert_product) or die (mysqli_error($db_connection));
 
-$insert_client = "UPDATE orderdetail_tbl
-INNER JOIN client_tbl ON orderdetail_tbl.c_id = client_tbl.c_id
-SET  orderdetail_tbl.od_clientname = client_tbl.c_fname
-WHERE orderdetail_tbl.c_id = client_tbl.c_id;";
+	$crt_sess = $_SESSION['crt_sess'];
+	$fname = $_SESSION['fname'];
+
+
+$insert_client = "UPDATE orderdetail_tbl SET  od_clientname = '$fname'
+WHERE od_session = '$crt_sess'";
 
 $insert_client_db = mysqli_query($db_connection, $insert_client) or die (mysqli_error($db_connection));
 	

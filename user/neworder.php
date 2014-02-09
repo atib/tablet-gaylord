@@ -20,7 +20,7 @@ if(!isset($_SESSION['email']))
     exit();
 }
 
-$name = $_SESSION['name'];
+$fname = $_SESSION['fname'];
 
 if (isset($_GET['cat'])){
 	$cat=$_GET['cat'];
@@ -58,7 +58,7 @@ if (isset($_GET['cat'])){
 	 $menuTitle = "AKHANI AUR-BIRIYANI - RICE DISHES";		
 	 
 	}else if ($cat == "9"){
-	echo $selectedMenu = $cat;
+	 $selectedMenu = $cat;
 	 $menuTitle = "GAYLORD VEGETARIAN SIDE DISHES";		
 	 
 	}else if ($cat == "10"){
@@ -103,12 +103,22 @@ if (isset($_GET['cat'])){
 	
 	include_once("db_connect.php");
 	
+	$crt_sess = $_SESSION['crt_sess'];
+	$fname = $_SESSION['fname'];
+	
+	$insert_client = "UPDATE cart_tbl SET  user_name = '$fname'
+	WHERE crt_sess = '$crt_sess'";
+
 	$sql_product_list = "SELECT * FROM cart_tbl INNER JOIN product_tbl ON product_tbl.p_id = cart_tbl.p_id
 												INNER JOIN client_tbl ON client_tbl.c_id = cart_tbl.c_id
 						WHERE cart_tbl.crt_sess='$crt_sess' ORDER BY product_tbl.pc_id ASC";
 				
 	$get_product_db = mysqli_query($db_connection, $sql_product_list) or die (mysqli_error($db_connection));
 			
+	
+
+	$insert_client_db = mysqli_query($db_connection, $insert_client) or die (mysqli_error($db_connection));
+	
 				
 				while ($row = mysqli_fetch_assoc($get_product_db)){
 				$sub = $row['crt_qt']* $row['crt_price'];
@@ -135,9 +145,11 @@ if (isset($_GET['cat'])){
 			
 	
 	if ($total==0){	
+	
+	
 		$basketMsg = '
 				<div id="cartMsg">
-					<p>'.$row['u_name'].' Your cart is empty.</p>
+					<p>'.$row['user_name'].' Your cart is empty.</p>
 					<p>Click the add link beside the dish to include it into the basket</p>
 					<p>When you happy with the selected dish click check out to proces the basket</p>
 			 	</div>';
@@ -149,7 +161,7 @@ if (isset($_GET['cat'])){
 	$activateorderid = $_SESSION['activateorderid'];
 	$c_id = $_SESSION['c_id'];
 		
-		$grandtotal= '<div id="usertotal">'.$row['u_name'].' Your Bill Total Is: &pound; '.number_format($total, 2).'</div>';
+		$grandtotal= '<div id="usertotal">'.$fname.' Your Bill Total Is: &pound; '.number_format($total, 2).'</div>';
 		$complete_btn = '<div class="Order_complete">
 						<span>Once you are happy with your order, click the complete button to process your order. A waiter will come and confirm your order.</span>
 
@@ -192,7 +204,7 @@ if (isset($_GET['cat'])){
 				<div id="quant">'.$t_row['crt_qt'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($t_row['crt_price'], 2). '</div>
 				
 				<div id="cost">
-				'.$t_row['c_fname'].'
+				'.$t_row['user_name'].'
 				</div>
 				
 				<hr>
@@ -325,7 +337,8 @@ if (isset($_GET['add'])){
 	$activation = $_SESSION['activation'];
 	$activateorderid = $_SESSION['activateorderid'];
 	$c_id = $_SESSION['c_id'];
-	
+	$fname = $_SESSION['fname'];
+
 	$sql_product_check = "SELECT p_id FROM cart_tbl WHERE p_id = '$p_id' AND crt_sess = '$crt_sess'";
 
 	$get_product_check_db = mysqli_query($db_connection, $sql_product_check) or die (mysqli_error($db_connection));
@@ -334,8 +347,8 @@ if (isset($_GET['add'])){
 	$product_check = mysqli_num_rows($get_product_check_db); 
 	//check to see if the product already within the cart
 	if ($product_check == 0){ 
-	$product_insert = "INSERT INTO cart_tbl (p_id, pc_id, o_id, c_id, o_activation, crt_name, crt_qt, crt_price, crt_sum, crt_sess, crt_date)
-					VALUES ('$p_id','$pc_id','$activateorderid','$c_id','$activation','$crt_name', '1','$price','$price', '$crt_sess', NOW())";
+	$product_insert = "INSERT INTO cart_tbl (p_id, pc_id, o_id, c_id,user_name, o_activation, crt_name, crt_qt, crt_price, crt_sum, crt_sess, crt_date)
+					VALUES ('$p_id','$pc_id','$activateorderid','$c_id','$fname','$activation','$crt_name', '1','$price','$price', '$crt_sess', NOW())";
 									
 	$get_product_insert_db = mysqli_query($db_connection, $product_insert) or die (mysqli_error($db_connection));
 							
@@ -489,7 +502,7 @@ if (isset($_GET['delete'])){
 <div class="gridContainer clearfix">
 
   <div id="Header"><?php include_once("header1.php");?></div>  
-  	<div id="heading"><h2>Welcome <?php echo $name;?></h2></div>
+  	<div id="heading"><h2>Welcome <?php echo $fname;?></h2></div>
     
     <div class="title"><h3>View Menu</h3></div>
   <div id="takeawaymenuOption">

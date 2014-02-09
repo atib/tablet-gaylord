@@ -1,4 +1,4 @@
-if (isset($_GET['cat'])){
+<?php /*if (isset($_GET['cat'])){
 	$menu=$_GET['cat'];
 	
 	if ($cat == "1"){
@@ -211,3 +211,14 @@ if (isset($_GET['delete'])){
 	}
 	header('Location:'.$page .'cat='.$pc_id.'');
 }
+*/
+
+	echo $nameAppend = rand(100, 999); 
+
+
+
+	$activation = "125-10-4";
+	echo $o_id = mb_substr($activation, 0, 3);
+	echo "<br>";
+	echo $activateorderid = $o_id;
+?>

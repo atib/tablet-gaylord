@@ -149,6 +149,8 @@ if(isset($_POST['bypass'])){
 
 		if ($user_check > 0){
 	
+$nameAppend = rand(100, 999); 
+	
 			while($user = mysqli_fetch_array($check_user_db)){
 			
 				$c_id = $user["c_id"];
@@ -157,7 +159,7 @@ if(isset($_POST['bypass'])){
 				$_SESSION['email'] = $email;
 				$fname = $user["c_fname"];
 				$lname = $user["c_lname"];
-				$_SESSION['name'] = $fname .$lname;
+				$_SESSION['fname'] = ''.$fname.' '.$lname .' '.$nameAppend.'';
 			
 			}
 		

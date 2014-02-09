@@ -42,7 +42,6 @@ $get_activation_list_db = mysqli_query($db_connection, $sql_activation_list) or 
 	while ($row = mysqli_fetch_assoc($get_activation_list_db)){
 				
 			$activate .= '<option value='.$row['o_activation'].'>'.$row['o_activation'].'</option>';
-			$orderid .='<input name="activateorderid" class="field1" type="hidden" value="'.$row['o_id'].'" required>';
 				
 	}
 
@@ -67,7 +66,8 @@ if (isset($_POST['activate'])){
 
 
 	$activation = $_POST['activation'];
-	$activateorderid = $_POST['activateorderid'];
+	$o_id = mb_substr($activation, 0, 3);
+	$activateorderid = $o_id;
 
 	$_SESSION['activation'] = $activation;
 	$_SESSION['activateorderid'] = $activateorderid;
@@ -166,9 +166,7 @@ unset($_SESSION['activateorderid']);
     <?php echo $activate;?>
     
     </select>
- 	
-	<?php echo $orderid;?> 
-
+ 
     </div>
     
     <div class="buttons">
