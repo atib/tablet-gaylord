@@ -1,9 +1,9 @@
 <?php
 $db_host="localhost";
 
-$db_username="lunarweb";
+$db_username="root";
 
-$db_pass = "Ridhwan123.";
+$db_pass = "root";
 
 $db_name="lunarweb_pummello";
 
