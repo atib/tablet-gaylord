@@ -68,7 +68,7 @@ img, object, embed, video {
 	padding: 1%;
 	background: transparent;
 	border: none;
-	color: #fff;
+	color: #444;
 	align-items: flex-start;
 	box-sizing: inherit;
 	font-family: sans-serif;
@@ -732,12 +732,13 @@ a#nav1 li {
 #customerFrm .customer_frm_input{
 	background-color: #fff;
 	border: 1px solid #fff;
-	width: 65%;
+	width: 64%;
 	outline: none;
 	font-family: sans-serif;
 	font-weight: bold;
 	color: #666;
 	font-size: 0.9em;
+	padding-left: 1%;
 }
 
 .fields .label1 {
