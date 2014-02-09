@@ -45,7 +45,7 @@ $insert_product_db = mysqli_query($db_connection, $insert_product) or die (mysql
 
 $insert_client = "UPDATE orderdetail_tbl
 INNER JOIN client_tbl ON orderdetail_tbl.c_id = client_tbl.c_id
-SET  orderdetail_tbl.od_clientname = client_tbl.c_name
+SET  orderdetail_tbl.od_clientname = client_tbl.c_fname
 WHERE orderdetail_tbl.c_id = client_tbl.c_id;";
 
 $insert_client_db = mysqli_query($db_connection, $insert_client) or die (mysqli_error($db_connection));
