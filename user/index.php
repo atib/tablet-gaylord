@@ -1,7 +1,13 @@
 <?PHP
 session_start();
 
-if(!isset($_SESSION['email']))
+if(!isset($_SESSION['activation']))
+{
+
+    header("Location: activation.php");
+    exit();
+	
+}else if(!isset($_SESSION['email']))
 {
 	
 	$par = md5(1);
