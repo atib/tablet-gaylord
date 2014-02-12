@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <dwsync>
-<file name="error_log" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130345397929335910" remote="130348635600000000" Dst="1" />
-<file name="login.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130354208872743171" remote="130353956400000000" Dst="1" />
-<file name="index.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364384353317546" remote="130364132400000000" Dst="1" />
-<file name="logout.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130356841470645883" remote="130356589200000000" Dst="1" />
+<file name="error_log" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130356886988159336" remote="130366821600000000" Dst="1" />
+<file name="login.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364385227327537" remote="130366821600000000" Dst="1" />
+<file name="index.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364385227667556" remote="130366821600000000" Dst="1" />
+<file name="logout.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130356886988199338" remote="130366821600000000" Dst="1" />
 <file name="header1.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364385227297535" remote="130364155800000000" Dst="1" />
 <file name="footer1.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364385227267533" remote="130364155800000000" Dst="1" />
-<file name="loginprocess.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364475298399307" remote="130364223000000000" Dst="1" />
+<file name="loginprocess.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130367073790073137" remote="130366821600000000" Dst="1" />
 <file name="db_connect.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364471254718022" remote="130364218800000000" Dst="1" />
 <file name="neworder.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364507130009971" remote="130364254800000000" Dst="1" />
 <file name="temp.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364537025609902" remote="130364284800000000" Dst="1" />
-<file name="activation.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364540143118213" remote="130364288400000000" Dst="1" />
+<file name="activation.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130367074073029321" remote="130366821600000000" Dst="1" />
 <file name="confirmation.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364414504712107" remote="130364161800000000" Dst="1" />
-<file name="welcome.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130360234314914910" remote="130359984000000000" Dst="1" />
+<file name="welcome.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130367073551869513" remote="130366822200000000" Dst="1" />
 <file name="orderProcess.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364511155680226" remote="130364259000000000" Dst="1" />
+<file name="head.php" server="ftp.lunarwebstudio.com/public_html/Demos/GaylordTablet/" local="130364385227277534" remote="130366821600000000" Dst="1" />
 </dwsync>

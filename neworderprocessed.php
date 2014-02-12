@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
+//ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
 
 $domainurl= "http://lunarwebstudio.com/Demos/GaylordTablet/tablet/";
 

@@ -1,9 +1,9 @@
 <?php
 session_start();
-
+/*
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+*/
 $par = md5(2);
 
 if(isset($_SESSION['activation']))
