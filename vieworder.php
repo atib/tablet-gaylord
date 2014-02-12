@@ -9,6 +9,19 @@ $username = $_SESSION['username'];
 //To be used for load more function, in the future
 $item_per_page = 5;
 	
+if(isset($_GET['err'])){
+
+	$error_msg = $_GET['err'];
+	$success = "";
+} else if(isset($_GET['succ'])){
+	$error_msg = "";
+	$success = $_GET['err'];
+}else{
+	$error_msg = "";
+	$success = "";	
+}
+	
+	
 if(!isset($_SESSION['username'])){
 	
 	$error_msg = "";
@@ -279,7 +292,7 @@ if($_POST['filtercondition'] == 7){
             	</div>
             </form>
             
-            <?php echo $error_msg; $success_msg; ?>
+            <?php echo $error_msg;?> <?php $success_msg; ?>
   </div>
 
 

@@ -11,7 +11,7 @@ $orderid="";
 $tab_sess="";
 $msg2user="";
 
-if(isset($_GET['par'])){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 

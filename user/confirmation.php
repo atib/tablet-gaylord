@@ -11,8 +11,10 @@ if(!isset($_SESSION['email']))
 
 if (isset($_GET['err'])){
 	$error_msg = $_GET['err'];
+	$success_msg = "";
 } else if(isset($_GET['succ'])){
-	$success_msg=$_GET['succ'];
+	$success_msg = $_GET['succ'];
+	$error_msg = "";
 }
 
 ?>

@@ -7,13 +7,10 @@ if(isset($_SESSION['email']))
 	$email = $_SESSION['email'];
 	$fname = $_SESSION['fname'];
 
-	$par = md5(1);
-
-    header("Location: index.php?n=$fname&par=$par");
+    header("Location: index.php?n=$fname");
     exit();
 }
-
-if ($_GET['par'] = md5(2)){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 
@@ -38,7 +35,7 @@ if ($_GET['par'] = md5(2)){
   
   <div id="heading"><h2>User Controller</h2></div>
     
-	<?php echo $error_msg; $user_msg; ?>  
+	<?php echo $error_msg; ?> <?php $user_msg; ?>  
         
     <div id="login">
 

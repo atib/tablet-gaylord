@@ -14,10 +14,8 @@ if(isset($_SESSION['activation']))
 } else{
 	
 	$error_msg .= "It would seem that this tablet has not been assigned to the table order. Please inform a member of staff to assign this tablet";
-	
-	$par = md5(2);
-	
-	header("Location: login.php?err=$error_msg&par=$par");
+		
+	header("Location: login.php?err=$error_msg");
 		
 }
 
@@ -45,10 +43,8 @@ if(isset($_POST['email']))
 		///	$error_msg .= "Email has be in a valid email format";
 			
 		}
-		
-	$par = md5(2);
-	
-	header("Location: login.php?err=$error_msg&par=$par");
+			
+	header("Location: login.php?err=$error_msg");
 	exit();
 	} else{
 		
@@ -98,10 +94,8 @@ if(isset($_POST['email']))
 			}
 		
 			mysqli_free_result($check_user_db);
-
-			$par = md5(1);
 				
-			header("Location: index.php?n=$fname&par=$par");
+			header("Location: index.php?n=$fname");
 		
 			exit();
 		
@@ -109,7 +103,7 @@ if(isset($_POST['email']))
 		
 			$error_msg = "Your selected credentials are incorrect";
 		
-			header("Location: login.php?err=$error_msg&par=$par");
+			header("Location: login.php?err=$error_msg");
 		
 			exit();
 		}
@@ -120,7 +114,7 @@ if(isset($_POST['email']))
 			
 		$error_msg = "Essencial loging information not found. Contact site administrator";
 		
-		header("Location: login.php?err=$error_msg&par=$par");
+		header("Location: login.php?err=$error_msg");
 		
 		exit();
 	}
@@ -175,7 +169,7 @@ $nameAppend = rand(100, 999);
 		
 			$error_msg = "Your selected credentials are incorrect";
 		
-			header("Location: login.php?err=$error_msg&par=$par");
+			header("Location: login.php?err=$error_msg");
 		
 			exit();
 		}

@@ -11,7 +11,7 @@ $orderid="";
 $tab_sess="";
 $msg2user="";
 
-if(isset($_GET['par'])){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 
@@ -60,7 +60,7 @@ if (isset($_POST['activate'])){
 	
 	$error_msg = "Please select a valid activation reference. ";
 	
-	header("Location: activation.php?par=1&err=$error_msg");
+	header("Location: activation.php?err=$error_msg");
 	exit();
 	}
 
@@ -108,7 +108,7 @@ if (isset($_POST['deactivate'])){
 	
 	$error_msg = "Please select a valid activation reference to deactivate";
 	
-	header("Location: activation.php?par=1&err=$error_msg");
+	header("Location: activation.php?err=$error_msg");
 	exit();
 
 	}

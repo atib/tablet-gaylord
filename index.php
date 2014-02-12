@@ -9,8 +9,7 @@ if(isset($_SESSION['username']))
     header("Location: maincontroller.php?n=$username");
     exit();
 }
-
-if ($_GET['par'] = md5(2)){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 

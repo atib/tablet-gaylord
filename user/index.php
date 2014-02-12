@@ -19,14 +19,16 @@ if(!isset($_SESSION['activation']))
 	$fname = $_SESSION['fname'];	
 }
 
-if ($_GET['par'] = md5(2)){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
+
 
 } else{
 	$error_msg = "";
 	$user_msg = "Use your given loging credencials to log into the user controller";	
 }
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
