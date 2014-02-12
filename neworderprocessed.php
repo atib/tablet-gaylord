@@ -40,11 +40,9 @@ include_once ("db_connect.php");
 			$par= md5(3);
 			header("Location: neworder.php?par=$par");
 		}
-
-	$par=md5(10);
 	
 	$displayresult='
-	<form action="neworderprocessed.php?par='.$par.'" method="post" target="_self">
+	<form action="neworderprocessed.php" method="post" target="_self">
      <div class="">
   <select class="" name="guestno" > 
     <option value="">select guest no</option>

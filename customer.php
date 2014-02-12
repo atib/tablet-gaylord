@@ -7,8 +7,7 @@ $error_msg = "";
 $success_msg = "";	
 $keyword ="";
 $username = $_SESSION['username'];
-
-if ($_GET['par'] = md5(2)){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 
