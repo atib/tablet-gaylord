@@ -163,10 +163,8 @@ if($_POST['filtercondition'] == 7){
 		
 		$filtercondition .=" " .$display_check ." orders found";
 			
-		//break total records into pages
-		$get_total_rows = mysqli_fetch_array($display_order_db);
-		$total_pages = ceil($get_total_rows[0]/$item_per_page);
-
+		$total_pages = ceil($display_check[0]/$item_per_page);
+		
 
 			if ($display_check > 0){ //gather information from database
 		
