@@ -24,7 +24,7 @@ session_start();
 		else {
 
 			echo '<div id="header_top"> 
-					<h1>User Controller</h1>
+					<h1>Staff Controller</h1>
 					<div id= "top_action_bar"> 
 							<div class="gaylord_name"> 
 								<h3> <span> The </span> Gaylord </h3> 

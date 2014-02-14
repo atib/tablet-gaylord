@@ -42,7 +42,6 @@ if ($_GET['par'] = md5(2)){
 
   <div id="Header"><?php include_once("header1.php");?></div>
   
-  <div id="heading"><h2>User Controller</h2></div>
     <div class="titles"><h3>User Homepage</h3></div>
 	<?php echo $error_msg;?> <?php echo $user_msg; ?>  
   
@@ -52,8 +51,7 @@ if ($_GET['par'] = md5(2)){
         <a id="nav1" href="neworder.php?cat=14"><li>View Table Order</li></a>
         <a id="nav1" href="orderhistory.php"><li>Order Hisotry</li></a>
         <a id="nav1" href="reviews.php"><li>Reviews</li></a>
-        <a id="nav1" href="share.php"><li>share</li></a>	
-        <a id="nav2" href="logout.php"><li>Close</li></a>	
+        <a id="nav1" href="share.php"><li>share</li></a>
 	  </ul>
   </div>
   		

@@ -1,8 +1,8 @@
 <?PHP
 session_start();
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 $error_msg ="";
 $success_msg="";
@@ -135,19 +135,14 @@ unset($_SESSION['activateorderid']);
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
-
-</head>
+<?php include_once("head.php"); ?>
 <body>
 <div class="gridContainer clearfix">
 
-   <div id="Header"><?php include_once("header1.php");?></div>
+   <div id="Header"><?php include_once("header1.php");?>
+  	<div id="heading"><h2>User Controller</h2></div>
+   </div>
   
-  <div id="heading"><h2>User Controller</h2></div>
     
 	<?php echo $error_msg;?> 
 	<?php echo $success_msg; ?>  

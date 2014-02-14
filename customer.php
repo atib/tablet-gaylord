@@ -243,9 +243,8 @@ if($_POST['filtercondition'] == 1){
             <input name="email" class="customer_frm_input" type="email" value="'.$c_email.'">
    		</div>
         
-        <div class="buttons">
-   			<input type="submit" name="add" value="Add" class="button4_add" />        
-			<input type="submit" name="edit" value="Edit" class="button4_edit" />
+        <div class="buttons">        
+			<input type="submit" name="edit" value="Save" class="button4_add" />
             <input type="submit" name="delete" value="Delete" class="button4_delete" />
    			
 

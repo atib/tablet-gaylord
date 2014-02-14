@@ -807,10 +807,166 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	text-align: center;
 }
 
-
+.ordermenu {
+	border-bottom: 0;
+}
+.ordermenu .ordermenu_list {
+	display: none;
+	width: 100%;
+	height: auto;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+}
+.ordermenu a.op {
+	display: block;
+	float: left;
+	width: 48%;
+	color: #FFF;
+	font-weight: bold;
+	display: block;
+	background-color: #06F;
+	border-top-width: thin;
+	border-bottom-width: thin;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #00C;
+	border-bottom-color: #00C;
+	padding-left: 2%;
+	height: 50px;
+	padding-top: 10px;
+}
+.ordermenu a#pull {
+	display: block;
+	background-color: #0099FF;
+	width: 98%;
+	height: 35px;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: bold;
+	padding-top: 15px;
+	padding-left: 2%;
+	position: relative;
+	clear: both;
+}
+.ordermenu a#pull:after {
+	content: "";
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	position: absolute;
+	background-color: #009;
+	background-repeat: no-repeat;
+	right: 5px;
+	top: 5px;
+}
+#menuCat {
+	float: left;
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+}
+#menuCat .menuHeading {
+	float: left;
+	height: 35px;
+	width: 100%;
+	padding-top: 15px;
+	display: block;
+}
+#menuCat .menuDescription {
+	float: left;
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+	display: block;
+}
+#menuHolder {
+	display: block;
+	float: left;
+	height: auto;
+	width: 100%;
+	margin-top: 20px;
+}
+#menuHolder .prodName {
+	display: block;
+	float: left;
+	height: 30px;
+	width: 50%;
+}
+#menuHolder .prodPrice {
+	display: block;
+	float: left;
+	height: 30px;
+	width: 10%;
+}
+#menuHolder .prodAdd {
+	display: block;
+	float: left;
+	height: 30px;
+	width: 20%;
+	text-align: center;
+}
+#menuHolder .prodlDesc {
+	display: block;
+	float: left;
+	height: auto;
+	width: 100%;
+}
+#menuHolder .prodsDesc {
+	display: block;
+	float: left;
+	height: 30px;
+	width: 20%;
+}
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
 @media only screen and (min-width: 481px) {
+#UserCart {
+	float: left;
+	height: auto;
+	width: 100%;
+	display: block;
+	margin-top: 10px;
+}
+#UserCart #dishName {
+	float: left;
+	height: 30px;
+	width: 60%;
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 10px;
+	display: inline-block;
+}
+#UserCart #quant {
+	font-size: 18px;
+	font-weight: bold;
+	float: left;
+	height: 30px;
+	width: 30%;
+	padding-top: 10px;
+	display: inline-block;
+}
+#UserCart #cost {
+	font-size: 18px;
+	font-weight: bold;
+	display: inline-block;
+	float: left;
+	height: 30px;
+	width: 10%;
+	padding-top: 10px;
+}
+#usertotal {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	float: left;
+	height: 40px;
+	width: 98%;
+	padding-top: 10px;
+	padding-right: 2%;
+}
+
 
 .gridContainer {
 	width: 91.45%;
@@ -832,3 +988,36 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 }
+.Order_complete {
+	text-align: center;
+	float: left;
+	height: auto;
+	width: 100%;
+	display: block;
+}
+
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+/*@media only screen and (min-width: 481px) {
+
+.gridContainer {
+	width: 91.45%;
+	padding-left: 0.775%;
+	padding-right: 0.775%;
+}
+
+}*/
+
+/* Desktop Layout: 769px to a max of 1232px.  Inherits styles from: Mobile Layout and Tablet Layout. */
+
+/*@media only screen and (min-width: 769px) {
+.gridContainer {
+	width: 88.7142%;
+	max-width: 1232px;
+	padding-left: 0.6428%;
+	padding-right: 0.6428%;
+	margin: auto;
+}
+
+}*/
