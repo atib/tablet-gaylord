@@ -1,13 +1,26 @@
 <?PHP
 session_start();
 
-ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
+//ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
 	
 $error_msg = ""; 
 $success_msg = "";	
 $username = $_SESSION['username'];
 //To be used for load more function, in the future
 $item_per_page = 5;
+	
+if(isset($_GET['err'])){
+
+	$error_msg = $_GET['err'];
+	$success = "";
+} else if(isset($_GET['succ'])){
+	$error_msg = "";
+	$success = $_GET['err'];
+}else{
+	$error_msg = "";
+	$success = "";	
+}
+	
 	
 if(!isset($_SESSION['username'])){
 	
@@ -150,10 +163,8 @@ if($_POST['filtercondition'] == 7){
 		
 		$filtercondition .=" " .$display_check ." orders found";
 			
-		//break total records into pages
-		$get_total_rows = mysqli_fetch_array($display_order_db);
-		$total_pages = ceil($get_total_rows[0]/$item_per_page);
-
+		$total_pages = ceil($display_check[0]/$item_per_page);
+		
 
 			if ($display_check > 0){ //gather information from database
 		
@@ -279,7 +290,7 @@ if($_POST['filtercondition'] == 7){
             	</div>
             </form>
             
-            <?php echo $error_msg; $success_msg; ?>
+            <?php echo $error_msg;?> <?php $success_msg; ?>
   </div>
 
 

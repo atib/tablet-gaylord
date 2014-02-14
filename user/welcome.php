@@ -1,9 +1,9 @@
 <?PHP
 session_start();
-
+/*
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+*/
 $error_msg ="";
 $success_msg="";
 $activate ="";
@@ -11,7 +11,7 @@ $orderid="";
 $tab_sess="";
 $msg2user="";
 
-if(isset($_GET['par'])){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 

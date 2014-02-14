@@ -1,9 +1,9 @@
 <?php
 session_start();
-
+/*
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+*/
 $par = md5(2);
 
 if(isset($_SESSION['activation']))
@@ -14,10 +14,8 @@ if(isset($_SESSION['activation']))
 } else{
 	
 	$error_msg .= "It would seem that this tablet has not been assigned to the table order. Please inform a member of staff to assign this tablet";
-	
-	$par = md5(2);
-	
-	header("Location: login.php?err=$error_msg&par=$par");
+		
+	header("Location: login.php?err=$error_msg");
 		
 }
 
@@ -45,10 +43,8 @@ if(isset($_POST['email']))
 		///	$error_msg .= "Email has be in a valid email format";
 			
 		}
-		
-	$par = md5(2);
-	
-	header("Location: login.php?err=$error_msg&par=$par");
+			
+	header("Location: login.php?err=$error_msg");
 	exit();
 	} else{
 		
@@ -98,10 +94,8 @@ if(isset($_POST['email']))
 			}
 		
 			mysqli_free_result($check_user_db);
-
-			$par = md5(1);
 				
-			header("Location: index.php?n=$fname&par=$par");
+			header("Location: index.php?n=$fname");
 		
 			exit();
 		
@@ -109,7 +103,7 @@ if(isset($_POST['email']))
 		
 			$error_msg = "Your selected credentials are incorrect";
 		
-			header("Location: login.php?err=$error_msg&par=$par");
+			header("Location: login.php?err=$error_msg");
 		
 			exit();
 		}
@@ -120,7 +114,7 @@ if(isset($_POST['email']))
 			
 		$error_msg = "Essencial loging information not found. Contact site administrator";
 		
-		header("Location: login.php?err=$error_msg&par=$par");
+		header("Location: login.php?err=$error_msg");
 		
 		exit();
 	}
@@ -175,10 +169,131 @@ $nameAppend = rand(100, 999);
 		
 			$error_msg = "Your selected credentials are incorrect";
 		
-			header("Location: login.php?err=$error_msg&par=$par");
+			header("Location: login.php?err=$error_msg");
 		
 			exit();
 		}
+	
+	
+	
+}
+
+if(isset($_POST['register'])){
+	
+	$c_fname = stripslashes($_POST['c_fname']);
+	$c_lname = stripslashes($_POST['c_lname']);
+	$c_address1 = stripslashes($_POST['c_address1']);
+	$c_town = stripslashes($_POST['c_town']);
+	$c_postcode = stripslashes($_POST['c_postcode']);
+	$c_mobile = stripslashes($_POST['c_mobile']);
+	$c_email = stripslashes($_POST['c_email']);
+	$c_password = stripslashes($_POST['c_password']);
+	$c_password2 = stripslashes($_POST['c_password2']);
+	$c_fname = strip_tags($c_fname);	
+	$c_lname = strip_tags($c_lname);	
+	$c_address1 = strip_tags($c_address1);	
+	$c_town = strip_tags($c_town);	
+	$c_postcode = strip_tags($c_postcode);	
+	$c_mobile = strip_tags($c_mobile);	
+	$c_email = strip_tags($c_email);	
+	$c_password = strip_tags($c_password);	
+	$c_password2 = strip_tags($c_password2);	
+
+	if((!$c_fname)||(!$c_lname)||(!$c_address1)||(!$c_town)||(!$c_postcode)||(!$c_mobile)||(!$c_email)||(!$c_password)||(!$c_password2)){
+	
+	$error_msg = "Please complete all manditory fields! <br>";	
+		
+		if(!$c_fname){
+			
+			$error_msg .= "First Name is missing";
+				
+		} else if (!$c_lname){
+		
+			$error_msg .= "Last Name is missing";
+			
+		} else if (!$c_address1){
+		
+			$error_msg .= "First Line of Address is missing";
+			
+		}else if (!$c_town){
+		
+			$error_msg .= "Town is missing";
+			
+		}else if (!$c_postcode){
+		
+			$error_msg .= "Postcode is missing";
+			
+		}else if (!$c_mobile){
+		
+			$error_msg .= "Mobile is missing";
+			
+		}else if (!$c_email){
+		
+			$error_msg .= "Email is missing";
+			
+		}else if(!eregi("^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z-0-9-]+)*(\.[a-z]{2,4})$", $c_email)){
+			
+			$error_msg .= "Email has be in a valid email format";
+			
+		}else if(!$c_password){
+			
+			$error_msg .= "Password Missing";
+	
+		}else if($c_password != $c_password2){
+			
+			$error_msg .= "Password Do Not Match";
+	
+		}
+			
+	header("Location: login.php?err=$error_msg");
+	exit();
+	} else{
+	
+    $salt = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
+    
+	$password = md5($c_password .$salt);
+	
+	$password = md5($password);	
+		
+	include_once ("db_connect.php");
+
+	$check_user = "SELECT * FROM client_tbl WHERE c_email = '$email' AND c_identifier = '$password'";
+	
+	$check_user_db = mysqli_query($db_connection, $check_user) or die (mysqli_error($db_connection));
+	
+	$user_check = mysqli_num_rows($check_user_db);
+
+
+	if ($user_check ===0){
+	
+	include_once ("db_connect.php");
+
+	$Insert_user = "INSERT INTO client_tbl (c_fname, c_lname, c_address1, c_town, c_postcode, c_mobile, c_email, c_password, c_salt, c_identifier)
+					VALUES ('$c_fname', '$c_lname', '$c_address1', '$c_town', '$c_postcode', '$c_mobile', '$c_email', '$salt', '$password')";
+	
+	$check_insert_user_db = mysqli_query($db_connection, $Insert_user) or die (mysqli_error($db_connection));
+	
+	
+				$c_id = mysql_insert_id();
+				$_SESSION['c_id'] = $c_id;
+				$email = $user["c_email"];
+				$_SESSION['email'] = $email;
+				$fname = $user["c_fname"];
+				$_SESSION['fname'] = $fname;
+	
+			header("Location: index.php?n=$fname");
+		
+			exit();
+	
+	}	else{
+		
+		$error_msg = "Sorry we encountered problem inserting your data.Please Try again.";
+		
+	}
+	$error_msg = 'This email is already registered. <a href="#">Click here to reset your password.</a>';
+
+	}
+	
 	
 	
 	

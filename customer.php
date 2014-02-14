@@ -1,14 +1,13 @@
 <?PHP
 session_start();
 
-ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
+//ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
 	
 $error_msg = ""; 
 $success_msg = "";	
 $keyword ="";
 $username = $_SESSION['username'];
-
-if ($_GET['par'] = md5(2)){
+if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 

@@ -4,8 +4,6 @@ session_start();
 //error_reporting(E_ALL | E_WARNING | E_NOTICE);
 //ini_set('display_errors', TRUE);
 
-$par = md5(2);
-
 if(isset($_POST['username']))
 {
 	$username = stripslashes($_POST['username']);
@@ -30,10 +28,8 @@ if(isset($_POST['username']))
 		///	$error_msg .= "Email has be in a valid email format";
 			
 		}
-		
-	$par = md5(2);
 	
-	header("Location: index.php?err=$error_msg&par=$par");
+	header("Location: index.php?err=$error_msg");
 	exit();
 	} else{
 		
@@ -83,10 +79,8 @@ if(isset($_POST['username']))
 			}
 		
 			mysqli_free_result($check_user_db);
-
-			$par = md5(1);
 				
-			header("Location: maincontroller.php?n=$username&par=$par");
+			header("Location: maincontroller.php?n=$username");
 		
 			exit();
 		
@@ -94,7 +88,7 @@ if(isset($_POST['username']))
 		
 			$error_msg = "Your selected credentials are incorrect";
 		
-			header("Location: index.php?err=$error_msg&par=$par");
+			header("Location: index.php?err=$error_msg");
 		
 			exit();
 		}
@@ -105,7 +99,7 @@ if(isset($_POST['username']))
 			
 		$error_msg = "Essencial loging information not found. Contact site administrator";
 		
-		header("Location: index.php?err=$error_msg&par=$par");
+		header("Location: index.php?err=$error_msg");
 		
 		exit();
 	}
@@ -116,7 +110,7 @@ if(isset($_POST['username']))
 		
 	$error_msg = "Please login with your credentials";
 	
-	header("Location: index.php?err=$error_msg&par=$par");
+	header("Location: index.php?err=$error_msg");
 	
 	exit();
 }

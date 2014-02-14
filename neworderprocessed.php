@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
+//ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
 
 $domainurl= "http://lunarwebstudio.com/Demos/GaylordTablet/tablet/";
 
@@ -40,11 +40,9 @@ include_once ("db_connect.php");
 			$par= md5(3);
 			header("Location: neworder.php?par=$par");
 		}
-
-	$par=md5(10);
 	
 	$displayresult='
-	<form action="neworderprocessed.php?par='.$par.'" method="post" target="_self">
+	<form action="neworderprocessed.php" method="post" target="_self">
      <div class="">
   <select class="" name="guestno" > 
     <option value="">select guest no</option>
