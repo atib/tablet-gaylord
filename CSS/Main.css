@@ -85,6 +85,10 @@ img, object, embed, video {
 
 }
 
+.username { 
+	color: #ee6344;
+}
+
 .ui-mobile .ui-page-active { 
 	overflow-x: none;
 }

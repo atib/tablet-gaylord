@@ -1,6 +1,8 @@
 <?PHP
 session_start();
 
+$name = $_SESSION['fname'];
+
 if(!isset($_SESSION['activation']))
 {
 
@@ -41,10 +43,24 @@ if(isset($_GET['err'])){
 <body>
 
 <div class="gridContainer clearfix">
-
-  <div id="Header"><?php include_once("header1.php");?></div>
+    <div id="Header"><?php include_once("header1.php");?>     
+    <div id="heading">
+      <h3>Welcome <span class="username"><?php echo $name;?></span> <a href="index.php"> <img src="../Images/home.png"> </a> </h3>
+    </div>
+  </div> 
   
-    <div class="titles"><h3>User Homepage</h3></div>
+
+  <div  id="main_content">
+ 
+      <div class="title">
+        <h2>Select an option</h2>
+      </div>
+      
+
+
+  </div>
+
+    <!-- <div class="titles"><h3>User Homepage</h3></div> -->
 	<?php echo $error_msg;?> <?php echo $user_msg; ?>  
   
 	<div id="Navigation">
