@@ -39,25 +39,16 @@ if(isset($_SESSION['activation']))
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 
-</head>
+<?php include_once("head.php") ;?>
 <body>
-<div class="gridContainer clearfix">
 
-<div id="Header"><?php include_once("header1.php");?></div>
+<div class="gridContainer clearfix">
+    <div id="Header"><?php include_once("header1.php");?>     
+    </div> 
   
-  <div id="heading"><h2>Welcome to Gaylord</h2></div>
-    
-	<?php echo $error_msg;?> 
-	<?php echo $success_msg; ?>  
-    <?php echo $msg2user; ?>
-    
-  <div class="">
+  <div  id="">
+   <div class="">
     <p>We would like to introduce you to our new ordering menu </p>
     <p>You can view our interactive menu and place an order directly to our system.</p>
     <p>Please follow the instruction outlined in each section to ensure your order is correctly placed.</p>
@@ -66,8 +57,22 @@ if(isset($_SESSION['activation']))
     <p>If you have not registered with us using the table you can use our simple register form to create an account.</p>
     <p>Registeration is not required to use this system, please click skip to move on.</p>
     <br/>
-<a class="continueBtn" href="login.php">Continue</a>
-  </div>   
+	
+
+	<a class="continueBtn" href="login.php">Continue</a>
+  
+  </div>  
+      
+
+
+
+
+
+  </div>
+    
+	 
+    
+ 
     
     
     

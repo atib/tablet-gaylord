@@ -86,7 +86,7 @@ img, object, embed, video {
 }
 
 .username { 
-	color: #ee6344;
+	color: #ccc;
 }
 
 .ui-mobile .ui-page-active { 
@@ -166,6 +166,68 @@ margin-bottom: 0em;
 	margin-top: -5%
 }
 
+.activate_tablet {
+	margin-left: 0;
+	margin-top: 0; 
+	margin-bottom: 10%;
+}
+
+#active_tablet {
+	color: #94C01E;
+}
+
+#welcome_link_activation {
+	margin-top: 10%;
+	margin-bottom: 10%;
+}
+
+
+#welcome_link_activation a {
+	text-decoration: none;
+	margin-top: 10%;
+	background: #B3B2B2;
+	padding: 2% 3%;
+	border-radius: 40px;
+	font-family: 'genius';
+}
+
+.select_activation { 
+	font-size: 1.5em; 
+}
+
+.messages_activation { 
+	margin-bottom: 10%;
+}
+
+.error_message_activation {
+	font-family: 'genius'; 
+	color: #bf134e;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	margin-bottom: 5%;
+}
+
+.success_message_activation {
+	font-family: 'genius'; 
+	color: #94C01E;
+	font-size: 1.5em;
+	text-transform: uppercase;
+	margin-bottom: 5%;
+
+}
+
+.normal_message_activation {
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 1.2em; 
+	color: #4d4d4d;
+	width: 90%;
+	margin: 0 auto;
+
+}
+
+
+
 .titles {
 	font-size: 16px;
 	font-weight: bold;
@@ -175,7 +237,7 @@ margin-bottom: 0em;
 }
 
 #logo img {
-	width: 60%;
+	width: 70%;
 }
 
 #orderno {
@@ -261,11 +323,11 @@ margin-bottom: 0em;
 
 #login {
 	text-align: center;
-	clear: left;
-	float: left;
+	/*clear: left;*/
+	/*float: left;*/
 	height: auto;
-	width: 80%;
-	padding-left: 10%;
+	width: 100%;
+	/*padding-left: 10%;*/
 }
 .buttons .button {
 	width: 76%;

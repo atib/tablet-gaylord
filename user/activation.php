@@ -95,7 +95,8 @@ if (isset($_POST['activate'])){
 		$error_msg ="";	
 		
 		
-	$msg2user = 'Tablet is now activated. <a href="welcome.php">Go to welcome page</a> ';
+	$msg2user = '
+	<div id="welcome_link_activation"> <a href="welcome.php">Go to welcome page</a> </div>';
 		} else{
 		$error_msg ="Tablet already activated";
 			
@@ -137,40 +138,57 @@ unset($_SESSION['activateorderid']);
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php"); ?>
+<script type="text/javascript" src="../Script/jquery.mobile-1.4.0.min.js"></script>
+		<script>
+	 		$(document).ready(function(){
+	 			// $("#activation_form_page").css("display", "none");
+	 		});
+	 </script>
 <body>
 <div class="gridContainer clearfix">
 
-   <div id="Header"><?php include_once("header1.php");?>
-  	<div id="heading"><h2>User Controller</h2></div>
-   </div>
+    <div id="Header"><?php include_once("header1.php");?>     
+    </div> 
+  	
+
   
     
-	<?php echo $error_msg;?> 
-	<?php echo $success_msg; ?>  
-    <?php echo $msg2user; ?>
+	
     <div id="login">
 
-	<form name="activation-form" class="activation-form" action="activation.php" method="post">
+    <div class="title activate_tablet">
+        	<h2>Activate Tablet</h2>
+   		</div>
 
-    <div class="titles">
-    <h3>Activate Tablet</h3>
- 	</div>
-    
-    <div class="fields">
-    <select name="activation" class="field1" type="text">    
-    
-    <?php echo $activate;?>
-    
-    </select>
- 
-    </div>
-    
-    <div class="buttons">
-    <input type="submit" name="activate" value="Activate" class="button2" />
-    <input type="submit" name="deactivate" value="Deactivate" class="button2" />
-    </div>
+		  <div class="messages_activation"> 
+	    	<div class="error_message_activation">
+	    		<?php echo $error_msg;?> 
+	    	</div>
+	    	<div class="success_message_activation">
+				  <?php echo $success_msg; ?>  
+		    </div>
+		    <div class="normal_message_activation">
+			    <?php echo $msg2user; ?>
+		    </div>
+	    </div>
 
-	</form>
+		  <form id="activation_form_page" name="activation-form" class="activation-form" action="activation.php" method="post">
+	    
+	    <div class="">
+	    <select name="activation" class="select_activation" type="text">    
+	    	<?php echo $activate;?>
+	    </select>
+	 
+	    </div>
+	    
+	    <div class="continue_button">
+	    <input type="submit" name="activate" value="Activate" class="button2" />
+	    </div>
+	    <div class="cancel_button">
+	    <input type="submit" name="deactivate" value="Deactivate" class="button2" />
+	    </div>
+
+		</form>
 
 	</div>
              
