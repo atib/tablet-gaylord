@@ -181,14 +181,15 @@ margin-bottom: 0em;
 	margin-bottom: 10%;
 }
 
-
 #welcome_link_activation a {
 	text-decoration: none;
 	margin-top: 10%;
-	background: #B3B2B2;
+	background: #94C01E;
 	padding: 2% 3%;
 	border-radius: 40px;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
+	color: #efefef;
 }
 
 .select_activation { 
@@ -234,6 +235,12 @@ margin-bottom: 0em;
 	width: 100%;
 	margin-bottom: 10px;
 	margin-top: 2%;
+}
+
+#logo {
+	text-align: center;
+	margin: 0 auto;
+	width: 100%; 
 }
 
 #logo img {
@@ -984,6 +991,16 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	height: 30px;
 	width: 20%;
 }
+
+
+
+/* Welcome page - client side*/
+
+.welcome_page_text { 
+
+}
+
+
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
 @media only screen and (min-width: 481px) {

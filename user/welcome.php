@@ -47,8 +47,17 @@ if(isset($_SESSION['activation']))
     <div id="Header"><?php include_once("header1.php");?>     
     </div> 
   
-  <div  id="">
-   <div class="">
+  <div  id="welcome_page_client_facing">
+   
+  	<div id="logo">
+        <img src="../Images/GR_small_logo.png">
+    </div>
+
+
+   <div class="welcome_page_text">
+
+
+
     <p>We would like to introduce you to our new ordering menu </p>
     <p>You can view our interactive menu and place an order directly to our system.</p>
     <p>Please follow the instruction outlined in each section to ensure your order is correctly placed.</p>
@@ -59,8 +68,10 @@ if(isset($_SESSION['activation']))
     <br/>
 	
 
-	<a class="continueBtn" href="login.php">Continue</a>
-  
+	<!-- Need to redesign contibue biutton, when it is %a link -->
+    <div  class="continue_button">
+		<a href="login.php">Continue</a>
+  	</div>
   </div>  
       
 

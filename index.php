@@ -28,6 +28,7 @@ if(isset($_GET['err'])){
 
 
 <?php include_once("head.php");?>
+<script type="text/javascript" src="Script/jquery.mobile-1.4.0.min.js"></script>
 
 <body>
 
@@ -61,14 +62,14 @@ if(isset($_GET['err'])){
 	
 	<!--CONTENT-->
 
-    <div class="fields">
-	<!--USERNAME--><input name="username" class="field1" type="text" placeholder="Username" required><!--END USERNAME-->
-    <!--PASSWORD--><input name="password" class="field1" type="password" placeholder="Password" required><!--END PASSWORD-->
+    <div class="">
+	<!--USERNAME--><input name="username" class="" type="text" placeholder="Username" required><!--END USERNAME-->
+    <!--PASSWORD--><input name="password" class="" type="password" placeholder="Password" required><!--END PASSWORD-->
     </div>
     <!--END CONTENT-->
     
     <!--FOOTER-->
-    <div class="buttons">
+    <div class="continue_button">
     <!--LOGIN BUTTON-->
         <input type="submit" name="submit" value="Continue" class="button" />
     <!--END LOGIN BUTTON-->
