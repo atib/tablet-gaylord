@@ -32,6 +32,8 @@ if(isset($_GET['err'])){
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php"); ?>
+<script type="text/javascript" src="../Script/jquery.mobile-1.4.0.min.js"></script>
+
 <body>
 <div class="gridContainer clearfix">
 
@@ -56,25 +58,25 @@ if(isset($_GET['err'])){
     <!--END HEADER-->
 	
 	<!--CONTENT-->
-    <div class="fields">
-	<!--USERNAME--><input name="email" class="field1" type="text" placeholder="email" required><!--END USERNAME-->
-    <!--PASSWORD--><input name="password" class="field1" type="password" placeholder="password" required><!--END PASSWORD-->
+    <div class="">
+        <input name="email" class="" type="text" placeholder="Email" required>
+        <input name="password" class="" type="assword" placeholder="Password" required>
     </div>
     <!--END CONTENT-->
     
-    <!--FOOTER-->
     <div class="buttons">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button2" /><!--END LOGIN BUTTON-->
     </div>
-    <!--END FOOTER-->
 
 	</form>
-	<!--END LOGIN FORM-->
 	<form name="login-form" class="login-form" action="loginprocess.php" method="post">
     <div class="buttons">
     <input name="bypass" class="field1" type="hidden" required>
-    <!--Skip BUTTON--><input type="submit" name="skip" value="Skip" class="button2" /><!--END Skip BUTTON-->
-	</div>
+    <!--Skip BUTTON-->
+        <input type="submit" name="skip" value="Login as Guest" class="button2" />
+    <!--END Skip BUTTON-->
+	
+    </div>
     </form>
 	</div>
 	<!--END WRAPPER-->
