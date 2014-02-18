@@ -63,17 +63,17 @@ if(isset($_GET['err'])){
     <!--END CONTENT-->
     
     <!--FOOTER-->
-    <div class="buttons">
-    <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button2" /><!--END LOGIN BUTTON-->
+    <div class="">
+    <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="" /><!--END LOGIN BUTTON-->
     </div>
     <!--END FOOTER-->
 
 	</form>
 	<!--END LOGIN FORM-->
 	<form name="login-form" class="login-form" action="loginprocess.php" method="post">
-    <div class="buttons">
+    <div class="">
     <input name="bypass" class="field1" type="hidden" required>
-    <!--Skip BUTTON--><input type="submit" name="skip" value="Skip" class="button2" /><!--END Skip BUTTON-->
+    <!--Skip BUTTON--><input type="submit" name="skip" value="Skip" class="" /><!--END Skip BUTTON-->
 	</div>
     </form>
 	</div>
