@@ -251,9 +251,9 @@ if(isset($_POST['register'])){
 	
     $salt = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 5);
     
-	$password = md5($c_password .$salt);
+	$password1 = md5($c_password .$salt);
 	
-	$password = md5($password);	
+	$password = md5($password1);	
 		
 	include_once ("db_connect.php");
 
@@ -280,6 +280,42 @@ if(isset($_POST['register'])){
 				$_SESSION['email'] = $email;
 				$fname = $user["c_fname"];
 				$_SESSION['fname'] = $fname;
+	
+/*	
+
+##send email to customer - currently this exposes outside orders. local ip will need to be part of the session check otherwise dont activate
+
+// Start assembly of Email Member the activation link
+		$to = "$email";
+		// Change this to your site admin email
+		$from = "info@lunarwebstudio.com";
+		$subject = "Gaylord Account Activation";
+		//Begin HTML Email Message where you need to change the activation URL inside
+		$message = "Hi $fname,
+		You must complete this step to activate your account with us.
+		Please click here to activate now";
+		$message.="http://www.lunarwebstudio.com/Demos/GaylordTablet/user/activation.php?id=$c_id&sequence=$password1";
+		$message.="
+		Your Login Data is as follows: 
+ 	 	_______________________
+ 		E-mail Address: $email 
+ 		Password: $c_password
+ 		_______________________
+
+		Thanks!";
+		// end of message
+		$headers = "From: $from\r\n";
+		$to = "$to";
+		// Finally send the activation email to the member
+		mail($to, $subject, $message, $headers);
+		// Then print a message to the browser for the joiner 
+		$success_msg = 'OK '. $firstname .' '.$lastname.', 
+		We just sent an Activation link to: '.$email.'
+		Please check your email inbox in a moment for the Activation. 
+		Link inside the message. Your account is currently set up as a guest account.
+		Email can often be sent to the junk mail folder so be sure to check their and dont forget to add us to your 		safelist. You may proceed with your order.';	
+	
+*/	
 	
 			header("Location: index.php?n=$fname");
 		
