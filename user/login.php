@@ -65,10 +65,13 @@ if(isset($_GET['err'])){
     <!--END CONTENT-->
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     <!--FOOTER-->
     <div class="">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="" /><!--END LOGIN BUTTON-->
 =======
+=======
+>>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
     <div class="buttons">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button2" /><!--END LOGIN BUTTON-->
 >>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
@@ -79,14 +82,20 @@ if(isset($_GET['err'])){
     <div class="">
     <input name="bypass" class="field1" type="hidden" required>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <!--Skip BUTTON--><input type="submit" name="skip" value="Skip" class="" /><!--END Skip BUTTON-->
 	</div>
 =======
+=======
+>>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
     <!--Skip BUTTON-->
         <input type="submit" name="skip" value="Login as Guest" class="button2" />
     <!--END Skip BUTTON-->
 	
     </div>
+<<<<<<< HEAD
+>>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
+=======
 >>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
     </form>
 	</div>
