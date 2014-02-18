@@ -474,7 +474,7 @@ if (isset($_GET['delete'])){
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
+<link href="../CSS/Main.css" rel="stylesheet" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script>
 		$(function() {

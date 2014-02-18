@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-*/
+
 $par = md5(2);
 
 if(isset($_SESSION['activation']))
@@ -73,7 +73,8 @@ if(isset($_POST['email']))
 	$password = md5($password);
 			
 	mysqli_free_result($retrieve_salt_db);
-	
+	include_once ("db_connect.php");
+
 	$check_user = "SELECT * FROM client_tbl WHERE c_email = '$email' AND c_identifier = '$password'";
 	
 	$check_user_db = mysqli_query($db_connection, $check_user) or die (mysqli_error($db_connection));
@@ -109,10 +110,8 @@ if(isset($_POST['email']))
 		}
 		
 	} else {
-		
-		echo "Essencial loging information not found. Contact site administrator";	
-			
-		$error_msg = "Essencial loging information not found. Contact site administrator";
+					
+		$error_msg = "Your selected credentials are incorrect";
 		
 		header("Location: login.php?err=$error_msg");
 		

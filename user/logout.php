@@ -14,7 +14,7 @@ $deactivate_tablet_db = mysqli_query($db_connection, $deactivate_tablet) or die 
 // Unset all of the session variables.
 $_SESSION = array();
 
-unset($_SESSION['u_id']);
+unset($_SESSION['c_id']);
 unset($_SESSION['fname']);
 unset($_SESSION['email']);
 unset($_SESSION['activation']);
@@ -34,5 +34,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 
-header("Location: activation.php");
+header("Location: login.php");
+exit();
 ?>

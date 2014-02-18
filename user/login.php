@@ -15,9 +15,13 @@ if(isset($_GET['err'])){
 	$error_msg = $_GET['err'];
     $user_msg = "You will need to log in, to progress any further. <br>
                 If you have not have an account with us you can fill in a simple form to create a new account or alternatively log in as a guest user. ";
-} else{
+} else if(isset($_GET['usrm'])){
 	$error_msg = "";
-		
+	$error_msg = $_GET['usrm'];
+}else{
+	$error_msg = "";
+	$user_msg = "You will need to log in, to progress any further. <br>
+                If you have not have an account with us you can fill in a simple form to create a new account or alternatively log in as a guest user. ";
 }
 ?>
 <!DOCTYPE html>
