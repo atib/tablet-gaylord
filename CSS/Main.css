@@ -46,6 +46,7 @@ img, object, embed, video {
 /* Mobile Layout: 480px and below. */
 * {
 	text-shadow: none;
+	outline: none;
 }
 
 .ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
@@ -1000,6 +1001,19 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 }
 
+.ui-shadow-inset { 
+	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
+	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0);
+}
+
+.ui-input-text input {
+	box-shadow: none;
+	border: 1px solid #fff;
+	text-align: center;
+	font-family: 'genius';
+	font-size: 1.5em;
+}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
