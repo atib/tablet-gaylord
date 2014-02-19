@@ -51,52 +51,29 @@ if(isset($_GET['err'])){
 	<!--HEADER-->
     <div class="titles">
     <!--TITLE--><h3>Login Form</h3>
-    <!--END TITLE-->
     <!--DESCRIPTION--><span>Log in to access your personal ordering area, you will be able to view what you have previously ordered with us and what you have said about each dish you have tried.</span>
     <span>If you have not got a logging account, use our simple register form for instant access. You do not have to be registered to use this system, use the skip button to login as a guest.</span><!--END DESCRIPTION-->
     </div>
-    <!--END HEADER-->
 	
-	<!--CONTENT-->
     <div class="">
         <input name="email" class="" type="text" placeholder="Email" required>
-        <input name="password" class="" type="assword" placeholder="Password" required>
+        <input name="password" class="" type="password" placeholder="Password" required>
     </div>
-    <!--END CONTENT-->
+
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <!--FOOTER-->
-    <div class="">
-    <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="" /><!--END LOGIN BUTTON-->
-=======
-=======
->>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
     <div class="buttons">
     <!--LOGIN BUTTON--><input type="submit" name="submit" value="Login" class="button2" /><!--END LOGIN BUTTON-->
->>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
     </div>
 
 	</form>
 	<form name="login-form" class="login-form" action="loginprocess.php" method="post">
-    <div class="">
+    <div class="buttons">
     <input name="bypass" class="field1" type="hidden" required>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <!--Skip BUTTON--><input type="submit" name="skip" value="Skip" class="" /><!--END Skip BUTTON-->
+
+    <!--Skip BUTTON--><input type="submit" name="skip" value="Login as Guest" class="" /><!--END Skip BUTTON-->
 	</div>
-=======
-=======
->>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
-    <!--Skip BUTTON-->
-        <input type="submit" name="skip" value="Login as Guest" class="button2" />
-    <!--END Skip BUTTON-->
 	
     </div>
-<<<<<<< HEAD
->>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
-=======
->>>>>>> aee33d2b6d5b5c731bd279b1783459c7c174c9f0
     </form>
 	</div>
 	<!--END WRAPPER-->
