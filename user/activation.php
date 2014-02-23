@@ -11,6 +11,8 @@ $activate ="";
 $orderid="";
 $tab_sess="";
 $msg2user="";
+$activationform ="";
+
 
 if(isset($_GET['err'])){
 
@@ -18,19 +20,17 @@ if(isset($_GET['err'])){
 
 } else{
 	$error_msg = "";
-	$msg2user = " Please use the drop down list to activate the tablet. Please ensure the correct activation reference is used so the tablet is correctly assigned to an order.";	
-}
 
-if(isset($_SESSION['activation']))
-{
-	
-	$activation = $_SESSION['activation'];
-	
-	$success_msg = 'Tablet is Activated: '.$activation.'';
-} else{
-	
-	$error_msg .= "Tablet not activated.";
-		
+		if (isset($_SESSION['activation'])) {
+
+		$msg2user = '<div id="welcome_link_activation"> <a href="welcome.php">Continue</a> </div>';
+
+		} 
+		else {
+			
+			$msg2user = "Please use the drop down list to activate the tablet. Please ensure the correct activation reference is used so the tablet is correctly assigned to an order.";	
+
+		}
 }
 
 include_once("db_connect.php");
@@ -49,6 +49,35 @@ $get_activation_list_db = mysqli_query($db_connection, $sql_activation_list) or 
 if ($activate == ""){
 	$activate = '<option value="">No Tablet Activated</option>';
 
+}
+
+if(isset($_SESSION['activation']))
+{
+	
+	$activation = $_SESSION['activation'];
+	
+	$success_msg = 'Tablet is Activated: '.$activation.'';
+	$activationform = "";
+} 
+
+else{
+	
+	$error_msg .= "Tablet not activated";
+	$activationform = '<div class="">
+	    <select name="activation" class="select_activation" type="text">    
+	    	'.$activate.'
+	    </select>
+	 
+	    </div>
+	    
+	    <div class="continue_button">
+	    <input type="submit" name="activate" value="Activate" class="button2" />
+	    </div>
+	    <div class="cancel_button">
+	    <input type="submit" name="deactivate" value="Deactivate" class="button2" />
+	    </div>';
+
+		
 }
 
 
@@ -83,7 +112,6 @@ if (isset($_POST['activate'])){
 	$tabletcheck = mysqli_num_rows($get_activation_check_db);
 	
 	if ($tabletcheck == 0){ 
-	
 
 			$activate_tablet = "INSERT INTO tabletactivate_tbl (o_activation, o_id, tab_sess, tab_active)
 										VALUES ('$activation','$activateorderid','$crt_sess', '1')";
@@ -94,10 +122,12 @@ if (isset($_POST['activate'])){
 		$success_msg = 'Tablet is Activated: '.$activation.'';
 		$error_msg ="";	
 		
-		
-	$msg2user = '
-	<div id="welcome_link_activation"> <a href="welcome.php">Continue</a> </div>';
+		$activationform = "";	
+		$msg2user = '<div id="welcome_link_activation"> <a href="welcome.php">Continue</a> </div>';
+
 		} else{
+
+
 		$error_msg ="Tablet already activated";
 			
 		}
@@ -174,19 +204,7 @@ unset($_SESSION['activateorderid']);
 
 		  <form id="activation_form_page" name="activation-form" class="activation-form" action="activation.php" method="post">
 	    
-	    <div class="">
-	    <select name="activation" class="select_activation" type="text">    
-	    	<?php echo $activate;?>
-	    </select>
-	 
-	    </div>
-	    
-	    <div class="continue_button">
-	    <input type="submit" name="activate" value="Activate" class="button2" />
-	    </div>
-	    <div class="cancel_button">
-	    <input type="submit" name="deactivate" value="Deactivate" class="button2" />
-	    </div>
+	    <?php echo $activationform; ?>
 
 		</form>
 
