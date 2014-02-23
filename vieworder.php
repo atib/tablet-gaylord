@@ -194,7 +194,7 @@ if($_POST['filtercondition'] == 7){
 			$orderDisplay .='
      <div class="orderholder">
     <form action="vieworder.php" method="post" name="orderform" target="_self">
-        <div class="ol_title"><a href="#">View '.$o_activation.'</a></div>
+        <div class="ol_title"><a href="displayorder.php?ac=$o_activation">View '.$o_activation.'</a></div>
         <div id="ol_content_container">
 	        <div class="ol_content">Order ID</div>
 	        <div class="ol_content">Date / Time</div>
