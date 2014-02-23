@@ -62,7 +62,6 @@ if(isset($_GET['err'])){
 
     <div id="login-page-text">
       <p>Log in to access your personal ordering area.</p>
-
       <p>If you do not have an account use our simple register form or select skip to login as a guest.</p>      
     </div>
 
@@ -92,12 +91,6 @@ if(isset($_GET['err'])){
 
     </div>
         
-      
-
-
-
-
-
   </div>
     
      

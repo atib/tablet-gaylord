@@ -67,8 +67,8 @@ if(isset($_GET['err'])){
 		<ul id="navList">
 		<a id="nav1" href="neworder.php?cat=1"><li>View Menu</li></a>
         <a id="nav1" href="neworder.php?cat=14"><li>Table Order</li></a>
-        <a id="nav1" href="orderhistory.php"><li>Order History</li></a>
-        <a id="nav1" href="reviews.php"><li>Reviews</li></a>
+        <!-- <a id="nav1" href="orderhistory.php"><li>Order History</li></a> -->
+        <!-- <a id="nav1" href="reviews.php"><li>Reviews</li></a> -->
         <a id="nav1" href="share.php"><li>Share</li></a>
 	  </ul>
   </div>

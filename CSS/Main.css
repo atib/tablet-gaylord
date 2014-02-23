@@ -443,9 +443,7 @@ margin-bottom: 0em;
 .skip_button .ui-btn {
 	background: #4273AB;
 	color: #efe;
-	font-family: sans-serif;
-	font-weight: lighter;
-	font-size: 1em;
+	font-family: 'genius';
 	box-shadow: none;
 	text-shadow: none;
 	margin-top: 2%;
@@ -1154,6 +1152,12 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-weight: lighter;
 
 }
+
+
+/*Register page */
+
+
+
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
