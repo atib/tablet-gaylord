@@ -1153,12 +1153,6 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 }
 
-
-/*Register page */
-
-
-
-
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
 @media only screen and (min-width: 481px) {

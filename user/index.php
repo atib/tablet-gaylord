@@ -32,7 +32,7 @@ if(isset($_GET['err'])){
 }
 
 ?>
-<!doctype html>
+<!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
 <!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->

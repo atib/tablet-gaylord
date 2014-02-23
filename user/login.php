@@ -40,13 +40,14 @@ if(isset($_GET['err'])){
 <div class="gridContainer clearfix">
     <div id="Header"><?php include_once("header1.php");?>     
     </div> 
-        <div id= "top_action_bar"> 
-              <div class="gaylord_name"> 
-              </div>
-              <div class="register_button">             
-                <a href="register.php"> Register </a>
-              </div>
-          </div> 
+    <div id= "top_action_bar"> 
+      <div class="gaylord_name"> 
+      <h3> Login </h3> 
+      </div>
+      <div class="register_button">             
+        <a href="register.php"> Register </a>
+      </div>
+    </div> 
   <div id="main_content">
     <div id="title">
       <p> Login to</p>
