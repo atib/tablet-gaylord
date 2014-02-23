@@ -115,7 +115,7 @@ margin-bottom: 0em;
 	clear: left;
 	float: left;
 	width: 100%;
-	height: 100px;
+	/*height: 100px;*/
 }
 
 #header_top { 
@@ -171,6 +171,7 @@ margin-bottom: 0em;
 	margin-left: 0;
 	margin-top: 0; 
 	margin-bottom: 10%;
+	padding-top: 100px;
 }
 
 #active_tablet {
@@ -178,20 +179,35 @@ margin-bottom: 0em;
 }
 
 #welcome_link_activation {
-	margin-top: 10%;
-	margin-bottom: 10%;
+	padding: 5% 0;
+	border: 0;
+	outline: 0;
+	-webkit-border-radius: inherit;
+	border-bottom-radius: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	cursor: pointer;
+	z-index: 2;
+	background: #94C01E;
+	color: #efe;
+	font-family: 'genius';
+	text-align: center;
+	box-shadow: none;
+	text-shadow: none;
+	border-radius: 4px;
+	margin-top: 50%;
 }
 
-#welcome_link_activation a {
+#welcome_link_activation > a {
 	text-decoration: none;
-	margin-top: 10%;
-	background: #94C01E;
-	padding: 2% 3%;
-	border-radius: 40px;
-	font-family: sans-serif;
-	font-weight: lighter;
-	color: #efefef;
+	color: #efe;
+
 }
+
+#welcome_link_activation:hover > a {
+	color: #174E62;
+}
+
 
 .select_activation { 
 	font-size: 1.5em; 
@@ -402,6 +418,43 @@ margin-bottom: 0em;
 
 .continue_button .ui-btn:hover { 
 	background: #94C01E;
+	box-shadow: none;
+	text-shadow: none;
+	-moz-box-shadow:0px 0px 1px #94C01E;
+  -webkit-box-shadow:0px 0px 1px #94C01E;
+  box-shadow:0px 0px 1px #94C01E;
+}
+
+
+.skip_button .filter_continue {
+	cursor: pointer;
+	width: 100%;
+	font-family: 'genius';
+	font-size: 1.2em;
+	background: #4273AB;
+	border: 1px solid #94C01E;
+	color: #efefef;
+	padding: 3%;
+	border-radius: 4px;
+	outline: none;
+}
+
+
+.skip_button .ui-btn {
+	background: #4273AB;
+	color: #efe;
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 1em;
+	box-shadow: none;
+	text-shadow: none;
+	margin-top: 2%;
+}
+
+
+.skip_button .ui-btn:hover { 
+	background: #4273AB;
+	color: #57B4D9;
 	box-shadow: none;
 	text-shadow: none;
 	-moz-box-shadow:0px 0px 1px #94C01E;
@@ -705,6 +758,29 @@ a#nav1 li {
 	background:#efefef;
 }
 
+
+.register_button {
+	float: right;
+	width: 16%;
+	margin-bottom: 2%;
+}
+
+.register_button a { 
+	text-decoration: none;
+	border-radius: 6px;
+	background: #4D4D4F;
+	padding: 12% 14%;
+	color: #efefef;
+	font-family: sans-serif;
+	font-size: .8em;
+	font-weight: lighter;
+}
+
+.register_button a:hover {
+	color: #4D4D4F;
+	background:#eeeeee;
+}
+
 .gaylord_name h3 {
 	font-family: 'gandhi_regular';
 	font-size: 1.5em;
@@ -998,10 +1074,6 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 /* Welcome page - client side*/
 
-.welcome_page_text { 
-
-}
-
 .ui-shadow-inset { 
 	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
 	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
@@ -1014,6 +1086,73 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	text-align: center;
 	font-family: 'genius';
 	font-size: 1.5em;
+}
+
+#title {
+	font-family: 'genius',sans-serif;
+	font-size: 2em;
+	font-weight: lighter;
+	color: #174E62;
+	text-align: center;
+	margin-bottom: 15%;
+}
+
+#welcome_body_text {
+	margin-bottom: 10%;
+}
+
+#welcome_body_text p {
+
+	font-family: sans-serif;
+	font-size: 1em;
+	font-weight: lighter;
+	text-align: justify;
+	line-height: 1.5em;
+
+}
+
+#welcome_page_client_facing .continue_button {
+	padding: 3% 0;
+	border: 0;
+	outline: 0;
+	-webkit-border-radius: inherit;
+	border-bottom-radius: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	cursor: pointer;
+	z-index: 2;
+	background: #94C01E;
+	color: #efe;
+	font-family: 'genius';
+	text-align: center;
+	box-shadow: none;
+	text-shadow: none;
+	border-radius: 4px;
+}
+
+#welcome_page_client_facing .continue_button > a {
+	text-decoration: none;
+	color: #efe;
+
+}
+
+#welcome_page_client_facing .continue_button:hover > a {
+	color: #174E62;
+}
+
+
+/*Login Page Client*/
+
+#login-page-text {
+	margin-bottom: 10%;
+}
+
+#login-page-text p {
+
+	margin-top: 5%;
+	font-family: sans-serif;
+	font-weight: lighter;
+
 }
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
