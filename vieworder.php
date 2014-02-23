@@ -1,7 +1,5 @@
 <?PHP
 session_start();
-
-//ini_set('error_reporting', version_compare(PHP_VERSION,5,'>=') && version_compare(PHP_VERSION,6,'<') ?E_ALL^E_STRICT:E_ALL);
 	
 $error_msg = ""; 
 $success_msg = "";	
@@ -194,7 +192,7 @@ if($_POST['filtercondition'] == 7){
 			$orderDisplay .='
      <div class="orderholder">
     <form action="vieworder.php" method="post" name="orderform" target="_self">
-        <div class="ol_title"><a href="#">View '.$o_activation.'</a></div>
+        <div class="ol_title"><a href="displayorder.php?ac='.$o_activation.'&cat=14">View '.$o_activation.'</a></div>
         <div id="ol_content_container">
 	        <div class="ol_content">Order ID</div>
 	        <div class="ol_content">Date / Time</div>
@@ -298,18 +296,7 @@ if($_POST['filtercondition'] == 7){
 <?php echo $orderDisplay;?>
 
     </div>
-
-  
-
-  
-    
-    
-
-    
-    
-    
-    
-    
+ 
   <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>

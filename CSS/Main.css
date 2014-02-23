@@ -753,7 +753,8 @@ a#nav1 li {
 }
 
 .orderholder form .ol_title a {
-	font-family: 'genius', sans-serif;
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 1.3em;
 	text-decoration: none;
 	color: #4273AB;
@@ -992,32 +993,27 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	height: 30px;
 	width: 20%;
 }
-
-
-
-/* Welcome page - client side*/
-
-.welcome_page_text { 
-
+#clientOrder {
+	float: left;
+	height: 40px;
+	padding-top:10px;
+	width: 75%;
+	display: block;
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: bold;
 }
-
-.ui-shadow-inset { 
-	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
-	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
-	box-shadow: inset 0 1px 3px rgba(0,0,0,0);
+#clientOrderBtn {
+	float: left;
+	height: 40px;
+	padding-top: 10px;
+	width: 25%;
+	display: block;
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: right;
 }
-
-.ui-input-text input {
-	box-shadow: none;
-	border: 1px solid #fff;
-	text-align: center;
-	font-family: 'genius';
-	font-size: 1.5em;
-}
-
-/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
-
-@media only screen and (min-width: 481px) {
 #UserCart {
 	float: left;
 	height: auto;
@@ -1064,6 +1060,31 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	padding-right: 2%;
 }
 
+
+
+/* Welcome page - client side*/
+
+.welcome_page_text { 
+
+}
+
+.ui-shadow-inset { 
+	-webkit-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
+	-moz-box-shadow: inset 0 1px 3px rgba(0,0,0,0);
+	box-shadow: inset 0 1px 3px rgba(0,0,0,0);
+}
+
+.ui-input-text input {
+	box-shadow: none;
+	border: 1px solid #fff;
+	text-align: center;
+	font-family: 'genius';
+	font-size: 1.5em;
+}
+
+/* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
+
+@media only screen and (min-width: 481px) {
 
 .gridContainer {
 	width: 91.45%;
