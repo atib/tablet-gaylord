@@ -1,9 +1,9 @@
 <?PHP
 session_start();
-
+/*
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+*/
 $error_msg = ""; 
 $success_msg = "";	
 $username = $_SESSION['username'];
@@ -20,7 +20,6 @@ $basket = "";
 $total  = "";	
 $activation ="";
 $activateorderid ="";
-$orderDisplay ="";
 $orderMenu ="";
 $menuHeading  = "";
 $clientName = "";	
@@ -199,7 +198,7 @@ if ($o_activation != ""){
 			</div>
 			
 			';
-
+	$total =0;
 
 	$sql_product_list = "SELECT * FROM order_tbl INNER JOIN orderdetail_tbl ON orderdetail_tbl.o_id = order_tbl.o_id
 						INNER JOIN product_tbl ON product_tbl.p_id = orderdetail_tbl.p_id
@@ -228,49 +227,44 @@ if ($o_activation != ""){
 		</div>
 		';	
 		$total += $sub;
+
 		}
-			
-	
-	if ($total==0){	
+		$grandtotal += $total;
+
+		if ($total==0){	
 	
 	
 		$basketMsg = '
 				<div id="cartMsg">
-					<p>'.$row['user_name'].' Your cart is empty.</p>
+					<p>'.$orderrow['od_clientname'].' Your cart is empty.</p>
 					<p>Click the add link beside the dish to include it into the basket</p>
 					<p>When you happy with the selected dish click check out to proces the basket</p>
 			 	</div>';
 	}
 	else{
 		
-		$grandtotal= '<div id="usertotal">'.$row['user_name'].' Bill Total Is: &pound; '.number_format($total, 2).'</div>';
-		$complete_btn = '<div class="Order_complete">
-
-  						<div class="buttons">
-						<form action="orderProcess.php" method="post" target="_self" enctype="multipart/form-data">
-						
-						<input type="submit" name="complete" value="Next Step" class="button" />
-						<input name="complete" type="hidden" value="imcomplete">
-						<input name="activation" type="hidden" value="'.$activation.'">
-						<input name="activateorderid" type="hidden" value="'.$activateorderid.'">
-
-						</div>
-						</form>
-					</div>';
-	}
+		$basket .= '<div id="usertotal">'.$orderrow['od_clientname'].' Bill Total Is: &pound; '.number_format($total, 2).'</div>';
+	}	
 	$basket .='<hr>';
 }//client order while close
 	
-	if ($total==0){	
+	if ($grandtotal==0){	
 		$table_basketMsg = '
 				<div id="cartMsg">
-					<p>Table cart is empty.</p>
+					<p>Table order is empty.</p>
 			 	</div>';
 	}
 	else{
 		
-		$table_grandtotal= '<div id="usertotal">Total Table Bill: &pound; '.number_format($total, 2).'</div>';
-		
+		$table_grandtotal= '<div id="usertotal">Total Table Bill: &pound; '.number_format($grandtotal, 2).'</div>';
+		$complete_btn = '<div class="Order_complete">
+
+  						<div class="buttons">
+    
+					  <form action="printReciept" method="post">
+					  <input name="Print" type="submit" class="button" value="Print Reciept">
+					  </form>  
+					</div>';
 	} 
 
 }	
@@ -572,15 +566,17 @@ if (isset($_GET['delete'])){
     </div>
      <!-- End Main Content -->
 
+
 <?php echo $menuHeading;?>
 <?php echo $orderMenu;?>
-<?php echo $orderDisplay;?>
 <?php echo $basket;?>
+<?php echo $basketMsg;?>
+<?php echo $table_basket;?>
+<?php echo $table_basketMsg;?>
+<?php echo $table_grandtotal;?>    
+<?php echo $complete_btn;?>
     
     
-  <form action="printReciept" method="post">
-  <input name="Print" type="submit" value="Print Reciept">
-  </form>  
 <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>
