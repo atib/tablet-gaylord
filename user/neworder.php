@@ -289,12 +289,11 @@ if (isset($_GET['cat'])){
 			<div id="menuHolder">
 			<div class="prodName">'.$get_row['p_name'].'</div>
 			<div class="prodsDesc">'.$get_row['p_sdesc'].' '.$spice.' '.$nut.'</div>
-			<div class="prodPrice">£'.number_format($get_row['p_inprice'], 2).'</div>
 			<div class="prodAdd">
-			
-			<a href="neworder.php?add='.$get_row['p_id'].'&pn='.$get_row['p_name'].'&cat='.$get_row['pc_id'].'&pr='.$get_row['p_inprice'].'&par='.$par.'"><font style="color:#C00; font-weight:bolder; font-size:14px;" >Add</font></a>
-			
+			<a href="neworder.php?add='.$get_row['p_id'].'&pn='.$get_row['p_name'].'&cat='.$get_row['pc_id'].'&pr='.$get_row['p_inprice'].'&par='.$par.'">+</a>		
 			</div>
+			<div class="prodPrice">£'.number_format($get_row['p_inprice'], 2).'</div>
+
 			'.$descRow.'
 			</div>
 		
@@ -470,12 +469,7 @@ if (isset($_GET['delete'])){
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="../CSS/Main.css" rel="stylesheet" type="text/css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<?php include_once('head.php'); ?>
 	<script>
 		$(function() {
 			var pull 		= $('#pull');
@@ -493,43 +487,64 @@ if (isset($_GET['delete'])){
         			menu.removeAttr('style');
         		}
     		});
+
+    		$('.prodAdd').click(function(){
+    			
+    			$('#flash').show().delay(2000).fadeOut(500);
+    			console.log('item added to basket');
+    			return false;
+    		});
 		});
 	</script>
 
-</head>
 <body>
 
 <div class="gridContainer clearfix">
-
-  <div id="Header"><?php include_once("header1.php");?></div>  
-  	<div id="heading"><h2>Welcome <?php echo $fname;?></h2></div>
-    
-    <div class="title"><h3>View Menu</h3></div>
-  <div id="takeawaymenuOption">
-    <nav class="ordermenu">
-        <ul class="ordermenu_list"> 
-        
-          <a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
-            <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>
-            <a class="op" href="?cat=3" >GAYLORD EXCLUSIVE NEW DISHES</a>
-            <a class="op" href="?cat=4" >OUR CHEF’S SPECIALITIES</a>
-            <a class="op" href="?cat=5" >GAYLORD CHICKEN SPECIALITIES</a>
-            <a class="op" href="?cat=6" >GAYLORD LAMB SPECIALITIES</a>
-            <a class="op" href="?cat=7" >GAYLORD SEAFOOD AND FISH SPECIALITIES</a>
-            <a class="op" href="?cat=8" >AKHANI AUR-BIRIYANI - RICE DISHES</a>
-            <a class="op" href="?cat=9" >GAYLORD VEGETARIAN SIDE DISHES</a>
-            <a class="op" href="?cat=10" >CHAWAL - RICE SIDE DISHES</a>
-            <a class="op" href="?cat=11" >NAN/ROTI - FLATBREAD</a>
-            <a class="op" href="?cat=12" >SUNDRIES & OTHER EXTRAS</a>
-            <a class="op" href="?cat=13" >DRINKS</a>
-            <a class="op" href="?cat=14" >MY ORDER</a>
-        </ul>
-        <a href="#" id="pull">You are currently viewing: <?php echo $menuTitle;?></a>  
-    </nav>    
+    <div id="Header"><?php include_once("header1.php");?>     
     </div>
+  	<div id="heading">
+  		<h3>Welcome <?php echo $fname;?>  <a href="index.php"> <img src="../Images/home.png"> </a> </h3>
+  	</div>
+   
+  <div id="main_content" style="margin-top: 15%;">
+    
+    <div class="title">
+      <h3>View Menu</h3>
+    </div>
+
+    <div id="takeawaymenuOption">
+	    <nav class="ordermenu">
+	        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
+
+	        <ul class="ordermenu_list"> 
+	            <a class="myorder" href="?cat=14" >MY ORDER</a>
+	          	<a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
+	            <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>
+	            <a class="op" href="?cat=3" >GAYLORD EXCLUSIVE NEW DISHES</a>
+	            <a class="op" href="?cat=4" >OUR CHEF’S SPECIALITIES</a>
+	            <a class="op" href="?cat=5" >GAYLORD CHICKEN SPECIALITIES</a>
+	            <a class="op" href="?cat=6" >GAYLORD LAMB SPECIALITIES</a>
+	            <a class="op" href="?cat=7" >GAYLORD SEAFOOD AND FISH SPECIALITIES</a>
+	            <a class="op" href="?cat=8" >AKHANI AUR-BIRIYANI - RICE DISHES</a>
+	            <a class="op" href="?cat=9" >GAYLORD VEGETARIAN SIDE DISHES</a>
+	            <a class="op" href="?cat=10" >CHAWAL - RICE SIDE DISHES</a>
+	            <a class="op" href="?cat=11" >NAN/ROTI - FLATBREAD</a>
+	            <a class="op" href="?cat=12" >SUNDRIES &amp; OTHER EXTRAS</a>
+	            <a class="op" href="?cat=13" >DRINKS</a>
+	        </ul>
+	    </nav>    
+  	</div>
+  
+  	<div id="flash">
+  	Item added to basket
+  	</div>
+  </div>
+
+
+
+
             <?php echo $error_msg; ?> <?php echo $success_msg; ?>
             
-<?php echo $menuHeading;?>
 <?php echo $orderMenu;?>
 <?php echo $basket;?>
 <?php echo $basketMsg;?>

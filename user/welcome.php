@@ -41,38 +41,51 @@ if(isset($_SESSION['activation']))
 <!--<![endif]-->
 
 <?php include_once("head.php") ;?>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.continue_button').click(function(){
+          window.location.href = 'login.php';
+          return false;
+      });
+    });
+
+
+</script>
 <body>
 
 <div class="gridContainer clearfix">
     <div id="Header"><?php include_once("header1.php");?>     
     </div> 
-  
-  <div  id="welcome_page_client_facing">
-   
-  	<div id="logo">
-        <img src="../Images/GR_small_logo.png">
-    </div>
+  <div id="main_content">
+    <div  id="welcome_page_client_facing">
+     
+    	<div id="logo">
+          <img src="../Images/GR_small_logo.png">
+      </div>
 
 
-   <div class="welcome_page_text">
+     <div class="welcome_page_text">
 
 
 
-    <p>We would like to introduce you to our new ordering menu </p>
-    <p>You can view our interactive menu and place an order directly to our system.</p>
-    <p>Please follow the instruction outlined in each section to ensure your order is correctly placed.</p>
-    <p>A member of staff will come and confirm your order once everyone on the table  have submited their order.</p>
-    <p>Please click the continue button below to move to the next page, you will be asked to login.</p>
-    <p>If you have not registered with us using the table you can use our simple register form to create an account.</p>
-    <p>Registeration is not required to use this system, please click skip to move on.</p>
-    <br/>
-	
+        <div id="title">
+          <p>We would like to introduce you to our new ordering menu </p>
+        </div>
 
-	<!-- Need to redesign contibue biutton, when it is %a link -->
-    <div  class="continue_button">
-		<a href="login.php">Continue</a>
-  	</div>
-  </div>  
+        <div id="welcome_body_text">
+          <p>You can view our interactive menu and place an order directly through to our system. 
+          Please follow the instruction outlined in each section to ensure your order is correctly placed.
+          A member of staff will come and confirm your order once everyone on the table  have submited their order.
+          <!-- <p>If you have not registered with us using the table you can use our simple register form to create an account.</p> -->
+          <!-- <p>Registeration is not required to use this system, please click skip to move on.</p> -->
+    	 </div>
+
+    	<!-- Need to redesign contibue biutton, when it is %a link -->
+        <div  class="continue_button">
+    		  <a href="login.php">Continue</a>
+      	</div>
+      </div>
+    </div>  
       
 
 

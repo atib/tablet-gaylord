@@ -154,9 +154,22 @@ unset($_SESSION['activateorderid']);
 		$error_msg ="";
 
 	}else{
-		$error_msg = " Dectivation Failed";
+		$error_msg = " Deactivation Failed";
 		$success_msg="";
-
+		$activationform = '<div class="">
+	    <select name="activation" class="select_activation" type="text">    
+	    	'.$activate.'
+	    </select>
+	 
+	    </div>
+	    
+	    <div class="continue_button">
+	    <input type="submit" name="activate" value="Activate" class="button2" />
+	    </div>
+	    <div class="cancel_button">
+	    <input type="submit" name="deactivate" value="Deactivate" class="button2" />
+	    </div>';
+	    $msg2user = "";
 	}
 }
 ?>
@@ -168,6 +181,17 @@ unset($_SESSION['activateorderid']);
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php"); ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('#welcome_link_activation').click(function(){
+          window.location.href = 'welcome.php';
+          return false;
+      });
+    });
+
+
+</script>
+
 <script type="text/javascript" src="../Script/jquery.mobile-1.4.0.min.js"></script>
 		<script>
 	 		$(document).ready(function(){
@@ -176,7 +200,6 @@ unset($_SESSION['activateorderid']);
 	 </script>
 <body>
 <div class="gridContainer clearfix">
-
     <div id="Header"><?php include_once("header1.php");?>     
     </div> 
   	

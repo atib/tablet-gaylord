@@ -32,7 +32,7 @@ if(isset($_GET['err'])){
 }
 
 ?>
-<!doctype html>
+<!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
 <!--[if IE 7]>    <html class="ie7 oldie"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8 oldie"> <![endif]-->
@@ -67,8 +67,8 @@ if(isset($_GET['err'])){
 		<ul id="navList">
 		<a id="nav1" href="neworder.php?cat=1"><li>View Menu</li></a>
         <a id="nav1" href="neworder.php?cat=14"><li>Table Order</li></a>
-        <a id="nav1" href="orderhistory.php"><li>Order History</li></a>
-        <a id="nav1" href="reviews.php"><li>Reviews</li></a>
+        <!-- <a id="nav1" href="orderhistory.php"><li>Order History</li></a> -->
+        <!-- <a id="nav1" href="reviews.php"><li>Reviews</li></a> -->
         <a id="nav1" href="share.php"><li>Share</li></a>
 	  </ul>
   </div>
