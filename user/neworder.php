@@ -487,6 +487,13 @@ if (isset($_GET['delete'])){
         			menu.removeAttr('style');
         		}
     		});
+
+    		$('.prodAdd').click(function(){
+    			
+    			$('#flash').show().delay(2000).fadeOut(500);
+    			console.log('item added to basket');
+    			return false;
+    		});
 		});
 	</script>
 
@@ -504,33 +511,38 @@ if (isset($_GET['delete'])){
     <div class="title">
       <h3>View Menu</h3>
     </div>
+
+    <div id="takeawaymenuOption">
+	    <nav class="ordermenu">
+	        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
+
+	        <ul class="ordermenu_list"> 
+	            <a class="myorder" href="?cat=14" >MY ORDER</a>
+	          	<a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
+	            <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>
+	            <a class="op" href="?cat=3" >GAYLORD EXCLUSIVE NEW DISHES</a>
+	            <a class="op" href="?cat=4" >OUR CHEF’S SPECIALITIES</a>
+	            <a class="op" href="?cat=5" >GAYLORD CHICKEN SPECIALITIES</a>
+	            <a class="op" href="?cat=6" >GAYLORD LAMB SPECIALITIES</a>
+	            <a class="op" href="?cat=7" >GAYLORD SEAFOOD AND FISH SPECIALITIES</a>
+	            <a class="op" href="?cat=8" >AKHANI AUR-BIRIYANI - RICE DISHES</a>
+	            <a class="op" href="?cat=9" >GAYLORD VEGETARIAN SIDE DISHES</a>
+	            <a class="op" href="?cat=10" >CHAWAL - RICE SIDE DISHES</a>
+	            <a class="op" href="?cat=11" >NAN/ROTI - FLATBREAD</a>
+	            <a class="op" href="?cat=12" >SUNDRIES &amp; OTHER EXTRAS</a>
+	            <a class="op" href="?cat=13" >DRINKS</a>
+	        </ul>
+	    </nav>    
+  	</div>
+  
+  	<div id="flash">
+  	Item added to basket
+  	</div>
   </div>
 
 
 
-  <div id="takeawaymenuOption">
-    <nav class="ordermenu">
-        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
 
-        <ul class="ordermenu_list"> 
-
-            <a class="myorder" href="?cat=14" >MY ORDER</a>
-          	<a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
-            <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>
-            <a class="op" href="?cat=3" >GAYLORD EXCLUSIVE NEW DISHES</a>
-            <a class="op" href="?cat=4" >OUR CHEF’S SPECIALITIES</a>
-            <a class="op" href="?cat=5" >GAYLORD CHICKEN SPECIALITIES</a>
-            <a class="op" href="?cat=6" >GAYLORD LAMB SPECIALITIES</a>
-            <a class="op" href="?cat=7" >GAYLORD SEAFOOD AND FISH SPECIALITIES</a>
-            <a class="op" href="?cat=8" >AKHANI AUR-BIRIYANI - RICE DISHES</a>
-            <a class="op" href="?cat=9" >GAYLORD VEGETARIAN SIDE DISHES</a>
-            <a class="op" href="?cat=10" >CHAWAL - RICE SIDE DISHES</a>
-            <a class="op" href="?cat=11" >NAN/ROTI - FLATBREAD</a>
-            <a class="op" href="?cat=12" >SUNDRIES &amp; OTHER EXTRAS</a>
-            <a class="op" href="?cat=13" >DRINKS</a>
-        </ul>
-    </nav>    
-  </div>
             <?php echo $error_msg; ?> <?php echo $success_msg; ?>
             
 <?php echo $orderMenu;?>

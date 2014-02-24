@@ -200,7 +200,6 @@ unset($_SESSION['activateorderid']);
 	 </script>
 <body>
 <div class="gridContainer clearfix">
-§
     <div id="Header"><?php include_once("header1.php");?>     
     </div> 
   	

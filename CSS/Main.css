@@ -258,6 +258,7 @@ margin-bottom: 0em;
 	text-align: center;
 	margin: 0 auto;
 	width: 100%; 
+	padding-top: 100px;
 }
 
 #logo img {
@@ -1108,24 +1109,21 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	height: 30px;
 	width: 20%;
 	text-align: center;*/
-	font-size:1.3em;
-	font-family:sans-serif;
+	/*font-size:1.3em;*/
+/*	font-family:sans-serif;
 	font-weight:lighter;
-	-moz-border-radius:42px;
+*/	-moz-border-radius:42px;
 	-webkit-border-radius:42px;
 	border-radius:42px;
-	border:0px solid #268a16;
-	padding:3px 7px;
+	/*border:0px solid #268a16;*/
+	padding: 1% 2%;
 	text-decoration:none;
 	background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
 	background:-ms-linear-gradient( top, #77d42a 5%, #5cb811 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #77d42a), color-stop(100%, #5cb811) );
 	background-color:#77d42a;
-	color:#306108;
-	display:inline-block;
-	text-shadow:0px 0px 0px #aade7c;
-	margin-top: -1.5%;
+	margin-top: -1%;
 	float: right;
 	margin-right: 3%;
 }
@@ -1141,6 +1139,10 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 #menuHolder .prodAdd a{
 	color:#306108;
 	text-decoration: none;
+	font-size: 1.2em;
+	color:#306108;
+	display:inline-block;
+	text-shadow:0px 0px 0px #aade7c;
 }
 
 #menuHolder .prodlDesc {
@@ -1247,6 +1249,20 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-family: sans-serif;
 	font-weight: lighter;
 
+}
+
+#flash {
+	position:fixed; 
+	width:100%; 
+	background-color: #9AC25C; 
+	bottom:0px;
+	left: 0px;
+	padding: 2% 0%;
+	text-align: center;
+	font-family: 'genius';
+	font-size: 2em;
+	color: #efe;
+	display: none;
 }
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
