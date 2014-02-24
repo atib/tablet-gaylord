@@ -972,6 +972,25 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 .ordermenu a.op {
 	display: block;
 	float: left;
+	width: 46%;
+	color: #fff;
+	font-weight: bold;
+	display: block;
+	background-color: #3E0038;
+	text-decoration: none;
+	font-family: 'genius', sans-serif;
+	font-weight: lighter;
+	padding: 4% 0;
+	padding-left: 2%;
+	border-radius: 4px;
+	margin: 1%;
+	height: 35px;
+	line-height: 20px;
+}
+
+.ordermenu a.myorder {
+	display: block;
+	float: left;
 	width: 98%;
 	color: #fff;
 	font-weight: bold;
@@ -984,8 +1003,10 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	padding-left: 2%;
 	border-radius: 4px;
 	margin: 1% 0;
-
+	text-align: center;
 }
+
+
 .ordermenu a#pull {
 	display: block;
 	background-color: #3E0038;
@@ -1060,22 +1081,26 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 #menuHolder .prodName {
 	display: block;
 	float: left;
-	height: 30px;
-	width: 60%;
+	/*height: 30px;*/
+	width: 65%;
 	color: #3E0038;
 	font-family: sans-serif;
-	text-transform: lowercase;
+	font-weight: bold;
+	padding-left: 2%;
 
 }
 #menuHolder .prodPrice {
 	display: block;
-	float: left;
-	height: 30px;
-	width: 10%;
+	/*float: left;*/
+	/*height: 30px;*/
+	margin-bottom: 2%;
+	margin-top: 1%;
+	width: 15%;
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 0.9em;
 	color: #3E0038;
+	padding-left: 2%;
 }
 #menuHolder .prodAdd {
 	/*display: block;
@@ -1101,6 +1126,16 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	display:inline-block;
 	text-shadow:0px 0px 0px #aade7c;
 	margin-top: -1.5%;
+	float: right;
+	margin-right: 3%;
+}
+
+#menuHolder .prodAdd:hover {
+	background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+	background:-ms-linear-gradient( top, #5cb811 5%, #77d42a 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #5cb811), color-stop(100%, #77d42a) );
+	background-color:#5cb811;
 }
 
 #menuHolder .prodAdd a{
@@ -1112,19 +1147,20 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	display: block;
 	float: left;
 	height: auto;
-	width: 65%;
+	width: 91%;
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 0.8em;
 	color: #3E0038;
+	padding-left: 2%;
 
 
 }
 #menuHolder .prodsDesc {
 	display: block;
 	float: left;
-	height: 30px;
-	width: 20%;
+	/*height: 30px;*/
+	width: 19%;
 
 }
 

@@ -289,12 +289,11 @@ if (isset($_GET['cat'])){
 			<div id="menuHolder">
 			<div class="prodName">'.$get_row['p_name'].'</div>
 			<div class="prodsDesc">'.$get_row['p_sdesc'].' '.$spice.' '.$nut.'</div>
-			<div class="prodPrice">£'.number_format($get_row['p_inprice'], 2).'</div>
 			<div class="prodAdd">
-			
-			<a href="neworder.php?add='.$get_row['p_id'].'&pn='.$get_row['p_name'].'&cat='.$get_row['pc_id'].'&pr='.$get_row['p_inprice'].'&par='.$par.'">+</a>
-			
+			<a href="neworder.php?add='.$get_row['p_id'].'&pn='.$get_row['p_name'].'&cat='.$get_row['pc_id'].'&pr='.$get_row['p_inprice'].'&par='.$par.'">+</a>		
 			</div>
+			<div class="prodPrice">£'.number_format($get_row['p_inprice'], 2).'</div>
+
 			'.$descRow.'
 			</div>
 		
@@ -514,8 +513,9 @@ if (isset($_GET['delete'])){
         <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
 
         <ul class="ordermenu_list"> 
-        
-          <a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
+
+            <a class="myorder" href="?cat=14" >MY ORDER</a>
+          	<a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
             <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>
             <a class="op" href="?cat=3" >GAYLORD EXCLUSIVE NEW DISHES</a>
             <a class="op" href="?cat=4" >OUR CHEF’S SPECIALITIES</a>
@@ -528,7 +528,6 @@ if (isset($_GET['delete'])){
             <a class="op" href="?cat=11" >NAN/ROTI - FLATBREAD</a>
             <a class="op" href="?cat=12" >SUNDRIES &amp; OTHER EXTRAS</a>
             <a class="op" href="?cat=13" >DRINKS</a>
-            <a class="op" href="?cat=14" >MY ORDER</a>
         </ul>
     </nav>    
   </div>
