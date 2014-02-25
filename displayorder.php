@@ -67,7 +67,7 @@ if (isset($_POST['userSelect'])){
 
 	}
 }	
-
+	
 
 if(isset($_GET['err'])){
 
@@ -256,18 +256,75 @@ if ($o_activation != ""){
 	}
 	else{
 		
+		$discount=	' <div class="Order_discount">
+					<div class="buttons">
+					  <form action="displayorder.php?ac='.$o_activation.'&cat=14&cn='.$od_clientname.'" method="post">
+					  	<input name="cashdisc" class="" type="tel" value="" placeholder="Cash Based Discount £">
+						<input name="percentdisc" class="" type="tel" value="" placeholder="percentage Based Discount %">
+			  
+					  <input name="update" type="submit" class="button" value="update">
+					  </form>  
+					  </div>					
+					</div>
+					';
+		
 		$table_grandtotal= '<div id="usertotal">Total Table Bill: &pound; '.number_format($grandtotal, 2).'</div>';
 		$complete_btn = '<div class="Order_complete">
 
-  						<div class="buttons">
-    
+  					<div class="buttons">
 					  <form action="printReciept" method="post">
 					  <input name="Print" type="submit" class="button" value="Print Reciept">
 					  </form>  
 					</div>';
+					
 	} 
 
 }	
+
+
+if (isset($_POST['update'])){
+
+	 $cashDisc = $_POST['cashdisc'];
+	 $percentDisc = $_POST['percentdisc'];	
+	
+	if ($cashDisc !='' && $percentDisc ==''){
+	
+	$grandtotal = $grandtotal - $cashDisc;
+	
+	} else if ($cashDisc =='' && $percentDisc !=''){
+	
+	$percent = ($grandtotal/100)*$percentDisc;
+	$grandtotal = $grandtotal - $percent;
+	
+	}else if ($cashDisc =='' && $percentDisc ==''){
+	
+	$cashDisc = "";
+	$percentDisc = "";
+	$success_msg = "Total updated";
+
+
+	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&succ='.$success_msg.'';
+	
+	header('Location:'.$page);
+	}else{
+	
+	$cashDisc = "";
+	$percentDisc = "";
+	
+	$error_msg = "Please only use one discount option cash or percentage";
+		
+	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&err='.$error_msg.'';
+	
+	header('Location:'.$page);
+	
+	}
+
+}
+	include_once("db_connect.php");
+
+	$update_order = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentdisc = '$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
+	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
+
 	
 ##########################################################################################################################	
 #######End of basket script###############################################################################################
@@ -575,6 +632,7 @@ if (isset($_GET['delete'])){
 <?php echo $basketMsg;?>
 <?php echo $table_basket;?>
 <?php echo $table_basketMsg;?>
+<?php echo $discount; ?>
 <?php echo $table_grandtotal;?>    
 <?php echo $complete_btn;?>
     
