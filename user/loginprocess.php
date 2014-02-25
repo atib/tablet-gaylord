@@ -230,10 +230,6 @@ if(isset($_POST['register'])){
 		
 			$error_msg .= "Email is missing";
 			
-		}else if(!eregi("^([_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-z-0-9-]+)*(\.[a-z]{2,4})$", $c_email)){
-			
-			$error_msg .= "Email has be in a valid email format";
-			
 		}else if(!$c_password){
 			
 			$error_msg .= "Password Missing";
