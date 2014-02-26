@@ -27,6 +27,14 @@ $p_id ="";
 $cat = "";
 $orderrow ="";
 $menuTitle ="";
+$table_basket="";
+$table_basketMsg ="";
+$discount="";
+$table_grandtotal ="";
+$complete_btn="";
+$cashDisc="";
+$grandtotal="";
+$percentDisc="";
 
 //To be used for load more function, in the future
 $item_per_page = 5;
@@ -253,28 +261,10 @@ if ($o_activation != ""){
 	}
 	else{
 		
-		$discount=	' <div class="Order_discount">
-					<div class="buttons">
-					  <form action="displayorder.php?ac='.$o_activation.'&cat=14&cn='.$od_clientname.'" method="post">
-					  	<input name="cashdisc" class="" type="tel" value="" placeholder="Cash Based Discount £">
-						<input name="percentdisc" class="" type="tel" value="" placeholder="percentage Based Discount %">
-			  
-					  <input name="update" type="submit" class="button" value="update">
-					  </form>  
-					  </div>					
-					</div>
-					';
 		
-		$table_grandtotal= '<div id="nettotal">Net Total: &pound; '.number_format($nettotal, 2).'</div>
-							<div id="discounttotal">Discount: &pound; '.number_format($cashDisc, 2).' '.$percentDisc.'%</div>
-							<div id="grandtotal">Grandtotal: &pound; '.number_format($grandtotal, 2).'</div>';
-		$complete_btn = '<div class="Order_complete">
-
-  					<div class="buttons">
-					  <form action="printReciept" method="post">
-					  <input name="Print" type="submit" class="button" value="Print Reciept">
-					  </form>  
-					</div>';
+	$update_order = "UPDATE order_tbl SET o_total = '$nettotal' WHERE o_id = '$o_id'";
+	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
+	
 					
 	} 
 
@@ -360,6 +350,7 @@ else{
 
 	}
 }	
+
 ##########################################################################################################################
 // Add items onto the basket
 //########################################################################################################################
@@ -508,21 +499,34 @@ if (isset($_POST['update'])){
 	$cashDisc = $_POST['cashdisc'];
 	$percentDisc = $_POST['percentdisc'];	
 	
+	include_once("db_connect.php");
+
+	$sql_gettotal = "SELECT * FROM order_tbl WHERE o_id = '$user_o_id'";
+	$sql_gettotal_db = mysqli_query($db_connection, $sql_gettotal) or die (mysqli_error($db_connection));
+	
+	$totalrow = mysqli_fetch_assoc($sql_gettotal_db);
+	echo $db_total = $totalrow['o_total'];
+
 	if ($cashDisc !='' && $percentDisc ==''){
 	
-	$grandtotal = $nettotal - $cashDisc;
+	$grandtotal = $db_total - $cashDisc;
+	$grandtotal .= '£' . $grandtotal;
+
 	$success_msg = "Cash Discount Applied";
+	$percentDisc = "";
 
 	} else if ($cashDisc =='' && $percentDisc !=''){
 	
-	$percent = ($nettotal/100)*$percentDisc;
-	$grandtotal = $nettotal - $percent;
+	$percent = ($db_total/100)*$percentDisc;
+	$grandtotal = $db_total - $percent;
+	$grandtotal .=$grandtotal.'%';
 	$success_msg = "Percentage Discount Applied";
-
+	$cashDisc = "";
+	
 	}else if ($cashDisc =='' && $percentDisc ==''){
 	
-	$cashDisc = "";
-	$percentDisc = "";
+	$cashDisc = 0.00;
+	$percentDisc = 0;
 	$success_msg = "Total updated";
 
 
@@ -531,8 +535,8 @@ if (isset($_POST['update'])){
 	header('Location:'.$page);
 	}else{
 	
-	$cashDisc = "";
-	$percentDisc = "";
+	$cashDisc = 0.00;
+	$percentDisc = 0;
 	
 	$error_msg = "Please only use one discount option cash or percentage";
 		
@@ -545,10 +549,12 @@ if (isset($_POST['update'])){
 }
 	include_once("db_connect.php");
 
+	$user_o_id  = $_SESSION['user_o_id'];
+
 	$update_order = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentdisc = '$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
 	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
 
-
+	 $grandtotal;
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
@@ -636,7 +642,31 @@ if (isset($_POST['update'])){
 <?php echo $table_grandtotal;?>    
 <?php echo $complete_btn;?>
     
-    
+   
+ <div class="Order_discount">
+    <div class="buttons">
+      <form action="displayorder.php?ac=<?php echo $o_activation; ?>&cat=14&cn=<?php echo $od_clientname; ?>" method="post">
+        <input name="cashdisc" class="" type="tel" value="" placeholder="Cash Based Discount £">
+        <input name="percentdisc" class="" type="tel" value="" placeholder="percentage Based Discount %">
+
+      <input name="update" type="submit" class="" value="update">
+      </form>  
+      </div>					
+    </div>
+					
+		
+<div id="nettotal">Net Total: &pound; <?php echo number_format($nettotal, 2)?></div>
+<div id="discounttotal">Discount: <?php echo $cashDisc;?> <?php echo $percentDisc?></div>
+<div id="grandtotal">Grandtotal: &pound; <?php echo $grandtotal?></div>
+<div class="Order_complete">
+
+<div class="buttons">
+    <form action="printReciept" method="post">
+    	<input name="Print" type="submit" class="" value="Print Reciept">
+    </form>  
+</div>
+   
+   
   <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>
