@@ -71,7 +71,7 @@ if(isset($_GET['err'])){
           </div>
           
           <div class="continue_button">
-            <input type="submit" name="submit" value="Login" class="" />
+            <input type="submit" name="register" value="Register" class="" />
           </div>
 
       </form>
