@@ -1333,8 +1333,39 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	padding-top: 10px;
 	padding-right: 2%;
 }
-
-
+#nettotal {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	float: left;
+	height: 40px;
+	width: 98%;
+	padding-top: 10px;
+	padding-right: 2%;
+}
+#discounttotal {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	float: left;
+	height: 40px;
+	width: 98%;
+	padding-top: 10px;
+	padding-right: 2%;
+}
+#grandtotal {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	float: left;
+	height: 40px;
+	width: 98%;
+	padding-top: 10px;
+	padding-right: 2%;
+}
 
 /* Welcome page - client side*/
 

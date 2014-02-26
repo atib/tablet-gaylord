@@ -1,9 +1,9 @@
 <?php
 session_start();
-/*
+
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-*/
+
 $error_msg = ""; 
 $success_msg = "";	
 $username = $_SESSION['username'];
@@ -43,7 +43,6 @@ if(isset($_GET['ac'])!=""){
 	header("Location: vieworder.php?err=$error_msg");
     exit();	
 }
-	$user_clientName = $_SESSION['user_clientName'];
 
 if (isset($_POST['userSelect'])){
 
@@ -75,7 +74,7 @@ if(isset($_GET['err'])){
 	$success = "";
 } else if(isset($_GET['succ'])){
 	$error_msg = "";
-	$success = $_GET['err'];
+	$success = $_GET['succ'];
 }else{
 	$error_msg = "";
 	$success = "";	
@@ -155,8 +154,6 @@ if (isset($_GET['cat'])){
 
 }
 }
-	
-include_once ("db_connect.php");
 
 if($cat == 14){
 	
@@ -229,7 +226,7 @@ if ($o_activation != ""){
 		$total += $sub;
 
 		}
-		$grandtotal += $total;
+		$nettotal += $total;
 
 		if ($total==0){	
 	
@@ -248,7 +245,7 @@ if ($o_activation != ""){
 	$basket .='<hr>';
 }//client order while close
 	
-	if ($grandtotal==0){	
+	if ($nettotal==0){	
 		$table_basketMsg = '
 				<div id="cartMsg">
 					<p>Table order is empty.</p>
@@ -268,7 +265,9 @@ if ($o_activation != ""){
 					</div>
 					';
 		
-		$table_grandtotal= '<div id="usertotal">Total Table Bill: &pound; '.number_format($grandtotal, 2).'</div>';
+		$table_grandtotal= '<div id="nettotal">Net Total: &pound; '.number_format($nettotal, 2).'</div>
+							<div id="discounttotal">Discount: &pound; '.number_format($cashDisc, 2).' '.$percentDisc.'%</div>
+							<div id="grandtotal">Grandtotal: &pound; '.number_format($grandtotal, 2).'</div>';
 		$complete_btn = '<div class="Order_complete">
 
   					<div class="buttons">
@@ -281,51 +280,6 @@ if ($o_activation != ""){
 
 }	
 
-
-if (isset($_POST['update'])){
-
-	 $cashDisc = $_POST['cashdisc'];
-	 $percentDisc = $_POST['percentdisc'];	
-	
-	if ($cashDisc !='' && $percentDisc ==''){
-	
-	$grandtotal = $grandtotal - $cashDisc;
-	
-	} else if ($cashDisc =='' && $percentDisc !=''){
-	
-	$percent = ($grandtotal/100)*$percentDisc;
-	$grandtotal = $grandtotal - $percent;
-	
-	}else if ($cashDisc =='' && $percentDisc ==''){
-	
-	$cashDisc = "";
-	$percentDisc = "";
-	$success_msg = "Total updated";
-
-
-	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&succ='.$success_msg.'';
-	
-	header('Location:'.$page);
-	}else{
-	
-	$cashDisc = "";
-	$percentDisc = "";
-	
-	$error_msg = "Please only use one discount option cash or percentage";
-		
-	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&err='.$error_msg.'';
-	
-	header('Location:'.$page);
-	
-	}
-
-}
-	include_once("db_connect.php");
-
-	$update_order = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentdisc = '$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
-	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
-
-	
 ##########################################################################################################################	
 #######End of basket script###############################################################################################
 ##########################################################################################################################
@@ -548,6 +502,52 @@ if (isset($_GET['delete'])){
 	}
 	header('Location:'.$page);
 }
+
+if (isset($_POST['update'])){
+
+	$cashDisc = $_POST['cashdisc'];
+	$percentDisc = $_POST['percentdisc'];	
+	
+	if ($cashDisc !='' && $percentDisc ==''){
+	
+	$grandtotal = $nettotal - $cashDisc;
+	$success_msg = "Cash Discount Applied";
+
+	} else if ($cashDisc =='' && $percentDisc !=''){
+	
+	$percent = ($nettotal/100)*$percentDisc;
+	$grandtotal = $nettotal - $percent;
+	$success_msg = "Percentage Discount Applied";
+
+	}else if ($cashDisc =='' && $percentDisc ==''){
+	
+	$cashDisc = "";
+	$percentDisc = "";
+	$success_msg = "Total updated";
+
+
+	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&succ='.$success_msg.'';
+	
+	header('Location:'.$page);
+	}else{
+	
+	$cashDisc = "";
+	$percentDisc = "";
+	
+	$error_msg = "Please only use one discount option cash or percentage";
+		
+	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&err='.$error_msg.'';
+	
+	header('Location:'.$page);
+	
+	}
+
+}
+	include_once("db_connect.php");
+
+	$update_order = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentdisc = '$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
+	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
+
 
 ?>
 <!DOCTYPE HTML>
