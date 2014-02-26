@@ -43,10 +43,15 @@ WHERE orderdetail_tbl.p_id = product_tbl.p_id;";
 
 $insert_product_db = mysqli_query($db_connection, $insert_product) or die (mysqli_error($db_connection));
 
+
 	$crt_sess = $_SESSION['crt_sess'];
 	$fname = $_SESSION['fname'];
 
-
+$order_Delete = "DELETE FROM cart_tbl WHERE crt_sess = '$crt_sess' AND o_id = '$activateorderid'";
+$order_Delete_db = mysqli_query($db_connection, $order_Delete) or die (mysqli_error($db_connection));	
+	
+	
+	
 $insert_client = "UPDATE orderdetail_tbl SET  od_clientname = '$fname'
 WHERE od_session = '$crt_sess'";
 

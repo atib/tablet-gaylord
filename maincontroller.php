@@ -9,7 +9,6 @@ if(!isset($_SESSION['username'])){
 	
 }
 
-$par=md5(3);
 $username = $_SESSION['username'];
 
 
@@ -40,7 +39,7 @@ $username = $_SESSION['username'];
       
       <div id="Navigation">
     		<ul id="navList">
-    		<a id="nav1" href="neworder.php?par=<?php print $par;?>"><li>Create Order</li></a>
+    		<a id="nav1" href="neworder.php"><li>Create Order</li></a>
             <a id="nav1" href="vieworder.php"><li>View Order</li></a>
             <a id="nav1" href="customer.php"><li>Customer</li></a>
             <!-- <a id="nav1" href="tablet/orderhistory.php"><li>Order History</li></a> -->

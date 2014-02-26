@@ -7,33 +7,7 @@ if(!isset($_SESSION['username'])){
     header("Location: maincontroller.php?err=$error_msg");
 	exit();
 }
-
-$access= md5(3);
-	
-if ($_GET['par']== $access) {
-	
-	$username = $_SESSION['username'];
-	
-	include_once ("db_connect.php");
-
-	// /*
-	$create_NO = 'INSERT INTO order_tbl (o_type, o_date, o_time, o_payment, o_process)
-									VALUES ("Dine In", CURDATE(),NOW(), "Not Paid", "Arrived")';
-	
-	mysqli_query($db_connection, $create_NO) or die (mysqli_error($db_connection));
-	
-	$order_id = mysqli_insert_id($db_connection)or die (mysqli_error($db_connection));
-	 // */
-	
-	$par=md5(10);
-
-} else{
-
-	$error_msg="Access code missing, please follow the set guidelines";
-    header("Location: maincontroller.php?err=$error_msg");
-	exit();
-}
-
+$par=md5(3);
 
 ?>
 <!DOCTYPE HTML>
@@ -61,10 +35,6 @@ if ($_GET['par']== $access) {
 
       <div class="title">
         <h2>New Order</h2>
-      </div>
-      
-      <div id="orderno"> 
-        <p> Order Number #<span class="redbold"><?php echo $order_id;?>345</span> </p>
       </div>
       
       <form action="neworderprocessed.php?par=<?php echo $par;?>" method="post" target="_self">
@@ -108,9 +78,7 @@ if ($_GET['par']== $access) {
             <option value="9">Table 9</option>
             <option value="10">Table 10</option>
           </select><br>
-          
-          <input name="orderid" type="hidden" value="<?php echo $order_id;?>">
-          
+                    
           <div class="continue_button">
             <input class="" align="middle" name="create" type="submit" value="Create">
           </div>
