@@ -971,58 +971,59 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 }
 .ordermenu a.op {
-	display: block;
+
 	float: left;
-	width: 46%;
-	color: #fff;
-	font-weight: bold;
+	width: 47%;
+	color: #4d4d4d;
 	display: block;
-	background-color: #3E0038;
+	background-color: #B3B2B2;
 	text-decoration: none;
-	font-family: 'genius', sans-serif;
+	font-family: sans-serif;
 	font-weight: lighter;
-	padding: 4% 0;
-	padding-left: 2%;
+	font-size: 0.9em;
+	padding: 2% 0 3% 2%;
 	border-radius: 4px;
-	margin: 1%;
-	height: 35px;
+	margin: 1% 0.5%;
+	height: 39px;
 	line-height: 20px;
+	word-wrap: break-word;
+
 }
 
 .ordermenu a.myorder {
 	display: block;
 	float: left;
 	width: 98%;
-	color: #fff;
+	color: #4d4d4d;
 	font-weight: bold;
 	display: block;
-	background-color: #3E0038;
+	background-color: #B3B2B2;
 	text-decoration: none;
-	font-family: 'genius', sans-serif;
+	font-family: sans-serif;
 	font-weight: lighter;
 	padding: 4% 0;
 	padding-left: 2%;
 	border-radius: 4px;
 	margin: 1% 0;
-	text-align: center;
 }
 
 
 .ordermenu a#pull {
 	display: block;
-	background-color: #3E0038;
+	background-color: #6F7780;
 	width: 98%;
-	height: 35px;
+	/* height: 35px; */
 	color: #FFF;
 	text-decoration: none;
-	font-weight: bold;
-	padding: 4% 0;  
+	font-weight: lighter;
+	padding: 4% 0;
 	line-height: 23px;
 	padding-left: 2%;
 	position: relative;
 	clear: both;
-	font-family: 'genius';
+	font-family: sans-serif;
 	border-radius: 4px;
+
 }
 
 
@@ -1083,7 +1084,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	display: block;
 	float: left;
 	/*height: 30px;*/
-	width: 65%;
+	/*width: 65%;*/
 	color: #3E0038;
 	font-family: sans-serif;
 	font-weight: bold;
@@ -1092,11 +1093,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 #menuHolder .prodPrice {
 	display: block;
-	/*float: left;*/
-	/*height: 30px;*/
-	margin-bottom: 2%;
-	margin-top: 1%;
-	width: 15%;
+	float: left;
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 0.9em;
@@ -1104,28 +1101,21 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	padding-left: 2%;
 }
 #menuHolder .prodAdd {
-	/*display: block;
-	float: left;
-	height: 30px;
-	width: 20%;
-	text-align: center;*/
-	/*font-size:1.3em;*/
-/*	font-family:sans-serif;
-	font-weight:lighter;
-*/	-moz-border-radius:42px;
-	-webkit-border-radius:42px;
-	border-radius:42px;
-	/*border:0px solid #268a16;*/
-	padding: 1% 2%;
-	text-decoration:none;
-	background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
-	background:-ms-linear-gradient( top, #77d42a 5%, #5cb811 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #77d42a), color-stop(100%, #5cb811) );
-	background-color:#77d42a;
-	margin-top: -1%;
+
+	-moz-border-radius: 42px;
+	-webkit-border-radius: 42px;
+	border-radius: 42px;
+	padding: 1% 3.5%;
+	text-decoration: none;
+	background: -moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+	background: -ms-linear-gradient( top, #77d42a 5%, #5cb811 100% );
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+	background: -webkit-gradient( linear, left top, left bottom, color-stop(5%, #77d42a), color-stop(100%, #5cb811) );
+	background-color: #77d42a;
+	/* margin-top: -1%; */
 	float: right;
-	margin-right: 3%;
+	/* margin-right: 3%; */
+
 }
 
 #menuHolder .prodAdd:hover {
@@ -1137,24 +1127,24 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 #menuHolder .prodAdd a{
-	color:#306108;
 	text-decoration: none;
-	font-size: 1.2em;
-	color:#306108;
-	display:inline-block;
-	text-shadow:0px 0px 0px #aade7c;
+	font-size: 2.5em;
+	font-weight: bold;
+	color: #fff;
+	display: inline-block;
 }
 
 #menuHolder .prodlDesc {
 	display: block;
 	float: left;
 	height: auto;
-	width: 91%;
+	width: 70%;
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 0.8em;
 	color: #3E0038;
 	padding-left: 2%;
+	margin-top: 3%;
 
 
 }

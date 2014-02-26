@@ -289,10 +289,11 @@ if (isset($_GET['cat'])){
 			<div id="menuHolder">
 			<div class="prodName">'.$get_row['p_name'].'</div>
 			<div class="prodsDesc">'.$get_row['p_sdesc'].' '.$spice.' '.$nut.'</div>
+			<div class="prodPrice">£'.number_format($get_row['p_inprice'], 2).'</div>
+
 			<div class="prodAdd">
 			<a href="neworder.php?add='.$get_row['p_id'].'&pn='.$get_row['p_name'].'&cat='.$get_row['pc_id'].'&pr='.$get_row['p_inprice'].'&par='.$par.'">+</a>		
 			</div>
-			<div class="prodPrice">£'.number_format($get_row['p_inprice'], 2).'</div>
 
 			'.$descRow.'
 			</div>
@@ -471,8 +472,9 @@ if (isset($_GET['delete'])){
 <!--<![endif]-->
 <?php include_once('head.php'); ?>
 	<script>
-		$(function() {
-			var pull 		= $('#pull');
+		
+		$(document).ready(function(){
+				var pull 		= $('#pull');
 				menu 		= $('.ordermenu .ordermenu_list');
 				menuHeight	= menu.height();
 
@@ -490,11 +492,30 @@ if (isset($_GET['delete'])){
 
     		$('.prodAdd').click(function(){
     			
-    			$('#flash').show().delay(2000).fadeOut(500);
-    			console.log('item added to basket');
-    			return false;
+    			// Need to look at this function a little more in depth 
+
+    			$.ajax({
+
+    				type: "GET", 
+    				URL: 'neworder.php', 
+    				success: function(){
+    				
+	    				$('#flash').show().delay(2000).fadeOut(500);
+	    				console.log('item added to basket');
+
+    				}
+
+    			}); 
+
+
     		});
+
+
 		});
+
+
+			
+	
 	</script>
 
 <body>
@@ -538,13 +559,7 @@ if (isset($_GET['delete'])){
   	<div id="flash">
   	Item added to basket
   	</div>
-  </div>
-
-
-
-
-            <?php echo $error_msg; ?> <?php echo $success_msg; ?>
-            
+<?php echo $error_msg; ?> <?php echo $success_msg; ?>
 <?php echo $orderMenu;?>
 <?php echo $basket;?>
 <?php echo $basketMsg;?>
@@ -553,6 +568,13 @@ if (isset($_GET['delete'])){
 <?php echo $table_basket;?>
 <?php echo $table_basketMsg;?>
 <?php echo $table_grandtotal;?>
+
+  </div>
+
+
+
+
+
 
 <div id="footer"><?php include_once("footer1.php");?></div>
 </div>
