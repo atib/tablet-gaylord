@@ -494,23 +494,26 @@ if (isset($_GET['delete'])){
 	header('Location:'.$page);
 }
 
+$grandtotal = $nettotal;
 if (isset($_POST['update'])){
 
-	$cashDisc = $_POST['cashdisc'];
-	$percentDisc = $_POST['percentdisc'];	
+	echo $cashDisc = $_POST['cashdisc'];
+	echo $percentDisc = $_POST['percentdisc'];	
 	
 	include_once("db_connect.php");
+	echo $user_o_id  = $_SESSION['user_o_id'];
 
 	$sql_gettotal = "SELECT * FROM order_tbl WHERE o_id = '$user_o_id'";
 	$sql_gettotal_db = mysqli_query($db_connection, $sql_gettotal) or die (mysqli_error($db_connection));
 	
-	$totalrow = mysqli_fetch_assoc($sql_gettotal_db);
-	echo $db_total = $totalrow['o_total'];
+	while ($totalrow = mysqli_fetch_assoc($sql_gettotal_db)){
+	$db_total = $totalrow['o_total'];
+	}
 
 	if ($cashDisc !='' && $percentDisc ==''){
 	
 	$grandtotal = $db_total - $cashDisc;
-	$grandtotal .= '£' . $grandtotal;
+	$grandtotal = '£' . $grandtotal;
 
 	$success_msg = "Cash Discount Applied";
 	$percentDisc = "";
@@ -519,7 +522,7 @@ if (isset($_POST['update'])){
 	
 	$percent = ($db_total/100)*$percentDisc;
 	$grandtotal = $db_total - $percent;
-	$grandtotal .=$grandtotal.'%';
+	$grandtotal =$grandtotal.'%';
 	$success_msg = "Percentage Discount Applied";
 	$cashDisc = "";
 	
@@ -551,10 +554,9 @@ if (isset($_POST['update'])){
 
 	$user_o_id  = $_SESSION['user_o_id'];
 
-	$update_order = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentdisc = '$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
-	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
+	$update_myorder = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentdisc = '$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
+	$update_myorderdb = mysqli_query($db_connection, $update_myorder) or die (mysqli_error($db_connection));
 
-	 $grandtotal;
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
@@ -646,8 +648,8 @@ if (isset($_POST['update'])){
  <div class="Order_discount">
     <div class="buttons">
       <form action="displayorder.php?ac=<?php echo $o_activation; ?>&cat=14&cn=<?php echo $od_clientname; ?>" method="post">
-        <input name="cashdisc" class="" type="tel" value="" placeholder="Cash Based Discount £">
-        <input name="percentdisc" class="" type="tel" value="" placeholder="percentage Based Discount %">
+        <input name="cashdisc" class="" type="tel" value="<?php echo $cashDisc;?>" placeholder="Cash Based Discount £">
+        <input name="percentdisc" class="" type="tel" value="<?php echo $percentDisc?>" placeholder="percentage Based Discount %">
 
       <input name="update" type="submit" class="" value="update">
       </form>  
@@ -657,7 +659,7 @@ if (isset($_POST['update'])){
 		
 <div id="nettotal">Net Total: &pound; <?php echo number_format($nettotal, 2)?></div>
 <div id="discounttotal">Discount: <?php echo $cashDisc;?> <?php echo $percentDisc?></div>
-<div id="grandtotal">Grandtotal: &pound; <?php echo $grandtotal?></div>
+<div id="grandtotal">Grandtotal: <?php echo $grandtotal?></div>
 <div class="Order_complete">
 
 <div class="buttons">
