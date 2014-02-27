@@ -14,18 +14,14 @@ if(!isset($_SESSION['username'])){
 	exit();
 }
 
-
-include_once ("db_connect.php");
-
 	if (isset($_POST['create'])){
 	
 	$guestno = stripslashes($_POST['guestno']);
 	$tableno = stripslashes($_POST['tableno']);
 	$guestno = strip_tags($_POST['guestno']);
 	$tableno = strip_tags($_POST['tableno']);	
-	$orderid = strip_tags($_POST['orderid']);	
 
-	if((!$guestno)||(!$tableno)||(!$orderid)){
+	if((!$guestno)||(!$tableno)){
 	
 	$error_msg = "Please complete all manditory fields! <br>";	
 		
@@ -36,13 +32,11 @@ include_once ("db_connect.php");
 		} else if (!$tableno){
 		
 			$error_msg .= "Table No is missing";	
-		}else if (!$orderid){
-			$par= md5(3);
-			header("Location: neworder.php?par=$par");
 		}
-	
+	$par=md5(3);
+
 	$displayresult='
-	<form action="neworderprocessed.php" method="post" target="_self">
+	<form action="neworderprocessed.php?par='.$par.'" method="post" target="_self">
      <div class="">
   <select class="" name="guestno" > 
     <option value="">select guest no</option>
@@ -82,7 +76,6 @@ include_once ("db_connect.php");
     <option value="10">table 10</option>
   </select><br>
   
-  <input name="orderid" type="hidden" value="'. $orderid.'">
   </div>
           <div class="continue_button">
             <input class="" align="middle" name="create" type="submit" value="Create">
@@ -95,6 +88,30 @@ include_once ("db_connect.php");
 	}else{ //required information exisit
 		
 		include_once ("db_connect.php");
+
+$access= md5(3);
+	$par = "";
+if ($_GET['par']== $access) {
+	
+	
+	include_once ("db_connect.php");
+
+	// /*
+	$create_NO = 'INSERT INTO order_tbl (o_type, o_date, o_time, o_payment, o_process)
+									VALUES ("Dine In", CURDATE(),NOW(), "Not Paid", "Arrived")';
+	
+	mysqli_query($db_connection, $create_NO) or die (mysqli_error($db_connection));
+	
+	$orderid = mysqli_insert_id($db_connection)or die (mysqli_error($db_connection));
+	 // */
+	
+} else{
+
+	$error_msg="Order not created.";
+    header("Location: neworder.php?err=$error_msg");
+	exit();
+}
+
 
 		$activation =''.$orderid.'-'.$tableno.'-'.$guestno.''; //unique table activation code
 		
