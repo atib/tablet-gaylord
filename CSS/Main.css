@@ -1131,6 +1131,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-size: 2.5em;
 	font-weight: bold;
 	color: #fff;
+	margin-top: -10%;
 	display: inline-block;
 }
 
@@ -1232,16 +1233,30 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	border-radius: 4px;
 }
 
-#welcome_page_client_facing .continue_button > a {
+#login > div.messages_activation > div.normal_message_activation > a {
 	text-decoration: none;
-	color: #efe;
+	color: #efe;	
 
 }
 
-#welcome_page_client_facing .continue_button:hover > a {
+
+#login > div.messages_activation > div.normal_message_activation > a:hover > div {
 	color: #174E62;
 }
 
+
+#welcome_continue { 
+	display: block;
+}
+
+#welcome_page_client_facing > div.welcome_page_text > a {
+	text-decoration: none;
+	color: #efe;
+}
+
+#welcome_page_client_facing > div.welcome_page_text > a:hover > div {
+	color: #174E62;
+}
 
 /*Login Page Client*/
 

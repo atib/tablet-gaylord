@@ -41,22 +41,21 @@ if(isset($_SESSION['activation']))
 <!--<![endif]-->
 
 <?php include_once("head.php") ;?>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
-      $('.continue_button').click(function(){
+      $('#welcome_continue').click(function(){
           window.location.href = 'login.php';
           return false;
       });
     });
-
-
 </script>
 <body>
 
 <div class="gridContainer clearfix">
     <div id="Header"><?php include_once("header1.php");?>     
     </div> 
-  <div id="main_content">
+  <div id="main_content" style="margin-top: 0%;">
     <div  id="welcome_page_client_facing">
      
     	<div id="logo">
@@ -81,9 +80,11 @@ if(isset($_SESSION['activation']))
     	 </div>
 
     	<!-- Need to redesign contibue biutton, when it is %a link -->
-        <div  class="continue_button">
-    		  <a href="login.php">Continue</a>
-      	</div>
+        <a href="login.php">
+          <div  class="continue_button" id="welcome_continue">
+      		  Continue
+        	</div>
+        </a>
       </div>
     </div>  
       

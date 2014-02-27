@@ -23,7 +23,10 @@ if(isset($_GET['err'])){
 
 		if (isset($_SESSION['activation'])) {
 
-		$msg2user = '<div id="welcome_link_activation"> <a href="welcome.php">Continue</a> </div>';
+		$msg2user = '
+		<a href="welcome.php" style="display: block;">
+		<div id="welcome_link_activation"> Continue </div>
+		</a>';
 
 		} 
 		else {
@@ -123,7 +126,7 @@ if (isset($_POST['activate'])){
 		$error_msg ="";	
 		
 		$activationform = "";	
-		$msg2user = '<div id="welcome_link_activation"> <a href="welcome.php">Continue</a> </div>';
+		$msg2user = '<a href="welcome.php"><div id="welcome_link_activation"> Continue </div></a>';
 
 		} else{
 
@@ -181,16 +184,6 @@ unset($_SESSION['activateorderid']);
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php"); ?>
-<script type="text/javascript">
-    $(document).ready(function(){
-      $('#welcome_link_activation').click(function(){
-          window.location.href = 'welcome.php';
-          return false;
-      });
-    });
-
-
-</script>
 
 <script type="text/javascript" src="../Script/jquery.mobile-1.4.0.min.js"></script>
 		<script>
