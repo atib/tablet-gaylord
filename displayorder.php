@@ -495,6 +495,7 @@ if (isset($_GET['delete'])){
 }
 
 $grandtotal = $nettotal;
+
 if (isset($_POST['update'])){
 
 	echo $cashDisc = $_POST['cashdisc'];
@@ -513,7 +514,6 @@ if (isset($_POST['update'])){
 	if ($cashDisc !='' && $percentDisc ==''){
 	
 	$grandtotal = $db_total - $cashDisc;
-	$grandtotal = '£' . $grandtotal;
 
 	$success_msg = "Cash Discount Applied";
 	$percentDisc = "";
@@ -522,7 +522,6 @@ if (isset($_POST['update'])){
 	
 	$percent = ($db_total/100)*$percentDisc;
 	$grandtotal = $db_total - $percent;
-	$grandtotal =$grandtotal.'%';
 	$success_msg = "Percentage Discount Applied";
 	$cashDisc = "";
 	
@@ -659,7 +658,7 @@ if (isset($_POST['update'])){
 		
 <div id="nettotal">Net Total: &pound; <?php echo number_format($nettotal, 2)?></div>
 <div id="discounttotal">Discount: <?php echo $cashDisc;?> <?php echo $percentDisc?></div>
-<div id="grandtotal">Grandtotal: <?php echo $grandtotal?></div>
+<div id="grandtotal">Grandtotal: &pound;<?php echo number_format($grandtotal, 2)?></div>
 <div class="Order_complete">
 
 <div class="buttons">
