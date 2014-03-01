@@ -1043,6 +1043,15 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	border-top: 10px solid #efefef;
 }
 
+#push_up {
+	background-color: #4D4D4F;
+	color: #fff;
+	text-align: center;
+	padding-top: 4%;	
+	padding-bottom: 1%;
+	font-weight: bold;
+}
+
 
 #menuCat {
 	float: left;

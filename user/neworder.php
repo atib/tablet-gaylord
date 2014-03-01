@@ -463,6 +463,8 @@ if (isset($_GET['delete'])){
 	}
 	header('Location:'.$page);
 }
+
+
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
@@ -476,10 +478,16 @@ if (isset($_GET['delete'])){
 		
 		$(document).ready(function(){
 				var pull 		= $('#pull');
+				var push_up = $("#push_up");
 				menu 		= $('.ordermenu .ordermenu_list');
 				menuHeight	= menu.height();
 
 			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+
+			$(push_up).on('click', function(e) {
 				e.preventDefault();
 				menu.slideToggle();
 			});
@@ -552,7 +560,7 @@ if (isset($_GET['delete'])){
 	            <a class="op" href="?cat=11" >NAN/ROTI - FLATBREAD</a>
 	            <a class="op" href="?cat=12" >SUNDRIES &amp; OTHER EXTRAS</a>
 	            <a class="op" href="?cat=13" >DRINKS</a>
-	            <a class="op">Close</a>
+	            <a class="op" href="#" id="push_up">CLOSE</a>
 	        </ul>
 	    </nav>    
   	</div>
