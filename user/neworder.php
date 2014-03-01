@@ -79,7 +79,7 @@ if (isset($_GET['cat'])){
 	
 	}else if ($cat == "14"){
 	$selectedMenu = $cat;
-	$menuTitle = "MY ORDER";		
+	$menuTitle = ' <img id="basket" src="../Images/basket.png"> MY BASKET ';		
 
 	}else{
 	$cat = "1";
@@ -464,7 +464,6 @@ if (isset($_GET['delete'])){
 	header('Location:'.$page);
 }
 
-
 ?>
 <!doctype html>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
@@ -474,57 +473,54 @@ if (isset($_GET['delete'])){
 <html class="">
 <!--<![endif]-->
 <?php include_once('head.php'); ?>
-	<script>
-		
-		$(document).ready(function(){
-				var pull 		= $('#pull');
-				var push_up = $("#push_up");
-				menu 		= $('.ordermenu .ordermenu_list');
-				menuHeight	= menu.height();
+<script>
+	
+	$(document).ready(function(){
+			var pull 		= $('#pull');
+			var push_up = $("#push_up");
+			menu 		= $('.ordermenu .ordermenu_list');
+			menuHeight	= menu.height();
 
-			$(pull).on('click', function(e) {
-				e.preventDefault();
-				menu.slideToggle();
-			});
-
-			$(push_up).on('click', function(e) {
-				e.preventDefault();
-				menu.slideToggle();
-			});
-
-			$(window).resize(function(){
-        		var w = $(window).width();
-        		if(w > 320 && menu.is(':hidden')) {
-        			menu.removeAttr('style');
-        		}
-    		});
-
-    		$('.prodAdd a').click(function(){
-    			
-    			// Need to look at this function a little more in depth 
-  				$('#flash').show().delay(2000).fadeOut(500);
-
-    			// $.get({
-
-    			// 	URL: 'neworder.php', 
-    			// 	success: function(){
-    				
-	    		// 		console.log('item added to basket');
-
-    			// 	}
-
-    			// }); 
-
-
-    		});
-
-
+		$(pull).on('click', function(e) {
+			e.preventDefault();
+			menu.slideToggle();
 		});
 
+		$(push_up).on('click', function(e) {
+			e.preventDefault();
+			menu.slideToggle();
+		});
 
-			
+		$(window).resize(function(){
+      		var w = $(window).width();
+      		if(w > 320 && menu.is(':hidden')) {
+      			menu.removeAttr('style');
+      		}
+  		});
+
+  		$('.prodAdd a').click(function(){
+  			
+  			// Need to look at this function a little more in depth 
+				$('#flash').show().delay(2000).fadeOut(500);
+  		});
+	});
+</script>
+
+<?php 
+
+include_once("db_connect.php");	
+$crt_sess = $_SESSION['crt_sess'];
+
+$cart_user_quant = "SELECT SUM(crt_qt) AS quantity FROM cart_tbl WHERE crt_sess = '$crt_sess'";
+$get_usr_crt_qt = mysqli_query($db_connection, $cart_user_quant) or die (mysqli_error($db_connection));
+
+while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
+	$_SESSION['usr_qt_crt'] = $row['quantity'];
+	$usr_crt_quant = $_SESSION['usr_qt_crt'];
 	
-	</script>
+}
+
+?>
 
 <body>
 
@@ -546,7 +542,7 @@ if (isset($_GET['delete'])){
 	        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
 
 	        <ul class="ordermenu_list"> 
-	            <a class="myorder" href="?cat=14" >MY ORDER</a>
+	            <a class="myorder" href="?cat=14" id="basket_order_menu"> <img src="../Images/basket.png"> My Basket  (Items currently in basket: <?php echo $usr_crt_quant;?>) </a>
 	          	<a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
 	            <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>
 	            <a class="op" href="?cat=3" >GAYLORD EXCLUSIVE NEW DISHES</a>

@@ -1052,6 +1052,15 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-weight: bold;
 }
 
+#basket_order_menu img {
+	width: 25px;
+	vertical-align: middle;
+}
+
+#basket {
+		width: 25px;
+	vertical-align: middle;	
+}
 
 #menuCat {
 	float: left;
@@ -1316,7 +1325,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 #UserCart #dishName {
 	float: left;
 	height: 30px;
-	width: 60%;
+	width: 43%;
 	font-size: 18px;
 	font-weight: bold;
 	padding-top: 10px;
@@ -1337,7 +1346,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	display: inline-block;
 	float: left;
 	height: 30px;
-	width: 10%;
+	width: 27%;
 	padding-top: 10px;
 }
 #usertotal {
