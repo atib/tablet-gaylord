@@ -1101,29 +1101,9 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	padding-left: 2%;
 }
 #menuHolder .prodAdd {
-
-	-moz-border-radius: 42px;
-	-webkit-border-radius: 42px;
-	border-radius: 42px;
-	padding: 1% 3.5%;
-	text-decoration: none;
-	background: -moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
-	background: -ms-linear-gradient( top, #77d42a 5%, #5cb811 100% );
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
-	background: -webkit-gradient( linear, left top, left bottom, color-stop(5%, #77d42a), color-stop(100%, #5cb811) );
-	background-color: #77d42a;
-	/* margin-top: -1%; */
-	float: right;
-	/* margin-right: 3%; */
-
 }
 
 #menuHolder .prodAdd:hover {
-	background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
-	background:-ms-linear-gradient( top, #5cb811 5%, #77d42a 100% );
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
-	background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #5cb811), color-stop(100%, #77d42a) );
-	background-color:#5cb811;
 }
 
 #menuHolder .prodAdd a{
@@ -1131,13 +1111,27 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-size: 2.5em;
 	font-weight: bold;
 	color: #fff;
-	margin-top: -10%;
+	/* margin-top: -10%; */
+	float: right;
 	display: inline-block;
+	-moz-border-radius: 42px;
+	-webkit-border-radius: 42px;
+	border-radius: 42px;
+	padding: 1% 3%;
+	text-decoration: none;
+	background-color: #77d42a;
 }
+
+#menuHolder .prodAdd a:hover {
+	background-color:#5cb811;
+
+
+}
+
 
 #menuHolder .prodlDesc {
 	display: block;
-	float: left;
+	/*float: left;*/
 	height: auto;
 	width: 70%;
 	font-family: sans-serif;
@@ -1145,7 +1139,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-size: 0.8em;
 	color: #3E0038;
 	padding-left: 2%;
-	margin-top: 3%;
+	margin-top: 4%;
 
 
 }

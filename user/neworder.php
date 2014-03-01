@@ -305,6 +305,7 @@ if (isset($_GET['cat'])){
 	}else{
 		
 	$page = "http://lunarwebstudio.com/Demos/GaylordTablet/user/neworder.php";
+	
 	header('Location:'.$page .'?cat=14');
 		
 	}
@@ -490,22 +491,21 @@ if (isset($_GET['delete'])){
         		}
     		});
 
-    		$('.prodAdd').click(function(){
+    		$('.prodAdd a').click(function(){
     			
     			// Need to look at this function a little more in depth 
+  				$('#flash').show().delay(2000).fadeOut(500);
 
-    			$.ajax({
+    			// $.get({
 
-    				type: "GET", 
-    				URL: 'neworder.php', 
-    				success: function(){
+    			// 	URL: 'neworder.php', 
+    			// 	success: function(){
     				
-	    				$('#flash').show().delay(2000).fadeOut(500);
-	    				console.log('item added to basket');
+	    		// 		console.log('item added to basket');
 
-    				}
+    			// 	}
 
-    			}); 
+    			// }); 
 
 
     		});
@@ -552,6 +552,7 @@ if (isset($_GET['delete'])){
 	            <a class="op" href="?cat=11" >NAN/ROTI - FLATBREAD</a>
 	            <a class="op" href="?cat=12" >SUNDRIES &amp; OTHER EXTRAS</a>
 	            <a class="op" href="?cat=13" >DRINKS</a>
+	            <a class="op">Close</a>
 	        </ul>
 	    </nav>    
   	</div>
