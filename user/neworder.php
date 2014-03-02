@@ -169,7 +169,7 @@ if (isset($_GET['cat'])){
 						<form action="orderProcess.php" method="post" target="_self" enctype="multipart/form-data">
 						
 						<input type="submit" name="complete" value="Next Step" class="button" />
-						<input name="complete" type="hidden" value="imcomplete">
+						<input name="complete" type="hidden" value="incomplete">
 						<input name="crt_sess" type="hidden" value="'.$crt_sess.'">
 						<input name="activation" type="hidden" value="'.$activation.'">
 						<input name="activateorderid" type="hidden" value="'.$activateorderid.'">
