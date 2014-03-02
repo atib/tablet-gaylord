@@ -1124,7 +1124,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 #menuHolder .prodAdd:hover {
 }
 
-#menuHolder .prodAdd a, #add_prod{
+#menuHolder .prodAdd a, #add_prod, #dec_prod, #del_prod{
 	text-decoration: none;
 	font-size: 2.5em;
 	font-weight: bold;
@@ -1140,9 +1140,32 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	background-color: #77d42a;
 }
 
+
+
 #menuHolder .prodAdd a:hover {
 	background-color:#5cb811;
+}
 
+#add_prod{ 
+	padding: 0% 7%; 
+	font-size: 3em;
+	margin-right: 3%;
+}
+
+#dec_prod{
+	font-family: sans-serif;
+	padding: 0% 10%; 
+	font-size: 3em;
+	margin-right: 3%;
+	background-color: #E49837;
+} 
+
+#del_prod {
+	font-family: sans-serif;
+	padding: 0% 7%; 
+	font-size: 3em;
+	margin-right: 3%;
+	background-color: #bf134e;
 
 }
 
@@ -1328,7 +1351,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 @media only screen and (min-width: 481px) {
 #UserCart {
-	float: left;
+	/*float: left;*/
 	height: auto;
 	width: 100%;
 	display: block;
@@ -1348,7 +1371,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-weight: bold;
 	float: left;
 	height: 30px;
-	width: 30%;
+	width: 25%;
 	padding-top: 10px;
 	display: inline-block;
 }
@@ -1358,7 +1381,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	display: inline-block;
 	/*float: left;*/
 	/*height: 30px;*/
-	width: 27%;
+	width: 31%;
 	padding-top: 10px;
 }
 #usertotal {

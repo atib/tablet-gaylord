@@ -132,9 +132,14 @@ if (isset($_GET['cat'])){
 				<div id="quant">'.$row['crt_qt'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($row['crt_price'], 2). '</div>
 				
 				<div id="cost">
-				<a href="neworder.php?remove='.$row['p_id'].'&cat=14">-</a> 
-				<a href="neworder.php?add='.$row['p_id'].'&cat=14" id="add_prod" >+</a> 
+
+
+
 				<a href="neworder.php?delete='.$row['p_id'].'&cat=14" id="del_prod" >x</a>
+				<a href="neworder.php?remove='.$row['p_id'].'&cat=14" id="dec_prod" >-</a> 
+
+				<a href="neworder.php?add='.$row['p_id'].'&cat=14" id="add_prod" >+</a> 
+
 				</div>
 				
 				<hr>
