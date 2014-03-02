@@ -1150,6 +1150,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	text-decoration: none;
 	font-family: sans-serif;
 	font-size: 1.8em;
+	font-weight: bold;
 	color: #fff;
 	padding: 6% 10%;
 	-moz-border-radius: 100px;
@@ -1172,8 +1173,6 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 } 
 
 #del_prod {
-
-	margin-right: 3%;
 	font-weight: lighter;
 	background-color: #bf134e	;
 
