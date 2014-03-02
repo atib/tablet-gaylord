@@ -1124,7 +1124,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 #menuHolder .prodAdd:hover {
 }
 
-#menuHolder .prodAdd a, #add_prod, #dec_prod, #del_prod{
+#menuHolder .prodAdd a {
 	text-decoration: none;
 	font-size: 2.5em;
 	font-weight: bold;
@@ -1146,26 +1146,35 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	background-color:#5cb811;
 }
 
+#add_prod, #dec_prod, #del_prod {
+	text-decoration: none;
+	font-family: sans-serif;
+	font-size: 1.8em;
+	color: #fff;
+	padding: 2% 10%;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	border-radius: 100px;
+	display: inline-table;
+}
+
 #add_prod{ 
-	padding: 0% 7%; 
-	font-size: 3em;
 	margin-right: 3%;
+	background-color: #77d42a;
+
 }
 
 #dec_prod{
 	font-family: sans-serif;
-	padding: 0% 10%; 
-	font-size: 3em;
 	margin-right: 3%;
 	background-color: #E49837;
 } 
 
 #del_prod {
-	font-family: sans-serif;
-	padding: 0% 7%; 
-	font-size: 3em;
+
 	margin-right: 3%;
-	background-color: #bf134e;
+	font-weight: lighter;
+	background-color: #bf134e	;
 
 }
 
