@@ -167,6 +167,10 @@ margin-bottom: 0em;
 	margin-top: -5%
 }
 
+.title h3 {
+	float: left;
+}
+
 .activate_tablet {
 	margin-left: 0;
 	margin-top: 0; 
@@ -1057,10 +1061,6 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	vertical-align: middle;
 }
 
-#basket {
-		width: 25px;
-	vertical-align: middle;	
-}
 
 #menuCat {
 	float: left;
@@ -1124,7 +1124,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 #menuHolder .prodAdd:hover {
 }
 
-#menuHolder .prodAdd a{
+#menuHolder .prodAdd a, #add_prod{
 	text-decoration: none;
 	font-size: 2.5em;
 	font-weight: bold;
@@ -1312,6 +1312,18 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	width: 100%;
 	display: block;
 }
+
+.basket_icon {
+	float: right;
+	font-size: 40%;
+	font-family: sans-serif;
+	margin-bottom: 5%;
+}
+
+.basket_icon img {
+	vertical-align: text-bottom;
+}
+
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
 @media only screen and (min-width: 481px) {
@@ -1341,11 +1353,11 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	display: inline-block;
 }
 #UserCart #cost {
-	font-size: 18px;
+	/*font-size: 18px;*/
 	font-weight: bold;
 	display: inline-block;
-	float: left;
-	height: 30px;
+	/*float: left;*/
+	/*height: 30px;*/
 	width: 27%;
 	padding-top: 10px;
 }

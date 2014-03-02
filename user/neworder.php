@@ -79,7 +79,7 @@ if (isset($_GET['cat'])){
 	
 	}else if ($cat == "14"){
 	$selectedMenu = $cat;
-	$menuTitle = ' <img id="basket" src="../Images/basket.png"> MY BASKET ';		
+	$menuTitle = 'MY BASKET ';		
 
 	}else{
 	$cat = "1";
@@ -132,9 +132,9 @@ if (isset($_GET['cat'])){
 				<div id="quant">'.$row['crt_qt'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($row['crt_price'], 2). '</div>
 				
 				<div id="cost">
-				<a href="neworder.php?remove='.$row['p_id'].'&cat=14"><img src="../Images/minus.png" alt="Minus"></a> 
-				<a href="neworder.php?add='.$row['p_id'].'&cat=14"><img src="../Images/plus.png" alt="Plus"></a> 
-				<a href="neworder.php?delete='.$row['p_id'].'&cat=14"><img src="../Images/delete.png" alt="Delete"></a>
+				<a href="neworder.php?remove='.$row['p_id'].'&cat=14">-</a> 
+				<a href="neworder.php?add='.$row['p_id'].'&cat=14" id="add_prod" >+</a> 
+				<a href="neworder.php?delete='.$row['p_id'].'&cat=14" id="del_prod" >x</a>
 				</div>
 				
 				<hr>
@@ -535,6 +535,9 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
     
     <div class="title">
       <h3>View Menu</h3>
+      <div class="basket_icon">
+	      <img id="basket" src="../Images/basket_grey.png"><?php echo $usr_crt_quant;?> items
+      </div>
     </div>
 
     <div id="takeawaymenuOption">
