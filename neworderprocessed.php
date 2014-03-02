@@ -93,12 +93,16 @@ $access= md5(3);
 	$par = "";
 if ($_GET['par']== $access) {
 	
+date_default_timezone_set('Europe/London');
+
+$todaydate = date("y/m/d");
+$todaytime = date("H:i:s");
 	
 	include_once ("db_connect.php");
 
 	// /*
-	$create_NO = 'INSERT INTO order_tbl (o_type, o_date, o_time, o_payment, o_process)
-									VALUES ("Dine In", CURDATE(),NOW(), "Not Paid", "Arrived")';
+	$create_NO = "INSERT INTO order_tbl (o_type, o_date, o_time, o_payment, o_process)
+									VALUES ('Dine In', '$todaydate', '$todaytime', 'Not Paid', 'Arrived')";
 	
 	mysqli_query($db_connection, $create_NO) or die (mysqli_error($db_connection));
 	
