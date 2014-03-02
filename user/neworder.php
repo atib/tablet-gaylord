@@ -508,7 +508,7 @@ if (isset($_GET['delete'])){
   		});
 
   		$('.prodAdd a').click(function(){  			
-			$('#flash').show().delay(2000).fadeOut(500);
+			$('#flash').show().delay(2000).fadeOut('slow');
   		});
 
   		$('#add_prod').click(function(){  			
