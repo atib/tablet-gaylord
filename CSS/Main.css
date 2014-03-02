@@ -1151,7 +1151,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-family: sans-serif;
 	font-size: 1.8em;
 	color: #fff;
-	padding: 2% 10%;
+	padding: 6% 10%;
 	-moz-border-radius: 100px;
 	-webkit-border-radius: 100px;
 	border-radius: 100px;
@@ -1168,6 +1168,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-family: sans-serif;
 	margin-right: 3%;
 	background-color: #E49837;
+	padding: 5% 10%;
 } 
 
 #del_prod {
@@ -1367,23 +1368,31 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	margin-top: 10px;
 }
 #UserCart #dishName {
+	padding-left: 2%;
 	float: left;
-	height: 30px;
-	width: 43%;
-	font-size: 18px;
-	font-weight: bold;
-	padding-top: 10px;
+	font-family: sans-serif;
+	width: 41%;
+	font-weight: lighter;
+	padding-top: 3%;
 	display: inline-block;
+	font-size: 1.3em;
+	color: #3E0038;
 }
 #UserCart #quant {
-	font-size: 18px;
-	font-weight: bold;
+	font-family: sans-serif;
 	float: left;
-	height: 30px;
+	font-weight: lighter;
 	width: 25%;
-	padding-top: 10px;
+	padding-top: 3%;
+	font-size: 1.3em;
+	color: #3E0038;
 	display: inline-block;
 }
+
+.quantity_cart {
+	font-weight: bold;
+}
+
 #UserCart #cost {
 	/*font-size: 18px;*/
 	font-weight: bold;
@@ -1393,6 +1402,19 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	width: 31%;
 	padding-top: 10px;
 }
+
+#cartMsg {
+	font-family: sans-serif;
+	padding-top: 5%;
+	font-weight: lighter;
+}
+
+#cartMsg h3 {
+	font-size: 1.8em;
+	margin-bottom: 3%;
+	color: #3E0038;
+}
+
 #usertotal {
 	font-size: 24px;
 	font-weight: bold;
@@ -1415,6 +1437,8 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	padding-top: 10px;
 	padding-right: 2%;
 }
+
+
 #discounttotal {
 	font-size: 24px;
 	font-weight: bold;

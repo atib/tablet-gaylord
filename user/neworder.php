@@ -79,7 +79,7 @@ if (isset($_GET['cat'])){
 	
 	}else if ($cat == "14"){
 	$selectedMenu = $cat;
-	$menuTitle = 'MY BASKET ';		
+	$menuTitle = 'MY CART ';		
 
 	}else{
 	$cat = "1";
@@ -129,7 +129,7 @@ if (isset($_GET['cat'])){
 				<div id="dishName">'.$row['crt_name'].'</div>
 				
 				
-				<div id="quant">'.$row['crt_qt'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($row['crt_price'], 2). '</div>
+				<div id="quant"> <span class="quantity_cart"> '.$row['crt_qt'].' </span> &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($row['crt_price'], 2). '</div>
 				
 				<div id="cost">
 
@@ -153,7 +153,7 @@ if (isset($_GET['cat'])){
 	
 		$basketMsg = '
 				<div id="cartMsg">
-					<p>'.$row['user_name'].' Your cart is empty.</p>
+					<h3>'.$fname.' your cart is empty.</h3>
 					<p>Click the add link beside the dish to include it into the basket</p>
 					<p>When you happy with the selected dish click check out to proces the basket</p>
 			 	</div>';
@@ -172,7 +172,10 @@ if (isset($_GET['cat'])){
   						<div class="buttons">
 						<form action="orderProcess.php" method="post" target="_self" enctype="multipart/form-data">
 						
-						<input type="submit" name="complete" value="Next Step" class="button" />
+						<div class =" continue_button">
+						<input type="submit" name="complete" value="Next Step" class="" />
+						</div>
+
 						<input name="complete" type="hidden" value="incomplete">
 						<input name="crt_sess" type="hidden" value="'.$crt_sess.'">
 						<input name="activation" type="hidden" value="'.$activation.'">
@@ -477,6 +480,8 @@ if (isset($_GET['delete'])){
 <html class="">
 <!--<![endif]-->
 <?php include_once('head.php'); ?>
+<script type="text/javascript" src="../Script/jquery.mobile-1.4.0.min.js"></script>
+
 <script>
 	
 	$(document).ready(function(){
@@ -505,7 +510,7 @@ if (isset($_GET['delete'])){
   		$('.prodAdd a').click(function(){
   			
   			// Need to look at this function a little more in depth 
-				$('#flash').show().delay(2000).fadeOut(500);
+				$('#flash').show().delay(10000).fade(10000);
   		});
 	});
 </script>
@@ -556,7 +561,7 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
 	        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
 
 	        <ul class="ordermenu_list"> 
-	            <a class="myorder" href="?cat=14" id="basket_order_menu"> <img src="../Images/basket.png"> My Basket  (Items currently in basket: <?php 
+	            <a class="myorder" href="?cat=14" id="basket_order_menu"> <img src="../Images/basket.png"> My Cart  (Items currently in cart: <?php 
 	            	      if ($usr_crt_quant > 0) {
 					      	echo $usr_crt_quant;
 					      }
@@ -584,7 +589,7 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
   	</div>
   
   	<div id="flash">
-  	Item added to basket
+  	Item added to cart
   	</div>
 <?php echo $error_msg; ?> <?php echo $success_msg; ?>
 <?php echo $orderMenu;?>
