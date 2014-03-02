@@ -174,7 +174,9 @@ if($_POST['filtercondition'] == 7){
 					$o_activation = $order["o_activation"];
 					$paymenttype = $order["o_paymentType"];
 					$total = $order["o_total"];
-					$o_datetime = $order["o_datetime"];
+					$o_date = $order["o_date"];
+					$o_date = date("d-m-Y", strtotime($o_date));
+					$o_time = $order["o_time"];
 					$o_active = $order["o_active"];
 
 			if($o_active == 1){
@@ -198,7 +200,7 @@ if($_POST['filtercondition'] == 7){
 	        <div class="ol_content">Date / Time</div>
 	        <div class="ol_content">Total</div>
 	        <div class="ol_content order_id_ol_content">'. $orderid.'</div>
-	        <div class="ol_content order_date_ol_content">'. $datetime.'</div>
+	        <div class="ol_content order_date_ol_content">'. $o_date.'  at  '. $o_time.'</div>
 	        <div class="ol_content order_total_ol_content">&pound;' .number_format ($total, 2). '</div>
         </div>
   	 <div class="filter_selection_actions">
