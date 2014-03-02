@@ -42,13 +42,13 @@ if(isset($_SESSION['activation']))
 
 <?php include_once("head.php") ;?>
 <script type="text/javascript">
-    $(document).ready(function(){
-      $('#welcome_continue').click(function(){
-          window.location.href = 'login.php';
-          return false;
-      });
-    });
-</script>
+//     $(document).ready(function(){
+//       $('#welcome_continue').click(function(){
+//           window.location.href = 'login.php';
+//           return false;
+//       });
+//     });
+// </script>
 <body>
 
 <div class="gridContainer clearfix">

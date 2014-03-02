@@ -1,12 +1,4 @@
 @font-face {
-  font-family: 'genius';
-  src: url('fonts/genius_font/29BA0D_0_0.eot');
-  src: url('fonts/genius_font/29BA0D_0_0?#iefix') format('embedded-opentype'),
-       url('fonts/genius_font/29BA0D_0_0.woff') format('woff'),
-       url('fonts/genius_font/29BA0D_0_0.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'gandhi_bold';
   src: url('fonts/gandhi_bold/GandhiSerif-Bold-webfont.eot');
   src: url('fonts/gandhi_bold/GandhiSerif-Bold-webfont.eot?#iefix') format('embedded-opentype'),
@@ -127,7 +119,8 @@ margin-bottom: 0em;
 }
 
 #header_top h1 {
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 90%;
 	color: #efefef; 
 	margin-left: 2%;
@@ -143,7 +136,8 @@ margin-bottom: 0em;
 }
 
 #heading h3 {
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 1.3em;
 	margin-top: 1%;
 	color: #999;
@@ -159,7 +153,8 @@ margin-bottom: 0em;
 }
 
 .title {
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 2.6em;
 	margin-bottom: 5%;
 	color: #888;
@@ -194,7 +189,8 @@ margin-bottom: 0em;
 	z-index: 2;
 	background: #94C01E;
 	color: #efe;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	text-align: center;
 	box-shadow: none;
 	text-shadow: none;
@@ -222,7 +218,8 @@ margin-bottom: 0em;
 }
 
 .error_message_activation {
-	font-family: 'genius'; 
+	font-family: sans-serif;
+	font-weight: lighter; 
 	color: #bf134e;
 	font-size: 1.5em;
 	text-transform: uppercase;
@@ -230,7 +227,8 @@ margin-bottom: 0em;
 }
 
 .success_message_activation {
-	font-family: 'genius'; 
+	font-family: sans-serif;
+	font-weight: lighter; 
 	color: #94C01E;
 	font-size: 1.5em;
 	text-transform: uppercase;
@@ -276,7 +274,8 @@ margin-bottom: 0em;
 }
 
 #orderno p {
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	/*float: right;*/
 	margin-bottom: 10%;
 	font-size: 1.3em;
@@ -305,7 +304,8 @@ margin-bottom: 0em;
 
 .head02 h6 { 
 	color: #efefef;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	margin: 0;
 	text-align: center;
 	margin-top: 0.5%;
@@ -338,7 +338,8 @@ margin-bottom: 0em;
 }
 
 #footer_color h6 {
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 75%;
 	color: #efefef; 
 	padding: 0;
@@ -361,7 +362,8 @@ margin-bottom: 0em;
 .buttons .button {
 	width: 76%;
 	margin-top: 5%;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 200%;
 	background: #94C01E;
 	border: 1px solid #94C01E;
@@ -400,7 +402,8 @@ margin-bottom: 0em;
 	cursor: pointer;
 	width: 100%;
 	margin-top: 5%;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 1.2em;
 	background: #94C01E;
 	border: 1px solid #94C01E;
@@ -414,7 +417,8 @@ margin-bottom: 0em;
 .continue_button .ui-btn {
 	background: #94C01E;
 	color: #efe;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	box-shadow: none;
 	text-shadow: none;
 	margin-top: 5%;
@@ -434,7 +438,8 @@ margin-bottom: 0em;
 .skip_button .filter_continue {
 	cursor: pointer;
 	width: 100%;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 1.2em;
 	background: #4273AB;
 	border: 1px solid #94C01E;
@@ -448,7 +453,8 @@ margin-bottom: 0em;
 .skip_button .ui-btn {
 	background: #4273AB;
 	color: #efe;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	box-shadow: none;
 	text-shadow: none;
 	margin-top: 2%;
@@ -468,7 +474,8 @@ margin-bottom: 0em;
 .cancel_button .ui-btn { 
 	background: #C5194C; 
 	color: #efe; 
-	font-family: 'genius'; 
+	font-family: sans-serif;
+	font-weight: lighter; 
 	box-shadow: none; 
 	text-shadow: none;
 }
@@ -481,7 +488,8 @@ margin-bottom: 0em;
 }
 
 .success_activation h3 {
-	font-family: 'genius', sans-serif;
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 2em; 
 	color: #94C01E;
 	margin-bottom: 3%;
@@ -507,7 +515,8 @@ margin-bottom: 0em;
 
 .activation_message h2 {
 
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	color: #94C01E	;
 	font-size: 2.5em;
 	margin: 5% 0;
@@ -521,7 +530,8 @@ margin-bottom: 0em;
 	background-color: #B3B2B2;
 	color: #efefef;
 	font-size: 0.9em;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	padding: 2% 6%;
 	margin-bottom: 5%;
 }
@@ -540,7 +550,8 @@ margin-bottom: 0em;
 	float: left;
 	background: #94C01E;
 	border: 1px solid #94C01E;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	color: #efefef;
 	padding: 2% 0%;
 	cursor: pointer;
@@ -553,7 +564,8 @@ margin-bottom: 0em;
 	float: left;
 	background: #94C01E;
 	border: 1px solid #94C01E;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	color: #efefef;
 	padding: 2% 0%;
 	cursor: pointer;
@@ -582,7 +594,8 @@ margin-bottom: 0em;
 	float: left;
 	background: #B3B2B2;
 	border: 1px solid #B3B2B2;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	color: #efefef;
 	padding: 2% 0%;
 	cursor: pointer;
@@ -621,7 +634,8 @@ margin-bottom: 0em;
 
 .fields .field1 {
 	width: 70%; 
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 200%;
 	padding: 2% 3%;
 	outline: none;
@@ -710,7 +724,8 @@ a#nav1:hover {
 
 a#nav1 li {
 	font-size: 1.3em;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	color: #efefef;
 	text-align: center;
 
@@ -1178,6 +1193,31 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 }
 
+#main_content > div.Order_complete > div > form > .continue_button input {
+	padding: 3% 0;
+	border: 0;
+	width: 100%;
+	outline: 0;
+	-webkit-border-radius: inherit;
+	border-bottom-radius: inherit;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	cursor: pointer;
+	z-index: 2;
+	background: #94C01E;
+	color: #efe;
+	font-family: sans-serif;
+	font-weight: lighter;
+	text-align: center;
+	box-shadow: none;
+	text-shadow: none;
+	border-radius: 4px;
+	margin: 5% 0;
+}
+
+#main_content > div.Order_complete > div > form > .continue_button input:hover {
+	color: #4D4D4F;
+}
 
 #menuHolder .prodlDesc {
 	display: block;
@@ -1236,7 +1276,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 
 #title {
-	font-family: 'genius',sans-serif;
+	font-family:sans-serif;
 	font-size: 2em;
 	font-weight: lighter;
 	color: #174E62;
@@ -1270,7 +1310,8 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	z-index: 2;
 	background: #94C01E;
 	color: #efe;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	text-align: center;
 	box-shadow: none;
 	text-shadow: none;
@@ -1316,7 +1357,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 }
 
-#flash {
+#flash, #flash_dec, #flash_rem {
 	position:fixed; 
 	width:100%; 
 	background-color: #9AC25C; 
@@ -1324,19 +1365,38 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	left: 0px;
 	padding: 2% 0%;
 	text-align: center;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 2em;
 	color: #efe;
 	display: none;
 }
 
+#flash_dec {
+	background-color: #E49837;
+	color: #fff;
+}
+
+#flash_rem {
+	background-color: #bf134e;
+	color: #fff;
+
+}
+
 .Order_complete {
-	text-align: center;
+	text-align: left;
+	padding-left: 2%;
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 0.9em;
+	color: #4D4D4F;
 	float: left;
 	height: auto;
 	width: 100%;
 	display: block;
 }
+
+
 .Order_discount {
 	text-align: center;
 	float: left;
@@ -1370,12 +1430,12 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	padding-left: 2%;
 	float: left;
 	font-family: sans-serif;
-	width: 41%;
+	width: 42%;
 	font-weight: lighter;
 	padding-top: 3%;
 	display: inline-block;
 	font-size: 1.3em;
-	color: #3E0038;
+	color: #4D4D4F;
 }
 #UserCart #quant {
 	font-family: sans-serif;
@@ -1384,7 +1444,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	width: 25%;
 	padding-top: 3%;
 	font-size: 1.3em;
-	color: #3E0038;
+	color: #4D4D4F;
 	display: inline-block;
 }
 
@@ -1415,16 +1475,81 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 #usertotal {
-	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
+
 	display: block;
+	padding-left: 2%;
 	float: left;
-	height: 40px;
 	width: 98%;
-	padding-top: 10px;
-	padding-right: 2%;
+	padding-top: 2%;
+	padding-bottom: 3%;
+	font-family: sans-serif;
+	font-size: 1.3em;
+	font-weight: lighter;
+	color: #4D4D4F;
 }
+
+.user_total_bill {
+	font-weight: bold;
+}
+
+.table_order_total {
+	font-size: 1em;
+}
+
+#user_name_total {
+	font-family: sans-serif;
+	font-weight: lighter;
+	color: #3E0038;
+	font-size: 1em;
+	display: inline-block;
+	padding-top: 4%;
+}
+
+.table_total {
+	font-weight: bold;
+	float: right;
+	margin-top: 5%;
+}
+
+/*Table order part*/
+
+#table_order {
+	font-family: sans-serif;
+	font-size: 1.1em;
+}
+
+#table_order_title h2 {
+	font-weight: lighter;
+	font-family: sans-serif;
+	font-size: 1.5em;
+	padding-left: 2%;
+	margin-bottom: 3%;
+	color: #174E62;
+}
+
+
+#table_order_section {
+	padding-left: 2%;
+	border-bottom: 1px solid #999;
+	padding-bottom: 2%;
+	padding-top: 2%;
+}
+
+#table_order_section > div {
+	display: inline-table;
+	color: #4D4D4F;
+	font-weight: lighter;
+	font-size: 0.9em;
+}	
+
+#cost_table {
+	width: 20% !important;
+}
+
+#dish_name_table {
+	width: 40%;
+}
+
 #nettotal {
 	font-size: 24px;
 	font-weight: bold;
@@ -1477,7 +1602,8 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	box-shadow: none;
 	border: 1px solid #fff;
 	text-align: center;
-	font-family: 'genius';
+	font-family: sans-serif;
+	font-weight: lighter;
 	font-size: 1.5em;
 }
 

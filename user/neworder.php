@@ -129,7 +129,7 @@ if (isset($_GET['cat'])){
 				<div id="dishName">'.$row['crt_name'].'</div>
 				
 				
-				<div id="quant">'.$row['crt_qt'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($row['crt_price'], 2). '</div>
+				<div id="quant">'.$row['crt_qt'].' x &pound;' .number_format ($row['crt_price'], 2). '</div>
 				
 				<div id="cost">
 
@@ -165,14 +165,16 @@ if (isset($_GET['cat'])){
 	$activateorderid = $_SESSION['activateorderid'];
 	$c_id = $_SESSION['c_id'];
 		
-		$grandtotal= '<div id="usertotal">'.$fname.' Your Bill Total Is: &pound; '.number_format($total, 2).'</div>';
+		$grandtotal= '<div id="usertotal">'.$fname.' Your Bill Total Is: &pound;<span class="user_total_bill"> '.number_format($total, 2).'</span></div>';
 		$complete_btn = '<div class="Order_complete">
 						<span>Once you are happy with your order, click the complete button to process your order. A waiter will come and confirm your order.</span>
 
   						<div class="buttons">
 						<form action="orderProcess.php" method="post" target="_self" enctype="multipart/form-data">
 						
-						<input type="submit" name="complete" value="Next Step" class="button" />
+						<div class ="continue_button">
+						<input type="submit" name="complete" value="Next Step" class="" />
+						</div>
 						<input name="complete" type="hidden" value="incomplete">
 						<input name="crt_sess" type="hidden" value="'.$crt_sess.'">
 						<input name="activation" type="hidden" value="'.$activation.'">
@@ -181,6 +183,9 @@ if (isset($_GET['cat'])){
 
 						</div>
 						</form>
+					</div>
+					<div id="table_order_title">
+					<h2> Table Order </h2>
 					</div>';
 	}
 	
@@ -200,18 +205,19 @@ if (isset($_GET['cat'])){
 				$sub = $t_row['crt_qt']* $t_row['crt_price'];
 				
 				$table_basket .= '
-				<div id="UserCart">
-				
-				<div id="dishName">'.$t_row['crt_name'].'</div>
-				
-				
-				<div id="quant">'.$t_row['crt_qt'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($t_row['crt_price'], 2). '</div>
-				
-				<div id="cost">
-				'.$t_row['user_name'].'
-				</div>
-				
-				<hr>
+				<div id="table_order">
+					<div id="table_order_section">
+					
+					<div id="dish_name_table">'.$t_row['crt_name'].'</div>
+					
+					
+					<div id="cost_table">'.$t_row['crt_qt'].' x &pound;' .number_format ($t_row['crt_price'], 2). '</div>
+					
+					<div id="user_name_total">
+					'.$t_row['user_name'].'
+					</div>
+					
+					</div>
 				</div>
 				';	
 				$total += $sub;
@@ -221,12 +227,11 @@ if (isset($_GET['cat'])){
 	if ($total==0){	
 		$table_basketMsg = '
 				<div id="cartMsg">
-					<p>Table cart is empty.</p>
 			 	</div>';
 	}
 	else{
 		
-		$table_grandtotal= '<div id="usertotal">Total Table Bill: &pound; '.number_format($total, 2).'</div>';
+		$table_grandtotal= '<div id="usertotal"><span class="table_total">Total Table Bill: &pound;'.number_format($total, 2).'</span></div>';
 		
 	} 
 
@@ -502,10 +507,20 @@ if (isset($_GET['delete'])){
       		}
   		});
 
-  		$('.prodAdd a').click(function(){
-  			
-  			// Need to look at this function a little more in depth 
-				$('#flash').show().delay(2000).fadeOut(500);
+  		$('.prodAdd a').click(function(){  			
+			$('#flash').show().delay(2000).fadeOut(500);
+  		});
+
+  		$('#add_prod').click(function(){  			
+			$('#flash').show().delay(2000).fadeOut(500);
+  		});
+
+  		$('#dec_prod').click(function(){  			
+			$('#flash_dec').show().delay(2000).fadeOut(500);
+  		});
+
+  		$('#del_prod').click(function(){  			
+			$('#flash_rem').show().delay(2000).fadeOut(500);
   		});
 	});
 </script>
@@ -584,8 +599,15 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
   	</div>
   
   	<div id="flash">
-  	Item added to basket
+  	Item added to cart
   	</div>
+  	<div id="flash_dec">
+  	Updated cart
+  	</div>
+  	<div id="flash_rem">
+  	Item(s) removed from cart
+  	</div>
+
 <?php echo $error_msg; ?> <?php echo $success_msg; ?>
 <?php echo $orderMenu;?>
 <?php echo $basket;?>
