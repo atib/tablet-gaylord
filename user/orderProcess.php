@@ -8,7 +8,7 @@ if(!isset($_SESSION['email']))
     header("Location: index.php?err=$error_msg");
     exit();
 }
-if(isset($_POST['complete'])=='imcomplete'){
+if(isset($_POST['complete'])=='incomplete'){
 	
 	include_once("db_connect.php");
 	
@@ -21,8 +21,12 @@ $cart_update = "UPDATE cart_tbl SET tab_process = 'Complete' WHERE o_id= '$activ
 	
 $get_order_update_db = mysqli_query($db_connection, $cart_update) or die (mysqli_error($db_connection));
 
+date_default_timezone_set('Europe/London');
 
-$order_update = "UPDATE order_tbl SET o_process = 'Order Taken', o_active = '1' WHERE o_id= '$activateorderid' AND o_activation = '$activation'";
+$todaydate = date("y/m/d");
+$todaytime = date("H:i:s");
+
+$order_update = "UPDATE order_tbl SET o_process = 'Order Taken', o_active = '1', o_date = '$todaydate', o_time = '$todaytime' WHERE o_id= '$activateorderid' AND o_activation = '$activation'";
 	
 $get_order_update_db = mysqli_query($db_connection, $order_update) or die (mysqli_error($db_connection));
 

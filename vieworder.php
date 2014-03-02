@@ -199,7 +199,7 @@ if($_POST['filtercondition'] == 7){
 	        <div class="ol_content">Total</div>
 	        <div class="ol_content order_id_ol_content">'. $orderid.'</div>
 	        <div class="ol_content order_date_ol_content">'. $datetime.'</div>
-	        <div class="ol_content order_total_ol_content">'. $total.'</div>
+	        <div class="ol_content order_total_ol_content">&pound;' .number_format ($total, 2). '</div>
         </div>
   	 <div class="filter_selection_actions">
         <select class="process" name="process"> 
