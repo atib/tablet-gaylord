@@ -540,7 +540,14 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
     <div class="title">
       <h3>View Menu</h3>
       <div class="basket_icon">
-	      <img id="basket" src="../Images/basket_grey.png"><?php echo $usr_crt_quant;?> items
+	      <img id="basket" src="../Images/basket_grey.png"><?php 
+	      if ($usr_crt_quant > 0) {
+	      	echo $usr_crt_quant;
+	      }
+	      else {
+	      	echo "0";
+	      }
+	      ?> items
       </div>
     </div>
 
@@ -549,7 +556,15 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
 	        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
 
 	        <ul class="ordermenu_list"> 
-	            <a class="myorder" href="?cat=14" id="basket_order_menu"> <img src="../Images/basket.png"> My Basket  (Items currently in basket: <?php echo $usr_crt_quant;?>) </a>
+	            <a class="myorder" href="?cat=14" id="basket_order_menu"> <img src="../Images/basket.png"> My Basket  (Items currently in basket: <?php 
+	            	      if ($usr_crt_quant > 0) {
+					      	echo $usr_crt_quant;
+					      }
+					      else {
+					      	echo "0";
+					      }
+	      			?>) 
+	      		</a>
 	          	<a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
 	            <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>
 	            <a class="op" href="?cat=3" >GAYLORD EXCLUSIVE NEW DISHES</a>
