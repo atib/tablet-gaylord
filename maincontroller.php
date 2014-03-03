@@ -44,7 +44,7 @@ $username = $_SESSION['username'];
             <a id="nav1" href="customer.php"><li>Customer</li></a>
             <!-- <a id="nav1" href="tablet/orderhistory.php"><li>Order History</li></a> -->
             <!-- <a id="nav1" href="tablet/reviews.php"><li>Reviews</li></a> -->
-            <a id="nav1" href="tablet/reports.php"><li>Reports</li></a>	
+            <a id="nav1" href="reports.php"><li>Reports</li></a>	
     	  </ul>
       </div>
     </div>

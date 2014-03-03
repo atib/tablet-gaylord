@@ -48,7 +48,7 @@ if(isset($_GET['err'])){
         <a href="register.php"> Register </a>
       </div>
     </div> 
-  <div id="main_content">
+  <div id="main_content" style="margin-top: 0%;">
     <div id="title">
       <p> Login to</p>
       <p>Gaylords' Interactive Menu </p>

@@ -122,11 +122,13 @@ if (isset($_GET['cat'])){
 				
 				while ($row = mysqli_fetch_assoc($get_product_db)){
 				$sub = $row['crt_qt']* $row['crt_price'];
-				
+				$crt_name_dish = $row['crt_name'];
+
+
 				$basket .= '
 				<div id="UserCart">
 				
-				<div id="dishName">'.$row['crt_name'].'</div>
+				<div id="dishName">'.$crt_name_dish.'</div>
 				
 				
 				<div id="quant">'.$row['crt_qt'].' x &pound;' .number_format ($row['crt_price'], 2). '</div>
@@ -482,6 +484,8 @@ if (isset($_GET['delete'])){
 <html class="">
 <!--<![endif]-->
 <?php include_once('head.php'); ?>
+<script type="text/javascript" src="../Script/jquery.js" ></script>
+
 <script>
 	
 	$(document).ready(function(){
