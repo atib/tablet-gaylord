@@ -1739,3 +1739,26 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 }*/
+.ActiveTabReport {
+	display: block;
+	float: left;
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+	border-top-width: medium;
+	border-right-width: medium;
+	border-bottom-width: medium;
+	border-left-width: medium;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #000;
+	border-right-color: #000;
+	border-bottom-color: #000;
+	border-left-color: #000;
+}
+.ActiveTabReport .activeTabblock {
+	display: inline-block;
+	float: left;
+	height: auto;
+	width: 33.33%;
+}
