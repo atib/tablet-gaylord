@@ -156,9 +156,9 @@ margin-bottom: 0em;
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 2.6em;
-	margin-bottom: 5%;
+	margin-bottom: 8%;
 	color: #888;
-	margin-left: 1.2%;
+	margin-left: 2%;
 	margin-top: -5%
 }
 
@@ -407,8 +407,8 @@ margin-bottom: 0em;
 	font-size: 1.2em;
 	background: #94C01E;
 	border: 1px solid #94C01E;
-	color: #efefef;
-	padding: 3%;
+	color: #efe;
+	padding: 5% 0;
 	border-radius: 4px;
 	outline: none;
 }
@@ -422,6 +422,7 @@ margin-bottom: 0em;
 	box-shadow: none;
 	text-shadow: none;
 	margin-top: 5%;
+	padding: 5% 0;
 }
 
 
@@ -432,6 +433,7 @@ margin-bottom: 0em;
 	-moz-box-shadow:0px 0px 1px #94C01E;
   -webkit-box-shadow:0px 0px 1px #94C01E;
   box-shadow:0px 0px 1px #94C01E;
+  color: #C7DF39;
 }
 
 
@@ -444,7 +446,6 @@ margin-bottom: 0em;
 	background: #4273AB;
 	border: 1px solid #94C01E;
 	color: #efefef;
-	padding: 3%;
 	border-radius: 4px;
 	outline: none;
 }
@@ -458,6 +459,7 @@ margin-bottom: 0em;
 	box-shadow: none;
 	text-shadow: none;
 	margin-top: 2%;
+	padding: 5% 0;
 }
 
 
@@ -478,6 +480,7 @@ margin-bottom: 0em;
 	font-weight: lighter; 
 	box-shadow: none; 
 	text-shadow: none;
+	padding: 5% 0;
 }
 
 
@@ -485,17 +488,30 @@ margin-bottom: 0em;
 	background: #C5194C;
 	text-shadow: none;
 	box-shadow: none;
+	color: #F7CAD6;
+}
+
+.success_activation {
+	padding-left: 2%;
 }
 
 .success_activation h3 {
 	font-family: sans-serif;
 	font-weight: lighter;
-	font-size: 2em; 
+	font-size: 2.3em; 
 	color: #94C01E;
 	margin-bottom: 3%;
 }
 
 .success_activation h4 {
+	font-family: sans-serif;
+	font-weight: bold;
+	font-size: 1.5em; 
+	color: #4D4D4F;
+	margin-bottom: 3%;
+}
+
+.success_activation h5 {
 	font-family: sans-serif;
 	font-size: 1em;
 	color: #666;
@@ -506,6 +522,7 @@ margin-bottom: 0em;
 	color: #666; 
 	font-family: sans-serif;
 	font-weight: lighter;
+	padding-left: 2%;
 
 }
 
@@ -526,14 +543,16 @@ margin-bottom: 0em;
 .activation_message a { 
 
 	text-decoration: none;
-	border-radius: 20px; 
+	border-radius: 20px;
 	background-color: #B3B2B2;
 	color: #efefef;
 	font-size: 0.9em;
 	font-family: sans-serif;
 	font-weight: lighter;
 	padding: 2% 6%;
-	margin-bottom: 5%;
+	display: inline-table;
+	margin-bottom: 2%;
+	margin-top: 3%;
 }
 
 .buttons .button2 {
@@ -890,11 +909,11 @@ a#nav1 li {
 }
 
 .request_processed p {
-	text-align: center;
+	text-align: left;
 	font-family: sans-serif;
 	font-weight: lighter;
 	margin-top: 5%;
-	color: #bf134e;
+	color: #4D85C4;
 
 }
 
@@ -1362,7 +1381,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 #welcome_page_client_facing .continue_button {
-	padding: 3% 0;
+	padding: 5% 0;
 	border: 0;
 	outline: 0;
 	-webkit-border-radius: inherit;

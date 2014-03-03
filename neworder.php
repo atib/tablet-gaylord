@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$username = $_SESSION['username'];
+
 if(!isset($_SESSION['username'])){
 	
 	$error_msg="Unauthorised Access";

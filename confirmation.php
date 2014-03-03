@@ -26,16 +26,17 @@ if ($_GET['par']== $access) {
 	$success_msg = '
 		<div class="success_activation">
 		 	<h3> Success! </h3>
-		 	<h4> Please follow the instructions to get the tablet activated.</h4>
-		</div>
-		<div id="greyline"> </div>'; 
+			<h4> Order #: '.$o_activation.'</h4>
+
+		 	<h5> Please follow the instructions to get the tablet activated.</h5>
+		</div>'; 
 		
 	$displayresult='
 		<div class="activation_message">
 			<h3> Please use the below activation code to link individual tablet to this order id</h3>
-		
-			<h2>'.$o_activation.'</h2>
-
+			<div class="request_processed">
+				<p>Your request has been processed</p>
+			</div>
 			<a href="maincontroller.php">Back to main menu</a>		
 		
 		</div>';
@@ -84,9 +85,7 @@ include_once ("db_connect.php");
    	  <?php echo $success_msg; ?>
 	  <?php echo $displayresult; ?>
   
-			<div class="request_processed">
-				<p>Your request has been processed</p>
-			</div>
+			
     
 
     </div>
