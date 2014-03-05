@@ -24,6 +24,7 @@ if(isset($_GET['err'])){
 		if (isset($_SESSION['activation'])) {
 
 		$msg2user = '
+		<p> Press continue to move on to the welcome page, where the customer will be shown a page that will explain more about the features and reason behing this new project. </p>
 		<a href="welcome.php" style="display: block;">
 		<div id="welcome_link_activation"> Continue </div>
 		</a>';
@@ -126,7 +127,9 @@ if (isset($_POST['activate'])){
 		$error_msg ="";	
 		
 		$activationform = "";	
-		$msg2user = '<a href="welcome.php"><div id="welcome_link_activation"> Continue </div></a>';
+		$msg2user = '
+
+			<a href="welcome.php"><div id="welcome_link_activation"> Continue </div></a>';
 
 		} else{
 

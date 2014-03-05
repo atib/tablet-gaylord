@@ -79,7 +79,7 @@ if (isset($_GET['cat'])){
 	
 	}else if ($cat == "14"){
 	$selectedMenu = $cat;
-	$menuTitle = 'MY BASKET ';		
+	$menuTitle = 'MY CART ';		
 
 	}else{
 	$cat = "1";
@@ -167,7 +167,7 @@ if (isset($_GET['cat'])){
 	$activateorderid = $_SESSION['activateorderid'];
 	$c_id = $_SESSION['c_id'];
 		
-		$grandtotal= '<div id="usertotal">'.$fname.' Your Bill Total Is: &pound;<span class="user_total_bill"> '.number_format($total, 2).'</span></div>';
+		$grandtotal= '<div id="usertotal">'.$fname.' Your Bill Total Is:<span class="user_total_bill"> &pound;'.number_format($total, 2).'</span></div>';
 		$complete_btn = '<div class="Order_complete">
 						<span>Once you are happy with your order, click the complete button to process your order. A waiter will come and confirm your order.</span>
 
@@ -518,7 +518,7 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
     <div class="title">
       <h3>View Menu</h3>
       <div class="basket_icon">
-	      <img id="basket" src="../Images/basket_grey.png"><?php 
+	      <?php 
 	      if ($usr_crt_quant > 0) {
 	      	echo $usr_crt_quant;
 	      }
@@ -526,6 +526,7 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
 	      	echo "0";
 	      }
 	      ?> items
+	      <img id="basket" src="../Images/basket_grey.png">
       </div>
     </div>
 
@@ -534,14 +535,14 @@ while ($row = mysqli_fetch_assoc($get_usr_crt_qt)) {
 	        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $menuTitle;?></a>  
 
 	        <ul class="ordermenu_list"> 
-	            <a class="myorder" href="?cat=14" id="basket_order_menu"> <img src="../Images/basket.png"> My Basket  (Items currently in basket: <?php 
+	            <a class="myorder" href="?cat=14" id="basket_order_menu"> My Cart <img src="../Images/basket.png"> (Items currently in cart: <?php 
 	            	      if ($usr_crt_quant > 0) {
 					      	echo $usr_crt_quant;
 					      }
 					      else {
 					      	echo "0";
 					      }
-	      			?>) 
+	      			?>  ) 
 	      		</a>
 	          	<a class="op" href="?cat=1" >SHURUAT - APPETISERS</a>
 	            <a class="op" href="?cat=2" >TANDOORI DISHES (DRY DISHES)</a>

@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$username = $_SESSION['fname'];
+
 if(!isset($_SESSION['email']))
 {
 	$error_msg = "user not found";
@@ -25,20 +27,23 @@ if (isset($_GET['err'])){
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Gaylord</title>
-<link href="CSS/Main.css" rel="stylesheet" type="text/css">
-</head>
+<?php include_once('head.php'); ?>
 <body>
 <div class="gridContainer clearfix">
 
- 	<div id="Header"><?php include_once("header1.php");?></div>  
-  	<div id="heading"><h2>Welcome <?php echo $username;?></h2></div>
+ 	<div id="Header"><?php include_once("header1.php");?>     
+    <div id="heading">
+      <h3>Welcome <?php echo $username;?> <a href="maincontroller.php"> <img src="../Images/home.png"> </a> </h3>
+    </div>
+  </div>  
     
-    <div class="title">Confirmation</div>
+    <div id="main_content">
+ 
+      <div class="title">
+        <h2>Confirmation</h2>
+      </div>
             <?php echo $error_msg; ?> <?php echo $success_msg; ?>
+    </div>      
 
   		
   <div id="footer"><?php include_once("footer1.php");?></div>

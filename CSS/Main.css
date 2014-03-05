@@ -195,7 +195,7 @@ margin-bottom: 0em;
 	box-shadow: none;
 	text-shadow: none;
 	border-radius: 4px;
-	margin-top: 50%;
+	margin-top: 25%;
 }
 
 #welcome_link_activation > a {
@@ -433,7 +433,7 @@ margin-bottom: 0em;
 	-moz-box-shadow:0px 0px 1px #94C01E;
   -webkit-box-shadow:0px 0px 1px #94C01E;
   box-shadow:0px 0px 1px #94C01E;
-  color: #C7DF39;
+  color: #3C5C22;
 }
 
 
@@ -1017,7 +1017,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	background-color: #B3B2B2;
 	text-decoration: none;
 	font-family: sans-serif;
-	font-weight: lighter;
+	font-weight: normal;
 	font-size: 0.9em;
 	padding: 2% 0 3% 2%;
 	border-radius: 4px;
@@ -1102,7 +1102,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	background-color: #B3B2B2;
 	text-decoration: none;
 	font-family: sans-serif;
-	font-weight: lighter;
+	font-weight: normal;
 	font-size: 0.9em;
 	padding: 2% 0 3% 2%;
 	border-radius: 4px;
@@ -1155,7 +1155,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 #basket_order_menu img {
 	width: 25px;
-	vertical-align: middle;
+	vertical-align: text-bottom;
 }
 
 
@@ -1262,12 +1262,21 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 }
 
+#add_prod:hover { 
+	background-color: #5cb811;
+}
+
 #dec_prod{
 	font-family: sans-serif;
 	margin-right: 3%;
 	background-color: #E49837;
 	padding: 5% 10%;
 } 
+
+
+#dec_prod:hover {
+	background-color: #C36F39;
+}
 
 #del_prod {
 	font-weight: lighter;
@@ -1363,7 +1372,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-weight: lighter;
 	color: #174E62;
 	text-align: center;
-	margin-bottom: 15%;
+	margin-bottom: 5%;
 }
 
 #welcome_body_text {
@@ -1490,6 +1499,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 .basket_icon {
 	float: right;
 	font-size: 40%;
+	font-weight: lighter;
 	font-family: sans-serif;
 	margin-bottom: 5%;
 }
@@ -1523,11 +1533,12 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-family: sans-serif;
 	float: left;
 	font-weight: lighter;
-	width: 25%;
+	width: 22%;
 	padding-top: 3%;
 	font-size: 1.3em;
 	color: #4D4D4F;
 	display: inline-block;
+	padding-left: 3%;
 }
 
 .quantity_cart {
