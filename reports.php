@@ -98,19 +98,20 @@ if (isset($_GET['page'])){
 		$tabID = $_POST['tabID'];
 		include_once("db_connect.php");
 		
-		$sql_tablestate_call = "SELECT tab_order FROM tabletactivate_tbl WHERE tab_id = '$tabID' tab_active = '1'";
+		$sql_tablestate_call = "SELECT * FROM tabletactivate_tbl WHERE tab_id = '$tabID' AND tab_active = '1'";
 		$get_tablestate_db = mysqli_query($db_connection, $sql_tablestate_call) or die (mysqli_error($db_connection));
 	
-	
-		$row = mysqli_fetch_assoc($get_tablestate_db);
-		$tab_order = $row['tab_order'];
-		$tab_active = $row['tab_active'];
-			
+		while ($row = mysqli_fetch_assoc($get_tablestate_db)){
+
+		 $tab_order = $row['tab_order'];
+		 $tab_active = $row['tab_active'];
 			if ($tab_order == "Order Complete" && $tab_active == 0 || $tab_order == "Order Complete" && $tab_active == 1){
 				
 			}else if ($tab_order == "Ordering" && $tab_active == 1){
 			$error_msg = "User is still ordering. If User has finish please deactivate tablet by logging off";
 			}
+			
+		}
 		}
 	
 	} else if ($page == "2"){
