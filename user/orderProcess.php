@@ -61,7 +61,7 @@ WHERE od_session = '$crt_sess'";
 
 $insert_client_db = mysqli_query($db_connection, $insert_client) or die (mysqli_error($db_connection));
 	
-	$success_msg = "Your order has been Processed. Please wait while the rest of the table has confirmed their order.";
+	$success_msg = "<h5> Your order has been Processed. Please wait while the rest of the table confirms their order. </h5>";
 	
     header("Location: confirmation.php?succ=$success_msg");
 

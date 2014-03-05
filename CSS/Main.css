@@ -491,6 +491,26 @@ margin-bottom: 0em;
 	color: #F7CAD6;
 }
 
+.display_order {
+	padding-left: 2%;
+	margin-top: 3%;
+	font-family: sans-serif;
+	font-weight: lighter;
+}
+
+.display_order h2 {
+	font-size: 1.15em;
+	color: #4D85C4;
+	margin-bottom: 5%;
+}
+
+.success_order {
+	padding-left: 2%;
+	font-family: sans-serif;
+	color: #666;
+	font-weight: lighter;
+}
+
 .success_activation {
 	padding-left: 2%;
 }
@@ -1698,6 +1718,19 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 1.5em;
+}
+
+
+/*Customer confirmation */
+
+.prod_name_conf, .prod_quant_conf {
+	display: inline-table;
+	margin: 1% 0;
+	color: #666;
+}
+
+.display_order_tbl {
+	margin-top: 1%;
 }
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */

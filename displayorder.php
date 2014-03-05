@@ -187,6 +187,8 @@ if ($o_activation != ""){
 		$od_clientname = $orderrow['od_clientname'];
 		$od_session = $orderrow['od_session'];
 		
+
+		
 			$basket .= '<div id="clientOrder">'.$od_clientname.'
 			
 			</div>
