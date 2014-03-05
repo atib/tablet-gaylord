@@ -118,6 +118,26 @@ if (isset($_GET['page'])){
 	 $pagetitle = "Todays Active Orders";	
 	 $selectpage = $pagetitle;	
 
+	date_default_timezone_set('Europe/London');
+
+	$todaydate = date("y/m/d");
+	
+	include_once ("db_connect.php");
+
+	$sql_activeOrder_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_active = '1'";
+				
+	$get_activeOrder_db = mysqli_query($db_connection, $sql_activeOrder_list) or die (mysqli_error($db_connection));
+
+	while ($aorow = mysqli_fetch_assoc($get_activeOrder_db)){
+		
+		$tab_id= $aorow['tab_id'];
+		
+		
+		$displayReport .= '';
+	}
+
+
+
  	} else if ($page == "3"){
 	 $pagetitle = "Todays Closed Orders";	
 	 $selectpage = $pagetitle;	
