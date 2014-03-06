@@ -143,7 +143,6 @@ if (isset($_GET['cat'])){
 
 				</div>
 				
-				<hr>
 				</div>
 				';	
 				$total += $sub;
@@ -187,6 +186,7 @@ if (isset($_GET['cat'])){
 						</div>
 						</form>
 					</div>
+					<div class="clear"></div>
 					<div id="table_order_title">
 					<h2> Table Order </h2>
 					</div>';

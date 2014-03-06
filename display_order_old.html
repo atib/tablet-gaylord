@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $error_msg = ""; 
 $success_msg = "";	
@@ -223,12 +223,12 @@ if ($o_activation != ""){
 		<div id="dishName">'.$row['od_prodname'].'</div>
 				
 				
-		<div id="quant">'.$row['od_quantity'].' x &pound;' .number_format ($row['od_price'], 2). '</div>
+		<div id="quant">'.$row['od_quantity'].' &nbsp;&nbsp;&nbsp;X&nbsp;&nbsp;&nbsp; &pound;' .number_format ($row['od_price'], 2). '</div>
 				
 		<div id="cost">
-		<a href="displayorder.php?ac='.$o_activation.'&add='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'"  id="add_prod">+</a> 
-		<a href="displayorder.php?ac='.$o_activation.'&remove='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'" id="dec_prod">-</a> 
-		<a href="displayorder.php?ac='.$o_activation.'&delete='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'" id="del_prod">x</a>
+		<a href="displayorder.php?ac='.$o_activation.'&remove='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'"><img src="Images/minus.png" alt="Minus"></a> 
+		<a href="displayorder.php?ac='.$o_activation.'&add='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'"><img src="Images/plus.png" alt="Plus"></a> 
+		<a href="displayorder.php?ac='.$o_activation.'&delete='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'"><img src="Images/delete.png" alt="Delete"></a>
 		</div>
 				
 		</div>
@@ -250,9 +250,9 @@ if ($o_activation != ""){
 	}
 	else{
 		
-		$basket .= '<div id="usertotal">'.$orderrow['od_clientname'].' Bill Total Is: <span class="user_total_bill">&pound;'.number_format($total, 2).'</span></div>';
+		$basket .= '<div id="usertotal">'.$orderrow['od_clientname'].' Bill Total Is: &pound; '.number_format($total, 2).'</div>';
 	}	
-	$basket .='<div class="greylinethick"></div>';
+	$basket .='<hr>';
 }//client order while close
 	
 	if ($nettotal==0){	
@@ -301,6 +301,7 @@ else{
 		$menuHeading .= '
 		
 		<div id="menuCat">
+		<div class="menuHeading">'. $heading .'</div>
 		<div class="menuDescription">'. $description .'</div>
 		</div>
 		
@@ -339,7 +340,7 @@ else{
 			<div class="prodPrice">£'.number_format($get_row['p_inprice'], 2).'</div>
 			<div class="prodAdd">
 			
-			<a href="displayorder.php?ac='.$o_activation.'&add='.$get_row['p_id'].'&pn='.$get_row['p_name'].'&cn='.$user_clientName.'&cat='.$get_row['pc_id'].'&pr='.$get_row['p_inprice'].'">+</a>
+			<a href="displayorder.php?ac='.$o_activation.'&add='.$get_row['p_id'].'&pn='.$get_row['p_name'].'&cn='.$user_clientName.'&cat='.$get_row['pc_id'].'&pr='.$get_row['p_inprice'].'"><font style="color:#C00; font-weight:bolder; font-size:14px;" >Add</font></a>
 			
 			</div>
 			'.$descRow.'
@@ -499,11 +500,11 @@ $grandtotal = $nettotal;
 
 if (isset($_POST['update'])){
 
-	// echo $cashDisc = $_POST['cashdisc'];
-	// echo $percentDisc = $_POST['percentdisc'];	
+	echo $cashDisc = $_POST['cashdisc'];
+	echo $percentDisc = $_POST['percentdisc'];	
 	
 	include_once("db_connect.php");
-	// echo $user_o_id  = $_SESSION['user_o_id'];
+	echo $user_o_id  = $_SESSION['user_o_id'];
 
 	$sql_gettotal = "SELECT * FROM order_tbl WHERE o_id = '$user_o_id'";
 	$sql_gettotal_db = mysqli_query($db_connection, $sql_gettotal) or die (mysqli_error($db_connection));
@@ -565,9 +566,29 @@ if (isset($_POST['update'])){
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
-<?php include_once('head.php'); ?>
-<script type="text/javascript" src="Script/jquery.js" ></script>
-<script src="Script/new_order_client.js"></script>
+<?php include_once("head.php");?>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>
+		$(function() {
+			var pull 		= $('#pull');
+				menu 		= $('.ordermenu .ordermenu_list');
+				menuHeight	= menu.height();
+
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+
+			$(window).resize(function(){
+        		var w = $(window).width();
+        		if(w > 320 && menu.is(':hidden')) {
+        			menu.removeAttr('style');
+        		}
+    		});
+		});
+	</script>
+
+<!-- <script type="text/javascript" src="Script/jquery.mobile-1.4.0.min.js"></script> -->
 
 <body>
 <div class="gridContainer clearfix">
@@ -582,32 +603,18 @@ if (isset($_POST['update'])){
     <div id="main_content">
  
       <div class="title">
-        <h2>Display Order <span id="do_activation_code"><?php echo $o_activation; ?></span></h2>
+        <h2>Display Order <?php echo $o_activation; ?> <?php echo $activeClient; ?></h2>
       </div>
-        
-      	<div class="active_client" >
-        	<?php echo $activeClient; ?>    
-      	</div>
-
-	<div class="error_message_activation">
-		<?php echo $error_msg;?> 
-	</div>
-
-	<div class="success_activation">
-		<h3><?php echo $success_msg; ?></h3>
-  	</div>
-
-  <div id="description_menu">
-  	<?php echo $menuHeading;?>  	
+            
+<?php echo $error_msg;?> <?php echo $success_msg; ?>
+       
   </div>
-
+  
   <div id="takeawaymenuOption">
     <nav class="ordermenu">
-        <a href="#" id="pull" class="push_down" ><?php echo $menuTitle;?> <?php echo ": ". $user_clientName; ?></a>  
-
         <ul class="ordermenu_list"> 
-            <a class="myorder" id="basket_order_menu" href="?ac=<?php echo $o_activation;?>&cat=14&cn=<?php echo $user_clientName;?>" ><?php echo $user_clientName;?> CART <img src="Images/basket.png"> </a>
-          	<a class="op" href="?ac=<?php echo $o_activation;?>&cat=1&cn=<?php echo $user_clientName;?>" >SHURUAT - APPETISERS</a>
+        
+          <a class="op" href="?ac=<?php echo $o_activation;?>&cat=1&cn=<?php echo $user_clientName;?>" >SHURUAT - APPETISERS</a>
             <a class="op" href="?ac=<?php echo $o_activation;?>&cat=2&cn=<?php echo $user_clientName;?>" >TANDOORI DISHES (DRY DISHES)</a>
             <a class="op" href="?ac=<?php echo $o_activation;?>&cat=3&cn=<?php echo $user_clientName;?>" >GAYLORD EXCLUSIVE NEW DISHES</a>
             <a class="op" href="?ac=<?php echo $o_activation;?>&cat=4&cn=<?php echo $user_clientName;?>" >OUR CHEF’S SPECIALITIES</a>
@@ -618,65 +625,52 @@ if (isset($_POST['update'])){
             <a class="op" href="?ac=<?php echo $o_activation;?>&cat=9&cn=<?php echo $user_clientName;?>" >GAYLORD VEGETARIAN SIDE DISHES</a>
             <a class="op" href="?ac=<?php echo $o_activation;?>&cat=10&cn=<?php echo $user_clientName;?>" >CHAWAL - RICE SIDE DISHES</a>
             <a class="op" href="?ac=<?php echo $o_activation;?>&cat=11&cn=<?php echo $user_clientName;?>" >NAN/ROTI - FLATBREAD</a>
-            <a class="op" href="?ac=<?php echo $o_activation;?>&cat=12&cn=<?php echo $user_clientName;?>" >SUNDRIES &amp; OTHER EXTRAS</a>
+            <a class="op" href="?ac=<?php echo $o_activation;?>&cat=12&cn=<?php echo $user_clientName;?>" >SUNDRIES & OTHER EXTRAS</a>
             <a class="op" href="?ac=<?php echo $o_activation;?>&cat=13&cn=<?php echo $user_clientName;?>" >DRINKS</a>
-            <a class="op" href="#" id="push_up">CLOSE</a>
-
+            <a class="op" href="?ac=<?php echo $o_activation;?>&cat=14&cn=<?php echo $user_clientName;?>" ><?php echo $user_clientName;?> ORDER</a>
         </ul>
+        <a href="#" id="pull"><?php echo $user_clientName; ?> : <?php echo $menuTitle;?></a>  
     </nav>    
     </div>
+     <!-- End Main Content -->
 
-	<?php echo $orderMenu;?>
-	<?php echo $basket;?>
-	<?php echo $basketMsg;?>
-	<?php echo $table_basket;?>
-	<?php echo $table_basketMsg;?>
-	<?php echo $discount; ?>
-	<?php echo $table_grandtotal;?>    
-	<?php echo $complete_btn;?>
+
+<?php echo $menuHeading;?>
+<?php echo $orderMenu;?>
+<?php echo $basket;?>
+<?php echo $basketMsg;?>
+<?php echo $table_basket;?>
+<?php echo $table_basketMsg;?>
+<?php echo $discount; ?>
+<?php echo $table_grandtotal;?>    
+<?php echo $complete_btn;?>
     
    
-	<div class="Order_discount">
-	    <div class="buttons">
-	      <form action="displayorder.php?ac=<?php echo $o_activation; ?>&cat=14&cn=<?php echo $od_clientname; ?>" method="post">
-	        <input name="cashdisc" class="" type="tel" value="<?php echo $cashDisc;?>" placeholder="Cash Based Discount £">
-	        <input name="percentdisc" class="" type="tel" value="<?php echo $percentDisc?>" placeholder="Percentage Based Discount %">
-	        <div class="update_button">
-		      	<input name="update" type="submit" class="filter_continue" value="Update">	        	
-	        </div>
-	      </form>  
-	      </div>					
-	</div>
+ <div class="Order_discount">
+    <div class="buttons">
+      <form action="displayorder.php?ac=<?php echo $o_activation; ?>&cat=14&cn=<?php echo $od_clientname; ?>" method="post">
+        <input name="cashdisc" class="" type="tel" value="<?php echo $cashDisc;?>" placeholder="Cash Based Discount £">
+        <input name="percentdisc" class="" type="tel" value="<?php echo $percentDisc?>" placeholder="percentage Based Discount %">
+
+      <input name="update" type="submit" class="" value="update">
+      </form>  
+      </div>					
+    </div>
 					
-	<div id="total_do_staff">
-		<div id="nettotal">Net Total:  <span class="dp_or_staff">&pound;<?php echo number_format($nettotal, 2)?></span></div>
-		<div id="discounttotal">Discount: <span class="dp_or_staff"><?php echo $cashDisc;?> <?php echo $percentDisc?></span></div>
-		<div id="grandtotal">Grandtotal: <span class="dp_or_staff">&pound;<?php echo number_format($grandtotal, 2)?></span></div>	
-	</div>	
-	
-	
-	<div class="Order_complete">
+		
+<div id="nettotal">Net Total: &pound; <?php echo number_format($nettotal, 2)?></div>
+<div id="discounttotal">Discount: <?php echo $cashDisc;?> <?php echo $percentDisc?></div>
+<div id="grandtotal">Grandtotal: &pound;<?php echo number_format($grandtotal, 2)?></div>
+<div class="Order_complete">
 
-		    <form action="printReciept" method="post">
-		<div class="print_button">
-		    
-
-		    	<input name="Print" type="submit" class="filter_continue" value="Print Reciept">
-		</div>
-		    
-		    </form>  
-	       
-	</div>
-  
-  	<div id="flash"> Item added to cart </div>
-  	<div id="flash_dec"> Updated cart </div>
-  	<div id="flash_rem"> Item(s) removed from cart </div>
-
-
-
-   
+<div class="buttons">
+    <form action="printReciept" method="post">
+    	<input name="Print" type="submit" class="" value="Print Reciept">
+    </form>  
 </div>
    
+   
   <div id="footer"><?php include_once("footer.php");?></div>
+</div>
 </body>
 </html>

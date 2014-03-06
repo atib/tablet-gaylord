@@ -446,6 +446,42 @@ margin-bottom: 0em;
   	color: #3C5C22;
 }
 
+.print_button .filter_continue {
+	cursor: pointer;
+	width: 100%;
+	margin-top: 5%;
+	font-family: sans-serif;
+	font-weight: lighter;
+	font-size: 1.2em;
+	background: #2980B9;
+	border: 1px solid transparent;
+	margin-left: -1%;
+	color: #fff;
+	padding: 5% 0;
+	border-radius: 4px;
+	outline: none;
+}
+
+
+.print_button .ui-btn {
+	background: #94C01E;
+	color: #efe;
+	font-family: sans-serif;
+	font-weight: lighter;
+	box-shadow: none;
+	text-shadow: none;
+	margin-top: 5%;
+	padding: 5% 0;
+}
+
+
+.print_button .ui-btn:hover { 
+	background: #94C01E;
+	box-shadow: none;
+	text-shadow: none;
+  	color: #3C5C22;
+}
+
 
 .skip_button .filter_continue {
 	cursor: pointer;
@@ -483,14 +519,15 @@ margin-bottom: 0em;
 
 .update_button .filter_continue {
 	cursor: pointer;
-	width: 100%;
+	padding: 5% 0 !important;
+	width: 100% !important;
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 1.2em;
-	/*background: #1A2338;*/
+	border: 1px solid transparent !important;
+	/* background: #1A2338; */
 	background: #3F4452;
-	
-	/*border: 1px solid #1A2338;*/
+	/* border: 1px solid #1A2338; */
 	color: #fff;
 	border-radius: 4px;
 	outline: none;
@@ -1171,7 +1208,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 
-.ordermenu a#pull {
+.ordermenu a#pull, .ordermenu a#push_down {
 	display: block;
 	background-color: #6F7780;
 	width: 98%;
@@ -1189,10 +1226,9 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 }
 
-
-.ordermenu a#pull:after {
+.ordermenu a#pull:after, .ordermenu a.push_down:after {
 	content: "";
-	margin-top: -2%;
+	margin-top: -1%;
 	margin-right: 3%;
 	display: inline-block;
 	position: absolute;
@@ -1205,6 +1241,13 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	border-right: 10px solid transparent;
 	border-top: 10px solid #efefef;
 }
+
+.ordermenu a.push_down:after {
+
+	margin-top: 1% !important;
+}
+
+
 .reportmenu {
 	border-bottom: 0;
 	/*margin-left: 2%;*/
@@ -1459,16 +1502,28 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 #clientOrder {
 	float: left;
-	height: 40px;
-	padding-top:10px;
-	width: 75%;
-	display: block;
-	margin-top: 10px;
-	font-size: 18px;
-	font-weight: bold;
+/* height: 40px; */
+/* padding-top: 10px; */
+width: 69%;
+display: block;
+/* margin-top: 10px; */
+/* font-size: 18px; */
+font-weight: bold;
+font-size: 1.4em;
+color: #777;
+font-family: sans-serif;
+margin-bottom: 2%;
 }
 
+.greylinethick {
+	position: relative;
+	background-color: #aaa;
+	height: 7px;
+	width: 100%;
+	display: inline-block;
+	margin: 3% 0 5% 0;
 
+}
 
 /* Welcome page - client side*/
 
@@ -1479,17 +1534,35 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 #clientOrderBtn {
-	float: left;
-	height: 40px;
-	padding-top: 10px;
-	width: 25%;
-	display: block;
-	margin-top: 10px;
-	font-size: 18px;
-	font-weight: bold;
-	text-align: right;
 }
 
+#clientOrderBtn input[type="submit"] {
+	color: #ffffff;
+	background-color: #7F8C8D;
+	padding: 3% 0;
+	width: 100%;
+	font-size: 0.9em;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1.15em;
+	font-weight: lighter;
+
+}
+
+#main_content > div.Order_discount input {
+	width: 96%;
+	/* margin-left: 2%; */
+	padding: 3% 2%;
+	border: 1px solid #ccc;
+	margin-top: 3%;
+}
+
+#clientOrderBtn input[type="submit"]:hover {
+	color: #ffffff;
+	background-color: #95A5A6;
+/*border-color: #415b76;*/
+}
 
 #title {
 	font-family:sans-serif;
@@ -1642,6 +1715,8 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	width: 100%;
 	display: block;
 	margin-top: 10px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 2%;
 }
 #UserCart #dishName {
 	padding-left: 2%;
@@ -1697,12 +1772,13 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 	display: block;
 	padding-left: 2%;
-	float: left;
-	width: 98%;
-	padding-top: 2%;
+	float: right;
+	/* width: 98%; */
+	margin-top: 4%;
+	/*padding-top: 2%;*/
 	padding-bottom: 3%;
 	font-family: sans-serif;
-	font-size: 1.3em;
+	font-size: 1.5em;
 	font-weight: lighter;
 	color: #4D4D4F;
 }
@@ -1769,40 +1845,54 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	width: 40%;
 }
 
-#nettotal {
+#nettotal, #discounttotal, #grandtotal {
 	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
-	display: block;
-	float: left;
+	/*float: right;*/
 	height: 40px;
-	width: 98%;
-	padding-top: 10px;
-	padding-right: 2%;
+	/*width: 98%;*/
+	margin: 3%;
+	font-family: sans-serif;
+	color: #777;
+	font-weight: lighter;
+	/*padding-right: 2%;*/
 }
 
-
-#discounttotal {
-	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
-	display: block;
-	float: left;
-	height: 40px;
-	width: 98%;
-	padding-top: 10px;
-	padding-right: 2%;
-}
 #grandtotal {
-	font-size: 24px;
+	width: 100%;
+	margin-left: -4%;
+}
+
+.active_client {
+	font-family: sans-serif;
+	padding-left: 2%;
+	color: #777;
+	font-weight: lighter;
+	margin-top: -5%;
+	margin-bottom: 7%;
+	font-size: 1.15em;
+}
+
+#do_activation_code {
+	font-size: 0.8em;
+	color: #666;
 	font-weight: bold;
-	text-align: center;
-	display: block;
-	float: left;
-	height: 40px;
-	width: 98%;
-	padding-top: 10px;
-	padding-right: 2%;
+}
+
+#clientOrderBtn > form > div {
+	margin-top: -7%;
+	width: 100%;
+
+}
+
+#total_do_staff {
+	float: right;
+	margin-top: 3%;
+}
+
+.dp_or_staff {
+	font-size: 1.4em;
+	color: #666;
+	font-weight: bold;
 }
 
 /* Welcome page - client side*/
@@ -1839,6 +1929,10 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 
 .display_order_tbl {
 	margin-top: 1%;
+}
+
+#takeawaymenuOption {
+	margin-bottom: 4%;
 }
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
