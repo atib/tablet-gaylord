@@ -156,7 +156,7 @@ if (isset($_GET['cat'])){
 	
 		$basketMsg = '
 				<div id="cartMsg">
-					<p>'.$row['user_name'].' Your cart is empty.</p>
+					<h3>Your cart is empty.</h3>
 					<p>Click the add link beside the dish to include it into the basket</p>
 					<p>When you happy with the selected dish click check out to proces the basket</p>
 			 	</div>';

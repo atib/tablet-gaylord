@@ -58,7 +58,7 @@ $display_order = "";
 
  	<div id="Header"><?php include_once("header1.php");?>     
     <div id="heading">
-      <h3>Welcome <?php echo $username;?> <a href="maincontroller.php"> <img src="../Images/home.png"> </a> </h3>
+      <h3>Welcome <span class="username"><?php echo $username;?></span> <a href="index.php"> <img src="../Images/home.png"> </a> </h3>
     </div>
   </div>  
     

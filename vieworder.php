@@ -181,29 +181,41 @@ if($_POST['filtercondition'] == 7){
 
 			if($o_active == 1){
 				
-				$activation_btn ='<input name="deactivate" class="button3" type="submit" value="Deactivate">';
+				$activation_btn ='
+				<div class="cancel_button">
+				<input name="deactivate" class="" type="submit" value="Deactivate">
+				</div>';
 				
 			}else if($o_active == 0){
 				
-				$activation_btn ='<input name="activate" class="button3" type="submit" value="Activate">';
+				$activation_btn ='
+				<div class="continue_button">
+				<input name="activate" class="" type="submit" value="Activate">
+				</div>';
 
 			}
 
 
 
 			$orderDisplay .='
-     <div class="orderholder">
+<div class="orderholder">
     <form action="vieworder.php" method="post" name="orderform" target="_self">
-        <div class="ol_title"><a href="displayorder.php?ac='.$o_activation.'&cat=14">View '.$o_activation.'</a></div>
+        <div class="ol_title"><a href="displayorder.php?ac='.$o_activation.'&cat=14">View order <span> '.$o_activation.' <span></a></div>
+<div id="order_information">	
+
         <div id="ol_content_container">
 	        <div class="ol_content">Order ID</div>
+	        <div class="order_id_ol_content ol_pulled_content">'. $orderid.'</div>
+
 	        <div class="ol_content">Date / Time</div>
+	        <div class="order_date_ol_content ol_pulled_content">'. $o_date.'  at '. $o_time.'</div>
+
 	        <div class="ol_content">Total</div>
-	        <div class="ol_content order_id_ol_content">'. $orderid.'</div>
-	        <div class="ol_content order_date_ol_content">'. $o_date.'  at  '. $o_time.'</div>
-	        <div class="ol_content order_total_ol_content">&pound;' .number_format ($total, 2). '</div>
+	        <div class="order_total_ol_content ol_pulled_content">&pound;' .number_format ($total, 2). '</div>
         </div>
-  	 <div class="filter_selection_actions">
+</div>
+  	<div class="filter_selection_actions">
+        <div class="ol_content">Order process</div>	
         <select class="process" name="process"> 
                 <option value="'.$process.'">'.$process.'</option>
                 <option value="Arrived">Arrived</option>
@@ -214,13 +226,12 @@ if($_POST['filtercondition'] == 7){
                 <option value="Payment">Payment</option>
                 <option value="Complete">Complete</option>
             </select> 
-                   
+        <div class="ol_content">Payment (Paid/ Not Paid)</div>	           
         <select class="payment" name="payment"> 
                 <option value="'.$payment.'">'.$payment.'</option>
-                <option value="Not Paid">Not Paid</option>
                 <option value="Paid">Paid</option>
         </select> 
-       
+        <div class="ol_content">Payment Type</div>	           	
             <select class="paymenttype" name="paymenttype"> 
                 <option value="'.$paymenttype.'">'.$paymenttype.'</option>
                 <option value="Cash">Cash</option>
@@ -230,10 +241,14 @@ if($_POST['filtercondition'] == 7){
          
          <input name="orderid"  type="hidden" value="'. $orderid.'">
      
-        </div>        
-		<div class="buttons">
-            '. $activation_btn.'
+    </div>
+    <div class="clear"></div>
+		<div class="buttons_vieworder">
+            <div class="update_button">
 			<input name="update" class="update" type="submit" value="Update">
+			</div>
+            '. $activation_btn.'
+			
         </div>
     
     </form>
@@ -252,7 +267,7 @@ if($_POST['filtercondition'] == 7){
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php");?>
-<!-- <script type="text/javascript" src="Script/jquery.mobile-1.4.0.min.js"></script> -->
+<script type="text/javascript" src="Script/jquery.mobile-1.4.0.min.js"></script>
 
 <body>
 <div class="gridContainer clearfix">
