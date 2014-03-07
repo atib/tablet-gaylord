@@ -27,6 +27,16 @@ if(isset($_GET['err'])){
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php"); ?>
+<script type="text/javascript">
+    $(document).bind('mobileinit', function() {
+        $.extend($.mobile, {
+            hashListeningEnabled: false,
+            pushStateEnabled: false,
+            ajaxEnabled: false,
+            linkBindingEnabled: false
+        });
+    });
+</script>
 <script type="text/javascript" src="../Script/jquery.mobile-1.4.0.min.js"></script>
 
 <body>

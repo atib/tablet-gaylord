@@ -1453,9 +1453,9 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 #main_content > div.Order_complete > div > form > .continue_button input {
-	padding: 3% 0;
+	padding: 5% 0;
 	border: 0;
-	width: 100%;
+	width: 98%;
 	outline: 0;
 	-webkit-border-radius: inherit;
 	border-bottom-radius: inherit;
@@ -1464,7 +1464,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	cursor: pointer;
 	z-index: 2;
 	background: #94C01E;
-	color: #efe;
+	color: #fff;
 	font-family: sans-serif;
 	font-weight: lighter;
 	text-align: center;
@@ -1472,6 +1472,7 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 	text-shadow: none;
 	border-radius: 4px;
 	margin: 5% 0;
+	font-size: 1.2em;
 }
 
 #main_content > div.Order_complete > div > form > .continue_button input:hover {
