@@ -6,7 +6,7 @@
 <br /> Email : info@gaylordrestaurant.co.uk </h6>
 
 	<div id="footer_color">
-		<h6> A Pummello Designed &amp; Developed Application </h6>
+		<h6> A <span class="pm_font"> Pummello </span> Designed &amp; Developed Application </h6>
 	</div>
 </div>
 

@@ -175,6 +175,10 @@ margin-bottom: 0em;
 	margin-top: -5%
 }
 
+.title_print {
+	display: none;
+}
+
 .title h3 {
 	float: left;
 }
@@ -1537,7 +1541,7 @@ margin-bottom: 2%;
 #clientOrderBtn {
 }
 
-#clientOrderBtn input[type="submit"] {
+#clientOrderBtn input[type="button"] {
 	color: #ffffff;
 	background-color: #7F8C8D;
 	padding: 3% 0;
@@ -1559,7 +1563,7 @@ margin-bottom: 2%;
 	margin-top: 3%;
 }
 
-#clientOrderBtn input[type="submit"]:hover {
+#clientOrderBtn input[type="button"]:hover {
 	color: #ffffff;
 	background-color: #95A5A6;
 /*border-color: #415b76;*/
@@ -2009,3 +2013,9 @@ margin-bottom: 2%;
 	height: auto;
 	width: 33.33%;
 }
+
+
+
+
+
+
