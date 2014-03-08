@@ -584,6 +584,28 @@ if (isset($_POST['update'])){
       <div class="title">
         <h2>Display Order <span id="do_activation_code"><?php echo $o_activation; ?></span></h2>
       </div>
+
+      <div class="title_print">
+
+      	<h1> The Gaylord Tandoori Indian Restaurant </h1>
+      	<h6>141 Manchester Road, Isle of Dogs 
+      		<br/> London E14 3DN </h6>
+
+        <h2>Order #<span id="do_activation_code"><?php echo $o_activation; ?></span></h2>
+
+        <p class="receipt_date">
+        	<?php
+    		date_default_timezone_set('Europe/London');
+
+			$todaydate = date("d-m-Y");
+			$todaytime = date("H:i");
+
+    		echo $todaydate." @ ".$todaytime;	
+		?>
+        </p>
+
+        <div class="clear"></div>
+      </div>
         
       	<div class="active_client" >
         	<?php echo $activeClient; ?>    
@@ -659,21 +681,22 @@ if (isset($_POST['update'])){
 
 		    <form action="printReciept" method="post">
 		<div class="print_button">
-		    
-
-		    	<input name="Print" type="submit" class="filter_continue" value="Print Reciept">
+	    		<input type="button" class="filter_continue" onClick="print()" value="Print Reciept">
 		</div>
 		    
 		    </form>  
 	       
 	</div>
-  
+  		
+  	    <div class="title_print bottom_receipt">
+			<div class="clear"></div>
+			<h6 >Tel: 020 7538 9826
+			<br />Email: info@gaylordrestaurant.co.uk </h6>
+      </div>
+
   	<div id="flash"> Item added to cart </div>
   	<div id="flash_dec"> Updated cart </div>
   	<div id="flash_rem"> Item(s) removed from cart </div>
-
-
-
    
 </div>
    

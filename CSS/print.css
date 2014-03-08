@@ -1,0 +1,86 @@
+@media print {
+	#Header, #footer, .active_client, .error_message_activation, .success_activation, #takeawaymenuOption, #clientOrderBtn, #cost, #clientOrder, #usertotal, .Order_discount, .Order_complete, .greylinethick, .title {
+		display: none;
+	}
+
+	body {
+		font-family: monospace;
+		margin:0;
+		width: 100%;
+	}
+
+
+
+	.title_print {
+		display: block;
+		font-size: 1em;
+		font-weight: bold;
+		margin:0 0 5% 0;
+		padding: 0;
+	}
+
+	.title_print h1 { 
+		text-align: center;
+	}
+
+	.title_print h6 {
+		text-align: center;
+		margin-bottom: 5%;
+		font-weight: normal;
+	}
+
+	.title_print h2 {
+		display: inline-table;
+		float: left;
+	}
+
+	#UserCart {
+		margin:0;
+		padding: 0;
+	}
+
+	#UserCart > div {
+		display: inline-table;
+	}
+
+	#UserCart #dishname { 
+		font-size: 1em;
+		display: inline-table;
+		width: auto;
+	}
+	
+	#UserCart #quant {
+		width: auto;
+		display: inline-table;
+		float: right;
+	}
+	
+	#UserCart #cost {
+		display: none;
+	}
+	
+	#total_do_staff {
+		margin: 5% 0 5% 0;
+		float: right;
+	}
+	
+	#total_do_staff > div{
+		display: block;
+		position: relative;
+	}
+
+	#total_do_staff #grandtotal span{
+		font-weight: bold;
+		font-size: 1.3em;
+		margin-top: 3%;
+	}	
+	
+	.bottom_receipt {
+		margin-top: 10%;
+	}
+
+	.receipt_date {
+		float: right;
+		display: inline-table;
+	}
+}
