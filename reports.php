@@ -38,8 +38,8 @@ if (isset($_GET['page'])){
 	
 	include_once ("db_connect.php");
 
-	//$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_activeDate='$todaydate' AND tab_active = '1'";
-	$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_active = '1'";
+	$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_activeDate='$todaydate' AND tab_active = '1'";
+	//$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_active = '1'";
 			
 	$get_activeTablet_db = mysqli_query($db_connection, $sql_activeTablet_list) or die (mysqli_error($db_connection));
 
@@ -83,7 +83,7 @@ if (isset($_GET['page'])){
 		 <div class="activeTabblock"></div>
 		 <div class="activeTabblock">
 			<div class="buttons">
-			<input name="tabID" type="text" value="'.$tab_id.'">
+			<input name="tabID" type="hidden" value="'.$tab_id.'">
 			<input name="closeTab" class="" type="submit" value="Tablet Collected">
 			</div>
 		</div>
@@ -127,22 +127,124 @@ if (isset($_GET['page'])){
 
 	$sql_activeOrder_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_active = '1'";
 				
-	$get_activeOrder_db = mysqli_query($db_connection, $sql_activeOrder_list) or die (mysqli_error($db_connection));
-
+	echo $get_activeOrder_db = mysqli_query($db_connection, $sql_activeOrder_list) or die (mysqli_error($db_connection));
+	
+	if ($get_activeOrder_db ==""){
+		$displayReport .= 'No Active Orders today';
+	}else{
 	while ($aorow = mysqli_fetch_assoc($get_activeOrder_db)){
 		
-		$tab_id= $aorow['tab_id'];
+					$orderid = $aorow["o_id"];
+					$process = $aorow["o_process"];
+					$payment = $aorow["o_payment"];
+					$o_activation = $aorow["o_activation"];
+					$paymenttype = $aorow["o_paymentType"];
+					$total = $aorow["o_total"];
+					$o_date = $aorow["o_date"];
+					$o_date = date("d-m-Y", strtotime($o_date));
+					$o_time = $aorow["o_time"];
+					$o_active = $aorow["o_active"];		
 		
+		$displayReport .= '
 		
-		$displayReport .= '';
-	}
+		<div class="orderholder">
+        <div class="ol_title"><a href="displayorder.php?ac='.$o_activation.'&cat=14">View order <span> '.$o_activation.' <span></a></div>
+<div id="order_information">	
 
+        <div id="ol_content_container">
+	        <div class="ol_content">Order ID</div>
+	        <div class="order_id_ol_content ol_pulled_content">'. $orderid.'</div>
+
+	        <div class="ol_content">Date / Time</div>
+	        <div class="order_date_ol_content ol_pulled_content">'. $o_date.'  at '. $o_time.'</div>
+
+	        <div class="ol_content">Total</div>
+	        <div class="order_total_ol_content ol_pulled_content">&pound;' .number_format ($total, 2). '</div>
+        </div>
+</div>
+  	<div class="filter_selection_actions">
+        <div class="ol_content">Order process</div>	
+		<div class="order_OrderProcess_ol_content ol_pulled_content">'.$process.'</div>
+
+        <div class="ol_content">Payment (Paid/ Not Paid)</div>	 
+		<div class="order_Payment_ol_content ol_pulled_content">'.$payment.'</div>
+          
+        <div class="ol_content">Payment Type</div>	
+		<div class="order_paymenttype_ol_content ol_pulled_content">'.$paymenttype.'</div> 
+              
+    </div>
+    </div>
+		';
+	}
+	}
 
 
  	} else if ($page == "3"){
 	 $pagetitle = "Todays Closed Orders";	
 	 $selectpage = $pagetitle;	
 	 	 
+date_default_timezone_set('Europe/London');
+
+	$todaydate = date("y/m/d");
+	
+	include_once ("db_connect.php");
+
+	$sql_closedOrder_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_process = 'Complete' AND o_active = '2'";
+				
+	$get_closedOrder_db = mysqli_query($db_connection, $sql_closedOrder_list) or die (mysqli_error($db_connection));
+	
+	if ($get_closedOrder_db!=""){
+	
+	while ($corow = mysqli_fetch_assoc($get_closedOrder_db)){
+		
+					$orderid = $corow["o_id"];
+					$process = $corow["o_process"];
+					$payment = $corow["o_payment"];
+					$o_activation = $corow["o_activation"];
+					$paymenttype = $corow["o_paymentType"];
+					$total = $corow["o_total"];
+					$o_date = $corow["o_date"];
+					$o_date = date("d-m-Y", strtotime($o_date));
+					$o_time = $corow["o_time"];
+					$o_active = $corow["o_active"];		
+		
+		$displayReport .= '
+		
+		<div class="orderholder">
+        <div class="ol_title"><a href="displayorder.php?ac='.$o_activation.'&cat=14">View order <span> '.$o_activation.' <span></a></div>
+<div id="order_information">	
+
+        <div id="ol_content_container">
+	        <div class="ol_content">Order ID</div>
+	        <div class="order_id_ol_content ol_pulled_content">'. $orderid.'</div>
+
+	        <div class="ol_content">Date / Time</div>
+	        <div class="order_date_ol_content ol_pulled_content">'. $o_date.'  at '. $o_time.'</div>
+
+	        <div class="ol_content">Total</div>
+	        <div class="order_total_ol_content ol_pulled_content">&pound;' .number_format ($total, 2). '</div>
+        </div>
+</div>
+  	<div class="filter_selection_actions">
+        <div class="ol_content">Order process</div>	
+		<div class="order_OrderProcess_ol_content ol_pulled_content">'.$process.'</div>
+
+        <div class="ol_content">Payment (Paid/ Not Paid)</div>	 
+		<div class="order_Payment_ol_content ol_pulled_content">'.$payment.'</div>
+          
+        <div class="ol_content">Payment Type</div>	
+		<div class="order_paymenttype_ol_content ol_pulled_content">'.$paymenttype.'</div> 
+              
+    </div>
+    <div class="clear"></div>
+    
+    </form>
+    </div>
+	';
+	}
+	}else{
+		$displayReport .= 'No closed Orders today';
+	}			 
 	}else if ($page == "4"){
 	 $pagetitle = "Cash Up";	
 	 $selectpage = $pagetitle;	
