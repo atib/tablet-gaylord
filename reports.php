@@ -38,8 +38,9 @@ if (isset($_GET['page'])){
 	
 	include_once ("db_connect.php");
 
-	$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_activeDate='$todaydate' AND tab_active = '1'";
-				
+	//$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_activeDate='$todaydate' AND tab_active = '1'";
+	$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_active = '1'";
+			
 	$get_activeTablet_db = mysqli_query($db_connection, $sql_activeTablet_list) or die (mysqli_error($db_connection));
 
 	while ($activerow = mysqli_fetch_assoc($get_activeTablet_db)){
@@ -165,7 +166,7 @@ if (isset($_GET['page'])){
 <html class="">
 <!--<![endif]-->
 <?php include_once('head.php'); ?>
-	<link href="CSS/Main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="Script/jquery.js" ></script>
 
 <script>
 	

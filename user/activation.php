@@ -117,8 +117,12 @@ if (isset($_POST['activate'])){
 	
 	if ($tabletcheck == 0){ 
 
-			$activate_tablet = "INSERT INTO tabletactivate_tbl (o_activation, o_id, tab_sess, tab_active)
-										VALUES ('$activation','$activateorderid','$crt_sess', '1')";
+	date_default_timezone_set('Europe/London');
+
+	$todaydate = date("y/m/d");
+
+			$activate_tablet = "INSERT INTO tabletactivate_tbl (o_activation, o_id, tab_activeDate, tab_sess, tab_active)
+										VALUES ('$activation','$activateorderid','$todaydate','$crt_sess', '1')";
 		
 			$activate_tablet_db = mysqli_query($db_connection, $activate_tablet) or die (mysqli_error($db_connection));
 				
