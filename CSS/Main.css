@@ -1541,7 +1541,7 @@ margin-bottom: 2%;
 #clientOrderBtn {
 }
 
-#clientOrderBtn input[type="button"] {
+#clientOrderBtn input[type="submit"] {
 	color: #ffffff;
 	background-color: #7F8C8D;
 	padding: 3% 0;
@@ -1563,7 +1563,7 @@ margin-bottom: 2%;
 	margin-top: 3%;
 }
 
-#clientOrderBtn input[type="button"]:hover {
+#clientOrderBtn input[type="submit"]:hover {
 	color: #ffffff;
 	background-color: #95A5A6;
 /*border-color: #415b76;*/
