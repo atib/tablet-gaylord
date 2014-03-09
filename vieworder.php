@@ -1,6 +1,9 @@
 <?PHP
 session_start();
 	
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 $error_msg = ""; 
 $success_msg = "";	
 $username = $_SESSION['username'];
@@ -32,16 +35,37 @@ if(!isset($_SESSION['username'])){
 	$payment = stripslashes($_POST['payment']);
 	$paymenttype = stripslashes($_POST['paymenttype']);
 	$orderid = stripslashes($_POST['orderid']);	
-	$splitCash = stripslashes($_POST['splitCash']);	
-	$splitCard = stripslashes($_POST['splitCard']);	
+	$total = stripslashes($_POST['total']);	
 	
-	$splitCash = strip_tags($_POST['splitCash']);
-	$splitCard = strip_tags($_POST['splitCard']);
+	$total = strip_tags($_POST['total']);
 	$process = strip_tags($_POST['process']);
 	$payment = strip_tags($_POST['payment']);	
 	$paymenttype = strip_tags($_POST['paymenttype']);	
 	$orderid = strip_tags($_POST['orderid']);	
 	
+	if($paymenttype == "Both"){
+		
+	$SplitCash = stripslashes($_POST['SplitCash']);	
+	$SplitCard = stripslashes($_POST['SplitCard']);	
+	
+	$SplitCash = strip_tags($_POST['SplitCash']);
+	$SplitCard = strip_tags($_POST['SplitCard']);
+	
+		if((!$SplitCash)||(!$SplitCard)){
+		
+		$error_msg = 'Please enter the payment split for order reference: '.$orderid.' <br>';
+		header("Location: vieworder.php?err=$error_msg");
+		exit();
+		}else{
+			include_once ("db_connect.php");
+			
+			$sql_insert_split = "INSERT INTO paymentSplit_tbl(o_id, ps_card, ps_cash, ps_total)
+						 VALUES ($orderid, $SplitCard, $SplitCash, $total)";
+	
+			$sql_insert_split_db = mysqli_query($db_connection, $sql_insert_split) or die (mysqli_error($db_connection));
+			
+		}
+	}
 	
 	
 	include_once ("db_connect.php");
@@ -51,11 +75,11 @@ if(!isset($_SESSION['username'])){
 		
 		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
 		
-		mysqli_free_result($update_orderid_db);
+	//	mysqli_free_result($update_orderid_db);
 
 		$update_check = mysqli_num_rows($update_order_db);
 	
-		if($update_check){
+		if($update_check !=""){
 		
 		$success_msg = "Updated";
 			
@@ -159,8 +183,9 @@ if($_POST['filtercondition'] == 7){
 		
 		include_once ("db_connect.php");
 
-		$display_order = 'SELECT * FROM order_tbl '.$filtercondition_qry.'';
-	
+		$display_order = 'SELECT * FROM order_tbl  '.$filtercondition_qry.'';
+		//$display_order = 'SELECT * FROM order_tbl INNER JOIN paymentSplit_tbl ON order_tbl.o_id = paymentSplit_tbl.o_id  '.$filtercondition_qry.'';
+
 		$display_order_db = mysqli_query($db_connection, $display_order) or die (mysqli_error($db_connection));
 		
 		$display_check = mysqli_num_rows($display_order_db);
@@ -184,6 +209,11 @@ if($_POST['filtercondition'] == 7){
 					$o_date = date("d-m-Y", strtotime($o_date));
 					$o_time = $order["o_time"];
 					$o_active = $order["o_active"];
+					
+					$ps_cash = $order["ps_cash"];
+					$ps_card = $order["ps_card"];
+					$ps_total = $order["ps_total"];
+
 
 			if($o_active == 1){
 				
@@ -266,9 +296,11 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
                 <option value="Both">Both</option>
             </select>   
        <div class="ol_content">Payment Split</div>	           	
-		<input name="SplitCash" type="text" placeholder="Cash Split Amount"><input name="SplitCard" type="text" placeholder="Card Split Amount">
+		<input name="SplitCash" type="text" value="'.$ps_cash.'" placeholder="Cash Split Amount"><input name="SplitCard" type="text" value="'.$ps_card.'" placeholder="Card Split Amount">
 
          <input name="orderid"  type="hidden" value="'. $orderid.'">
+		 <input name="total"  type="hidden" value="'. $total.'">
+
      
     </div>
     <div class="clear"></div>
