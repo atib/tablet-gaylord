@@ -129,9 +129,8 @@ if (isset($_GET['page'])){
 				
 	echo $get_activeOrder_db = mysqli_query($db_connection, $sql_activeOrder_list) or die (mysqli_error($db_connection));
 	
-	if ($get_activeOrder_db ==""){
-		$displayReport .= 'No Active Orders today';
-	}else{
+	if ($get_activeOrder_db !=""){
+		
 	while ($aorow = mysqli_fetch_assoc($get_activeOrder_db)){
 		
 					$orderid = $aorow["o_id"];
@@ -176,6 +175,9 @@ if (isset($_GET['page'])){
     </div>
 		';
 	}
+	}else{
+	$displayReport = 'No Active Orders today';
+
 	}
 
 

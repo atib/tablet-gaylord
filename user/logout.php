@@ -7,7 +7,8 @@ $orderid=$_SESSION['activateorderid'];
 
 include_once("db_connect.php");
 
-$deactivate_tablet = "DELETE FROM tabletactivate_tbl WHERE o_id = '$orderid' AND tab_sess = '$crt_sess' AND o_activation = '$activation' AND tab_active = '1'";
+
+$deactivate_tablet = "UPDATE tabletactivate_tbl SET tab_active = '0' WHERE o_id = '$orderid' AND tab_sess = '$crt_sess' AND o_activation = '$activation' AND tab_active = '1'";
 	
 $deactivate_tablet_db = mysqli_query($db_connection, $deactivate_tablet) or die (mysqli_error($db_connection));
 
