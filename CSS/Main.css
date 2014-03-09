@@ -1710,6 +1710,71 @@ margin-bottom: 2%;
 .basket_icon img {
 	vertical-align: text-bottom;
 }
+.ActiveTabReport {
+	display: block;
+	float: left;
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+	border-top-width: medium;
+	border-right-width: medium;
+	border-bottom-width: medium;
+	border-left-width: medium;
+	border-top-style: solid;
+	border-bottom-style: solid;
+	border-top-color: #000;
+	border-right-color: #000;
+	border-bottom-color: #000;
+	border-left-color: #000;
+}
+.ActiveTabReport .activeTabblock {
+	display: inline-block;
+	float: left;
+	height: auto;
+	width: 33.33%;
+}
+
+
+
+
+
+
+.cashupWrapperHeading {
+	float: left;
+	width: 100%;
+	height: auto;
+	display: block;
+	margin-top: 20px;
+}
+.cashupWrapperHeading .cashupBlockHeading {
+	float: left;
+	height: auto;
+	width: 12.5%;
+	display: inline-block;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+}
+.cashupWrapperContent {
+	display: block;
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+}
+.cashupWrapperContent .cashupBlockContent {
+	text-align: center;
+	display: inline-block;
+	float: left;
+	height: auto;
+	width: 12.5%;
+}
+.cashupWrapperBtn {
+	display: block;
+	float: left;
+	height: auto;
+	width: 100%;
+	margin-top: 10px;
+}
 
 /* Tablet Layout: 481px to 768px. Inherits styles from: Mobile Layout. */
 
@@ -1990,32 +2055,3 @@ margin-bottom: 2%;
 }
 
 }*/
-.ActiveTabReport {
-	display: block;
-	float: left;
-	height: auto;
-	width: 100%;
-	margin-top: 10px;
-	border-top-width: medium;
-	border-right-width: medium;
-	border-bottom-width: medium;
-	border-left-width: medium;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: #000;
-	border-right-color: #000;
-	border-bottom-color: #000;
-	border-left-color: #000;
-}
-.ActiveTabReport .activeTabblock {
-	display: inline-block;
-	float: left;
-	height: auto;
-	width: 33.33%;
-}
-
-
-
-
-
-

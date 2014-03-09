@@ -272,7 +272,6 @@ if (isset($_GET['page'])){
     </div>
     <div class="clear"></div>
     
-    </form>
     </div>
 	';
 	}
@@ -286,6 +285,91 @@ if (isset($_GET['page'])){
 	 $pagetitle = "Cash Up";	
 	 $selectpage = $pagetitle;	
 	 
+	 date_default_timezone_set('Europe/London');
+
+	$todaydate = date("y/m/d");
+	
+	include_once ("db_connect.php");
+
+	$sql_CheckCashUP_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_process = 'Complete' AND o_active = '1'";
+				
+	$get_CheckCashUP_db = mysqli_query($db_connection, $sql_CheckCashUP_list) or die (mysqli_error($db_connection));
+	
+	$row_ccup_cnt = mysqli_num_rows($get_CheckCashUP_db);
+
+	if ($row_ccup_cnt !=""){
+	
+	include_once ("db_connect.php");
+
+	$sql_CashUp_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_process = 'Complete' AND o_active = '1'";
+				
+	$get_CashUp_db = mysqli_query($db_connection, $sql_CashUp_list) or die (mysqli_error($db_connection));
+	
+	
+		$displayReport .= '
+
+		<div class="cashupWrapperHeading">
+
+		<div class="cashupBlockHeading">Activation</div>
+		<div class="cashupBlockHeading">Date</div>
+		<div class="cashupBlockHeading">Time</div>
+		<div class="cashupBlockHeading">Discount</div>
+		<div class="cashupBlockHeading">Total</div>
+		<div class="cashupBlockHeading">Payment</div>
+		<div class="cashupBlockHeading">Process</div>
+		<div class="cashupBlockHeading">Type</div>
+
+		</div>';
+		
+	while ($cuprow = mysqli_fetch_assoc($get_CashUp_db)){
+		
+					$orderid = $cuprow["o_id"];
+					$process = $cuprow["o_process"];
+					$payment = $cuprow["o_payment"];
+					$o_activation = $cuprow["o_activation"];
+					$paymenttype = $cuprow["o_paymentType"];
+					$total = $cuprow["o_total"];
+					$o_date = $cuprow["o_date"];
+					$o_date = date("d-m-Y", strtotime($o_date));
+					$o_time = $cuprow["o_time"];
+					$o_active = $cuprow["o_active"];		
+		
+		$sum = $sum + $total;
+		
+		$displayReport .= '
+
+		<div class="cashupWrapperContent">
+
+		<div class="cashupBlockContent">'.$o_activation.'</div>
+		<div class="cashupBlockContent">'.$o_date.'</div>
+		<div class="cashupBlockContent">'.$o_time.'</div>
+		<div class="cashupBlockContent">'.$discount.'</div>
+		<div class="cashupBlockContent">&pound;' .number_format ($total, 2). '</div>
+		<div class="cashupBlockContent">'.$payment.'</div>
+		<div class="cashupBlockContent">'.$process.'</div>
+		<div class="cashupBlockContent">'.$paymenttype.'</div>
+
+		</div>';
+		
+	}
+	$displayReport .= '
+			<div class="cashupWrapperBtn">&pound;' .number_format ($sum, 2). '
+			<form action="reports.php?page=4" method="post">
+			<div class="continue_button">
+			<input class="" align="middle" name="Cash_Up" type="submit" value="Cash Up + Print">
+			</div>
+			</form>
+			</div>
+
+	
+	';
+	
+	}else{
+		$displayReport = '';
+		$msg2user = "Today orders has not been cashed up"; 	
+	}
+	
+	 
 	}else if ($page == "5"){
 	 $pagetitle = "Generate Report";	
 	 $selectpage = $pagetitle;	
@@ -293,7 +377,9 @@ if (isset($_GET['page'])){
 	}else {
 	 $pagetitle = "Reports Page";		
 	 $selectpage = $pagetitle;	
-	// 
+	// default page
+	
+	$displayReport = 'Default page show something here';
 	}
 }
 ?>
@@ -304,6 +390,7 @@ if (isset($_GET['page'])){
 <!--[if gt IE 8]><!-->
 <html class="">
 <!--<![endif]-->
+
 <?php include_once('head.php'); ?>
 <script type="text/javascript" src="Script/jquery.js" ></script>
 
@@ -374,9 +461,9 @@ if (isset($_GET['page'])){
  <?php echo $displayReport; ?>
  
  
- 
- 
- 
+ 		<div class="cashupWrapperBtn">
+			
+		</div>
  
  
  
