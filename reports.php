@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 if(!isset($_SESSION['username'])){
 	
@@ -15,12 +15,18 @@ if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
 	$success = "";
+	$msg2user ="";
 } else if(isset($_GET['succ'])){
 	$error_msg = "";
+	$msg2user ="";
 	$success = $_GET['succ'];
+}else if(isset($_GET['msg'])){
+	$error_msg = "";
+	$msg2user = $_GET['msg'];
 }else{
 	$error_msg = "";
 	$success = "";	
+	$msg2user ="";
 }
 
 
@@ -106,7 +112,18 @@ if (isset($_GET['page'])){
 
 		 $tab_order = $row['tab_order'];
 		 $tab_active = $row['tab_active'];
+		 $tab_sess = $row['tab_sess'];
 			if ($tab_order == "Order Complete" && $tab_active == 0 || $tab_order == "Order Complete" && $tab_active == 1){
+				
+			
+			$deleteTablet = "DELETE FROM tabletactivate_tbl WHERE tab_sess = '$tab_sess'";
+
+			$update_deleteTablet_db = mysqli_query($db_connection, $deleteTablet) or die (mysqli_error($db_connection));
+	
+			$success_msg = "<h5>Tablet been deactivated</h5>";
+	
+				
+				
 				
 			}else if ($tab_order == "Ordering" && $tab_active == 1){
 			$error_msg = "User is still ordering. If User has finish please deactivate tablet by logging off";
@@ -125,12 +142,19 @@ if (isset($_GET['page'])){
 	
 	include_once ("db_connect.php");
 
+	$sql_CheckActiveOrder_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_active = '1'";
+				
+	$get_CheckActiveOrder_db = mysqli_query($db_connection, $sql_CheckActiveOrder_list) or die (mysqli_error($db_connection));
+	
+	$row_cao_cnt = mysqli_num_rows($get_CheckActiveOrder_db);
+
+	if ($row_cao_cnt !=""){
+	
+	include_once ("db_connect.php");
+
 	$sql_activeOrder_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_active = '1'";
 				
-	echo $get_activeOrder_db = mysqli_query($db_connection, $sql_activeOrder_list) or die (mysqli_error($db_connection));
-	
-	if ($get_activeOrder_db !=""){
-		
+	$get_activeOrder_db = mysqli_query($db_connection, $sql_activeOrder_list) or die (mysqli_error($db_connection));
 	while ($aorow = mysqli_fetch_assoc($get_activeOrder_db)){
 		
 					$orderid = $aorow["o_id"];
@@ -176,8 +200,8 @@ if (isset($_GET['page'])){
 		';
 	}
 	}else{
-	$displayReport = 'No Active Orders today';
-
+	$displayReport = '';
+	$msg2user = "No Active Orders Today"; 
 	}
 
 
@@ -185,18 +209,26 @@ if (isset($_GET['page'])){
 	 $pagetitle = "Todays Closed Orders";	
 	 $selectpage = $pagetitle;	
 	 	 
-date_default_timezone_set('Europe/London');
+	date_default_timezone_set('Europe/London');
 
 	$todaydate = date("y/m/d");
+	
+	include_once ("db_connect.php");
+
+	$sql_CheckClosedOrder_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_process = 'Complete' AND o_active = '2'";
+				
+	$get_CheckClosedOrder_db = mysqli_query($db_connection, $sql_CheckClosedOrder_list) or die (mysqli_error($db_connection));
+	
+	$row_cco_cnt = mysqli_num_rows($get_CheckClosedOrder_db);
+
+	if ($row_cco_cnt !=""){
 	
 	include_once ("db_connect.php");
 
 	$sql_closedOrder_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_process = 'Complete' AND o_active = '2'";
 				
 	$get_closedOrder_db = mysqli_query($db_connection, $sql_closedOrder_list) or die (mysqli_error($db_connection));
-	
-	if ($get_closedOrder_db!=""){
-	
+		
 	while ($corow = mysqli_fetch_assoc($get_closedOrder_db)){
 		
 					$orderid = $corow["o_id"];
@@ -245,8 +277,11 @@ date_default_timezone_set('Europe/London');
 	';
 	}
 	}else{
-		$displayReport .= 'No closed Orders today';
-	}			 
+	$displayReport = '';
+	$msg2user = "No Closed Orders"; 
+	}
+	
+			 
 	}else if ($page == "4"){
 	 $pagetitle = "Cash Up";	
 	 $selectpage = $pagetitle;	
@@ -335,6 +370,7 @@ date_default_timezone_set('Europe/London');
             <?php echo $error_msg;?> <?php $success_msg; ?>
  
  <?php echo $pagetitle;?>
+ <?php echo $msg2user; ?>
  <?php echo $displayReport; ?>
  
  

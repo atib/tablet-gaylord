@@ -195,6 +195,24 @@ if($_POST['filtercondition'] == 7){
 
 			}
 
+$checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON orderdetail_tbl.od_session = tabletactivate_tbl.tab_sess
+					WHERE tabletactivate_tbl.o_id = '.$orderid.' AND orderdetail_tbl.od_session IS NULL';
+	
+		$usuage_checkTablet_db = mysqli_query($db_connection, $checkTablet) or die (mysqli_error($db_connection));
+		
+		$tablet_count = mysqli_num_rows($usuage_checkTablet_db);
+
+
+ 		if ($tablet_count !=""){
+		
+		$tableorder	= "No. User still ordering";
+		
+		} else{
+		
+		$tableorder	= "Yes. Table Have submited there order";
+
+		}
+
 
 
 			$orderDisplay .='
@@ -212,6 +230,9 @@ if($_POST['filtercondition'] == 7){
 
 	        <div class="ol_content">Total</div>
 	        <div class="order_total_ol_content ol_pulled_content">&pound;' .number_format ($total, 2). '</div>
+			
+			<div class="ol_content">Table Order Complete</div>
+	        <div class="order_total_ol_content ol_pulled_content">'.$tableorder.'</div>
         </div>
 </div>
   	<div class="filter_selection_actions">
