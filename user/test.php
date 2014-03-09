@@ -19,3 +19,15 @@
 
 </body>
 </html>
+SELECT
+    o_id,
+    SUM(IF(o_paymentType= 'Cash', o_total, 0)) AS 'Cash',
+    SUM(IF(o_paymentType= 'Card', o_total, 0)) AS 'Card',
+
+    SUM(o_total) AS SumTotal
+FROM
+    order_tbl
+WHERE
+    o_date= '2014-03-09'
+GROUP BY
+    o_id

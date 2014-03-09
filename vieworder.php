@@ -32,11 +32,17 @@ if(!isset($_SESSION['username'])){
 	$payment = stripslashes($_POST['payment']);
 	$paymenttype = stripslashes($_POST['paymenttype']);
 	$orderid = stripslashes($_POST['orderid']);	
+	$splitCash = stripslashes($_POST['splitCash']);	
+	$splitCard = stripslashes($_POST['splitCard']);	
 	
+	$splitCash = strip_tags($_POST['splitCash']);
+	$splitCard = strip_tags($_POST['splitCard']);
 	$process = strip_tags($_POST['process']);
 	$payment = strip_tags($_POST['payment']);	
 	$paymenttype = strip_tags($_POST['paymenttype']);	
 	$orderid = strip_tags($_POST['orderid']);	
+	
+	
 	
 	include_once ("db_connect.php");
 		
@@ -259,7 +265,9 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
                 <option value="Card">Card</option>
                 <option value="Both">Both</option>
             </select>   
-         
+       <div class="ol_content">Payment Split</div>	           	
+		<input name="SplitCash" type="text" placeholder="Cash Split Amount"><input name="SplitCard" type="text" placeholder="Card Split Amount">
+
          <input name="orderid"  type="hidden" value="'. $orderid.'">
      
     </div>

@@ -44,11 +44,20 @@ if (isset($_GET['page'])){
 	
 	include_once ("db_connect.php");
 
+	$sql_Check_ActiveTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_activeDate='$todaydate' AND tab_active = '1'";
+	//$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_active = '1'";
+			
+	$get_Check_ActiveTablet_db = mysqli_query($db_connection, $sql_Check_ActiveTablet_list) or die (mysqli_error($db_connection));
+
+	$row_cat_cnt = mysqli_num_rows($get_Check_ActiveTablet_db);
+
+	if ($row_cat_cnt !=""){
+
 	$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_activeDate='$todaydate' AND tab_active = '1'";
 	//$sql_activeTablet_list = "SELECT * FROM tabletactivate_tbl WHERE tab_active = '1'";
 			
 	$get_activeTablet_db = mysqli_query($db_connection, $sql_activeTablet_list) or die (mysqli_error($db_connection));
-
+	
 	while ($activerow = mysqli_fetch_assoc($get_activeTablet_db)){
 		
 		$tab_id= $activerow['tab_id'];
@@ -131,6 +140,11 @@ if (isset($_GET['page'])){
 			
 		}
 		}
+		}else{
+	$displayReport = '';
+	$msg2user = "No Active Tablet"; 
+	}
+
 	
 	} else if ($page == "2"){
 	 $pagetitle = "Todays Active Orders";	
@@ -353,16 +367,31 @@ if (isset($_GET['page'])){
 		
 	}
 	$displayReport .= '
-			<div class="cashupWrapperBtn">&pound;' .number_format ($sum, 2). '
+			<div class="cashupWrapperBtn">Todays taking is: &pound;' .number_format ($sum, 2). '
 			<form action="reports.php?page=4" method="post">
 			<div class="continue_button">
-			<input class="" align="middle" name="Cash_Up" type="submit" value="Cash Up + Print">
+			<input class="" align="middle" name="CashUp" type="submit" value="Cash Up + Print">
 			</div>
 			</form>
-			</div>
-
-	
+			</div>	
 	';
+	
+	if (isset($_POST['CashUp'])){	
+		
+	date_default_timezone_set('Europe/London');
+
+	$todaydate = date("y/m/d");	
+		
+	include_once ("db_connect.php");
+		
+	$sql_UpdateCashUP_list = "UPDATE order_tbl SET o_active = '2' WHERE o_date='$todaydate' AND o_process = 'Complete'";
+				
+	$get_UpdateCashUP_db = mysqli_query($db_connection, $sql_UpdateCashUP_list) or die (mysqli_error($db_connection));
+	
+	## enter print script
+	
+		
+	}
 	
 	}else{
 		$displayReport = '';
