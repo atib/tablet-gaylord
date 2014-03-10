@@ -1,8 +1,8 @@
 <?PHP
 session_start();
 	
-//error_reporting(E_ALL);
-//ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 $error_msg = ""; 
 $success_msg = "";	
@@ -65,7 +65,7 @@ if(!isset($_SESSION['username'])){
 			$sql_insert_split_db = mysqli_query($db_connection, $sql_insert_split) or die (mysqli_error($db_connection));
 			
 		}
-	}
+		}
 	
 	
 	include_once ("db_connect.php");
@@ -209,7 +209,9 @@ if($_POST['filtercondition'] == 7){
 					$o_date = date("d-m-Y", strtotime($o_date));
 					$o_time = $order["o_time"];
 					$o_active = $order["o_active"];
-					
+					$ps_cash = "";
+					$ps_card = "";
+					$ps_total = "";
 					
 					$display_orderSplit = 'SELECT * FROM paymentSplit_tbl WHERE o_id = '.$orderid.'';
 					$display_orderSplit_db = mysqli_query($db_connection, $display_orderSplit) or die (mysqli_error($db_connection));

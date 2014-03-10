@@ -250,6 +250,7 @@ if (isset($_GET['page'])){
 	
 	$row_cco_cnt = mysqli_num_rows($get_CheckClosedOrder_db);
 
+
 	if ($row_cco_cnt !=""){
 	
 	include_once ("db_connect.php");
@@ -320,6 +321,14 @@ if (isset($_GET['page'])){
 	
 	include_once ("db_connect.php");
 
+	$sql_CheckCashUPSub_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_process = 'Complete' AND o_active = '2'";
+				
+	$get_CheckCashUPSub_db = mysqli_query($db_connection, $sql_CheckCashUPSub_list) or die (mysqli_error($db_connection));
+	
+	if ($get_CheckCashUPSub_db ==""){
+	
+	include_once ("db_connect.php");
+
 	$sql_CheckCashUP_list = "SELECT * FROM order_tbl WHERE o_date='$todaydate' AND o_process = 'Complete' AND o_active = '1'";
 				
 	$get_CheckCashUP_db = mysqli_query($db_connection, $sql_CheckCashUP_list) or die (mysqli_error($db_connection));
@@ -362,7 +371,20 @@ if (isset($_GET['page'])){
 					$o_date = date("d-m-Y", strtotime($o_date));
 					$o_time = $cuprow["o_time"];
 					$o_active = $cuprow["o_active"];		
-					$discount = "0";
+					$o_cashdisc = $cuprow["o_cashdisc"];		
+					$o_percentdisc = $cuprow["o_percentdisc"];		
+
+					if ($o_percentdisc == 0 && $o_cashdisc ==0.00){
+						$discount = "NO";
+					} else if($o_percentdisc !=0){
+					 $discount = $o_percentdisc;
+					} else if($o_cashdisc !=0.00){
+					 $discount = $o_cashdisc;
+					}else{
+					 $discount = "NO";
+					}
+					
+					
 		$sum = $sum + $total;
 		
 		$displayReport .= '
@@ -412,7 +434,10 @@ if (isset($_GET['page'])){
 		$displayReport = '';
 		$msg2user = "Today orders has not been cashed up"; 	
 	}
-	
+	}else{
+		$displayReport = '';
+		$msg2user = "Today orders has been cashed up";
+	}
 	 
 	}else if ($page == "5"){
 	 $pagetitle = "Generate Report";	
