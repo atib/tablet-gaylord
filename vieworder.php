@@ -245,7 +245,7 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
 		
 		} else{
 		
-		$tableorder	= "<span> Yes </span> <br/>  Table Have submited there order";
+		$tableorder	= "<span> Yes </span> <br/> Table has submitted order";
 
 		}
 

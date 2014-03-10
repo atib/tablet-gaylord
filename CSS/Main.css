@@ -973,12 +973,18 @@ a#nav1 li {
 	padding-top: 5%;
 	border-radius: 8px 8px 0px 0px;
 }
-.orderholder form .ol_title {
+
+.order_fix_width {
+	width: 98%;
+	margin-left: 0;
+}
+
+.orderholder .ol_title  {
 	width: 100%;
 	margin-bottom: 5%;
 }
 
-.orderholder form .ol_title a {
+.orderholder .ol_title a {
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 1.3em;
@@ -1036,6 +1042,10 @@ a#nav1 li {
 	padding-right: 2%;
 }
 
+.pulled_right_content {
+	margin: 1.5% 0 9% 0;
+	font-weight: bold;
+}
 
 
 .payment {
@@ -1119,7 +1129,7 @@ a#nav1 li {
 
 }
 
-.orderholder form .ol_content {
+.orderholder .ol_content {
 	/*float: left;*/
 	color: #777;
 	/*height: 25px;*/
@@ -1725,7 +1735,8 @@ margin-bottom: 2%;
 	vertical-align: text-bottom;
 }
 .ActiveTabReport {
-	margin-left: 0.5%;
+	width: 98%;
+	margin-left: 0%;
 	border-bottom-color: #7F8C8D;
 	font-family: sans-serif;
 	font-weight: lighter;
@@ -2048,7 +2059,7 @@ margin-bottom: 2%;
 .ui-input-text input {
 	box-shadow: none;
 	border: 1px solid #fff;
-	text-align: left;
+	text-align: center;
 	font-family: sans-serif;
 	font-weight: lighter;
 	font-size: 1.3em;
