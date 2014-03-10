@@ -362,7 +362,7 @@ if (isset($_GET['page'])){
 					$o_date = date("d-m-Y", strtotime($o_date));
 					$o_time = $cuprow["o_time"];
 					$o_active = $cuprow["o_active"];		
-		
+					$discount = "0";
 		$sum = $sum + $total;
 		
 		$displayReport .= '
