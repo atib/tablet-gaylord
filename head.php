@@ -8,5 +8,6 @@
 	<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="CSS/print.css">
 	<script src="Script/jquery.js"></script>
+    <link rel="shortcut icon" href="Images/favicon.png">
 
 </head>

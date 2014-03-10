@@ -234,6 +234,11 @@ margin-bottom: 0em;
 	margin-bottom: 10%;
 }
 
+.messages {
+	padding-left: 2%;
+	margin: 0 0 5% 0;
+}
+
 .error_message_activation {
 	font-family: sans-serif;
 	font-weight: lighter; 
@@ -258,7 +263,7 @@ margin-bottom: 0em;
 	font-weight: lighter;
 	font-size: 1.2em; 
 	color: #4d4d4d;
-	width: 90%;
+	/*width: 90%;*/
 	margin: 0 auto;
 
 }
@@ -954,7 +959,7 @@ a#nav1 li {
 	text-align: center;
 }*/
 
-.orderholder {
+.orderholder, .ActiveTabReport {
 	clear: both;
 	float: left;
 	margin-left: 2%;
@@ -1139,6 +1144,15 @@ a#nav1 li {
 
 .order_total_ol_content {
 	font-size: 2.6em;
+}
+
+.table_complete {
+	font-size: 2em;
+	font-weight: normal;
+}
+
+.table_complete span {
+	font-weight: bold;
 }
 
 #ol_content_container {
@@ -1544,7 +1558,7 @@ margin-bottom: 2%;
 #clientOrderBtn input[type="submit"] {
 	color: #ffffff;
 	background-color: #7F8C8D;
-	padding: 3% 0;
+	padding: 5% 0;
 	width: 100%;
 	font-size: 0.9em;
 	border: 1px solid transparent;
@@ -1711,31 +1725,85 @@ margin-bottom: 2%;
 	vertical-align: text-bottom;
 }
 .ActiveTabReport {
-	display: block;
+	margin-left: 0.5%;
+	border-bottom-color: #7F8C8D;
+	font-family: sans-serif;
+	font-weight: lighter;
+	color: #777;
+}
+
+.tablet_info_id { 
 	float: left;
-	height: auto;
+	padding-left: 2%;
+	width: 48%;
+}
+
+.tablet_info_id .activeTabblock, .order_info_tablet .activeTabblock  {
+	margin-top: 5%;
+}
+
+.tablet_info_id .activeTabblock:first-child, .order_info_tablet .activeTabblock:first-child{
+	margin-top: 0;
+}
+
+.tablet_info_id .tablet_info, .order_info_tablet .order_info{
+	font-weight: bold;
+	font-size: 1.3em;
+}
+
+.order_info_tablet .ordering, .tablet_info_id .ordering {
+
+	font-size: 1.8em;
+ 	color: #2980B9;
+
+}
+
+.tablet_info_id .ordering  {
+	font-size: 2.6em;
+}
+
+.order_info_tablet {
+	float: right;
+	width: 48%;
+}
+
+.session_tablet_report {
+	padding-left: 2%;
+}
+
+.session_tablet_report .activeTabblock {
+}
+
+.session_tablet_report > div {
+	margin: 0;
+}
+
+.session_tablet_report .session_tab{ 
+	font-weight: bold;
+	/*color: #7F8C8D;*/
+	font-family: sans-serif;
+	margin-top: 1%;
+}
+
+
+
+.collect_tablet input[type="submit"] {
+	color: #ffffff;
+	background-color: #2C3E50;
+	padding: 5% 0;
 	width: 100%;
-	margin-top: 10px;
-	border-top-width: medium;
-	border-right-width: medium;
-	border-bottom-width: medium;
-	border-left-width: medium;
-	border-top-style: solid;
-	border-bottom-style: solid;
-	border-top-color: #000;
-	border-right-color: #000;
-	border-bottom-color: #000;
-	border-left-color: #000;
-}
-.ActiveTabReport .activeTabblock {
-	display: inline-block;
-	float: left;
-	height: auto;
-	width: 33.33%;
+	font-size: 0.9em;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	cursor: pointer;
+	font-size: 1.15em;
+	font-weight: lighter;
 }
 
-
-
+.collect_tablet input[type="submit"]:hover {
+	color: #ffffff;
+	background-color: #34495E;
+}
 
 
 
@@ -1980,10 +2048,10 @@ margin-bottom: 2%;
 .ui-input-text input {
 	box-shadow: none;
 	border: 1px solid #fff;
-	text-align: center;
+	text-align: left;
 	font-family: sans-serif;
 	font-weight: lighter;
-	font-size: 1.5em;
+	font-size: 1.3em;
 }
 
 

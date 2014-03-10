@@ -11,6 +11,8 @@ if(!isset($_SESSION['username'])){
 	exit();
 }
 
+$username = $_SESSION['username'];
+
 if(isset($_GET['err'])){
 
 	$error_msg = $_GET['err'];
@@ -74,33 +76,46 @@ if (isset($_GET['page'])){
 		<form action="reports.php?page=1" method="post" name="report_form">
 		 <div class="ActiveTabReport">
 		 
-		 <div class="activeTabblock">Tablet ID</div>
-		 <div class="activeTabblock">Activation</div>
-		 <div class="activeTabblock">Order ID</div>
+		<div class="tablet_info_id">
+
+			<div class="activeTabblock">Tablet ID</div>
+			<div class="tablet_info ordering">'.$tab_id.'</div>
+
+			<div class="activeTabblock">Order ID</div>
+			<div class="tablet_info ">'.$o_id.'</div>
+
+
+			<div class="activeTabblock">Activation</div>
+			<div class="tablet_info">'.$o_activation.'</div>
+
+
+
+			<div class="activeTabblock">Tablet Active</div>		 
+		 	<div class="tablet_info">'.$tab_active.'</div>
+		</div>
+
+		<div class="order_info_tablet">
+
+		  <div class="activeTabblock">Activation Date</div>		
+		  <div class="order_info">'.$tab_activeDate.'</div>
+
+ 		  <div class="activeTabblock">Tablet Order Process</div>
+		  <div class="order_info ordering">'.$tab_order.'</div>
+
+
 		
-		 <div class="activeTabblock">'.$tab_id.'</div>
-		 <div class="activeTabblock">'.$o_activation.'</div>
-		 <div class="activeTabblock">'.$o_id.'</div>
-		 
-		 <div class="activeTabblock">Tablet Session</div>
-		 <div class="activeTabblock">Tablet Order Process</div>
-		 <div class="activeTabblock">Activation Date</div>
-		
-		 <div class="activeTabblock">'.$tab_sess.'</div>
-		 <div class="activeTabblock">'.$tab_order.'</div>
-		 <div class="activeTabblock">'.$tab_activeDate.'</div>
-		 
-		 <div class="activeTabblock">Tablet Active</div>
-		 <div class="activeTabblock"></div>
-		 <div class="activeTabblock"></div>
-		 
-		 <div class="activeTabblock">'.$tab_active.'</div>
-		 <div class="activeTabblock"></div>
-		 <div class="activeTabblock">
-			<div class="buttons">
+		</div> 
+
+		<div class="clear"></div>
+		<div class="session_tablet_report">
+		  <div class="activeTabblock">Tablet Session</div>
+		  <div class="session_tab">'.$tab_sess.'</div>
+		</div>
+		<div class="clear"></div>
+
+		<div class="collect_tablet">
 			<input name="tabID" type="hidden" value="'.$tab_id.'">
 			<input name="closeTab" class="" type="submit" value="Tablet Collected">
-			</div>
 		</div>
 		 
 		</div>
@@ -470,7 +485,26 @@ if (isset($_GET['page'])){
       <div class="title">
         <h2>Reports</h2>
       </div>
- <nav class="reportmenu">
+      
+      <div class="messages">
+  		<div class="error_message_activation">
+	      	<?php echo $error_msg;?> 
+	    </div>      	
+    	
+    	<div class="success_message_activation">
+			<?php echo $success_msg; ?>     		
+    	</div>  
+	
+		<div class="normal_message_activation">
+			<?php echo $msg2user; ?>			
+		</div>
+      </div>
+
+
+
+
+
+ 		<nav class="reportmenu">
 	        <a href="#" id="pull">You are currently viewing: <br/> <?php echo $selectpage;?></a>  
 
 	        <ul class="reportmenu_list"> 
@@ -483,11 +517,9 @@ if (isset($_GET['page'])){
 	        </ul>
 	    </nav>    
 
-            <?php echo $error_msg;?> <?php $success_msg; ?>
- 
- <?php echo $pagetitle;?>
- <?php echo $msg2user; ?>
- <?php echo $displayReport; ?>
+           
+
+		<?php echo $displayReport; ?>
  
  
  		<div class="cashupWrapperBtn">

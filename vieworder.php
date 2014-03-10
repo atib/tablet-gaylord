@@ -241,11 +241,11 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
 
  		if ($tablet_count !=""){
 		
-		$tableorder	= "No. User still ordering";
+		$tableorder	= "<span> No </span> <br/> Customer(s) still ordering";
 		
 		} else{
 		
-		$tableorder	= "Yes. Table Have submited there order";
+		$tableorder	= "<span> Yes </span> <br/>  Table Have submited there order";
 
 		}
 
@@ -268,7 +268,7 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
 	        <div class="order_total_ol_content ol_pulled_content">&pound;' .number_format ($total, 2). '</div>
 			
 			<div class="ol_content">Table Order Complete</div>
-	        <div class="order_total_ol_content ol_pulled_content">'.$tableorder.'</div>
+	        <div class="order_total_ol_content ol_pulled_content table_complete">'.$tableorder.'</div>
         </div>
 </div>
   	<div class="filter_selection_actions">
