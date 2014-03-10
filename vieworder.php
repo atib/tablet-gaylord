@@ -1,8 +1,8 @@
 <?PHP
 session_start();
 	
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 $error_msg = ""; 
 $success_msg = "";	
@@ -210,11 +210,25 @@ if($_POST['filtercondition'] == 7){
 					$o_time = $order["o_time"];
 					$o_active = $order["o_active"];
 					
-					$ps_cash = $order["ps_cash"];
-					$ps_card = $order["ps_card"];
-					$ps_total = $order["ps_total"];
+					
+					$display_orderSplit = 'SELECT * FROM paymentSplit_tbl WHERE o_id = '.$orderid.'';
+					$display_orderSplit_db = mysqli_query($db_connection, $display_orderSplit) or die (mysqli_error($db_connection));
 
+				while($splitRow = mysqli_fetch_array($display_orderSplit_db)){
 
+					$ps_cash = $splitRow["ps_cash"];
+					$ps_card = $splitRow["ps_card"];
+					$ps_total = $splitRow["ps_total"];
+				}
+				
+				if($ps_cash == 0.00){
+					$ps_cash = "";
+					$ps_card = "";
+				} else if($ps_card == 0.00){
+					$ps_cash = "";
+					$ps_card = "";	
+				}
+				
 			if($o_active == 1){
 				
 				$activation_btn ='
@@ -241,11 +255,11 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
 
  		if ($tablet_count !=""){
 		
-		$tableorder	= "<span> No </span> <br/> Customer(s) still ordering";
+		$tableorder	= "No. User still ordering";
 		
 		} else{
 		
-		$tableorder	= "<span> Yes </span> <br/> Table has submitted order";
+		$tableorder	= "Yes. Table Have submited there order";
 
 		}
 
@@ -268,7 +282,7 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
 	        <div class="order_total_ol_content ol_pulled_content">&pound;' .number_format ($total, 2). '</div>
 			
 			<div class="ol_content">Table Order Complete</div>
-	        <div class="order_total_ol_content ol_pulled_content table_complete">'.$tableorder.'</div>
+	        <div class="order_total_ol_content ol_pulled_content">'.$tableorder.'</div>
         </div>
 </div>
   	<div class="filter_selection_actions">
@@ -296,7 +310,7 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
                 <option value="Both">Both</option>
             </select>   
        <div class="ol_content">Payment Split</div>	           	
-		<input name="SplitCash" type="text" value="'.$ps_cash.'" placeholder="Cash Split Amount"><input name="SplitCard" type="text" value="'.$ps_card.'" placeholder="Card Split Amount">
+		<input name="SplitCash" type="text" value="' .number_format ($ps_cash, 2). '" placeholder="Cash Split Amount"><input name="SplitCard" type="text" value="' .number_format ($ps_card, 2). '" placeholder="Card Split Amount">
 
          <input name="orderid"  type="hidden" value="'. $orderid.'">
 		 <input name="total"  type="hidden" value="'. $total.'">
