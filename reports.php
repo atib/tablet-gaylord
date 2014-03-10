@@ -290,13 +290,13 @@ if (isset($_GET['page'])){
 </div>
   	<div class="filter_selection_actions">
         <div class="ol_content">Order process</div>	
-		<div class="order_OrderProcess_ol_content ol_pulled_content">'.$process.'</div>
+		<div class="order_OrderProcess_ol_content ol_pulled_content pulled_right_content">'.$process.'</div>
 
         <div class="ol_content">Payment (Paid/ Not Paid)</div>	 
-		<div class="order_Payment_ol_content ol_pulled_content">'.$payment.'</div>
+		<div class="order_Payment_ol_content ol_pulled_content pulled_right_content">'.$payment.'</div>
           
         <div class="ol_content">Payment Type</div>	
-		<div class="order_paymenttype_ol_content ol_pulled_content">'.$paymenttype.'</div> 
+		<div class="order_paymenttype_ol_content ol_pulled_content pulled_right_content">'.$paymenttype.'</div> 
               
     </div>
     <div class="clear"></div>
