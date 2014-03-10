@@ -36,7 +36,6 @@ if(!isset($_SESSION['username'])){
 	$paymenttype = stripslashes($_POST['paymenttype']);
 	$orderid = stripslashes($_POST['orderid']);	
 	$total = stripslashes($_POST['total']);	
-	
 	$total = strip_tags($_POST['total']);
 	$process = strip_tags($_POST['process']);
 	$payment = strip_tags($_POST['payment']);	
@@ -70,23 +69,25 @@ if(!isset($_SESSION['username'])){
 	
 	include_once ("db_connect.php");
 		
-		$update_orderid = "UPDATE order_tbl SET o_process='$process', o_payment='$payment', o_paymentType='$paymenttype' 
-							WHERE o_id='$orderid' AND o_active='1'";
+		$update_orderid = 'UPDATE order_tbl SET o_process='.$process.', o_payment='.$payment.', o_paymentType='.$paymenttype.' 
+							WHERE o_id='.$orderid.' AND o_active=1';
 		
-		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
+		echo $update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
 		
 	//	mysqli_free_result($update_orderid_db);
 
-		$update_check = mysqli_num_rows($update_order_db);
+	 $update_check = mysqli_num_rows($update_order_db);
 	
 		if($update_check !=""){
 		
 		$success_msg = "Updated";
-			
+		header("Location: vieworder.php?succ=$success_msg");
+
 		} else{
 		
 		$error_msg = "Not Updated ";	
-		
+		header("Location: vieworder.php?err=$error_msg");
+
 		}	
 		
 } else if(isset($_POST['deactivate'])){
@@ -97,7 +98,7 @@ if(!isset($_SESSION['username'])){
 	
 	include_once ("db_connect.php");
 		
-		$deactivate_orderid = "UPDATE order_tbl SET  o_active='0' WHERE o_id='$orderid'";
+		$deactivate_orderid = "UPDATE order_tbl SET o_active='0' WHERE o_id='$orderid'";
 		
 		$deactivate_order_db = mysqli_query($db_connection, $deactivate_orderid) or die (mysqli_error($db_connection));
 		
@@ -124,7 +125,7 @@ if(!isset($_SESSION['username'])){
 
 include_once ("db_connect.php");
 		
-		$activate_orderid = "UPDATE order_tbl SET  o_active='1' WHERE o_id='$orderid'";
+		$activate_orderid = "UPDATE order_tbl SET o_active='1' WHERE o_id='$orderid'";
 		
 		$activate_order_db = mysqli_query($db_connection, $activate_orderid) or die (mysqli_error($db_connection));
 		
@@ -156,22 +157,22 @@ if($_POST['filtercondition'] == 7){
 
 	}else if($_POST['filtercondition'] == 3){
 	
-	$filtercondition_qry ='WHERE o_payment = "Not Paid"';
+	$filtercondition_qry ="WHERE o_payment = 'Not Paid'";
 	$filtercondition = "Not Paid (Selected)";
 	
 	}else if($_POST['filtercondition'] == 4){
 	
-	$filtercondition_qry ='WHERE o_payment = "Paid"';
+	$filtercondition_qry ="WHERE o_payment = 'Paid'";
 	$filtercondition = "Paid (Selected)";
 	
 	}else if($_POST['filtercondition'] == 5){
 	
-	$filtercondition_qry ='WHERE o_process = "Complete"';
+	$filtercondition_qry ="WHERE o_process = 'Complete'";
 	$filtercondition = "Complete (Selected)";
 	
 	}else if($_POST['filtercondition'] == 6){
 	
-	$filtercondition_qry ='WHERE o_process = "Payment"';
+	$filtercondition_qry ="WHERE o_process = 'Payment'";
 	$filtercondition = "Payment (Selected)";
 
 	}else{
