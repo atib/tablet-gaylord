@@ -58,8 +58,8 @@ if(!isset($_SESSION['username'])){
 		}else{
 			include_once ("db_connect.php");
 			
-			$sql_insert_split = "INSERT INTO paymentSplit_tbl(o_id, ps_card, ps_cash, ps_total)
-						 VALUES ($orderid, $SplitCard, $SplitCash, $total)";
+			$sql_insert_split = 'INSERT INTO paymentSplit_tbl(o_id, ps_card, ps_cash, ps_total)
+						 VALUES ('.$orderid.', '.$SplitCard.', '.$SplitCash.', '.$total.')';
 	
 			$sql_insert_split_db = mysqli_query($db_connection, $sql_insert_split) or die (mysqli_error($db_connection));
 			
@@ -69,10 +69,9 @@ if(!isset($_SESSION['username'])){
 	
 	include_once ("db_connect.php");
 		
-		$update_orderid = 'UPDATE order_tbl SET o_process='.$process.', o_payment='.$payment.', o_paymentType='.$paymenttype.' 
-							WHERE o_id='.$orderid.' AND o_active=1';
+		$update_orderid = 'UPDATE order_tbl SET o_process='.$process.', o_payment='.$payment.', o_paymentType='.$paymenttype.' WHERE o_id='.$orderid.' AND o_active=1';
 		
-		echo $update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
+		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
 		
 	//	mysqli_free_result($update_orderid_db);
 
@@ -265,7 +264,6 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
 		$tableorder	= "Yes. Table Have submited there order";
 
 		}
-
 
 
 			$orderDisplay .='

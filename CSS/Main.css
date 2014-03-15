@@ -2134,3 +2134,20 @@ margin-bottom: 2%;
 }
 
 }*/
+.productDisplayHolder {
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+}
+.productDisplayHolder .pdh_name {
+	display: inline-block;
+	float: left;
+	width: 50%;
+	text-align: center;
+}
+.productDisplayHolder .pdh_count {
+	text-align: center;
+	display: inline-block;
+	float: left;
+	width: 100%;
+}

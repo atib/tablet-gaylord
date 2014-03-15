@@ -18,8 +18,8 @@ if(!isset($_SESSION['username'])){
 	
 	$guestno = stripslashes($_POST['guestno']);
 	$tableno = stripslashes($_POST['tableno']);
-	$guestno = strip_tags($_POST['guestno']);
-	$tableno = strip_tags($_POST['tableno']);	
+	$guestno = strip_tags($guestno);
+	$tableno = strip_tags($tableno);	
 
 	if((!$guestno)||(!$tableno)){
 	
