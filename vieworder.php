@@ -66,20 +66,22 @@ if(!isset($_SESSION['username'])){
 			
 		}
 		}
-	
+	echo $process . '<br>';
+	echo $payment . '<br>';
+	echo $paymenttype . '<br>';
 	
 	include_once ("db_connect.php");
 		
 	//	$update_orderid = 'UPDATE order_tbl SET o_process="'.$process.'", o_payment="'.$payment.'", o_paymentType="'.$paymenttype.'" WHERE o_id="'.$orderid.'" AND o_active="2"';
 		
-		$update_order_id = "UPDATE order_tbl SET order_tbl.o_process='Complete', order_tbl.o_payment='Paid', order_tbl.o_paymentType='Card' WHERE order_tbl.o_id='5' AND order_tbl.o_active='2'";
+		$update_order_id = "UPDATE order_tbl SET o_process=$process, o_payment=$payment, o_paymentType=$paymenttype WHERE o_id='5' AND o_active='2'";
 
 		
 		$update_order_db = mysqli_query($db_connection, $update_order_id) or die (mysqli_error($db_connection));
 		
-	//	mysqli_free_result($update_orderid_db);
+		mysqli_free_result($update_order_db);
 
-	 $update_check = mysqli_num_rows($update_order_db);
+		$update_check = mysqli_num_rows($update_order_db);
 	
 		if($update_check !=""){
 		
