@@ -21,7 +21,16 @@ $username = $_SESSION['username'];
 <html class="">
 <!--<![endif]-->
 <?php include_once("head.php");?>
-
+<script type="text/javascript">
+    $(document).bind('mobileinit', function() {
+        $.extend($.mobile, {
+            hashListeningEnabled: false,
+            pushStateEnabled: false,
+            ajaxEnabled: false,
+            linkBindingEnabled: false
+        });
+    });
+</script>
 <body>
   <div class="gridContainer clearfix">
 
