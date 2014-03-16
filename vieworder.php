@@ -36,19 +36,20 @@ if(!isset($_SESSION['username'])){
 	$paymenttype = stripslashes($_POST['paymenttype']);
 	$orderid = stripslashes($_POST['orderid']);	
 	$total = stripslashes($_POST['total']);	
-	$total = strip_tags($_POST['total']);
-	$process = strip_tags($_POST['process']);
-	$payment = strip_tags($_POST['payment']);	
-	$paymenttype = strip_tags($_POST['paymenttype']);	
-	$orderid = strip_tags($_POST['orderid']);	
+	
+	$total = strip_tags($total);
+	$process = strip_tags($process);
+	$payment = strip_tags($payment);	
+	$paymenttype = strip_tags($paymenttype);	
+	$orderid = strip_tags($orderid);	
 	
 	if($paymenttype == "Both"){
 		
 	$SplitCash = stripslashes($_POST['SplitCash']);	
 	$SplitCard = stripslashes($_POST['SplitCard']);	
 	
-	$SplitCash = strip_tags($_POST['SplitCash']);
-	$SplitCard = strip_tags($_POST['SplitCard']);
+	$SplitCash = strip_tags($SplitCash);
+	$SplitCard = strip_tags($SplitCard);
 	
 		if((!$SplitCash)||(!$SplitCard)){
 		
@@ -69,9 +70,12 @@ if(!isset($_SESSION['username'])){
 	
 	include_once ("db_connect.php");
 		
-		$update_orderid = 'UPDATE order_tbl SET o_process='.$process.', o_payment='.$payment.', o_paymentType='.$paymenttype.' WHERE o_id='.$orderid.' AND o_active=1';
+	//	$update_orderid = 'UPDATE order_tbl SET o_process="'.$process.'", o_payment="'.$payment.'", o_paymentType="'.$paymenttype.'" WHERE o_id="'.$orderid.'" AND o_active="2"';
 		
-		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
+		$update_order_id = "UPDATE order_tbl SET order_tbl.o_process='Complete', order_tbl.o_payment='Paid', order_tbl.o_paymentType='Card' WHERE order_tbl.o_id='5' AND order_tbl.o_active='2'";
+
+		
+		$update_order_db = mysqli_query($db_connection, $update_order_id) or die (mysqli_error($db_connection));
 		
 	//	mysqli_free_result($update_orderid_db);
 
