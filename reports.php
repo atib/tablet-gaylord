@@ -760,6 +760,23 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 	});
 </script>
 
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    $(document).bind('mobileinit', function() {
+        $.extend($.mobile, {
+            hashListeningEnabled: false,
+            pushStateEnabled: false,
+            ajaxEnabled: false,
+            linkBindingEnabled: false
+        });
+    });
+});
+
+</script>
+
+
+
 <body>
 <div class="gridContainer clearfix">
 

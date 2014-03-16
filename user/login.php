@@ -68,7 +68,7 @@ if(isset($_GET['err'])){
       echo $error_msg; 
     ?> 
     <?php 
-      // echo $user_msg; 
+      echo $user_msg; 
     ?>  
 
     <div id="login-page-text">

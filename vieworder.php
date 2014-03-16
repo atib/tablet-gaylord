@@ -1,8 +1,8 @@
 <?PHP
 session_start();
 	
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
 
 $error_msg = ""; 
 $success_msg = "";	
@@ -16,10 +16,10 @@ if(isset($_GET['err'])){
 	$success = "";
 } else if(isset($_GET['succ'])){
 	$error_msg = "";
-	$success = $_GET['err'];
+	echo $success_msg = $_GET['succ'];
 }else{
 	$error_msg = "";
-	$success = "";	
+	$success_msg = "";	
 }
 	
 	
@@ -66,31 +66,33 @@ if(!isset($_SESSION['username'])){
 			
 		}
 		}
-	echo $process . '<br>';
-	echo $payment . '<br>';
-	echo $paymenttype . '<br>';
 	
 	include_once ("db_connect.php");
 		
-	//	$update_orderid = 'UPDATE order_tbl SET o_process="'.$process.'", o_payment="'.$payment.'", o_paymentType="'.$paymenttype.'" WHERE o_id="'.$orderid.'" AND o_active="2"';
+		$update_orderid = "UPDATE order_tbl SET o_process='$process', o_payment='$payment', o_paymentType='$paymenttype' WHERE o_id='$orderid' AND o_active='1'";
 		
-		$update_order_id = "UPDATE order_tbl SET o_process=$process, o_payment=$payment, o_paymentType=$paymenttype WHERE o_id='5' AND o_active='2'";
 
 		
-		$update_order_db = mysqli_query($db_connection, $update_order_id) or die (mysqli_error($db_connection));
+		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
 		
-		mysqli_free_result($update_order_db);
+		// echo $update_order_db;
 
-		$update_check = mysqli_num_rows($update_order_db);
-	
-		if($update_check !=""){
+		$update_link = mysqli_affected_rows($db_connection);
+		// $update_check = mysqli_num_rows($update_order_db);
+		
+
+		if($update_link !=""){
 		
 		$success_msg = "Updated";
+		// echo $update_check;
+
 		header("Location: vieworder.php?succ=$success_msg");
 
 		} else{
 		
 		$error_msg = "Not Updated ";	
+		// echo $update_check;
+
 		header("Location: vieworder.php?err=$error_msg");
 
 		}	
@@ -107,11 +109,10 @@ if(!isset($_SESSION['username'])){
 		
 		$deactivate_order_db = mysqli_query($db_connection, $deactivate_orderid) or die (mysqli_error($db_connection));
 		
-		mysqli_free_result($deactivate_order_db);
+		$deactivation_link = mysqli_affected_rows($db_connection);
 
-		$deactivate_check = mysqli_num_rows($deactivate_order_db);
 	
-		if($deactivate_check){
+		if($deactivation_link !=""){
 		
 		$success_msg = "Deactivated";
 			
@@ -134,11 +135,10 @@ include_once ("db_connect.php");
 		
 		$activate_order_db = mysqli_query($db_connection, $activate_orderid) or die (mysqli_error($db_connection));
 		
-		mysqli_free_result($activate_order_db);
+		$activation_link = mysqli_affected_rows($db_connection);
 
-		$activate_check = mysqli_num_rows($activate_order_db);
 	
-		if($activate_check){
+		if($activation_link){
 		
 		$success_msg = "Activated";
 			
@@ -375,6 +375,14 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
       <div class="title">
         <h2>View Order</h2>
       </div>
+       <div class="success_message_activation">
+	       <?php echo $success_msg; ?>   	
+       </div>
+
+       <div class="error_message_activation">
+	       <?php echo $error_msg;?>    	
+       </div>
+
       
       <div id="orderfilter">
     	<p> Order Filter: </p>
@@ -397,7 +405,6 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
             	</div>
             </form>
             
-            <?php echo $error_msg;?> <?php $success_msg; ?>
   </div>
 
 
