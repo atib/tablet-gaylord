@@ -64,6 +64,24 @@ if(!isset($_SESSION['username'])){
 	
 			$sql_insert_split_db = mysqli_query($db_connection, $sql_insert_split) or die (mysqli_error($db_connection));
 			
+			$insert_split_link = mysqli_affected_rows($db_connection);
+			
+		if($insert_split_link !=""){
+		
+		$success_msg = "Updated";
+		// echo $update_check;
+
+		header("Location: vieworder.php?succ=$success_msg");
+
+		} else{
+		
+		$error_msg = "Not Updated ";	
+		// echo $update_check;
+
+		header("Location: vieworder.php?err=$error_msg");
+
+		}
+			
 		}
 		}
 	
@@ -71,15 +89,22 @@ if(!isset($_SESSION['username'])){
 		
 		$update_orderid = "UPDATE order_tbl SET o_process='$process', o_payment='$payment', o_paymentType='$paymenttype' WHERE o_id='$orderid' AND o_active='1'";
 		
-
-		
 		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
 		
 		// echo $update_order_db;
 
 		$update_link = mysqli_affected_rows($db_connection);
 		// $update_check = mysqli_num_rows($update_order_db);
+		if ($process =="Complete" && $payment == "Paid"){
+			
+			include_once ("db_connect.php");
+			
+			$complete_order = "UPDATE order_tbl SET o_active='2' WHERE o_id='$orderid' AND o_active='1'";
 		
+			$complete_order_db = mysqli_query($db_connection, $complete_order) or die (mysqli_error($db_connection));
+			
+			
+		}
 
 		if($update_link !=""){
 		
@@ -271,7 +296,6 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
 
 		}
 
-
 			$orderDisplay .='
 <div class="orderholder">
     <form action="vieworder.php" method="post" name="orderform" target="_self">
@@ -308,6 +332,8 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
         <select class="payment" name="payment"> 
                 <option value="'.$payment.'">'.$payment.'</option>
                 <option value="Paid">Paid</option>
+				<option value="Paid">Not Paid</option>
+
         </select> 
         <div class="ol_content">Payment Type</div>	           	
             <select class="paymenttype" name="paymenttype"> 
