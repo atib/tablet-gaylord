@@ -1998,11 +1998,11 @@ margin-bottom: 2%;
 	font-size: 24px;
 	/*float: right;*/
 	height: 40px;
-	/*width: 98%;*/
-	margin: 3%;
 	font-family: sans-serif;
 	color: #777;
 	font-weight: lighter;
+	margin-top: 3%;
+	margin-right: 3%;	
 	/*padding-right: 2%;*/
 }
 
@@ -2034,8 +2034,10 @@ margin-bottom: 2%;
 }
 
 #total_do_staff {
+	width:20%;
 	float: right;
 	margin-top: 3%;
+	text-align:right;
 }
 
 .dp_or_staff {

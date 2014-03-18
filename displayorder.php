@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+//error_reporting(E_ALL);
+//ini_set('display_errors', 1);
 
 $error_msg = ""; 
 $success_msg = "";	
@@ -45,11 +45,22 @@ if(isset($_GET['ac'])!=""){
 
 } else if(isset($_POST['o_activation'])){
 		
-		$o_activation = $_POST['o_activation'];
+	$o_activation = $_POST['o_activation'];
 		
 }else {
 	header("Location: vieworder.php?err=$error_msg");
     exit();	
+}
+
+if(isset($_GET['err'])){
+	$error_msg = $_GET['err'];
+	$success_msg = "";
+} else if(isset($_GET['succ'])){
+	$error_msg = "";
+	$success_msg  = $_GET['succ'];
+}else{
+	$error_msg = "";
+	$success_msg  = "";	
 }
 
 if (isset($_POST['userSelect'])){
@@ -74,20 +85,7 @@ if (isset($_POST['userSelect'])){
 
 	}
 }	
-	
-
-if(isset($_GET['err'])){
-
-	$error_msg = $_GET['err'];
-	$success = "";
-} else if(isset($_GET['succ'])){
-	$error_msg = "";
-	$success = $_GET['succ'];
-}else{
-	$error_msg = "";
-	$success = "";	
-}
-	
+		
 if(!isset($_SESSION['username'])){
 	
 	$error_msg = "";
@@ -215,8 +213,21 @@ if ($o_activation != ""){
 	$get_product_db = mysqli_query($db_connection, $sql_product_list) or die (mysqli_error($db_connection));
 						
 		while ($row = mysqli_fetch_assoc($get_product_db)){
-		$sub = $row['od_quantity']* $row['od_price'];
-				
+		
+		$p_applydiscount = $row['p_applydiscount'];
+		$o_cashdisc	= $row['o_cashdisc'];	
+		$o_percentCash= $row['o_percentCash'];
+		
+		if ($p_applydiscount == 1){
+			 
+		$dis_sub = $row['od_quantity']* $row['od_price']; // product which discount is applicable (sum of)
+		
+		}else{
+		
+		$no_dis_sub = $row['od_quantity']* $row['od_price']; // product which discount is not applicable (sum of)
+	
+		}
+			
 		$basket .= '
 		<div id="UserCart">
 				
@@ -233,11 +244,11 @@ if ($o_activation != ""){
 				
 		</div>
 		';	
-		$total += $sub;
+		$total += $dis_sub + $no_dis_sub;
 
 		}
-		$nettotal += $total;
-
+	    $nettotal += $total;
+		$displayNet = $nettotal;
 		if ($total==0){	
 	
 	
@@ -264,6 +275,24 @@ if ($o_activation != ""){
 	else{
 		
 		
+	if ($o_cashdisc !=""){
+		
+	$nettotal = $nettotal - $no_dis_sub;	
+	
+	$nettotal = $nettotal - $o_cashdisc;
+	} else if ($o_percentCash !=""){
+		
+	$nettotal = $nettotal - $no_dis_sub;	
+	
+	$nettotal = $nettotal - $o_percentCash;
+
+	} else{
+		
+	$nettotal = $nettotal;	
+	
+	}
+	
+	
 	$update_order = "UPDATE order_tbl SET o_total = '$nettotal' WHERE o_id = '$o_id'";
 	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
 	
@@ -271,6 +300,44 @@ if ($o_activation != ""){
 	} 
 
 }	
+
+
+	include_once("db_connect.php");
+	$user_o_id  = $_SESSION['user_o_id'];
+	$grandtotal = $nettotal;
+
+	$sql_gettotal = "SELECT * FROM order_tbl WHERE o_id = '$user_o_id'";
+	$sql_gettotal_db = mysqli_query($db_connection, $sql_gettotal) or die (mysqli_error($db_connection));
+	
+	while ($totalrow = mysqli_fetch_assoc($sql_gettotal_db)){
+	$cashDisc = $totalrow['o_cashdisc'];
+	$percentDisc = $totalrow['o_percentdisc'];
+	$grandtotal = $totalrow['o_total']; // total saved on the order table (discount possibly applied)
+
+	}
+	
+if ($cashDisc !='' && $percentDisc =='0'){
+	
+	$grandtotal = $grandtotal - $cashDisc;
+	$totalDiscount = $cashDisc;
+	$percentDisc = "";
+	$minus = "£ -";
+	
+	} else if ($cashDisc =='0.00' && $percentDisc !=''){
+	
+	$percentAmount = ($grandtotal/100)*$percentDisc;
+	$grandtotal = $grandtotal - $percentAmount;
+	$totalDiscount = $percentAmount;
+	$cashDisc = "";
+	$minus = "£ -";
+	}else{
+	
+	$cashDisc = '';
+	$percentDisc = '';
+	$minus = "";
+	$totalDiscount="";
+	}
+
 
 ##########################################################################################################################	
 #######End of basket script###############################################################################################
@@ -477,11 +544,9 @@ if (isset($_GET['delete'])){
 	$user_c_id  = $_SESSION['user_c_id'];
 
 	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14';
-
 	
 	$sql_product_check = "SELECT p_id FROM orderdetail_tbl WHERE p_id = '$p_id' AND od_session = '$user_clientSess'";
 	$get_sql_product_check_db = mysqli_query($db_connection, $sql_product_check) or die (mysqli_error($db_connection));
-
 	
 	$product_check = mysqli_num_rows($get_sql_product_check_db); 
 	//check to see if the product already within the cart
@@ -495,52 +560,54 @@ if (isset($_GET['delete'])){
 	header('Location:'.$page);
 }
 
-$grandtotal = $nettotal;
 
 if (isset($_POST['update'])){
 
-	// echo $cashDisc = $_POST['cashdisc'];
-	// echo $percentDisc = $_POST['percentdisc'];	
+	$cashDisc = $_POST['cashdisc'];
+	$percentDisc = $_POST['percentdisc'];	
 	
-	include_once("db_connect.php");
-	// echo $user_o_id  = $_SESSION['user_o_id'];
+	//echo $dis_sub .'<br>'; 
+//	echo $no_dis_sub .'<br>'; 
 
-	$sql_gettotal = "SELECT * FROM order_tbl WHERE o_id = '$user_o_id'";
-	$sql_gettotal_db = mysqli_query($db_connection, $sql_gettotal) or die (mysqli_error($db_connection));
+// retrieves true total from order detail table suming all dishes up - without discount
 	
-	while ($totalrow = mysqli_fetch_assoc($sql_gettotal_db)){
-	$db_total = $totalrow['o_total'];
-	}
-
 	if ($cashDisc !='' && $percentDisc ==''){
 	
-	$grandtotal = $db_total - $cashDisc;
+	$grandtotal = $dis_sub - $cashDisc;
+	$grandtotal = $grandtotal + $no_dis_sub;
 
+	$totalDiscount = $cashDisc;
 	$success_msg = "Cash Discount Applied";
 	$percentDisc = "";
-
+	$minus = "£ -";
+	
 	} else if ($cashDisc =='' && $percentDisc !=''){
 	
-	$percent = ($db_total/100)*$percentDisc;
-	$grandtotal = $db_total - $percent;
+	$percentAmount = ($dis_sub/100)*$percentDisc;
+	
+	$grandtotal = $dis_sub - $percentAmount;
+	$grandtotal = $grandtotal + $no_dis_sub;
+
 	$success_msg = "Percentage Discount Applied";
+	$totalDiscount = $percentAmount;
 	$cashDisc = "";
+	$minus = "£ -";
 	
 	}else if ($cashDisc =='' && $percentDisc ==''){
 	
-	$cashDisc = 0.00;
-	$percentDisc = 0;
-	$success_msg = "Total updated";
+	$cashDisc = '';
+	$percentDisc = '';
+	$success_msg = '';
+	$minus = '';
+	$totalDiscount="";
 
-
-	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&succ='.$success_msg.'';
-	
-	header('Location:'.$page);
 	}else{
 	
-	$cashDisc = 0.00;
-	$percentDisc = 0;
-	
+	$cashDisc = '';
+	$percentDisc = '';
+	$minus = "";
+	$totalDiscount="";
+
 	$error_msg = "Please only use one discount option cash or percentage";
 		
 	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&err='.$error_msg.'';
@@ -549,13 +616,19 @@ if (isset($_POST['update'])){
 	
 	}
 
-}
-	include_once("db_connect.php");
+include_once("db_connect.php");
 
 	$user_o_id  = $_SESSION['user_o_id'];
 
-	$update_myorder = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentdisc = '$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
+	$update_myorder = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentCash = '$percentAmount', o_percentdisc='$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
 	$update_myorderdb = mysqli_query($db_connection, $update_myorder) or die (mysqli_error($db_connection));
+
+	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&succ='.$success_msg.'';
+	
+	header('Location:'.$page);
+
+}
+
 
 ?>
 <!DOCTYPE HTML>
@@ -671,8 +744,8 @@ if (isset($_POST['update'])){
 	</div>
 					
 	<div id="total_do_staff">
-		<div id="nettotal">Net Total:  <span class="dp_or_staff">&pound;<?php echo number_format($nettotal, 2)?></span></div>
-		<div id="discounttotal">Discount: <span class="dp_or_staff"><?php echo $cashDisc;?> <?php echo $percentDisc?></span></div>
+		<div id="nettotal">Net Total:  <span class="dp_or_staff">&pound;<?php echo number_format($displayNet, 2)?></span></div>
+		<div id="discounttotal">Discount: <span class="dp_or_staff"><?php echo $minus;?><?php echo number_format($totalDiscount, 2);?></span></div>
 		<div id="grandtotal">Grandtotal: <span class="dp_or_staff">&pound;<?php echo number_format($grandtotal, 2)?></span></div>	
 	</div>	
 	
