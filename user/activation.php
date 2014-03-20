@@ -90,15 +90,6 @@ mysqli_free_result($get_activation_list_db);
 if (isset($_POST['activate'])){
 
 
-	if($activation === ""){
-	
-	$error_msg = "Please select a valid activation reference. ";
-	
-	header("Location: activation.php?err=$error_msg");
-	exit();
-	}
-
-
 	$activation = $_POST['activation'];
 	$o_id = mb_substr($activation, 0, 3);
 	$activateorderid = $o_id;
@@ -108,6 +99,16 @@ if (isset($_POST['activate'])){
 	
 	$crt_sess = session_id();
 	include_once("db_connect.php");
+	
+	if($activation ==""){
+	
+	$error_msg = "Please select a valid activation reference. ";
+	$success_msg = "";
+	unset($_SESSION['activation']);
+	unset($_SESSION['activateorderid']);
+	header("Location: activation.php?err=$error_msg&succ=$success_msg");
+	exit();
+	}
 
 	$sql_activation_check = "SELECT tab_id FROM tabletactivate_tbl WHERE o_activation = '$activation' AND tab_sess = '$tab_sess'";
 

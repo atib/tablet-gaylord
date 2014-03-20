@@ -10,7 +10,8 @@ if(isset($_SESSION['activation']))
 {
 	
 	$activation = $_SESSION['activation'];
-	
+	$crt_sess = session_id();
+
 } else{
 	
 	$error_msg .= "It would seem that this tablet has not been assigned to the table order. Please inform a member of staff to assign this tablet";
@@ -91,11 +92,19 @@ if(isset($_POST['email']))
 				$_SESSION['email'] = $email;
 				$fname = $user["c_fname"];
 				$_SESSION['fname'] = $fname;
-			
+				$lname = $user["c_lname"];
+				$_SESSION['lname'] = $lname;
 			}
 		
 			mysqli_free_result($check_user_db);
 				
+		$tabName = ''.$fname.' '.$lname.'';
+		include_once("db_connect.php");
+
+$tab_update = "UPDATE tabletactivate_tbl SET tab_username = '$tabName' WHERE o_activation = '$activation' AND tab_sess = '$crt_sess'";
+	
+$tab_update_db = mysqli_query($db_connection, $tab_update) or die (mysqli_error($db_connection));			
+			
 			header("Location: index.php?n=$fname");
 		
 			exit();
@@ -155,10 +164,17 @@ $nameAppend = rand(100, 999);
 				$_SESSION['fname'] = ''.$fname.' '.$lname .' '.$nameAppend.'';
 			
 			}
-		
+			
 			mysqli_free_result($check_user_db);
 
 			$par = md5(1);
+			$tabName = ''.$fname.' '.$lname .' '.$nameAppend.'';
+		include_once("db_connect.php");
+
+$tab_update = "UPDATE tabletactivate_tbl SET tab_username = '$tabName' WHERE o_activation = '$activation' AND tab_sess = '$crt_sess'";
+	
+$tab_update_db = mysqli_query($db_connection, $tab_update) or die (mysqli_error($db_connection));			
+				
 				
 			header("Location: index.php?n=$fname&par=$par");
 		
