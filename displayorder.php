@@ -245,10 +245,12 @@ if ($o_activation != ""){
 		</div>
 		';	
 		$total += $dis_sub + $no_dis_sub;
-
+		
 		}
+
 	    $nettotal += $total;
 		$displayNet = $nettotal;
+		
 		if ($total==0){	
 	
 	
@@ -271,27 +273,36 @@ if ($o_activation != ""){
 				<div id="cartMsg">
 					<p>Table order is empty.</p>
 			 	</div>';
-	}
-	else{
-		
-		
+	}else{
+	
+	
 	if ($o_cashdisc !=""){
 		
 	$nettotal = $nettotal - $no_dis_sub;	
 	
 	$nettotal = $nettotal - $o_cashdisc;
+	
+	$cashDisc = $o_cashdisc;
+
+	$totalDiscount = $o_cashdisc;
+
 	} else if ($o_percentCash !=""){
 		
 	$nettotal = $nettotal - $no_dis_sub;	
 	
 	$nettotal = $nettotal - $o_percentCash;
+	
+	$percentDisc = $o_percentCash;
+
+	$totalDiscount = $o_percentCash;
 
 	} else{
 		
 	$nettotal = $nettotal;	
 	
-	}
-	
+	}	
+		
+	$grandtotal = $nettotal;	
 	
 	$update_order = "UPDATE order_tbl SET o_total = '$nettotal' WHERE o_id = '$o_id'";
 	$update_order_db = mysqli_query($db_connection, $update_order) or die (mysqli_error($db_connection));
@@ -301,8 +312,7 @@ if ($o_activation != ""){
 
 }	
 
-
-	include_once("db_connect.php");
+/*	include_once("db_connect.php");
 	$user_o_id  = $_SESSION['user_o_id'];
 	$grandtotal = $nettotal;
 
@@ -310,11 +320,19 @@ if ($o_activation != ""){
 	$sql_gettotal_db = mysqli_query($db_connection, $sql_gettotal) or die (mysqli_error($db_connection));
 	
 	while ($totalrow = mysqli_fetch_assoc($sql_gettotal_db)){
-	$cashDisc = $totalrow['o_cashdisc'];
-	$percentDisc = $totalrow['o_percentdisc'];
-	$grandtotal = $totalrow['o_total']; // total saved on the order table (discount possibly applied)
+	echo $cashDisc = $totalrow['o_cashdisc'];
+	echo $percentDisc = $totalrow['o_percentdisc'];
+	echo $grandtotal = $totalrow['o_total']; // total saved on the order table (discount possibly applied)
 
 	}
+	
+	//echo $totalDiscount = $o_cashdisc;
+	echo $cashDisc;
+
+
+	$cashDisc = $o_cashdisc;
+	$percentDisc = $o_percentCash;
+	$grandtotal = $nettotal;
 	
 if ($cashDisc !='' && $percentDisc =='0'){
 	
@@ -337,7 +355,7 @@ if ($cashDisc !='' && $percentDisc =='0'){
 	$minus = "";
 	$totalDiscount="";
 	}
-
+*/
 
 ##########################################################################################################################	
 #######End of basket script###############################################################################################
@@ -726,7 +744,7 @@ include_once("db_connect.php");
 	<?php echo $basketMsg;?>
 	<?php echo $table_basket;?>
 	<?php echo $table_basketMsg;?>
-	<?php echo $discount; ?>
+	<?php //echo $discount; ?>
 	<?php echo $table_grandtotal;?>    
 	<?php echo $complete_btn;?>
     
