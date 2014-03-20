@@ -70,6 +70,7 @@ if (isset($_GET['page'])){
 		$tab_sess = $activerow['tab_sess'];
 		$tab_order = $activerow['tab_order'];
 		$tab_active = $activerow['tab_active'];
+		$tab_username = $activerow['tab_username'];
 
 		$displayReport .= '
 		
@@ -102,7 +103,8 @@ if (isset($_GET['page'])){
  		  <div class="activeTabblock">Tablet Order Process</div>
 		  <div class="order_info ordering">'.$tab_order.'</div>
 
-
+ 		  <div class="activeTabblock">Assigned User</div>
+		  <div class="order_info">'.$tab_username.'</div>
 		
 		</div> 
 
