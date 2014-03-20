@@ -16,7 +16,7 @@ if(isset($_GET['err'])){
 	$success = "";
 } else if(isset($_GET['succ'])){
 	$error_msg = "";
-	echo $success_msg = $_GET['succ'];
+	$success_msg = $_GET['succ'];
 }else{
 	$error_msg = "";
 	$success_msg = "";	
@@ -51,13 +51,61 @@ if(!isset($_SESSION['username'])){
 	$SplitCash = strip_tags($SplitCash);
 	$SplitCard = strip_tags($SplitCard);
 	
+	$splitSum = $SplitCash + $SplitCard;
+	$total;
+	
+	if($splitSum != $total){
+		
+	$error_msg = 'The split for order '.$orderid.' does not match the Total. NOT UPDATED.';
+    header("Location: vieworder.php?err=$error_msg");
+	exit();	
+	}
+	
+	
 		if((!$SplitCash)||(!$SplitCard)){
 		
+		$splitVal = 0;
+
 		$error_msg = 'Please enter the payment split for order reference: '.$orderid.' <br>';
 		header("Location: vieworder.php?err=$error_msg");
 		exit();
+		
 		}else{
-			include_once ("db_connect.php");
+	
+		include_once ("db_connect.php");
+					
+		$check_split = "SELECT * FROM paymentSplit_tbl WHERE o_id = '$orderid'";
+		
+		$check_split_db = mysqli_query($db_connection, $check_split) or die (mysqli_error($db_connection));
+		
+		// $split_check = mysqli_num_rows($check_split_db);
+			$split_check = mysqli_affected_rows($db_connection);
+	
+			if ($split_check != 0){
+				
+			include_once("db_connect.php");
+
+			$split_update = "UPDATE paymentSplit_tbl SET ps_card = '$SplitCard', ps_cash = '$SplitCash', ps_total = '$total' WHERE o_id = '$orderid'";
+			$split_update_db = mysqli_query($db_connection, $split_update) or die (mysqli_error($db_connection));	
+				
+				if($split_update_db !=""){
+				
+				$success_msg = "Updated";
+				// echo $update_check;
+		
+				header("Location: vieworder.php?succ=$success_msg");
+				exit();
+				} else{
+				
+				$error_msg = "Not Updated";	
+				// echo $update_check;
+		
+				header("Location: vieworder.php?err=$error_msg");
+				exit();
+				}
+				
+				
+			} else {
 			
 			$sql_insert_split = 'INSERT INTO paymentSplit_tbl(o_id, ps_card, ps_cash, ps_total)
 						 VALUES ('.$orderid.', '.$SplitCard.', '.$SplitCash.', '.$total.')';
@@ -66,28 +114,33 @@ if(!isset($_SESSION['username'])){
 			
 			$insert_split_link = mysqli_affected_rows($db_connection);
 			
-		if($insert_split_link !=""){
+			$splitVal = 1;
+			
+				if($insert_split_link !=0){
+				
+				$success_msg = "Updated";
+				// echo $update_check;
 		
-		$success_msg = "Updated";
-		// echo $update_check;
-
-		header("Location: vieworder.php?succ=$success_msg");
-
-		} else{
+				header("Location: vieworder.php?succ=$success_msg");
+				exit();
+				} else{
+				
+				$error_msg = "Not Updated";	
+				// echo $update_check;
 		
-		$error_msg = "Not Updated ";	
-		// echo $update_check;
-
-		header("Location: vieworder.php?err=$error_msg");
-
-		}
+				header("Location: vieworder.php?err=$error_msg");
+				exit();
+				}
+			
+			}
+			
 			
 		}
 		}
 	
 	include_once ("db_connect.php");
 		
-		$update_orderid = "UPDATE order_tbl SET o_process='$process', o_payment='$payment', o_paymentType='$paymenttype' WHERE o_id='$orderid' AND o_active='1'";
+		$update_orderid = "UPDATE order_tbl SET o_process='$process', o_payment='$payment', o_paymentType='$paymenttype', o_paymentSplit='$splitVal' WHERE o_id='$orderid' AND o_active='1'";
 		
 		$update_order_db = mysqli_query($db_connection, $update_orderid) or die (mysqli_error($db_connection));
 		
@@ -106,7 +159,7 @@ if(!isset($_SESSION['username'])){
 			
 		}
 
-		if($update_link !=""){
+		if($update_link !=0){
 		
 		$success_msg = "Updated";
 		// echo $update_check;
@@ -343,8 +396,8 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
                 <option value="Both">Both</option>
             </select>   
        <div class="ol_content">Payment Split</div>	           	
-		Cash <input name="SplitCash" type="text" value="' .number_format ($ps_cash, 2). '" placeholder="Cash Split Amount">
-		Card <input name="SplitCard" type="text" value="' .number_format ($ps_card, 2). '" placeholder="Card Split Amount">
+		<label>Cash </label><input name="SplitCash" type="text" value="' .number_format ($ps_cash, 2). '" placeholder="Cash Split Amount">
+		<label>Card</label> <input name="SplitCard" type="text" value="' .number_format ($ps_card, 2). '" placeholder="Card Split Amount">
 
          <input name="orderid"  type="hidden" value="'. $orderid.'">
 		 <input name="total"  type="hidden" value="'. $total.'">
@@ -434,12 +487,11 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
             
   </div>
 
-
      <!-- End Main Content -->
 <?php echo $orderDisplay;?>
 
     </div>
- 
+
   <div id="footer"><?php include_once("footer.php");?></div>
 </div>
 </body>
