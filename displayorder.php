@@ -15,7 +15,7 @@ $clientSess = "";
 $clientName = "";	
 $o_id ="";	
 $c_id = "";
-
+$od_note="";
 $basket = ""; 
 $total  = "";	
 $activation ="";
@@ -170,6 +170,23 @@ if($cat == 14){
 	
 if ($o_activation != ""){
 	
+	if (isset($_POST['noteupdate'])){
+
+	$comment = $_POST['comment'];
+	$o_id = $_POST['o_id'];
+	$od_id = $_POST['od_id'];
+
+	include_once("db_connect.php");
+
+	$updateNote_order = "UPDATE orderdetail_tbl SET od_note = '$comment' WHERE o_id = '$o_id' AND od_id = '$od_id'";
+	$updateNote_order_db = mysqli_query($db_connection, $updateNote_order) or die (mysqli_error($db_connection));
+	
+}
+	
+	
+	
+	
+	
 	include_once("db_connect.php");
 
 
@@ -217,7 +234,8 @@ if ($o_activation != ""){
 		$p_applydiscount = $row['p_applydiscount'];
 		$o_cashdisc	= $row['o_cashdisc'];	
 		$o_percentCash= $row['o_percentCash'];
-		
+		$orderComment= $row['o_tableNote'];
+		$od_note= $row['od_note'];
 		if ($p_applydiscount == 1){
 			 
 		$dis_sub = $row['od_quantity']* $row['od_price']; // product which discount is applicable (sum of)
@@ -226,6 +244,11 @@ if ($o_activation != ""){
 		
 		$no_dis_sub = $row['od_quantity']* $row['od_price']; // product which discount is not applicable (sum of)
 	
+		}
+		
+		
+		if ($od_note ==""){
+			$od_note ="";
 		}
 			
 		$basket .= '
@@ -241,7 +264,16 @@ if ($o_activation != ""){
 		<a href="displayorder.php?ac='.$o_activation.'&remove='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'" id="dec_prod">-</a> 
 		<a href="displayorder.php?ac='.$o_activation.'&delete='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'" id="del_prod">x</a>
 		</div>
-				
+		<div id="dishComment">
+		<form action="displayorder.php?ac='.$o_activation.'&cat=14" method="post">         	
+		<textarea name="comment" class="" style="width:75%" rows="2" placeholder="Enter dish notes ">'.$od_note.'</textarea>
+		<input name="o_id" type="hidden" value="'.$row['o_id'].'">
+		<input name="od_id" type="hidden" value="'.$row['od_id'].'">
+
+		<input name="noteupdate" type="submit" class="filter_continue" value="Update Note">
+		</form>
+		</div>
+
 		</div>
 		';	
 		$total += $dis_sub + $no_dis_sub;
@@ -262,6 +294,7 @@ if ($o_activation != ""){
 			 	</div>';
 	}
 	else{
+		
 		
 		$basket .= '<div id="usertotal">'.$orderrow['od_clientname'].' Bill Total Is: <span class="user_total_bill">&pound;'.number_format($total, 2).'</span></div>';
 	}	
@@ -578,12 +611,12 @@ if (isset($_GET['delete'])){
 	header('Location:'.$page);
 }
 
-
 if (isset($_POST['update'])){
 
 	$cashDisc = $_POST['cashdisc'];
 	$percentDisc = $_POST['percentdisc'];	
-	
+	$orderComment = $_POST['comment'];	
+
 	//echo $dis_sub .'<br>'; 
 //	echo $no_dis_sub .'<br>'; 
 
@@ -638,7 +671,7 @@ include_once("db_connect.php");
 
 	$user_o_id  = $_SESSION['user_o_id'];
 
-	$update_myorder = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentCash = '$percentAmount', o_percentdisc='$percentDisc', o_total = '$grandtotal' WHERE o_id = '$user_o_id'";
+	$update_myorder = "UPDATE order_tbl SET o_cashdisc = '$cashDisc', o_percentCash = '$percentAmount', o_percentdisc='$percentDisc', o_total = '$grandtotal', o_tableNote='$orderComment' WHERE o_id = '$user_o_id'";
 	$update_myorderdb = mysqli_query($db_connection, $update_myorder) or die (mysqli_error($db_connection));
 
 	$page = 'http://lunarwebstudio.com/Demos/GaylordTablet/displayorder.php?ac='.$o_activation.'&cat=14&succ='.$success_msg.'';
@@ -646,6 +679,7 @@ include_once("db_connect.php");
 	header('Location:'.$page);
 
 }
+
 
 
 ?>
@@ -752,6 +786,7 @@ include_once("db_connect.php");
 	<div class="Order_discount">
 	    <div class="buttons">
 	      <form action="displayorder.php?ac=<?php echo $o_activation; ?>&cat=14&cn=<?php echo $od_clientname; ?>" method="post">
+         	<textarea name="comment" class="" style="width:100%" rows="4" placeholder="Enter table notes "><?php echo $orderComment;?></textarea>
 	        <input name="cashdisc" class="" type="tel" value="<?php echo $cashDisc;?>" placeholder="Cash Based Discount £">
 	        <input name="percentdisc" class="" type="tel" value="<?php echo $percentDisc?>" placeholder="Percentage Based Discount %">
 	        <div class="update_button">

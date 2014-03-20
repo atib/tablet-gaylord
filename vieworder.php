@@ -343,7 +343,8 @@ $checkTablet = 'SELECT * FROM tabletactivate_tbl LEFT JOIN orderdetail_tbl ON or
                 <option value="Both">Both</option>
             </select>   
        <div class="ol_content">Payment Split</div>	           	
-		<input name="SplitCash" type="text" value="' .number_format ($ps_cash, 2). '" placeholder="Cash Split Amount"><input name="SplitCard" type="text" value="' .number_format ($ps_card, 2). '" placeholder="Card Split Amount">
+		Cash <input name="SplitCash" type="text" value="' .number_format ($ps_cash, 2). '" placeholder="Cash Split Amount">
+		Card <input name="SplitCard" type="text" value="' .number_format ($ps_card, 2). '" placeholder="Card Split Amount">
 
          <input name="orderid"  type="hidden" value="'. $orderid.'">
 		 <input name="total"  type="hidden" value="'. $total.'">
