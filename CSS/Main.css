@@ -1370,7 +1370,6 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 .net_total_report {
 	font-size: 1.3em;
 	font-weight: bold;
-	margin-top: 50px;
 }
 
 .bold {
@@ -2184,6 +2183,7 @@ margin-bottom: 2%;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	display: inline-table;
+
 }
 .productDisplayHolder .pdh_name {
 	/*display: inline-block;*/

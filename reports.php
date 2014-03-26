@@ -649,6 +649,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 	 
 	 $displayReport = '
 	 
+
 	 <div class="QueryHolder">
     	<div class="queryTitle">Sales Report</div>
         <div class="queryFilter">
@@ -866,8 +867,9 @@ $(document).ready(function(){
 	    </nav>    
 
            
-
-		<?php echo $displayReport; ?>
+	    <div id="display_report_main">
+			<?php echo $displayReport; ?>	
+	    </div>
  
  
  		<div class="cashupWrapperBtn">
