@@ -457,7 +457,6 @@ if (isset($_POST['salesFilter'])){
 	$dateFrom = strip_tags($salesFrom);
 	$salesTo = stripslashes($_POST['salesTo']);
 	$dateTo = strip_tags($salesTo);
-	
 	$dateFrom = date("Y-m-d", strtotime($dateFrom));
 	$dateTo = date("Y-m-d", strtotime($dateTo));
 	
@@ -542,7 +541,9 @@ if (isset($_POST['salesFilter'])){
 			$cashDiscTotal = $cashDiscount;
 			$percentDiscTotal = $percentageDiscount;
 			
-			$displayQuery .='Sales Figures '.$dateFrom.' BETWEEN '.$dateTo.' <br><br>
+			$displayQuery .='
+			<div class="sales_title_bold">
+			Sales Figures </div><br/>  <span class="bold">'.$dateFrom.'</span> BETWEEN <span class="bold">'.$dateTo.'</span> <br><br>
 			
 			Cash Discount Applied: £'.number_format($cashDiscTotal, 2).'<br>
 			Percentage Discount Applied: £'.number_format($percentDiscTotal, 2).'<br><br>
@@ -550,7 +551,7 @@ if (isset($_POST['salesFilter'])){
 			Cash Total: £'.number_format($cashTotal, 2).'<br>
 			Card Total: £'.number_format($cardTotal, 2).'<br><br>
 			
-			NetTotal: £'.number_format($netTotal, 2).'<br>
+			<div class="net_total_report">NetTotal: £'.number_format($netTotal, 2).'</div><br>
 			<br>
 			
 			<div class="ReportHolder">

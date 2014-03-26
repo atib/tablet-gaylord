@@ -1359,6 +1359,21 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 .QueryDisplay { 
 	font-family: sans-serif;
 	font-weight: lighter;
+	color: #555;
+}
+.sales_title_bold {
+	font-size: 1.8em;
+	font-weight: normal;
+	color: #555;
+}
+
+.net_total_report {
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 #push_up {
