@@ -600,7 +600,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 
 			$productDisplay .='
 			<div class="productDisplayHolder">
-			<div class="pdh_name">'.$od_prodname.'</div><div class="pdh_count">'.$ProductCount.'</div>
+			<div class="pdh_name">'.$od_prodname.'</div><span class="pdh_count">'.$ProductCount.'</span>
 			</div>';
 			
 			$productQTYtotal =$productQTYtotal + $ProductCount; //sum up total card discount
@@ -611,11 +611,21 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 		} //close main while loop
 		
 			
-			$displayQuery .='Dishes Report '.$dateFrom.' BETWEEN '.$dateTo.' <br><br>
+			$displayQuery .='
+
+			<div class="sales_title_bold">Dishes Report</div> <br/> <span class="bold">'.$dateFrom.'</span> BETWEEN <span class="bold">'.$dateTo.'</span> <br><br>
 			
-			Product Most Sold: <br>'.$productDisplay.' <br>
-					
-			Total Sold: '.$productQTYtotal.'<br>
+			<div id="most_sold">Product Most Sold:</div>
+
+			<br>'.$productDisplay.' <br/>
+			
+			
+			
+			<div class="net_total_report">		
+			<br /><br />
+			Total Sold: '.$productQTYtotal.' 
+			</div>
+			<br>
 			<br>
 			
 			<div class="ReportHolder">

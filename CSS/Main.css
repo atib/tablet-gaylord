@@ -1370,10 +1370,16 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 .net_total_report {
 	font-size: 1.3em;
 	font-weight: bold;
+	margin-top: 50px;
 }
 
 .bold {
 	font-weight: bold;
+}
+
+#most_sold {
+	font-weight: bold;
+	font-size: 1em;
 }
 
 #push_up {
@@ -2176,16 +2182,20 @@ margin-bottom: 2%;
 	float: left;
 	width: 100%;
 	margin-top: 10px;
+	margin-bottom: 10px;
+	display: inline-table;
 }
 .productDisplayHolder .pdh_name {
-	display: inline-block;
+	/*display: inline-block;*/
+	display: inline-table;
 	float: left;
 	width: 50%;
-	text-align: center;
+	text-align: left;
 }
 .productDisplayHolder .pdh_count {
-	text-align: center;
-	display: inline-block;
-	float: left;
-	width: 100%;
+	text-align: left;
+	/*display: inline-block;*/
+	display: inline-table;
+	float: right;
+	width: 50%;
 }
