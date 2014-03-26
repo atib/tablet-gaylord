@@ -1,13 +1,14 @@
 @media print {
-	#Header, #footer, .active_client, .error_message_activation, .success_activation, #takeawaymenuOption, #clientOrderBtn, #cost, #clientOrder, #usertotal, .Order_discount, .Order_complete, .greylinethick, .title, .continue_button, .print_button {
+	.QueryHolder, .reportmenu  {
 		display: none;
+
 	}
 
 	body {
 		font-family: monospace;
 		margin:0;
-		/*width: 100%;*/
-		width: 250px;
+		width: 100%;
+		/*width: 250px;*/
 	}
 
 

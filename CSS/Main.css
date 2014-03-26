@@ -1342,18 +1342,23 @@ a#nav2:link, a#nav2:active, a.nav2#visited {
 }
 
 .QueryHolder {
-	margin-top: 10%;
+	margin-top: 2%;
 	font-family: 'Lato', sans-serif;
 	font-weight: lighter;
 	padding: 10px 5px;
-	margin-bottom: 10%; 
+	margin-bottom: 2%; 
 }
 
 
 .queryTitle {
 	margin-bottom: 3%;
 	color: #666;
-	font-size: 1.6em;
+	font-size: 1.2em;
+}
+
+.QueryDisplay { 
+	font-family: sans-serif;
+	font-weight: lighter;
 }
 
 #push_up {

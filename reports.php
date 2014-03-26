@@ -663,16 +663,17 @@ $dateTo = date("m-d-y", strtotime($dateTo));
        	<input type="text" id="dishFrom" name="dishFrom" value="'.$dateFrom.'" placeholder="from: mm/dd/yyyy">
        	<label for="to">to</label>
 		<input type="text" id="dishTo" name="dishTo" value="'.$dateTo.'" placeholder="to: mm/dd/yyyy">
-        <div class="continue_button">
+        <div class="continue_button">	
         	<input name="dishFilter" type="submit" value="Filter" class="filter_continue">
         </div>	
         </form>        
         </div>
     </div>
     
+    <div class="greylinethick"></div>
+
  	<div class="QueryDisplay">
     '.$displayQuery.'
-
     </div>
 	  
 	 ';
@@ -698,6 +699,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 <?php include_once('head.php'); ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="CSS/report_print.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <script>
@@ -800,7 +802,27 @@ $(document).ready(function(){
       <div class="title">
         <h2>Reports</h2>
       </div>
-      
+      <div class="title_print">
+
+      	<h1> The Gaylord Tandoori Indian Restaurant </h1>
+      	<h6>141 Manchester Road, Isle of Dogs 
+      		<br/> London E14 3DN </h6>
+
+        <h2>Report Generated:<span id="do_activation_code"><?php echo $o_activation; ?></span></h2>
+
+        <p class="receipt_date">
+        	<?php
+    		date_default_timezone_set('Europe/London');
+
+			$todaydate = date("d-m-Y");
+			$todaytime = date("H:i");
+
+    		echo $todaydate." @ ".$todaytime;	
+		?>
+        </p>
+
+        <div class="clear"></div>
+      </div>
       <div class="messages">
   		<div class="error_message_activation">
 	      	<?php echo $error_msg;?> 
@@ -841,7 +863,11 @@ $(document).ready(function(){
 			
 		</div>
  
- 
+   	  <div class="title_print bottom_receipt">
+			<div class="clear"></div>
+			<h6 >Tel: 020 7538 9826
+			<br />Email: info@gaylordrestaurant.co.uk </h6>
+      </div>
  
   </div>
      
