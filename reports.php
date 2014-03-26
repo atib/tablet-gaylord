@@ -646,10 +646,15 @@ $dateTo = date("m-d-y", strtotime($dateTo));
        	<input type="text" id="salesFrom" name="salesFrom" value="'.$dateFrom.'" placeholder="from: mm/dd/yyyy">
        	<label for="to">to</label>
 		<input type="text" id="salesTo" name="salesTo" value="'.$dateTo.'" placeholder="to: mm/dd/yyyy">
-        <input name="salesFilter" type="submit" value="Filter">
+        <div class="continue_button">
+        	<input name="salesFilter" type="submit" value="Filter"  class="filter_continue">
+        </div>
         </form>
         </div>
     </div>
+
+    <div id="greyline"></div>
+
   	<div class="QueryHolder">
     	<div class="queryTitle">Dish Popularity</div>
         <div class="queryFilter">
@@ -658,7 +663,9 @@ $dateTo = date("m-d-y", strtotime($dateTo));
        	<input type="text" id="dishFrom" name="dishFrom" value="'.$dateFrom.'" placeholder="from: mm/dd/yyyy">
        	<label for="to">to</label>
 		<input type="text" id="dishTo" name="dishTo" value="'.$dateTo.'" placeholder="to: mm/dd/yyyy">
-        <input name="dishFilter" type="submit" value="Filter">
+        <div class="continue_button">
+        	<input name="dishFilter" type="submit" value="Filter" class="filter_continue">
+        </div>	
         </form>        
         </div>
     </div>
@@ -698,7 +705,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#salesFrom" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#salesTo" ).datepicker( "option", "minDate", selectedDate );
       }
@@ -706,7 +713,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#salesTo" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#salesFrom" ).datepicker( "option", "maxDate", selectedDate );
       }
@@ -714,7 +721,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#dishFrom" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#dishTo" ).datepicker( "option", "minDate", selectedDate );
       }
@@ -722,7 +729,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#dishTo" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#dishFrom" ).datepicker( "option", "maxDate", selectedDate );
       }
