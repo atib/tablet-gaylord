@@ -6,6 +6,5 @@
 	<link href="../CSS/reset.css" rel="stylesheet" type="text/css">
 	<link href="../CSS/Main.css" rel="stylesheet" type="text/css">
 	<script type="text/javascript" src="../Script/jquery.js" ></script>
-    <link rel="shortcut icon" href="../Images/favicon.png">
-
+    <link rel="shortcut icon" href="../Images/g_user_favicon.png">
 </head>
