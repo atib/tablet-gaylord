@@ -67,76 +67,14 @@ if(!isset($_SESSION['username'])){
 		$splitVal = 0;
 
 		$error_msg = 'Please enter the payment split for order reference: '.$orderid.' <br>';
-		header("Location: vieworder.php?err=$error_msg");
-		exit();
+//		header("Location: vieworder.php?err=$error_msg");
+//		exit();
 		
-		}else{
-	
-		include_once ("db_connect.php");
-					
-		$check_split = "SELECT * FROM paymentSplit_tbl WHERE o_id = '$orderid'";
-		
-		$check_split_db = mysqli_query($db_connection, $check_split) or die (mysqli_error($db_connection));
-		
-		// $split_check = mysqli_num_rows($check_split_db);
-			$split_check = mysqli_affected_rows($db_connection);
-	
-			if ($split_check != 0){
-				
-			include_once("db_connect.php");
+		}
 
-			$split_update = "UPDATE paymentSplit_tbl SET ps_card = '$SplitCard', ps_cash = '$SplitCash', ps_total = '$total' WHERE o_id = '$orderid'";
-			$split_update_db = mysqli_query($db_connection, $split_update) or die (mysqli_error($db_connection));	
-				
-				if($split_update_db !=""){
-				
-				$success_msg = "Updated";
-				// echo $update_check;
-		
-				header("Location: vieworder.php?succ=$success_msg");
-				exit();
-				} else{
-				
-				$error_msg = "Not Updated";	
-				// echo $update_check;
-		
-				header("Location: vieworder.php?err=$error_msg");
-				exit();
-				}
-				
-				
-			} else {
-			
-			$sql_insert_split = 'INSERT INTO paymentSplit_tbl(o_id, ps_card, ps_cash, ps_total)
-						 VALUES ('.$orderid.', '.$SplitCard.', '.$SplitCash.', '.$total.')';
+	}
 	
-			$sql_insert_split_db = mysqli_query($db_connection, $sql_insert_split) or die (mysqli_error($db_connection));
-			
-			$insert_split_link = mysqli_affected_rows($db_connection);
-			
-			$splitVal = 1;
-			
-				if($insert_split_link !=0){
-				
-				$success_msg = "Updated";
-				// echo $update_check;
-		
-				header("Location: vieworder.php?succ=$success_msg");
-				exit();
-				} else{
-				
-				$error_msg = "Not Updated";	
-				// echo $update_check;
-		
-				header("Location: vieworder.php?err=$error_msg");
-				exit();
-				}
-			
-			}
-			
-			
-		}
-		}
+
 	
 	include_once ("db_connect.php");
 		
@@ -148,6 +86,7 @@ if(!isset($_SESSION['username'])){
 
 		$update_link = mysqli_affected_rows($db_connection);
 		// $update_check = mysqli_num_rows($update_order_db);
+		
 		if ($process =="Complete" && $payment == "Paid"){
 			
 			include_once ("db_connect.php");
