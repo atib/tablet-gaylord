@@ -1,4 +1,12 @@
 @media print {
+	
+/*	@page { 
+	size: 72.136mm 100mm !important; 
+	}*/
+	.break_page{
+		page-break-before: always !important;
+	}
+	
 	#Header, #footer, .active_client, .error_message_activation, .success_activation, #takeawaymenuOption, #clientOrderBtn, #cost, #clientOrder, #usertotal, .Order_discount, .Order_complete, .greylinethick, .title {
 		display: none;
 	}
@@ -8,6 +16,7 @@
 		margin:0;
 		/*width: 100%;*/
 		width: 250px;
+		height:500px;
 	}
 
 
