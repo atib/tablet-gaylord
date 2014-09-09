@@ -1,5 +1,5 @@
 @media print {
-	
+		
 /*	@page { 
 	size: 72.136mm 100mm !important; 
 	}*/
@@ -7,7 +7,7 @@
 		page-break-before: always !important;
 	}
 	
-	#Header, #footer, .active_client, .error_message_activation, .success_activation, #takeawaymenuOption, #clientOrderBtn, #cost, #clientOrder, #usertotal, .Order_discount, .Order_complete, .greylinethick, .title {
+	#Header, #footer, .active_client, .error_message_activation, .success_activation, #takeawaymenuOption, #clientOrderBtn, #cost, #clientOrder, #usertotal, .Order_discount, .Order_complete, .greylinethick, .title, .continue_button, .print_button {
 		display: none;
 	}
 
@@ -72,6 +72,7 @@
 	#total_do_staff {
 		margin: 5% 0 5% 0;
 		float: right;
+		text-align: right;
 	}
 	
 	#total_do_staff > div{
@@ -92,5 +93,13 @@
 	.receipt_date {
 		float: right;
 		display: inline-table;
+	}
+
+	textarea {
+		border: 1px solid transparent;
+		font-family: monospace;
+		width: 250px;
+		font-size: 0.8em;
+		resize: none;
 	}
 }

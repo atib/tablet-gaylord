@@ -1,0 +1,65 @@
+@media print {
+	.QueryHolder, .reportmenu, .greythinline, .messages  {
+		display: none;
+
+	}
+
+	body {
+		font-family: monospace;
+		margin:0;
+		width: 100%;
+	}
+
+	.title_print {
+		display: block;
+		font-size: 1em;
+		font-weight: bold;
+		margin:0 0 5% 0;
+		padding: 0;
+		margin-top: -10%;
+	}	
+	
+	.bottom_receipt {
+		margin-top: 10%;
+	}
+
+	.receipt_date {
+		float: right;
+		display: inline-table;
+	}
+
+	textarea {
+		border: 1px solid transparent;
+		font-family: monospace;
+		width: 250px;
+		font-size: 0.8em;
+		resize: none;
+	}
+
+	#display_report_main {
+		margin-top: -9%;
+	}
+
+	.productDisplayHolder {
+		float: left;
+		width: 100%;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		background-color: #ddd;
+		display: inline-table;
+	}
+	.productDisplayHolder .pdh_name {
+		/*display: inline-block;*/
+		display: inline-table;
+		float: left;
+		width: 50%;
+		text-align: left;
+	}
+	.productDisplayHolder .pdh_count {
+		text-align: left;
+		/*display: inline-block;*/
+		display: inline-table;
+		float: right;
+		width: 50%;
+	}
+}

@@ -266,11 +266,13 @@ if ($o_activation != ""){
 		</div>
 		<div id="dishComment">
 		<form action="displayorder.php?ac='.$o_activation.'&cat=14" method="post">         	
-		<textarea name="comment" class="" style="width:75%" rows="2" placeholder="Enter dish notes ">'.$od_note.'</textarea>
+		<textarea name="comment" class="" style="width:96%; margin-left:1%; margin-top:5%; font-family: monospace; padding: 3px 5px; resize:none;" rows="2" placeholder="Enter dish notes ">'.$od_note.'</textarea>
 		<input name="o_id" type="hidden" value="'.$row['o_id'].'">
 		<input name="od_id" type="hidden" value="'.$row['od_id'].'">
 
-		<input name="noteupdate" type="submit" class="filter_continue" value="Update Note">
+		<div class="continue_button">
+			<input name="noteupdate" type="submit" class="filter_continue" value="Update Note">
+		</div>
 		</form>
 		</div>
 
@@ -784,7 +786,7 @@ include_once("db_connect.php");
 	<div class="Order_discount">
 	    <div class="buttons">
 	      <form action="displayorder.php?ac=<?php echo $o_activation; ?>&cat=14&cn=<?php echo $od_clientname; ?>" method="post">
-         	<textarea name="comment" class="" style="width:100%" rows="4" placeholder="Enter table notes "><?php echo $orderComment;?></textarea>
+         	<textarea name="comment" class="" style="width:96%; resize:none; font-family:monospace; padding: 5px 9px;" rows="4" placeholder="Enter table notes "><?php echo $orderComment;?></textarea>
 	        <input name="cashdisc" class="" type="tel" value="<?php echo $cashDisc;?>" placeholder="Cash Based Discount £">
 	        <input name="percentdisc" class="" type="tel" value="<?php echo $percentDisc?>" placeholder="Percentage Based Discount %">
 	        <div class="update_button">

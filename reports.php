@@ -593,7 +593,6 @@ if (isset($_POST['salesFilter'])){
 	$dateFrom = strip_tags($salesFrom);
 	$salesTo = stripslashes($_POST['salesTo']);
 	$dateTo = strip_tags($salesTo);
-	
 	$dateFrom = date("Y-m-d", strtotime($dateFrom));
 	$dateTo = date("Y-m-d", strtotime($dateTo));
 	
@@ -679,7 +678,9 @@ if (isset($_POST['salesFilter'])){
 			$cashDiscTotal = $cashDiscount;
 			$percentDiscTotal = $percentageDiscount;
 			
-			$displayQuery .='Sales Figures '.$dateFrom.' BETWEEN '.$dateTo.' <br><br>
+			$displayQuery .='
+			<div class="sales_title_bold">
+			Sales Figures </div><br/>  <span class="bold">'.$dateFrom.'</span> BETWEEN <span class="bold">'.$dateTo.'</span> <br><br>
 			
 			Cash Discount Applied: £'.number_format($cashDiscTotal, 2).'<br>
 			Percentage Discount Applied: £'.number_format($percentDiscTotal, 2).'<br><br>
@@ -687,7 +688,7 @@ if (isset($_POST['salesFilter'])){
 			Cash Total: £'.number_format($cashTotal, 2).'<br>
 			Card Total: £'.number_format($cardTotal, 2).'<br><br>
 			
-			NetTotal: £'.number_format($netTotal, 2).'<br>
+			<div class="net_total_report">NetTotal: £'.number_format($netTotal, 2).'</div><br>
 			<br>
 			
 			<div class="ReportHolder">
@@ -736,7 +737,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 
 			$productDisplay .='
 			<div class="productDisplayHolder">
-			<div class="pdh_name">'.$od_prodname.'</div><div class="pdh_count">'.$ProductCount.'</div>
+			<div class="pdh_name">'.$od_prodname.'</div><span class="pdh_count">'.$ProductCount.'</span>
 			</div>';
 			
 			$productQTYtotal =$productQTYtotal + $ProductCount; //sum up total card discount
@@ -747,11 +748,21 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 		} //close main while loop
 		
 			
-			$displayQuery .='Dishes Report '.$dateFrom.' BETWEEN '.$dateTo.' <br><br>
+			$displayQuery .='
+
+			<div class="sales_title_bold">Dishes Report</div> <br/> <span class="bold">'.$dateFrom.'</span> BETWEEN <span class="bold">'.$dateTo.'</span> <br><br>
 			
-			Product Most Sold: <br>'.$productDisplay.' <br>
-					
-			Total Sold: '.$productQTYtotal.'<br>
+			<div id="most_sold">Product Most Sold:</div>
+
+			<br>'.$productDisplay.' <br/>
+			
+			
+			
+			<div class="net_total_report">		
+			<br /><br />
+			Total Sold: '.$productQTYtotal.' 
+			</div>
+			<br>
 			<br>
 			
 			<div class="ReportHolder">
@@ -775,6 +786,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 	 
 	 $displayReport = '
 	 
+
 	 <div class="QueryHolder">
     	<div class="queryTitle">Sales Report</div>
         <div class="queryFilter">
@@ -783,10 +795,15 @@ $dateTo = date("m-d-y", strtotime($dateTo));
        	<input type="text" id="salesFrom" name="salesFrom" value="'.$dateFrom.'" placeholder="from: mm/dd/yyyy">
        	<label for="to">to</label>
 		<input type="text" id="salesTo" name="salesTo" value="'.$dateTo.'" placeholder="to: mm/dd/yyyy">
-        <input name="salesFilter" type="submit" value="Filter">
+        <div class="continue_button">
+        	<input name="salesFilter" type="submit" value="Filter"  class="filter_continue">
+        </div>
         </form>
         </div>
     </div>
+
+    <div id="greyline"></div>
+
   	<div class="QueryHolder">
     	<div class="queryTitle">Dish Popularity</div>
         <div class="queryFilter">
@@ -795,14 +812,17 @@ $dateTo = date("m-d-y", strtotime($dateTo));
        	<input type="text" id="dishFrom" name="dishFrom" value="'.$dateFrom.'" placeholder="from: mm/dd/yyyy">
        	<label for="to">to</label>
 		<input type="text" id="dishTo" name="dishTo" value="'.$dateTo.'" placeholder="to: mm/dd/yyyy">
-        <input name="dishFilter" type="submit" value="Filter">
+        <div class="continue_button">	
+        	<input name="dishFilter" type="submit" value="Filter" class="filter_continue">
+        </div>	
         </form>        
         </div>
     </div>
     
+    <div class="greylinethick"></div>
+
  	<div class="QueryDisplay">
     '.$displayQuery.'
-
     </div>
 	  
 	 ';
@@ -828,6 +848,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 <?php include_once('head.php'); ?>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="CSS/report_print.css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
   <script>
@@ -835,7 +856,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#salesFrom" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#salesTo" ).datepicker( "option", "minDate", selectedDate );
       }
@@ -843,7 +864,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#salesTo" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#salesFrom" ).datepicker( "option", "maxDate", selectedDate );
       }
@@ -851,7 +872,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#dishFrom" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#dishTo" ).datepicker( "option", "minDate", selectedDate );
       }
@@ -859,7 +880,7 @@ $dateTo = date("m-d-y", strtotime($dateTo));
     $( "#dishTo" ).datepicker({
       defaultDate: "+0d",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
       onClose: function( selectedDate ) {
         $( "#dishFrom" ).datepicker( "option", "maxDate", selectedDate );
       }
@@ -930,7 +951,27 @@ $(document).ready(function(){
       <div class="title">
         <h2>Reports</h2>
       </div>
-      
+      <div class="title_print">
+
+      	<h1> The Gaylord Tandoori Indian Restaurant </h1>
+      	<h6>141 Manchester Road, Isle of Dogs 
+      		<br/> London E14 3DN </h6>
+
+        <h2>Report Generated:<span id="do_activation_code"><?php echo $o_activation; ?></span></h2>
+
+        <p class="receipt_date">
+        	<?php
+    		date_default_timezone_set('Europe/London');
+
+			$todaydate = date("d-m-Y");
+			$todaytime = date("H:i");
+
+    		echo $todaydate." @ ".$todaytime;	
+		?>
+        </p>
+
+        <div class="clear"></div>
+      </div>
       <div class="messages">
   		<div class="error_message_activation">
 	      	<?php echo $error_msg;?> 
@@ -963,15 +1004,20 @@ $(document).ready(function(){
 	    </nav>    
 
            
-
-		<?php echo $displayReport; ?>
+	    <div id="display_report_main">
+			<?php echo $displayReport; ?>	
+	    </div>
  
  
  		<div class="cashupWrapperBtn">
 			
 		</div>
  
- 
+   	  <div class="title_print bottom_receipt">
+			<div class="clear"></div>
+			<h6 >Tel: 020 7538 9826
+			<br />Email: info@gaylordrestaurant.co.uk </h6>
+      </div>
  
   </div>
      
