@@ -682,8 +682,6 @@ include_once("db_connect.php");
 
 }
 
-
-
 ?>
 <!DOCTYPE HTML>
 <!--[if lt IE 7]> <html class="ie6 oldie"> <![endif]-->
@@ -807,6 +805,8 @@ include_once("db_connect.php");
 		    <form action="printReciept" method="post">
 		<div class="print_button">
 	    		<input type="button" class="filter_continue" onClick="print()" value="Print Reciept">
+                <input type="button" class="filter_continue" name="filter_pdf" value="Generate PDF">
+
 		</div>
 		    
 		    </form>  
@@ -817,6 +817,7 @@ include_once("db_connect.php");
 			<div class="clear"></div>
 			<h6 >Tel: 020 7538 9826
 			<br />Email: info@gaylordrestaurant.co.uk </h6>
+            <p class="break_page"></p>
       </div>
 
   	<div id="flash"> Item added to cart </div>
