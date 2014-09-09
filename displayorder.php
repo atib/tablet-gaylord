@@ -714,9 +714,6 @@ include_once("db_connect.php");
 
       <div class="title_print">
 
-      	<h1> The Gaylord Tandoori Indian Restaurant </h1>
-      	<h6>141 Manchester Road, Isle of Dogs 
-      		<br/> London E14 3DN </h6>
 
         <h2>Order #<span id="do_activation_code"><?php echo $o_activation; ?></span></h2>
 

@@ -54,17 +54,6 @@ img, object, embed, video {
   display: inline-block; 
 }
 
-
-/*.styled-select { 
-	border: 1px solid #B3B2B2;
-	background: url(../Images/down.png) no-repeat right #B3B2B2;
-	z-index: 10;
-	overflow: hidden;
-	border-radius: 8px;
-
-	padding-right: 2%;
-}*/
-
 .buttons_vieworder {
 	margin-top: 5%;
 }
