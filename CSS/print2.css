@@ -1,6 +1,5 @@
 @media print {
 		
-		
 /*	@page { 
 	size: 72.136mm 100mm !important; 
 	}*/
@@ -8,9 +7,7 @@
 		page-break-before: always !important;
 	}
 	
-	#Header, #footer, .active_client, .error_message_activation, .success_activation, #takeawaymenuOption, 
-	#clientOrderBtn, #cost, #clientOrder, 
-	#usertotal, .Order_discount, .Order_complete, .greylinethick, .title, .continue_button, .print_button {
+	#Header, #footer, .active_client, .error_message_activation, .success_activation, #takeawaymenuOption, #clientOrderBtn, #cost, #clientOrder, #usertotal, .Order_discount, .Order_complete, .greylinethick, .title, .continue_button, .print_button {
 		display: none;
 	}
 
@@ -21,6 +18,8 @@
 		width: 250px;
 		height:500px;
 	}
+
+
 
 	.title_print {
 		display: block;
@@ -102,6 +101,5 @@
 		width: 250px;
 		font-size: 0.8em;
 		resize: none;
-		display:none;
 	}
 }

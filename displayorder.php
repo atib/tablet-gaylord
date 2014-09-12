@@ -691,6 +691,7 @@ include_once("db_connect.php");
 <html class="">
 <!--<![endif]-->
 <?php include_once('head.php'); ?>
+
 <script type="text/javascript" src="Script/jquery.js" ></script>
 <script src="Script/new_order_client.js"></script>
 
@@ -802,11 +803,10 @@ include_once("db_connect.php");
 	
 	<div class="Order_complete">
 
-		    <form action="printReciept" method="post">
+		    <form action="displayorder.php?ac=<?php echo $o_activation;?>&cat=14" method="post">
 		<div class="print_button">
-	    		<input type="button" class="filter_continue" onClick="print()" value="Print Reciept">
-                <input type="button" class="filter_continue" name="filter_pdf" value="Generate PDF">
-
+        	    <input type="submit" class="filter_continue" name="printFront" onClick="print()" value="Print Front House Recipet">
+	    		<input type="submit" class="filter_continue" name="printKitchen" onClick="print()" value="Print Kitchen Recipet">
 		</div>
 		    
 		    </form>  
