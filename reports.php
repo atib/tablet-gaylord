@@ -42,7 +42,7 @@ if (isset($_GET['page'])){
 	
 	date_default_timezone_set('Europe/London');
 
-	$todaydate = date("y/m/d");
+	$todaydate = date("d/m/Y");
 	
 	include_once ("db_connect.php");
 
@@ -169,7 +169,7 @@ if (isset($_GET['page'])){
 
 	date_default_timezone_set('Europe/London');
 
-	$todaydate = date("y/m/d");
+	$todaydate = date("d/m/Y");
 	
 	include_once ("db_connect.php");
 
@@ -703,8 +703,8 @@ if (isset($_POST['salesFilter'])){
 			</div>
 			';
 		
-$dateFrom = date("m-d-y", strtotime($dateFrom));
-$dateTo = date("m-d-y", strtotime($dateTo));	
+$dateFrom = date("01-m-Y", strtotime($dateFrom));
+$dateTo = date("t-m-Y", strtotime($dateTo));	
 	}
 	
 	
@@ -777,8 +777,8 @@ $dateTo = date("m-d-y", strtotime($dateTo));
 			</div>
 			';
 		
-$dateFrom = date("m-d-y", strtotime($dateFrom));
-$dateTo = date("m-d-y", strtotime($dateTo));	
+$dateFrom = date("01-m-Y", strtotime($dateFrom));
+$dateTo = date("t-m-Y", strtotime($dateTo));	
 	}
 
 }
@@ -792,9 +792,9 @@ $dateTo = date("m-d-y", strtotime($dateTo));
         <div class="queryFilter">
         <form action="reports.php?page=5" method="post" name="salesReport">
 		<label for="from">From</label>
-       	<input type="text" id="salesFrom" name="salesFrom" value="'.$dateFrom.'" placeholder="from: mm/dd/yyyy">
+       	<input type="text" id="salesFrom" name="salesFrom" value="" placeholder="from: mm/dd/yyyy">
        	<label for="to">to</label>
-		<input type="text" id="salesTo" name="salesTo" value="'.$dateTo.'" placeholder="to: mm/dd/yyyy">
+		<input type="text" id="salesTo" name="salesTo" value="" placeholder="to: mm/dd/yyyy">
         <div class="continue_button">
         	<input name="salesFilter" type="submit" value="Filter"  class="filter_continue">
         </div>
@@ -809,9 +809,9 @@ $dateTo = date("m-d-y", strtotime($dateTo));
         <div class="queryFilter">
         <form action="reports.php?page=5" method="post" name="salesReport">
 		<label for="from">From</label>
-       	<input type="text" id="dishFrom" name="dishFrom" value="'.$dateFrom.'" placeholder="from: mm/dd/yyyy">
+       	<input type="text" id="dishFrom" name="dishFrom" value="" placeholder="from: mm/dd/yyyy">
        	<label for="to">to</label>
-		<input type="text" id="dishTo" name="dishTo" value="'.$dateTo.'" placeholder="to: mm/dd/yyyy">
+		<input type="text" id="dishTo" name="dishTo" value="" placeholder="to: mm/dd/yyyy">
         <div class="continue_button">	
         	<input name="dishFilter" type="submit" value="Filter" class="filter_continue">
         </div>	
@@ -966,7 +966,7 @@ $(document).ready(function(){
 			$todaydate = date("d-m-Y");
 			$todaytime = date("H:i");
 
-    		echo $todaydate." @ ".$todaytime;	
+    		echo "</br>" . $todaydate." @ ".$todaytime;	
 		?>
         </p>
 
