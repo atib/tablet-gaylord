@@ -11,10 +11,13 @@ $printPage="";
 	<link href="CSS/Main.css" rel="stylesheet" type="text/css">
 	<?php
 	if (isset($_POST["printFront"])){
-	  $printPage=' <link rel="stylesheet" type="text/css" href="CSS/print.css">';
+	 	$printPage=' <link rel="stylesheet" type="text/css" href="CSS/print.css">';
 
 	}else if(isset($_POST["printKitchen"])){
 		$printPage=' <link rel="stylesheet" type="text/css" href="CSS/print2.css">';
+
+	}else{
+		$printPage=' <link rel="stylesheet" type="text/css" href="CSS/print.css">';
 
 	}
 	?>

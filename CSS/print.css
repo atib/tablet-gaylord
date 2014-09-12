@@ -94,14 +94,27 @@
 	.receipt_date {
 		float: right;
 		display: inline-table;
+		text-align:center;
 	}
-
+	  ::-webkit-input-placeholder { /* WebKit browsers */
+		  color: transparent;
+	  }
+	  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+		  color: transparent;
+	  }
+	  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+		  color: transparent;
+	  }
+	  :-ms-input-placeholder { /* Internet Explorer 10+ */
+		  color: transparent;
+	  }
 	textarea {
 		border: 1px solid transparent;
 		font-family: monospace;
 		width: 250px;
 		font-size: 0.8em;
 		resize: none;
+		font-style:italic;
 		display:none;
 	}
 }

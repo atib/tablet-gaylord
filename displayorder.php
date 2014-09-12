@@ -85,7 +85,13 @@ if (isset($_POST['userSelect'])){
 
 	}
 }	
-		
+
+if (isset($_POST['showComment'])){
+	 //$prod_ref = $_POST['p_ref'];	
+	$order_ref = $_POST['od_ref'];	
+
+}
+
 if(!isset($_SESSION['username'])){
 	
 	$error_msg = "";
@@ -236,6 +242,7 @@ if ($o_activation != ""){
 		$o_percentCash= $row['o_percentCash'];
 		$orderComment= $row['o_tableNote'];
 		$od_note= $row['od_note'];
+		$od_ref = $row['od_id'];
 		if ($p_applydiscount == 1){
 			 
 		$dis_sub = $row['od_quantity']* $row['od_price']; // product which discount is applicable (sum of)
@@ -245,10 +252,44 @@ if ($o_activation != ""){
 		$no_dis_sub = $row['od_quantity']* $row['od_price']; // product which discount is not applicable (sum of)
 	
 		}
+		if ($od_ref == $order_ref){
+		
+		$userNote = '<div id="dishComment">
+					<form action="displayorder.php?ac='.$o_activation.'&cat=14" method="post">         	
+					<textarea name="comment" class="" style="width:96%; margin-left:1%; margin-top:5%; font-family: monospace; padding: 3px 5px; resize:none;" rows="2" placeholder="Enter dish notes ">'.$od_note.'</textarea>
+					<input name="o_id" type="hidden" value="'.$row['o_id'].'">
+					<input name="od_id" type="hidden" value="'.$row['od_id'].'">
+			
+					<div class="continue_button">
+						<input name="noteupdate" type="submit" class="filter_continue" value="Update Note">
+					</div>
+					</form>
+					</div>';
 		
 		
-		if ($od_note ==""){
-			$od_note ="";
+		}else if ($od_note ==""){
+			$userNote ='<div id="dishComment">
+						<form action="displayorder.php?ac='.$o_activation.'&cat=14" method="post"> 
+						<div class="continue_button">
+						<input name="o_ref" type="hidden" value="'.$row['o_id'].'">
+						<input name="od_ref" type="hidden" value="'.$row['od_id'].'">
+						<input name="showComment" type="submit" class="filter_continue" value="Show Comment">
+						</div>
+						</form>
+						</div>';
+		}else{
+			
+		$userNote = '<div id="dishComment">
+					<form action="displayorder.php?ac='.$o_activation.'&cat=14" method="post">         	
+					<textarea name="comment" class="" style="width:96%; margin-left:1%; margin-top:5%; font-family: monospace; padding: 3px 5px; resize:none;" rows="2" placeholder="Enter dish notes ">'.$od_note.'</textarea>
+					<input name="o_id" type="hidden" value="'.$row['o_id'].'">
+					<input name="od_id" type="hidden" value="'.$row['od_id'].'">
+			
+					<div class="continue_button">
+						<input name="noteupdate" type="submit" class="filter_continue" value="Update Note">
+					</div>
+					</form>
+					</div>';
 		}
 			
 		$basket .= '
@@ -264,17 +305,8 @@ if ($o_activation != ""){
 		<a href="displayorder.php?ac='.$o_activation.'&remove='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'" id="dec_prod">-</a> 
 		<a href="displayorder.php?ac='.$o_activation.'&delete='.$row['p_id'].'&pn='.$row['od_prodname'].'&cn='.$orderrow['od_clientname'].'&cat='.$row['pc_id'].'&pr='.$row['od_price'].'" id="del_prod">x</a>
 		</div>
-		<div id="dishComment">
-		<form action="displayorder.php?ac='.$o_activation.'&cat=14" method="post">         	
-		<textarea name="comment" class="" style="width:96%; margin-left:1%; margin-top:5%; font-family: monospace; padding: 3px 5px; resize:none;" rows="2" placeholder="Enter dish notes ">'.$od_note.'</textarea>
-		<input name="o_id" type="hidden" value="'.$row['o_id'].'">
-		<input name="od_id" type="hidden" value="'.$row['od_id'].'">
-
-		<div class="continue_button">
-			<input name="noteupdate" type="submit" class="filter_continue" value="Update Note">
-		</div>
-		</form>
-		</div>
+		
+		'.$userNote.'
 
 		</div>
 		';	
@@ -713,6 +745,9 @@ include_once("db_connect.php");
 
       <div class="title_print">
 
+      	<h1> The Gaylord Tandoori Indian Restaurant </h1>
+      	<h6>141 Manchester Road, Isle of Dogs 
+      		<br/> London E14 3DN </h6>
 
         <h2>Order #<span id="do_activation_code"><?php echo $o_activation; ?></span></h2>
 
@@ -723,7 +758,7 @@ include_once("db_connect.php");
 			$todaydate = date("d-m-Y");
 			$todaytime = date("H:i");
 
-    		echo $todaydate." @ ".$todaytime;	
+    		echo "</br>" . $todaydate." @ ".$todaytime;	
 		?>
         </p>
 
